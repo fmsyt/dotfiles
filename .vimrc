@@ -1,16 +1,19 @@
+﻿"文字コードをUFT-8に設定
+set encoding=utf-8
+set termencoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
+set fileformats=unix,dos,mac
 
 call plug#begin('~/.vim/plugged')
 "ファイルをTree表示してくれるやつ
-"Plug 'scrooloose/nerdtree'
-
+Plug 'scrooloose/nerdtree'
+Plug 'vim-jp/vimdoc-ja'
 
 call plug#end()
 
 " setting
 " ヘルプを日本語にする
 set helplang=ja,en
-"文字コードをUFT-8に設定
-set fenc=utf-8
 " バックアップファイルを作らない
 set nobackup
 " スワップファイルを作らない
