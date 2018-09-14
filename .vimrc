@@ -1,5 +1,14 @@
 
+call plug#begin('~/.vim/plugged')
+"ファイルをTree表示してくれるやつ
+"Plug 'scrooloose/nerdtree'
+
+
+call plug#end()
+
 " setting
+" ヘルプを日本語にする
+set helplang=ja,en
 "文字コードをUFT-8に設定
 set fenc=utf-8
 " バックアップファイルを作らない
@@ -55,8 +64,8 @@ set list listchars=tab:\▸\-
 "set shiftwidth=2
 
 " マウス設定
-set mouse=a
-set ttymouse=xterm2
+"set mouse=a
+"set ttymouse=xterm2
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -72,4 +81,9 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
+" 入力系
+" 括弧閉じを自動で入力
+imap { {}<LEFT>
+imap [ []<LEFT>
+imap ( ()<LEFT>
 
