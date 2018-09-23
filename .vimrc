@@ -89,4 +89,7 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
-
+imap < <><LEFT>
+imap ' ''<LEFT>
+imap " ""<LEFT>
+imap ` ``<LEFT>
