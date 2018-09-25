@@ -7,7 +7,6 @@ set fileformats=unix,dos,mac
 call plug#begin('~/.vim/plugged')
 "ファイルをTree表示してくれるやつ
 Plug 'scrooloose/nerdtree'
-Plug 'vim-jp/vimdoc-ja'
 
 call plug#end()
 
