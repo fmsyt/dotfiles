@@ -5,12 +5,15 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
 
 " vim-plug
-call plug#begin('~/.vim/plugged')
-" ファイルをTree表示してくれるやつ
-Plug 'scrooloose/nerdtree'
-" クォーテーションを自動で補完してくれるやつ
-Plug 'cohama/lexima.vim'
-call plug#end()
+if isdirectory("${ls ~}/.vim")
+	call plug#begin('~/.vim/plugged')
+
+	" ファイルをTree表示してくれるやつ
+	Plug 'scrooloose/nerdtree'
+	" クォーテーションを自動で補完してくれるやつ
+	Plug 'cohama/lexima.vim'
+	call plug#end()
+endif
 
 " setting
 " ヘルプを日本語にする
