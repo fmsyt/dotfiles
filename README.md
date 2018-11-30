@@ -2,5 +2,5 @@
 
 shortcuts will be create when execute install.sh
 
-$ cd dotfiles
+$ cd dotfiles  
 $ ./install.sh
