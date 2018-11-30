@@ -1,6 +1,6 @@
 #!/bin/bash
 
-home="/home/`whoami`"
+home=`echo ~`
 
 if [ -e ${home}/.vim ] ; then
 	echo vim-plug has installed.
@@ -14,7 +14,7 @@ for file in $(ls `dirname $0` -1 --ignore=*.sh)
 do
 	to="${home}/.${file}"
 	if [ ! -e ${to} ] ; then
-		ln -s `dirname $0`/${file} ${to}
+		ln -s `dirname $0`/dotfiles/${file} ${to}
 		echo "created $to"
 		count=$((count+1))
 	fi

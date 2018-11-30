@@ -4,10 +4,12 @@ set termencoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
 
+" vim-plug
 call plug#begin('~/.vim/plugged')
-"ファイルをTree表示してくれるやつ
+" ファイルをTree表示してくれるやつ
 Plug 'scrooloose/nerdtree'
-
+" クォーテーションを自動で補完してくれるやつ
+Plug 'cohama/lexima.vim'
 call plug#end()
 
 " setting
@@ -83,12 +85,4 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-" 入力系
-" 括弧閉じを自動で入力
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
-imap < <><LEFT>
-"imap ' ''<LEFT>
-"imap " ""<LEFT>
-"imap ` ``<LEFT>
+
