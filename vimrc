@@ -34,7 +34,8 @@ nnoremap Y y$
 set display=lastline
 " 補完メニューの高さ
 set pumheight=10
-
+" 警告音を消す
+set visualbell t_vb=
 
 " 見た目系
 " 行番号を表示
