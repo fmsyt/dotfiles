@@ -34,8 +34,10 @@ nnoremap Y y$
 set display=lastline
 " 補完メニューの高さ
 set pumheight=10
-" 警告音を消す
+" ビープ音を消す
 set visualbell t_vb=
+" ビープ音を可視化
+set visualbell
 
 " 見た目系
 " 行番号を表示
@@ -48,8 +50,6 @@ set number
 set virtualedit=onemore
 " インデントはオートインデント
 set smartindent
-" ビープ音を可視化
-set visualbell
 " 括弧入力時の対応する括弧を表示
 set showmatch
 " ステータスラインを常に表示
@@ -67,9 +67,9 @@ set list listchars=tab:\▸\-
 " Tab文字を半角スペースにする
 "set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
-"set tabstop=2
+set tabstop=4
 " 行頭でのTab文字の表示幅
-"set shiftwidth=2
+set shiftwidth=4
 
 " マウス設定
 "set mouse=a
