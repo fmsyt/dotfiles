@@ -12,25 +12,29 @@ else
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-count=0
+#List up all files
 for file in $(ls $SCRIPT_DIR -1 --ignore={*.sh,README.md})
 do
 	to="${HOME}/.${file}"
-	if [ ! -e ${to} ] ; then
-		ln -s $SCRIPT_DIR/${file} ${to}
+
+	if [ ! -e $to ] ; then
+		#Create dotfile in HomeDirectory
+		ln -s $SCRIPT_DIR/$file $to
 		echo "created $to"
-		count=$((count+1))
+
+	elif [ $file = "bashrc" ] ; then
+		cmd="source $SCRIPT_DIR/bashrc"
+
+		grep "$cmd" $to > /dev/null
+		if [ $? -ne 0 ] ; then
+			echo $cmd >> $to
+			echo "added line for $to"
+		fi
+		unset cmd
 	fi
 done
+
 unset file
 unset to
-
-if [ $count -gt 0 ] ; then
-	echo "$count links has created."
-else
-	echo "Shortcuts has already created."
-fi
-
-unset count
 unset HOME
 unset SCRIPT_DIR
