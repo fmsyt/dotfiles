@@ -12,6 +12,8 @@ if isdirectory("${ls ~}/.vim")
 	Plug 'scrooloose/nerdtree'
 	" クォーテーションを自動で補完してくれるやつ
 	Plug 'cohama/lexima.vim'
+	" emmet
+	Plug 'mattn/emmet-vim'
 	call plug#end()
 endif
 
