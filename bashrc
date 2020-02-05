@@ -10,4 +10,5 @@ alias gd='git diff'
 alias gf='git fetch'
 alias gp='git pull'
 alias gs='git status'
+alias gco='git checkout'
 
