@@ -1,4 +1,4 @@
-"文字コードをUFT-8に設定
+"文字コードをUTF-8に設定
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
@@ -40,6 +40,8 @@ set pumheight=10
 set visualbell t_vb=
 " ビープ音を可視化
 set visualbell
+" 保存時にsudo権限で無理やり保存
+cnoremap w!! w !sudo tee > /dev/null %<CR>
 
 " 見た目系
 " 行番号を表示
