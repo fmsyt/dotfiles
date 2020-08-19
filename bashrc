@@ -1,4 +1,4 @@
-alias ls='command ls --human-readable --group-directories-first --color=auto -I NTUSER.DAT\* -I ntuser.dat\*'
+alias ls='command ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*}'
 
 alias ll='ls -lF'
 alias la='ls -AlF'
