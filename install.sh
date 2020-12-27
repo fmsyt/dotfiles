@@ -38,3 +38,26 @@ unset file
 unset to
 unset HOME
 unset SCRIPT_DIR
+
+# update git config
+# 基本設定
+git config --global color.ui true
+git config --global core.autocrlf input
+git config --global pull.ff only
+git config --global merge.ff false
+
+# エイリアス指定
+git config --global alias.st status
+git config --global alias.df diff
+git config --global alias.cm commit
+git config --global alias.br branch
+git config --global alias.ps push
+git config --global alias.pl pull
+git config --global alias.co checkout
+
+# 日本語のファイル名をエンコードしない
+git config --global core.quotepath false
+
+# 認証情報をキャッシュ
+git config --global credential.helper 'cache --timeout=86400'
+
