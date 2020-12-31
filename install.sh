@@ -34,11 +34,6 @@ do
 	fi
 done
 
-unset file
-unset to
-unset HOME
-unset SCRIPT_DIR
-
 # update git config
 # 基本設定
 git config --global color.ui true
@@ -60,4 +55,10 @@ git config --global core.quotepath false
 
 # 認証情報をキャッシュ
 git config --global credential.helper 'cache --timeout=86400'
+
+unset file
+unset to
+unset HOME
+unset SCRIPT_DIR
+
 
