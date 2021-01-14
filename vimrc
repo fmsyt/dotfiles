@@ -8,15 +8,15 @@ set ambiwidth=double
 
 " vim-plug
 if isdirectory("${ls ~}/.vim")
-	call plug#begin('~/.vim/plugged')
+    call plug#begin('~/.vim/plugged')
 
-	" ファイルをTree表示してくれるやつ
-	Plug 'scrooloose/nerdtree'
-	" クォーテーションを自動で補完してくれるやつ
-	Plug 'cohama/lexima.vim'
-	" emmet
-	Plug 'mattn/emmet-vim'
-	call plug#end()
+    " ファイルをTree表示してくれるやつ
+    Plug 'scrooloose/nerdtree'
+    " クォーテーションを自動で補完してくれるやつ
+    Plug 'cohama/lexima.vim'
+    " emmet
+    Plug 'mattn/emmet-vim'
+    call plug#end()
 endif
 
 " setting
