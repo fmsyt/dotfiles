@@ -1,8 +1,10 @@
 "文字コードをUTF-8に設定
 set encoding=utf-8
 set termencoding=utf-8
+set fileencoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
+set ambiwidth=double
 
 " vim-plug
 if isdirectory("${ls ~}/.vim")
@@ -69,11 +71,15 @@ nnoremap k gk
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
 " Tab文字を半角スペースにする
-"set expandtab
+set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=4
 " 行頭でのTab文字の表示幅
 set shiftwidth=4
+" 改翿時に前の翿の構文を確翿してインデント
+set smartindent
+" 翿動インデント
+set autoindent
 
 " マウス設定
 "set mouse=a
