@@ -6,18 +6,48 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
-" vim-plug
-if isdirectory("${ls ~}/.vim")
-    call plug#begin('~/.vim/plugged')
 
-    " ファイルをTree表示してくれるやつ
-    Plug 'scrooloose/nerdtree'
-    " クォーテーションを自動で補完してくれるやつ
-    Plug 'cohama/lexima.vim'
-    " emmet
-    Plug 'mattn/emmet-vim'
-    call plug#end()
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
+
+" Required:
+set runtimepath+=$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin("$HOME/.vim/bundles")
+
+" Let dein manage dein
+" Required:
+call dein#add("$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim")
+
+" Add or remove your plugins here like this:
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('Shougo/neosnippet-snippets')
+
+call dein#add('tpope/vim-surround')
+call dein#add('scrooloose/nerdtree')
+call dein#add('tpope/vim-commentary')
+call dein#add('vim-airline/vim-airline')
+call dein#add('sheerun/vim-polyglot')
+
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
+
+
 
 " setting
 " ヘルプを日本語にする
