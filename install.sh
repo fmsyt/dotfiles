@@ -4,6 +4,7 @@ HOME=`echo ~`
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # If vim-plug has not installed, install it.
+# sh ./installer.sh ~/.vim/bundles
 if [ -e ${HOME}/.vim ] ; then
     echo vim-plug has already installed.
 else
@@ -35,13 +36,13 @@ do
 done
 
 # update git config
-# $B4pK\@_Dj(B
+# 基本設定
 git config --global color.ui true
 git config --global core.autocrlf input
 git config --global pull.ff only
 git config --global merge.ff false
 
-# $B%(%$%j%"%9;XDj(B
+# エイリアス指定
 git config --global alias.st status
 git config --global alias.df diff
 git config --global alias.cm commit
@@ -50,10 +51,10 @@ git config --global alias.ps push
 git config --global alias.pl pull
 git config --global alias.co checkout
 
-# $BF|K\8l$N%U%!%$%kL>$r%(%s%3!<%I$7$J$$(B
+# 日本語のファイル名をエンコードしない
 git config --global core.quotepath false
 
-# $BG'>Z>pJs$r%-%c%C%7%e(B
+# 認証情報をキャッシュ
 git config --global credential.helper 'cache --timeout=86400'
 
 unset file
