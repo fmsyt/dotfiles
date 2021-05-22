@@ -1,38 +1,39 @@
-#!/bin/bash
+#!/bin/sh
 
-HOME=`echo ~`
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
-# If vim-plug has not installed, install it.
-# sh ./installer.sh ~/.vim/bundles
-if [ -e ${HOME}/.vim ] ; then
-    echo vim-plug has already installed.
-else
-    echo "Install vim-plug"
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
+DOTPATH=$HOME/dotfiles
+DEIN_INSTALL_PATH=$HOME/.vim/bundles
 
-#List up all files
-for file in $(ls $SCRIPT_DIR -1 --ignore={*.sh,README.md})
+
+cd $DOTPATH
+
+./dein.sh $DEIN_INSTALL_PATH
+
+
+cd $DOTPATH/source
+
+for f in ??*
 do
-    to="${HOME}/.${file}"
+    append_text="source $(pwd)/$f"
+    file_path="$HOME/.$f"
 
-    if [ ! -e $to ] ; then
-        #Create dotfile in HomeDirectory
-        ln -s $SCRIPT_DIR/$file $to
-        echo "created $to"
+    touch $file_path
+    grep -x "$append_text" $file_path
 
-    elif [ $file = "bashrc" ] ; then
-        cmd="source $SCRIPT_DIR/bashrc"
-
-        grep "$cmd" $to > /dev/null
-        if [ $? -ne 0 ] ; then
-            echo $cmd >> $to
-            echo "added line for $to"
-        fi
-        unset cmd
+    if [ $? != 0 ]; then
+        "$append_text" >> $file_path
     fi
+done
+
+
+cd $DOTPATH/ln
+
+for f in ??*
+do
+    link="$(pwd)/$f"
+    file_path="$HOME/.$f"
+
+    ln -snfv "$link" "$file_path"
 done
 
 # update git config
@@ -57,9 +58,8 @@ git config --global core.quotepath false
 # 認証情報をキャッシュ
 git config --global credential.helper 'cache --timeout=86400'
 
-unset file
-unset to
-unset HOME
-unset SCRIPT_DIR
+unset link
+unset append_text
+unset file_path
 
 
