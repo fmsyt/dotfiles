@@ -21,7 +21,7 @@ do
     grep -x "$append_text" $file_path
 
     if [ $? != 0 ]; then
-        "$append_text" >> $file_path
+        echo "$append_text" >> $file_path
     fi
 done
 
