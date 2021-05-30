@@ -33,6 +33,7 @@ call dein#add('tpope/vim-commentary')
 call dein#add('vim-airline/vim-airline')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('phanviet/vim-monokai-pro')
+call dein#add('cohama/lexima.vim')
 
 " Required:
 call dein#end()
