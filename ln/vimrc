@@ -10,7 +10,7 @@ set ambiwidth=double
 
 "dein Scripts-----------------------------
 if &compatible
-  set nocompatible               " Be iMproved
+    set nocompatible               " Be iMproved
 endif
 
 " Required:
@@ -32,6 +32,7 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('tpope/vim-commentary')
 call dein#add('vim-airline/vim-airline')
 call dein#add('sheerun/vim-polyglot')
+call dein#add('phanviet/vim-monokai-pro')
 
 " Required:
 call dein#end()
@@ -41,9 +42,9 @@ filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+if dein#check_install()
+    call dein#install()
+endif
 
 "End dein Scripts-------------------------
 
@@ -79,7 +80,7 @@ cnoremap w!! w !sudo tee > /dev/null %<CR>
 " 行番号を表示
 set number
 " 現在の行を強調表示
-"set cursorline
+set cursorline
 " 現在の行を強調表示（縦）
 "set cursorcolumn
 " 行末の1文字先までカーソルを移動できるように
@@ -95,6 +96,8 @@ set wildmode=list:longest
 " 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
+
+colorscheme monokai_pro
 
 
 " Tab系
