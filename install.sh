@@ -1,9 +1,7 @@
 #!/bin/sh
 
-
-DOTPATH=$HOME/dotfiles
+DOTPATH=$(cd $(dirname $0); pwd)
 DEIN_INSTALL_PATH=$HOME/.vim/bundles
-
 
 cd $DOTPATH
 
