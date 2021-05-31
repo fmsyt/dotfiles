@@ -2,7 +2,7 @@
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
@@ -30,9 +30,14 @@ call dein#add("$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim")
 call dein#add('tpope/vim-surround')
 call dein#add('scrooloose/nerdtree')
 call dein#add('tpope/vim-commentary')
+
+" vim下部のステータスラインを装飾
 call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+"call dein#add('ryanoasis/vim-devicons')
+
 call dein#add('sheerun/vim-polyglot')
-call dein#add('phanviet/vim-monokai-pro')
+call dein#add('Erichain/vim-monokai-pro')
 call dein#add('cohama/lexima.vim')
 
 call dein#add('Shougo/deoplete.nvim')
@@ -58,6 +63,7 @@ if dein#check_install()
     call dein#install()
 endif
 
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 "End dein Scripts-------------------------
 
 
@@ -87,12 +93,16 @@ set visualbell t_vb=
 set visualbell
 " 保存時にsudo権限で無理やり保存
 cnoremap w!! w !sudo tee > /dev/null %<CR>
+" 折りたたみ
+set foldmethod=marker
+set foldlevel=1
+set foldcolumn=0
 
 " 見た目系
 " 行番号を表示
 set number
 " 現在の行を強調表示
-"set cursorline
+set cursorline
 " 現在の行を強調表示（縦）
 "set cursorcolumn
 " 行末の1文字先までカーソルを移動できるように
@@ -110,12 +120,16 @@ nnoremap j gj
 nnoremap k gk
 
 colorscheme monokai_pro
+let g:lightline = {
+    \'colorscheme': 'monokai_pro',
+    \}
+
 
 set scrolloff=5
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
+set list listchars=tab:▸-
 " Tab文字を半角スペースにする
 set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
@@ -150,3 +164,10 @@ set completeopt=menuone,noinsert
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+
+
+" NerdTreeToggle
+nmap <C-b> :NERDTreeToggle<CR>
+
+" airline
+let g:airline_theme = 'bubblegum'
