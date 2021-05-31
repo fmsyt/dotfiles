@@ -36,6 +36,9 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 "call dein#add('ryanoasis/vim-devicons')
 
+" Ctrl + P でファイル検索
+call dein#add('ctrlpvim/ctrlp.vim')
+
 call dein#add('sheerun/vim-polyglot')
 call dein#add('Erichain/vim-monokai-pro')
 call dein#add('cohama/lexima.vim')
