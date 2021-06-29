@@ -40,6 +40,7 @@ git config --global color.ui true
 git config --global core.autocrlf input
 git config --global pull.ff only
 git config --global merge.ff false
+git config --global fetch.prune true
 
 # エイリアス指定
 git config --global alias.st status
