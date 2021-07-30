@@ -34,7 +34,7 @@ do
     ln -snfv "$link" "$file_path"
 done
 
-git config --global include.path $DOTPATH/dotifles/gitconfig
+git config --global include.path $DOTPATH/dotfiles/gitconfig
 
 
 unset link
