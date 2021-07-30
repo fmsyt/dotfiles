@@ -1,23 +1,22 @@
-# update git config
-# 基本設定
-git config --global color.ui true
-git config --global core.autocrlf input
-git config --global pull.ff only
-git config --global merge.ff false
-git config --global fetch.prune true
-
-# エイリアス指定
-git config --global alias.st status
-git config --global alias.df diff
-git config --global alias.cm commit
-git config --global alias.br branch
-git config --global alias.ps push
-git config --global alias.pl pull
-git config --global alias.co checkout
-
-# 日本語のファイル名をエンコードしない
-git config --global core.quotepath false
-
-# 認証情報をキャッシュ
-git config --global credential.helper 'cache --timeout=86400'
-
+[color]
+	ui = true
+[core]
+	autocrlf = input
+	quotepath = false
+[pull]
+	ff = only
+[merge]
+	ff = false
+[fetch]
+	prune = true
+[alias]
+	st = status
+	df = diff
+	cm = commit
+	br = branch
+	ps = push
+	pl = pull
+	co = checkout
+	tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+[credential]
+	helper = cache --timeout=86400
