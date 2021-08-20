@@ -3,3 +3,6 @@ alias ls='command ls --human-readable --group-directories-first --color=auto --i
 alias ll='ls -lF'
 alias la='ls -AlF'
 alias l='ls -CF'
+
+export EDITOR=vim
+
