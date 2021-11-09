@@ -61,7 +61,8 @@ call dein#add('airblade/vim-gitgutter')
 " vimからgit操作
 call dein#add('tpope/vim-fugitive')
 
-
+" indent
+call dein#add('Yggdroot/indentLine')
 
 " Required:
 call dein#end()
@@ -195,4 +196,10 @@ if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" indentLine
+let g:indentLine_color_term =239
+let g:indentLine_color_gui = '#708090'
+let g:indentLine_char = '¦'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
