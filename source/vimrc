@@ -52,6 +52,15 @@ endif
 let g:deoplete#enable_at_startup = 1
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/vimproc')
+call dein#add('Shougo/neocomplcache')
+
+" git管理で現行があった行の表示
+call dein#add('airblade/vim-gitgutter')
+
+" vimからgit操作
+call dein#add('tpope/vim-fugitive')
+
 
 
 " Required:
@@ -171,7 +180,7 @@ inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 
-nmap <C-\> :vsplit<CR>
+noremap <C-\> :vsplit<CR>
 
 
 " NerdTreeToggle
@@ -179,3 +188,11 @@ nmap <C-b> :NERDTreeToggle<CR>
 
 " airline
 let g:airline_theme = 'bubblegum'
+
+" neocomplete系
+" 日本語を補完候補として取得しないようにする
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
