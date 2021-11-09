@@ -1,1 +1,11 @@
+# ベル音を無音に設定
 set bell-style none
+
+# 補完時に大文字小文字を無視
+set completion-ignore-case on
+
+# ファイルタイプをカラフルに
+set colored-stats on
+
+# 補完の接頭辞をカラフルに
+set colored-completion-prefix on
