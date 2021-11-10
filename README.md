@@ -1,9 +1,16 @@
 # dotfiles
 
-shortcuts will be create when execute install.sh
+## Dependences
 
-ex)
+- `Vim >= 8.0` or `Neovim`
+- `python3`
+  - `pynvim`
 
+## Installation
+
+You can install from everywhere.
+
+e.g.
 ```bash
 $ ./dotfiles/install.sh
 ```
