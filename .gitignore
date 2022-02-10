@@ -1,0 +1,22 @@
+# ignore all files
+
+/*
+/.**
+
+
+# whitelist
+!/.bashrc
+!/.dircolors
+!/.gitconfig_shared
+!/.inputrc
+!/.local/
+!/.vim/
+!/.vim/**
+!/.vimrc
+!/README.md
+!/bin/
+!/bin/**
+
+!.gitignore
+!.gitkeep
+
