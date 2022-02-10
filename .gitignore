@@ -6,6 +6,8 @@
 
 # whitelist
 !/.bashrc
+!/.config/
+!/.config/nvim/**
 !/.dircolors
 !/.gitconfig_shared
 !/.inputrc
