@@ -16,12 +16,16 @@
 !/.gitconfig_shared
 !/.inputrc
 !/.local/
+
 !/.vim/
 !/.vimrc
 !/.vim/dein/
 !/.vim/dein/**
 !/.vim/rc/
 !/.vim/rc/**
+!/.vim/backup/
+!/.vim/swap/
+!/.vim/undo/
 
 !/README.md
 !/bin/

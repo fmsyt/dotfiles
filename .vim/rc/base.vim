@@ -6,12 +6,17 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
+" swpファイル出力先
+set directory=swap
+
+" バックアップファイル出力先
+set backupdir=backup
+
+" undoファイル出力先
+set undodir=undo
+
 " ヘルプを日本語にする
 set helplang=ja,en
-" バックアップファイルを作らない
-set nobackup
-" スワップファイルを作らない
-"set noswapfile
 " 編集中のファイルが変更されたら自動で読み直す
 set autoread
 " バッファが編集中でもその他のファイルを開けるように
