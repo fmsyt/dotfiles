@@ -2,7 +2,7 @@ if [ -f $HOME/.local/.bashrc ]; then
     source $HOME/.local/.bashrc
 fi
 
-alias ls='command ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*}'
+alias ls='ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*}'
 
 alias ll='ls -lF'
 alias la='ls -AlF'
