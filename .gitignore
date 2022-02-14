@@ -19,11 +19,12 @@
 
 !/.vim/
 !/.vimrc
+!/.vim/backup/
 !/.vim/dein/
 !/.vim/dein/**
 !/.vim/rc/
 !/.vim/rc/**
-!/.vim/backup/
+!/.vim/session/
 !/.vim/swap/
 !/.vim/undo/
 
