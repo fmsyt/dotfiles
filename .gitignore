@@ -5,6 +5,9 @@
 
 
 # whitelist
+!/.bash/
+!/.bash/rc/
+!/.bash/rc/*.bash
 !/.bashrc
 !/.config/
 !/.config/*/
