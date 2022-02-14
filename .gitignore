@@ -17,8 +17,11 @@
 !/.inputrc
 !/.local/
 !/.vim/
-!/.vim/**
 !/.vimrc
+!/.vim/dein/
+!/.vim/dein/**
+!/.vim/rc/
+!/.vim/rc/**
 
 !/README.md
 !/bin/
