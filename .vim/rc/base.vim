@@ -13,7 +13,11 @@ set directory=$HOME/.vim/swap
 set backupdir=$HOME/.vim/backup
 
 " undoファイル出力先
-set undodir=$HOME/.vim/undo
+if has('persistent_undo')
+    set undodir=$HOME/.vim/undo
+    set undofile
+endif
+
 
 " ヘルプを日本語にする
 set helplang=ja,en
