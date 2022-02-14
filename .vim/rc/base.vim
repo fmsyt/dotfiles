@@ -7,13 +7,13 @@ set fileformats=unix,dos,mac
 set ambiwidth=double
 
 " swpファイル出力先
-set directory=swap
+set directory=$HOME/.vim/swap
 
 " バックアップファイル出力先
-set backupdir=backup
+set backupdir=$HOME/.vim/backup
 
 " undoファイル出力先
-set undodir=undo
+set undodir=$HOME/.vim/undo
 
 " ヘルプを日本語にする
 set helplang=ja,en
