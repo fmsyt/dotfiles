@@ -3,6 +3,7 @@
 ## Dependences
 
 - `Vim >= 8.0` or `Neovim`
+- `git`
 - `python3`
   - `pynvim`
 
@@ -11,6 +12,7 @@
 You can install from everywhere.
 
 e.g.
+
 ```bash
-$ ./dotfiles/install.sh
+./dotfiles/bin/install.sh
 ```
