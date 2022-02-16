@@ -11,7 +11,7 @@
 !/.bashrc
 !/.config/
 !/.config/*/
-!/.config/nvim/init.vim
+!/.config/nvim
 !/.dircolors
 !/.gitconfig_shared
 !/.inputrc
