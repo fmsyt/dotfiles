@@ -33,11 +33,11 @@ repo = 'Shougo/deoplete.nvim'
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
-if = !has('nvim')
+if = '!has("nvim")'
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
-if = !has('nvim')
+if = '!has("nvim")'
 
 [[plugins]]
 repo = 'Shougo/neosnippet.vim'
