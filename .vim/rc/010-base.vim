@@ -97,23 +97,3 @@ set wrapscan
 set hlsearch
 " 補完
 set completeopt=menuone,noinsert
-
-
-" airline
-let g:airline_theme = 'bubblegum'
-
-" neocomplete系
-" 日本語を補完候補として取得しないようにする
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" indentLine
-let g:indentLine_color_term =239
-let g:indentLine_color_gui = '#708090'
-let g:indentLine_char = '¦'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-let NERDTreeShowHidden=1
-
