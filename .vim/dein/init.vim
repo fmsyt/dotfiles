@@ -41,7 +41,7 @@ if dein#load_state(s:dein_dir)
         "call dein#add('roxma/vim-hug-neovim-rpc')
     endif
 
-    let g:deoplete#enable_at_startup = 1
+    "let g:deoplete#enable_at_startup = 1
     "call dein#add('Shougo/neosnippet.vim')
     "call dein#add('Shougo/neosnippet-snippets')
     "call dein#add('Shougo/vimproc')

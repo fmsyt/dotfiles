@@ -30,6 +30,9 @@ repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+'''
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
