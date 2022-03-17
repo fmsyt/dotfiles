@@ -1,11 +1,16 @@
 [[plugins]]
-repo  = 'phpactor/phpactor'
-on_ft = ['php']
-build = 'composer install'
-
-[[plugins]]
 repo  = 'preservim/vim-markdown'
 on_ft = ['markdown']
 hook_add = '''
     let g:vim_markdown_folding_disabled = 1
 '''
+
+[[plugins]]
+repo  = 'phpactor/phpactor'
+on_ft = ['php']
+build = 'composer install'
+
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
