@@ -1,10 +1,13 @@
 "文字コードをUTF-8に設定
 set encoding=utf-8
 set termencoding=utf-8
-set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
 set ambiwidth=double
+
+if &modifiable
+    set fileencoding=utf-8
+endif
 
 " swpファイル出力先
 set directory=$HOME/.vim/swap
