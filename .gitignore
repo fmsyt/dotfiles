@@ -11,6 +11,7 @@
 !/.bashrc
 !/.config/
 !/.config/*/
+!/.config/mc/**
 !/.config/nvim
 !/.dircolors
 !/.gitconfig_shared
