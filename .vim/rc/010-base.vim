@@ -78,7 +78,7 @@ set expandtab
 set tabstop=4
 " 行頭でのTab文字の表示幅
 set shiftwidth=4
-" 改翿時に前の翿の構文を確翿してインデント
+" 改行時に前の行の構文を確認してインデント
 set smartindent
 " 自動インデント
 set autoindent
