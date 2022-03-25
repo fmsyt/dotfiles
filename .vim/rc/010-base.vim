@@ -61,11 +61,6 @@ set showmatch
 " コマンドラインの補完
 set wildmode=list:longest
 
-colorscheme monokai_pro
-let g:lightline = {
-    \'colorscheme': 'monokai_pro',
-    \}
-
 
 set scrolloff=5
 
