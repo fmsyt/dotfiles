@@ -73,3 +73,7 @@ fi
 if [ -f ~/.bash/rc/010-alias.bash ]; then
     . ~/.bash/rc/010-alias.bash
 fi
+
+if [ -f ~/.bash/rc/010-wsl.bash ]; then
+    . ~/.bash/rc/010-wsl.bash
+fi

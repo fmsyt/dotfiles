@@ -1,4 +1,4 @@
-if [[ ! "$(uname -r)" == "*microsoft*" ]]; then
+if [ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     return;
 fi
 
