@@ -19,3 +19,11 @@ build = 'composer install'
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
+
+[[plugins]]
+repo = 'chase/vim-ansible-yaml'
+on_ft = ['yml', 'yaml', 'docker-compose']
+hook_add = '''
+    let g:ansible_options = {'ignore_blank_lines': 0}
+'''
+
