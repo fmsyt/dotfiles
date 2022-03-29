@@ -1,3 +1,3 @@
 " setting
-runtime! dein/init.vim
 runtime! rc/*.vim
+runtime! dein/init.vim
