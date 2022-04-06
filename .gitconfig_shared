@@ -12,6 +12,7 @@
 [alias]
 	st = status
 	df = diff
+	dt = difftool
 	cm = commit
 	br = branch
 	ps = push
