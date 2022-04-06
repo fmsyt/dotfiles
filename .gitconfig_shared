@@ -20,3 +20,12 @@
 	tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 [credential]
 	helper = cache --timeout=86400
+[diff]
+	tool = vim
+[difftool]
+	prompt = false
+[difftool "code"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "vim"]
+	cmd = vim -d $LOCAL $REMOTE
+
