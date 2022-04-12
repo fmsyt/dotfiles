@@ -79,8 +79,8 @@ set smartindent
 set autoindent
 
 " マウス設定
-"set mouse=a
-"set ttymouse=xterm2
+set mouse=nvi
+set ttymouse=xterm2
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
