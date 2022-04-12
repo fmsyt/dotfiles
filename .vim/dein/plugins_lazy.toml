@@ -20,6 +20,10 @@ repo = 'kristijanhusak/deoplete-phpactor'
 on_ft = ['php']
 
 [[plugins]]
+repo = 'camilledejoye/phpactor-mappings'
+on_ft = ['php']
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = ['toml']
 
