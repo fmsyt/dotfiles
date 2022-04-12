@@ -79,7 +79,7 @@ set smartindent
 set autoindent
 
 " マウス設定
-set mouse=nvi
+set mouse=nv
 set ttymouse=xterm2
 
 " 検索系
