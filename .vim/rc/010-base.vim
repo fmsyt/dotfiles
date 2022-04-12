@@ -5,6 +5,8 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,utf-8,us-ascii
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
+let g:python3_host_prog = system('echo -n $(which python3)')
+
 if &modifiable
     set fileencoding=utf-8
 endif
