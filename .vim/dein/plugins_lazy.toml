@@ -13,8 +13,11 @@ hook_add = '''
 [[plugins]]
 repo  = 'phpactor/phpactor'
 on_ft = ['php']
-build = 'composer install'
+build = 'composer install --no-dev -o'
 
+[[plugins]]
+repo = 'kristijanhusak/deoplete-phpactor'
+on_ft = ['php']
 
 [[plugins]]
 repo = 'cespare/vim-toml'
