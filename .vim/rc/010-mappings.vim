@@ -8,11 +8,6 @@ cnoremap w!! w !sudo tee > /dev/null %<CR>
 nnoremap j gj
 nnoremap k gk
 
-" 補完表示時のEnterで改行をしない
-inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
-inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
-inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
-
 " 左右分割
 noremap <C-\> :vsplit<CR>
 

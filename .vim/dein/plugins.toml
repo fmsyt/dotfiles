@@ -99,3 +99,21 @@ hook_add = '''
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 '''
 
+[[plugins]]
+repo = 'ncm2/ncm2'
+if = '!and(has("python3"), has("nvim"))'
+depends = ['nvim-yarp']
+hook_add = '''
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    set completeopt=noinsert,menuone,noselect
+'''
+
+[[plugins]]
+repo = 'ncm2/ncm2-bufword'
+if = '!and(has("python3"), has("nvim"))'
+depends = ['ncm2']
+
+[[plugins]]
+repo = 'ncm2/ncm2-path'
+if = '!and(has("python3"), has("nvim"))'
+depends = ['ncm2']
