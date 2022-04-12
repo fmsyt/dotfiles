@@ -4,7 +4,7 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-    let NERDTreeShowHidden=1
+    let NERDTreeShowHidden = 1
     nmap <C-b> :NERDTreeToggle<CR>
 '''
 
@@ -32,6 +32,9 @@ repo = 'ryanoasis/vim-devicons'
 
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+    let g:ctrlp_show_hidden = 1
+'''
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
