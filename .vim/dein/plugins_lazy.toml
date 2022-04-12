@@ -16,10 +16,6 @@ on_ft = ['php']
 build = 'composer install --no-dev -o'
 
 [[plugins]]
-repo = 'kristijanhusak/deoplete-phpactor'
-on_ft = ['php']
-
-[[plugins]]
 repo = 'camilledejoye/phpactor-mappings'
 on_ft = ['php']
 
@@ -33,9 +29,3 @@ on_ft = ['yml', 'yaml', 'docker-compose']
 hook_add = '''
     let g:ansible_options = {'ignore_blank_lines': 0}
 '''
-
-[[plugins]]
-repo = 'phpactor/ncm2-phpactor'
-if = '!and(has("python3"), has("nvim"))'
-on_ft = ['php']
-depends = ['ncm2']

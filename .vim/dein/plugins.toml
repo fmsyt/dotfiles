@@ -1,3 +1,5 @@
+# hook の便利な使い方 https://qiita.com/delphinus/items/cd221a450fd23506e81a
+
 [[plugins]]
 repo = 'tpope/vim-surround'
 
@@ -52,20 +54,6 @@ hook_add = '''
 repo = 'cohama/lexima.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-let g:deoplete#enable_at_startup = 1
-'''
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-if = '!has("nvim")'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-if = '!has("nvim")'
-
-[[plugins]]
 repo = 'Shougo/neosnippet.vim'
 
 [[plugins]]
@@ -74,14 +62,14 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/vimproc'
 
-[[plugins]]
-repo = 'Shougo/neocomplcache'
-hook_add = '''
-    if !exists('g:neocomplcache_keyword_patterns')
-        let g:neocomplcache_keyword_patterns = {}
-    endif
-    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-'''
+# [[plugins]]
+# repo = 'Shougo/neocomplcache'
+# hook_add = '''
+#     if !exists('g:neocomplcache_keyword_patterns')
+#         let g:neocomplcache_keyword_patterns = {}
+#     endif
+#     let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+# '''
 
 
 [[plugins]]
@@ -99,21 +87,44 @@ hook_add = '''
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 '''
 
+
 [[plugins]]
-repo = 'ncm2/ncm2'
-if = '!and(has("python3"), has("nvim"))'
-depends = ['nvim-yarp']
+repo = 'Shougo/ddc.vim'
+depends = '/denops'
 hook_add = '''
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-    set completeopt=noinsert,menuone,noselect
+    " Mappings
+
+    " <TAB>: completion.
+    inoremap <silent><expr> <TAB>
+    \ ddc#map#pum_visible() ? '<C-n>' :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ '<TAB>' : ddc#map#manual_complete()
+
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+    " Use ddc.
+    call ddc#enable()
+
 '''
 
 [[plugins]]
-repo = 'ncm2/ncm2-bufword'
-if = '!and(has("python3"), has("nvim"))'
-depends = ['ncm2']
+repo = 'vim-denops/denops.vim'
 
 [[plugins]]
-repo = 'ncm2/ncm2-path'
-if = '!and(has("python3"), has("nvim"))'
-depends = ['ncm2']
+repo = 'Shougo/ddc-around'
+depends = '/ddc'
+hook_add = '''
+    " Customize global settings
+    " Use around source.
+    " https://github.com/Shougo/ddc-around
+    call ddc#custom#patch_global('sources', ['around'])
+'''
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+depends = '/ddc'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+depends = '/ddc'
