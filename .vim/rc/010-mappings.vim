@@ -1,3 +1,5 @@
+let mapleader = "\<Space>"
+
 nnoremap Y y$
 " １行が長すぎる時の表示
 
