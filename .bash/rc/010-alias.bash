@@ -23,3 +23,15 @@ else
     export EDITOR=vim
     alias svim='EDITOR=vim sudoedit'
 fi
+
+if [ -x /usr/bin/docker ]; then
+    alias d='docker'
+    alias de='docker exec -it'
+fi
+
+if [ -x /usr/bin/docker-compose ]; then
+    alias dc='docker-compose'
+    alias dce='docker-compose exec'
+    alias dcu='docker-compose up -d'
+    alias dcub='docker-compose up --build -d'
+fi
