@@ -44,7 +44,7 @@ repo = 'sheerun/vim-polyglot'
 [[plugins]]
 repo = 'Erichain/vim-monokai-pro'
 hook_add = '''
-    colorscheme monokai_pro
+    autocmd! VimEnter * nested colorscheme monokai_pro
     let g:lightline = {
         \'colorscheme': 'monokai_pro',
         \}
@@ -90,18 +90,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = [
-    'ddc-around', 
-    'ddc-matcher_head', 
-    'ddc-sorter_rank', 
-    'ddc-converter_remove_overlap', 
-    'ddc-file'
-]
-hook_add = '''
-    if filereadable(expand('~/.vim/dein/init/ddc.vim'))
-        source ~/.vim/dein/init/ddc.vim
-    endif
-'''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'

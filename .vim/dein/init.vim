@@ -34,3 +34,6 @@ endif
 "call map(dein#check_clean(), "delete(v:val, 'rf')")
 "call dein#recache_runtimepath()
 
+for f in split(glob('~/.vim/dein/init/*.vim'), '\n')
+    execute 'source' f
+endfor

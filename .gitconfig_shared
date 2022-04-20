@@ -3,6 +3,7 @@
 [core]
 	autocrlf = input
 	quotepath = false
+	editor = vim
 [pull]
 	ff = only
 [fetch]
