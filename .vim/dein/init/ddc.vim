@@ -1,6 +1,7 @@
+" Use around source.
+call ddc#custom#patch_global('sources', ['around'])
+
 " Use matcher_head and sorter_rank.
-" https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'matchers': ['matcher_head'],
@@ -16,10 +17,14 @@ call ddc#custom#patch_global('sourceParams', {
     \ })
 
 " Customize settings on a filetype
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
-call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
-    \ 'clangd': {'mark': 'C'},
-    \ })
-call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-    \ 'around': {'maxSize': 100},
-    \ })
+"call ddc#custom#patch_filetype(['c', 'cpp'], 'sources', ['around', 'clangd'])
+"call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', {
+"    \ 'clangd': {'mark': 'C'},
+"    \ })
+"call ddc#custom#patch_filetype('markdown', 'sourceParams', {
+"    \ 'around': {'maxSize': 100},
+"    \ })
+
+" Use ddc.
+call ddc#enable()
+
