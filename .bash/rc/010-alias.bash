@@ -1,9 +1,18 @@
 if type exa >/dev/null 2>&1; then
-    ls='exa --icons'
 
-    alias ll='exa -l --icons'
-    alias la='exa -al --icons'
-    alias l='exa --icons'
+    if type exa --icons >/dev/null 2>&1; then
+        ls='exa --icons'
+
+        alias ll='exa -l --icons'
+        alias la='exa -al --icons'
+        alias l='exa --icons'
+    else
+        ls='exa'
+
+        alias ll='exa -l'
+        alias la='exa -al'
+        alias l='exa'
+    fi
 else
     alias ls='ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*}'
 
