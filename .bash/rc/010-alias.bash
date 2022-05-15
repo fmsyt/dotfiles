@@ -1,8 +1,16 @@
-alias ls='ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*}'
+if type exa >/dev/null 2>&1; then
+    ls='exa --icons'
 
-alias ll='ls -lF'
-alias la='ls -AlF'
-alias l='ls -CF'
+    alias ll='exa -l --icons'
+    alias la='exa -al --icons'
+    alias l='exa --icons'
+else
+    alias ls='ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*}'
+
+    alias ll='ls -lF'
+    alias la='ls -AlF'
+    alias l='ls -CF'
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
