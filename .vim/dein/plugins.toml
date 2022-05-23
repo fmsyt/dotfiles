@@ -51,6 +51,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
 repo = 'cohama/lexima.vim'
 
 [[plugins]]
