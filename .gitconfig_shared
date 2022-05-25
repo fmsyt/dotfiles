@@ -36,3 +36,5 @@
 	tool = vimdiff
 [mergetool "code"]
 	cmd = code --wait $MERGED
+[init]
+	defaultBranch = master
