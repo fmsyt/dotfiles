@@ -44,11 +44,12 @@ fi
 if [ -x /usr/bin/docker ]; then
     alias d='docker'
     alias de='docker exec -it'
+
+    if type docker compose >/dev/null 2>&1; then
+        alias dc='docker compose'
+        alias dce='docker compose exec'
+        alias dcu='docker compose up -d'
+        alias dcub='docker compose up --build -d'
+    fi
 fi
 
-if [ -x /usr/bin/docker-compose ]; then
-    alias dc='docker-compose'
-    alias dce='docker-compose exec'
-    alias dcu='docker-compose up -d'
-    alias dcub='docker-compose up --build -d'
-fi
