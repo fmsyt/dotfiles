@@ -105,7 +105,7 @@ repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
-hook_post_source = '''
+hook_add = '''
     if filereadable(expand('~/.vim/dein/init/ddc.vim'))
         source ~/.vim/dein/init/ddc.vim
     endif
