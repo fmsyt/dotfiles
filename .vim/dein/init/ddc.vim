@@ -9,10 +9,11 @@ call ddc#custom#patch_global('sourceOptions', {
     \   '_': {
     \       'matchers': ['matcher_head'],
     \       'omni': {'mark': 'O'},
-    \       'sorters': ['sorter_rank']
+    \       'sorters': ['sorter_rank'],
+    \       'converters': ['converter_remove_overlap']
     \   },
     \   'around': {
-    \       'mark': 'A',
+    \       'mark': 'Around',
     \       'maxSize': 500
     \   },
     \   'vim-lsp': {
@@ -27,10 +28,6 @@ call ddc#custom#patch_filetype(['php'], 'sourceParams', {
     \     'omnifunc': 'phpactor#Complete'
     \   }
     \ })
-
-call ddc#custom#patch_filetype(['python'], 'sources', [
-    \   'vim-lsp'
-    \ ])
 
 
 " Use ddc.
