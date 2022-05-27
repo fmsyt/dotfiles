@@ -93,7 +93,10 @@ repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
-hook_add = '''
+hook_post_source = '''
+    if filereadable(expand('~/.vim/dein/init/ddc.vim'))
+        source ~/.vim/dein/init/ddc.vim
+    endif
     if filereadable(expand('~/.vim/dein/init/pum.vim'))
         source ~/.vim/dein/init/pum.vim
     endif
@@ -103,13 +106,17 @@ hook_add = '''
 repo = 'Shougo/ddc-around'
 
 [[plugins]]
-repo = 'Shougo/ddc-matcher_head'
-
-[[plugins]]
-repo = 'Shougo/ddc-sorter_rank'
-
-[[plugins]]
 repo = 'Shougo/ddc-converter_remove_overlap'
 
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
+
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-omni'
+
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+

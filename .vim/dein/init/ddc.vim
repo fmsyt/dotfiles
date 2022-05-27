@@ -1,10 +1,11 @@
 " Use around source.
-call ddc#custom#patch_global('sources', ['around'])
+call ddc#custom#patch_global('sources', ['around', 'omni'])
 
 " Use matcher_head and sorter_rank.
 call ddc#custom#patch_global('sourceOptions', {
     \ '_': {
     \   'matchers': ['matcher_head'],
+    \   'omni': {'mark': 'O'},
     \   'sorters': ['sorter_rank']},
     \ })
 
@@ -24,6 +25,13 @@ call ddc#custom#patch_global('sourceParams', {
 "call ddc#custom#patch_filetype('markdown', 'sourceParams', {
 "    \ 'around': {'maxSize': 100},
 "    \ })
+
+call ddc#custom#patch_filetype(['php'], 'sourceParams', {
+    \   'omni': {
+    \     'omnifunc': 'phpactor#Complete'
+    \   }
+    \ })
+
 
 " Use ddc.
 call ddc#enable()
