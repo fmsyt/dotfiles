@@ -1,6 +1,6 @@
 if type exa >/dev/null 2>&1; then
 
-    if type exa --icons >/dev/null 2>&1; then
+    if exa --icons >/dev/null 2>&1; then
         ls='exa --icons'
 
         alias ll='exa -l --icons'
