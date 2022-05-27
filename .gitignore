@@ -5,6 +5,10 @@
 
 
 # whitelist
+
+!.gitignore
+!.gitkeep
+
 !/.bash/
 !/.bash/rc/
 !/.bash/rc/*.bash
@@ -29,9 +33,9 @@
 !/.vim/swap/
 !/.vim/undo/
 
+!/install.sh
 !/README.md
+
 !/bin/
 !/bin/**
-!.gitignore
-!.gitkeep
 
