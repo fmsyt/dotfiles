@@ -43,6 +43,12 @@ repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'Erichain/vim-monokai-pro'
+hook_add = '''
+    autocmd! VimEnter * nested colorscheme monokai_pro
+    let g:lightline = {
+        \'colorscheme': 'monokai_pro',
+        \}
+'''
 
 [[plugins]]
 repo = 'tomasr/molokai'

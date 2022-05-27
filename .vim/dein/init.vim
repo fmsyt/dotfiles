@@ -33,12 +33,3 @@ endif
 " プラグイン再読み込み
 "call map(dein#check_clean(), "delete(v:val, 'rf')")
 "call dein#recache_runtimepath()
-
-for f in split(glob('~/.vim/dein/init/*.vim'), '\n')
-    execute 'source' f
-endfor
-
-autocmd! VimEnter * nested colorscheme monokai_pro
-let g:lightline = {
-    \'colorscheme': 'monokai_pro',
-    \}
