@@ -14,5 +14,5 @@ You can install from everywhere.
 e.g.
 
 ```bash
-$ ./dotfiles/bin/install.sh
+$ ./dotfiles/install.sh
 ```
