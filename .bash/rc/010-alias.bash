@@ -1,22 +1,33 @@
+ls_ignores=(
+    'ntuser.*'
+    'NTUSER.*'
+    'Thumbs.db'
+    'thumbs.db'
+    'desktop.ini'
+)
+
 if type exa >/dev/null 2>&1; then
 
     alias ls='exa'
-    alias exa='exa -I "ntuser.*|NTUSER.*|Thumbs.db|thumbs.db"'
+
+    IFS="|"; declare opts="-I \"${ls_ignores[*]}\""
+
+    if exa --icons >/dev/null 2>&1; then
+        opts="$opts --icons"
+    fi
+
+    alias exa="exa $opts"
 
     alias ll='exa -l'
     alias la='exa -al'
     alias l='exa'
 
-    if exa --icons >/dev/null 2>&1; then
-        alias exa='exa --icons -I "ntuser.*|NTUSER.*|Thumbs.db|thumbs.db"'
-    fi
 else
-    alias ls='ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*,Thumbs.db,thumbs.db}'
+    IFS=","; alias ls="ls --human-readable --group-directories-first --color=auto --ignore={${ls_ignores[*]}}"
 
     alias ll='ls -lF'
     alias la='ls -AlF'
     alias l='ls -CF'
-
 fi
 
 # enable color support of ls and also add handy aliases
