@@ -1,37 +1,33 @@
 if type exa >/dev/null 2>&1; then
 
+    alias ls='exa'
+    alias exa='exa -I "ntuser.*|NTUSER.*|Thumbs.db|thumbs.db"'
+
+    alias ll='exa -l'
+    alias la='exa -al'
+    alias l='exa'
+
     if exa --icons >/dev/null 2>&1; then
-        ls='exa --icons'
-
-        alias ll='exa -l --icons'
-        alias la='exa -al --icons'
-        alias l='exa --icons'
-    else
-        ls='exa'
-
-        alias ll='exa -l'
-        alias la='exa -al'
-        alias l='exa'
+        alias exa='exa --icons -I "ntuser.*|NTUSER.*|Thumbs.db|thumbs.db"'
     fi
 else
-    alias ls='ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*}'
+    alias ls='ls --human-readable --group-directories-first --color=auto --ignore={NTUSER*,ntuser*,Thumbs.db,thumbs.db}'
 
     alias ll='ls -lF'
     alias la='ls -AlF'
     alias l='ls -CF'
+
 fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
 
 if type nvim >/dev/null 2>&1; then
     export EDITOR=nvim
