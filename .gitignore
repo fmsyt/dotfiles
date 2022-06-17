@@ -15,6 +15,7 @@
 !/.bashrc
 !/.config/
 !/.config/*/
+!/.config/fish/**
 !/.config/mc/**
 !/.config/nvim
 !/.dircolors
