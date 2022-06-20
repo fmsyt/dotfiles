@@ -66,14 +66,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ~/.bash/rc/010-history.bash ]; then
-    . ~/.bash/rc/010-history.bash
+if [ -f ~/.config/bash/rc/010-history.bash ]; then
+    . ~/.config/bash/rc/010-history.bash
 fi
 
-if [ -f ~/.bash/rc/010-alias.bash ]; then
-    . ~/.bash/rc/010-alias.bash
+if [ -f ~/.config/bash/rc/010-alias.bash ]; then
+    . ~/.config/bash/rc/010-alias.bash
 fi
 
-if [ -f ~/.bash/rc/010-wsl.bash ]; then
-    . ~/.bash/rc/010-wsl.bash
+if [ -f ~/.config/bash/rc/010-wsl.bash ]; then
+    . ~/.config/bash/rc/010-wsl.bash
 fi

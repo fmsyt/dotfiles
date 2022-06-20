@@ -9,12 +9,9 @@
 !.gitignore
 !.gitkeep
 
-!/.bash/
-!/.bash/rc/
-!/.bash/rc/*.bash
-!/.bashrc
 !/.config/
 !/.config/*/
+!/.config/bash/**
 !/.config/fish/**
 !/.config/mc/**
 !/.config/nvim
