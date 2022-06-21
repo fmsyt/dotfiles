@@ -5,7 +5,7 @@ if type exa >/dev/null 2>&1
     alias ls='exa'
 
     set -l ig (string join '|' $ls_ignores)
-    set -l opts "-I \"{$ig}\""
+    set -l opts "-I \"$ig\""
 
     if exa --icons >/dev/null 2>&1
         set opts "$opts --icons"
