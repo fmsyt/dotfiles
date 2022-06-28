@@ -12,7 +12,7 @@ function fish_prompt
 
     set -l delim \U25BA\U0020
     # If we don't have unicode use a simpler delimiter
-    string match -qi "*.utf-8" -- $LANG $LC_CTYPE $LC_ALL; or set delim ">"
+    string match -qi "*.utf-8" -- $LANG $LC_CTYPE $LC_ALL; or set delim "\$ "
 
     fish_is_root_user; and set delim "#"
 
