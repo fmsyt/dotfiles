@@ -18,7 +18,7 @@
 	pl = pull
 	co = checkout
 	mt = mergetool
-	tree = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+	tree = log --graph --date=short --pretty=format:'%x09%C(auto) %h %Cgreen %ad %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 [credential]
 	helper = cache --timeout=86400
 [diff]

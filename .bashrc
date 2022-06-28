@@ -66,6 +66,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -f ~/.config/bash/rc/001-base.bash ]; then
+    . ~/.config/bash/rc/001-base.bash
+fi
+
 if [ -f ~/.config/bash/rc/010-history.bash ]; then
     . ~/.config/bash/rc/010-history.bash
 fi
