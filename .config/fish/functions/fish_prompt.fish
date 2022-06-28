@@ -1,10 +1,16 @@
 function fish_prompt
+
+    if test -e ~/.local/bin/powerline-shell
+        ~/.local/bin/powerline-shell --shell bare $status
+        return
+    end
+
     set -l last_status $status
 
     set -l normal (set_color normal)
     set -l usercolor (set_color $fish_color_user)
 
-    set -l delim \U25BA
+    set -l delim \U25BA\U0020
     # If we don't have unicode use a simpler delimiter
     string match -qi "*.utf-8" -- $LANG $LC_CTYPE $LC_ALL; or set delim ">"
 
