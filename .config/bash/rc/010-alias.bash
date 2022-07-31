@@ -1,3 +1,5 @@
+alias sudo='sudo -E '
+
 ls_ignores=(
     'ntuser.*'
     'NTUSER.*'
