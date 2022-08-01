@@ -22,7 +22,6 @@ if type exa >/dev/null 2>&1
 else
     # set IFS ","; alias ls "ls --human-readable --group-directories-first --color=auto --ignore={${ls_ignores[*]}}"
     set -l ig (string join ',' $ls_ignores)
-    echo $ig
     alias ls="ls --human-readable --group-directories-first --color=auto --ignore={$ig}"
 
     alias ll='ls -lF'
