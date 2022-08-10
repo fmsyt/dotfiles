@@ -108,10 +108,10 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 depends = ['ddc']
+if = '''executable('deno') && v:version < 802'''
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-if = '''executable('deno') && v:version < 802'''
 depends = [
     'pum',
     'ddc-around',
