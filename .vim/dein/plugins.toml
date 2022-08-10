@@ -17,13 +17,10 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
-depends = [
-    'vim-airline-theme',
-    'vim-monokai-pro'
-]
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+depends = ['vim-airline']
 hook_add = '''
     let g:airline_theme = 'minimalist'
     let g:airline#extensions#tabline#enabled = 1
@@ -32,7 +29,6 @@ hook_add = '''
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
     endif
-
 '''
 
 [[plugins]]
