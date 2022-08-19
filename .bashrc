@@ -66,7 +66,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-for filename in $HOME/.config/bash/rc/*.bash; do
+for filename in $HOME/.config/bash/*.bash; do
   source $filename
 done
 
