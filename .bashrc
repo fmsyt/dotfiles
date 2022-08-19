@@ -66,18 +66,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f ~/.config/bash/rc/001-base.bash ]; then
-    . ~/.config/bash/rc/001-base.bash
-fi
+for filename in $HOME/.config/bash/rc/*.bash; do
+  source $filename
+done
 
-if [ -f ~/.config/bash/rc/010-history.bash ]; then
-    . ~/.config/bash/rc/010-history.bash
-fi
-
-if [ -f ~/.config/bash/rc/010-alias.bash ]; then
-    . ~/.config/bash/rc/010-alias.bash
-fi
-
-if [ -f ~/.config/bash/rc/010-wsl.bash ]; then
-    . ~/.config/bash/rc/010-wsl.bash
-fi
+. "$HOME/.cargo/env"
