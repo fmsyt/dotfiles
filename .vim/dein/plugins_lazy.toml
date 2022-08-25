@@ -29,5 +29,5 @@ hook_add = '''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = 'html'
+on_ft = ['html']
 
