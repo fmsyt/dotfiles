@@ -26,3 +26,8 @@ on_ft = ['yml', 'yaml', 'docker-compose']
 hook_add = '''
     let g:ansible_options = {'ignore_blank_lines': 0}
 '''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+
