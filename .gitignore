@@ -20,6 +20,9 @@
 !/.gitconfig_shared
 !/.inputrc
 !/.local/
+!/.local/state/
+!/.local/state/mume/
+!/.local/state/mume/**
 
 !/.vim/
 !/.vimrc
