@@ -1,6 +1,6 @@
 alias sudo='sudo -E '
 
-set -l ls_ignores 'ntuser.*' 'NTUSER.*' 'Thumbs.db' 'thumbs.db' 'desktop.ini'
+set -l ls_ignores 'ntuser.\*' 'NTUSER.\*' 'Thumbs.db' 'thumbs.db' 'desktop.ini'
 
 if type exa >/dev/null 2>&1
 
