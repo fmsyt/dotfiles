@@ -25,7 +25,7 @@ if type exa >/dev/null 2>&1; then
     alias l='exa'
 
 else
-    IFS=","; alias ls="ls --human-readable --group-directories-first --color=auto --ignore={${ls_ignores[*]}}"
+    IFS=","; alias ls="ls --human-readable --group-directories-first --color=auto --ignore={${ls_ignores[*]//\*/\\\*}}"
 
     alias ll='ls -lF'
     alias la='ls -AlF'
