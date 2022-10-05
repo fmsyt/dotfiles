@@ -20,8 +20,8 @@ if type exa >/dev/null 2>&1; then
 
     alias exa="exa $opts"
 
-    alias ll='exa -l'
-    alias la='exa -al'
+    alias ll='exa -lG'
+    alias la='exa -alG'
     alias l='exa'
 
 else
