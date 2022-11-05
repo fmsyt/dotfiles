@@ -24,7 +24,7 @@ if type exa >/dev/null 2>&1; then
     alias la='exa -agl'
     alias l='exa'
 
-else
+elif type ls >/dev/null 2>&1; then
     ls_options=('--human-readable' '--group-directories-first' '--color=auto')
     ls_options_confirm=()
 
