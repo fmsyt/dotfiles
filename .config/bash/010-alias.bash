@@ -34,7 +34,10 @@ elif type ls >/dev/null 2>&1; then
         fi
     done
 
-    IFS=","; ls_options_confirm+="--ignore={${ls_ignores[*]//\*/\\\*}}"
+    if type ls --ignore >/dev/null 2>&1; then
+        IFS=","; ls_options_confirm+="--ignore={{ls_ignores[*]//\*/\\\*}}"
+    fi
+
     IFS=" "; alias ls="ls ${ls_options_confirm[*]}"
 
     alias ll='ls -lF'
