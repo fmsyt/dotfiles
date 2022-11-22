@@ -70,4 +70,6 @@ for filename in $HOME/.config/bash/*.bash; do
   source $filename
 done
 
-. "$HOME/.cargo/env"
+if [ -e $HOME/.cargo/env ]; then
+  . "$HOME/.cargo/env"
+fi

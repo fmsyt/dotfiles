@@ -24,8 +24,21 @@ if type exa >/dev/null 2>&1; then
     alias la='exa -agl'
     alias l='exa'
 
-else
-    IFS=","; alias ls="ls --human-readable --group-directories-first --color=auto --ignore={${ls_ignores[*]//\*/\\\*}}"
+elif type ls >/dev/null 2>&1; then
+    ls_options=('--human-readable' '--group-directories-first' '--color=auto')
+    ls_options_confirm=()
+
+    for opt in "${ls_options[@]}"; do
+        if ls $opt >/dev/null 2>&1; then
+            ls_options_confirm+=$opt
+        fi
+    done
+
+    if type ls --ignore >/dev/null 2>&1; then
+        IFS=","; ls_options_confirm+="--ignore={{ls_ignores[*]//\*/\\\*}}"
+    fi
+
+    IFS=" "; alias ls="ls ${ls_options_confirm[*]}"
 
     alias ll='ls -lF'
     alias la='ls -AlF'
