@@ -30,7 +30,7 @@ elif type ls >/dev/null 2>&1; then
 
     for opt in "${ls_options[@]}"; do
         if ls $opt >/dev/null 2>&1; then
-            ls_options_confirm+=$opt
+            ls_options_confirm+=("$opt")
         fi
     done
 
