@@ -49,3 +49,5 @@ if [ -x /usr/bin/docker ]
         alias dcub='docker compose up --build -d'
     end
 end
+
+alias ip='ip -color'

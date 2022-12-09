@@ -75,3 +75,4 @@ if [ -x /usr/bin/docker ]; then
     fi
 fi
 
+alias ip='ip -color'
