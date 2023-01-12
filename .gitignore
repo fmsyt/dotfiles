@@ -17,14 +17,12 @@
 !/.config/fish/**
 /.config/fish/fish_variables
 !/.config/mc/**
+!/.config/mume/
+!/.config/mume/**
 !/.config/nvim
 !/.dircolors
 !/.gitconfig_shared
 !/.inputrc
-!/.local/
-!/.local/state/
-!/.local/state/mume/
-!/.local/state/mume/**
 
 !/.vim/
 !/.vimrc
