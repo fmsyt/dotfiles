@@ -20,6 +20,7 @@ link_to_homedir() {
 
             [[ `basename $f` == ".git" ]] && continue
             [[ `basename $f` == ".github" ]] && continue
+            [[ `basename $f` == ".gitignore" ]] && continue
 
             if [[ -L "$HOME/`basename $f`" ]];then
                 command rm -f "$HOME/`basename $f`"
