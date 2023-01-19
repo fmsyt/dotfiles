@@ -16,6 +16,7 @@
 !/.config/bash/**
 !/.config/fish/**
 /.config/fish/fish_variables
+!/.config/git/**
 !/.config/mc/**
 !/.config/mume/
 !/.config/mume/**
