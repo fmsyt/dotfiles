@@ -1,11 +1,10 @@
 # ignore all files
 
-/*
 /.**
-
 
 # whitelist
 
+!.gitconfig
 !.gitignore
 !.gitkeep
 !/.github/
@@ -36,9 +35,6 @@
 !/.vim/session/
 !/.vim/swap/
 !/.vim/undo/
-
-!/install.sh
-!/README.md
 
 !/bin/
 !/bin/**

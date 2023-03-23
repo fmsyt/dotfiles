@@ -13,14 +13,12 @@ link_to_homedir() {
         command mkdir "$HOME/.dotbackup"
     fi
 
-    local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-    local dotdir=$(dirname ${script_dir})
+    local dotdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+
     if [[ "$HOME" != "$dotdir" ]];then
         for f in $dotdir/.??*; do
 
-            [[ `basename $f` == ".git" ]] && continue
-            [[ `basename $f` == ".github" ]] && continue
-            [[ `basename $f` == ".gitignore" ]] && continue
+            [[ `basename $f` == ".git"* ]] && continue
 
             if [[ -L "$HOME/`basename $f`" ]];then
                 command rm -f "$HOME/`basename $f`"
@@ -30,6 +28,9 @@ link_to_homedir() {
             fi
             command ln -snf $f $HOME
         done
+
+        git config --global include.path "$dotdir/.gitconfig"
+
     else
         command echo "same install src dest"
     fi
@@ -51,6 +52,5 @@ while [ $# -gt 0 ];do
 done
 
 link_to_homedir
-git config --global include.path "~/.gitconfig_shared"
 command echo -e "\e[1;36m Install completed!!!! \e[m"
 
