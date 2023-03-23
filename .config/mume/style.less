@@ -91,6 +91,14 @@
       position: relative;
   }
 
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      margin-top: 2em;
+  }
+
   h1:hover a.anchor,
   h2:hover a.anchor,
   h3:hover a.anchor,
@@ -156,8 +164,6 @@
 
   p,
   blockquote,
-  ul,
-  ol,
   dl,
   table,
   pre {
@@ -174,24 +180,18 @@
       page-break-before:always;
   }
 
-  li p.first {
-      display: inline-block;
-  }
-
   ul,
   ol {
-      padding-left: 30px;
+      padding-left: 1em;
   }
 
-  ul :first-child,
-  ol :first-child {
-      margin-top: 0;
+  li:last-child {
+    margin-bottom: .5em;
   }
 
-  ul :last-child,
-  ol :last-child {
-      margin-bottom: 0;
-  }
+  li p.first {
+    display: inline-block;
+}
 
   dl {
       padding: 0;
