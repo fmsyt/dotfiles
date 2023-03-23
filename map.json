@@ -1,8 +1,8 @@
 [
   {
-    "src": ".config/powershell",
+    "src": ".config/powershell/profile.ps1",
     "dst": {
-      "win": "$HOME/Documents/PowerShell"
+      "win": "$HOME/Documents/PowerShell/profile.ps1"
     },
     "requirement": [
       "pwsh"
