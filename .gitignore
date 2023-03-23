@@ -22,6 +22,7 @@
 /.config/mume/config.json
 !/.config/nvim
 !/.config/powershell/**
+/.config/powershell/Microsoft.PowerShell_profile.ps1
 !/.dircolors
 !/.gitconfig_shared
 !/.inputrc
