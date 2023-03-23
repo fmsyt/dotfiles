@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "src": ".config/powershell",
+    "dst": {
+      "win": "$HOME/Documents/PowerShell"
+    },
+    "requirement": [
+      "pwsh"
+    ]
+  }
+]

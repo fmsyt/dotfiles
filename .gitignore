@@ -21,6 +21,7 @@
 !/.config/mume/**
 /.config/mume/config.json
 !/.config/nvim
+!/.config/powershell/**
 !/.dircolors
 !/.gitconfig_shared
 !/.inputrc
