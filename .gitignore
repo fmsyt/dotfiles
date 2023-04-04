@@ -5,15 +5,16 @@
 # whitelist
 
 !.gitconfig
-!.gitignore
-!.gitkeep
+!**/.gitignore
+!**/.gitkeep
+
 !/.github/
 !/.github/**
 
 !/.config/
 !/.config/*/
 !/.config/bash/**
-!/.config/fish/**
+!/.config/fish/*
 /.config/fish/fish_variables
 !/.config/git/**
 !/.config/mc/**
