@@ -8,6 +8,7 @@ helpmsg() {
 
 linkfiles() {
     command echo "backup current dotfiles..."
+
     if [ ! -d "$HOME/.dotbackup" ]; then
         command mkdir "$HOME/.dotbackup"
     fi
@@ -37,10 +38,14 @@ linkfiles() {
             if [[ -e "$HOME/.dotbackup/$dotname" ]]; then
                 command mv -n "$HOME/.dotbackup/$dotname" "$HOME/$dotname"
             fi
+
+            if [[ -d "$HOME/.dotbackup/$dotname" && -z "$(ls -A $HOME/.dotbackup/$dotname)" ]]; then
+                command rmdir "$HOME/.dotbackup/$dotname"
+            fi
         done
 
-        git config --global include.path "$dotdir/.gitconfig"
-        git config --global commit.template "$dotdir/.gitmessage"
+        command git config --global include.path "$dotdir/.gitconfig"
+        command git config --global commit.template "$dotdir/.gitmessage"
 
     else
         command echo "dotfiles are already installed."
