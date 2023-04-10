@@ -6,34 +6,44 @@ helpmsg() {
     command echo ""
 }
 
-link_to_homedir() {
-    command echo "backup old dotfiles..."
-    if [ ! -d "$HOME/.dotbackup" ];then
-        command echo "$HOME/.dotbackup not found. Auto Make it"
+linkfiles() {
+    command echo "backup current dotfiles..."
+    if [ ! -d "$HOME/.dotbackup" ]; then
         command mkdir "$HOME/.dotbackup"
     fi
 
     local dotdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 
-    if [[ "$HOME" != "$dotdir" ]];then
+    if [[ "$HOME" != "$dotdir" ]]; then
         for f in $dotdir/.??*; do
 
-            [[ `basename $f` == ".git"* ]] && continue
+            local dotname=$(basename $f)
 
-            if [[ -L "$HOME/`basename $f`" ]];then
-                command rm -f "$HOME/`basename $f`"
+            [[ $dotname == ".git"* ]] && continue
+
+            # is symbolic link
+            if [[ -L "$HOME/$dotname" ]]; then
+                command rm -f "$HOME/$dotname"
             fi
-            if [[ -e "$HOME/`basename $f`" ]];then
-                command mv "$HOME/`basename $f`" "$HOME/.dotbackup"
+
+            # file exists
+            if [[ -e "$HOME/$dotname" ]]; then
+                command mv "$HOME/$dotname" "$HOME/.dotbackup"
             fi
+
             command ln -snf $f $HOME
+
+            # backup exists
+            if [[ -e "$HOME/.dotbackup/$dotname" ]]; then
+                command mv -n "$HOME/.dotbackup/$dotname" "$HOME/$dotname"
+            fi
         done
 
         git config --global include.path "$dotdir/.gitconfig"
         git config --global commit.template "$dotdir/.gitmessage"
 
     else
-        command echo "same install src dest"
+        command echo "dotfiles are already installed."
     fi
 }
 
@@ -52,6 +62,6 @@ while [ $# -gt 0 ];do
     shift
 done
 
-link_to_homedir
-command echo -e "\e[1;36m Install completed!!!! \e[m"
+linkfiles
+command echo -e "\e[1;36m Install completed. \e[m"
 
