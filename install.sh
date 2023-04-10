@@ -23,7 +23,7 @@ linkfiles() {
 
             # is symbolic link
             if [[ -L "$HOME/$dotname" ]]; then
-                command rm -f "$HOME/$dotname"
+                command unlink "$HOME/$dotname"
             fi
 
             # file exists
