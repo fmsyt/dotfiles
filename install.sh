@@ -1,65 +1,67 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -ue
 
 helpmsg() {
-    command echo "Usage: $0 [--help | -h]" 0>&2
-    command echo ""
+    echo "Usage: $0 [--help | -h]" >&2
+    echo ""
 }
 
 linkfiles() {
 
     if [ ! -d "$HOME/.dotbackup" ]; then
-        command mkdir "$HOME/.dotbackup"
+        mkdir "$HOME/.dotbackup"
     fi
 
-    local dotdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+    dotdir="$(cd "$(dirname "${0}")" && pwd -P)"
 
-    if [[ "$HOME" != "$dotdir" ]]; then
+    if [ "$HOME" != "$dotdir" ]; then
         for f in $dotdir/.??*; do
 
-            local dotname=$(basename $f)
+            dotname=$(basename "$f")
 
-            [[ $dotname == ".git"* ]] && continue
+            case "$dotname" in
+                .git*) continue ;;
+            esac
 
             # is symbolic link
-            if [[ -L "$HOME/$dotname" ]]; then
-                command unlink "$HOME/$dotname"
+            if [ -L "$HOME/$dotname" ]; then
+                unlink "$HOME/$dotname"
             fi
 
             # file exists
-            if [[ -e "$HOME/$dotname" ]]; then
-                command mv "$HOME/$dotname" "$HOME/.dotbackup"
+            if [ -e "$HOME/$dotname" ]; then
+                mv "$HOME/$dotname" "$HOME/.dotbackup"
             fi
 
-            command ln -snf $f $HOME
+            ln -snf "$f" "$HOME"
 
             # backup exists
-            if [[ -e "$HOME/.dotbackup/$dotname" ]]; then
-                command mv -n "$HOME/.dotbackup/$dotname" "$HOME/$dotname"
+            if [ -e "$HOME/.dotbackup/$dotname" ]; then
+                mv -n "$HOME/.dotbackup/$dotname" "$HOME/$dotname"
             fi
 
-            if [[ -d "$HOME/.dotbackup/$dotname" && -z "$(ls -A $HOME/.dotbackup/$dotname)" ]]; then
-                command rmdir "$HOME/.dotbackup/$dotname"
+            if [ -d "$HOME/.dotbackup/$dotname" ] && [ -z "$(ls -A $HOME/.dotbackup/$dotname)" ]; then
+                rmdir "$HOME/.dotbackup/$dotname"
             fi
         done
 
-        command git config --global include.path "$dotdir/.gitconfig"
-        command git config --global commit.template "$dotdir/.gitmessage"
+        git config --global include.path "$dotdir/.gitconfig"
+        git config --global commit.template "$dotdir/.gitmessage"
 
-        if [[ -z "$(ls -A $HOME/.dotbackup)" ]]; then
-            command rmdir $HOME/.dotbackup
+        if [ -z "$(ls -A $HOME/.dotbackup)" ]; then
+            rmdir $HOME/.dotbackup
         else
-            command echo "Current dotfiles are evacuated to $HOME/.dotbackup"
+            echo "Current dotfiles are evacuated to $HOME/.dotbackup"
         fi
 
-        command echo -e "\e[1;36mInstall completed.\e[m"
+        echo -e "\e[1;36mInstall completed.\e[m"
 
     else
-        command echo "dotfiles are already installed."
+        echo "dotfiles are already installed."
     fi
 }
 
-while [ $# -gt 0 ];do
+while [ $# -gt 0 ]; do
     case ${1} in
         --debug|-d)
             set -uex
@@ -75,4 +77,3 @@ while [ $# -gt 0 ];do
 done
 
 linkfiles
-
