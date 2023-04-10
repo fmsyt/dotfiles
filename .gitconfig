@@ -19,6 +19,9 @@
 	co = checkout
 	mt = mergetool
 	tree = log --graph --date=short --pretty=format:'%x09%C(auto) %h %Cgreen %ad %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+	set-user = "!f(){ git config --local user.name \"$1\"; git config --local user.email \"$2\"; };f"
+	reset-user = "!f(){ git config --local --unset user.name; git config --local --unset user.email; };f"
+
 [credential]
 	helper = cache --timeout=86400
 [diff]
