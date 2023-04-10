@@ -7,7 +7,6 @@ helpmsg() {
 }
 
 linkfiles() {
-    command echo "backup current dotfiles..."
 
     if [ ! -d "$HOME/.dotbackup" ]; then
         command mkdir "$HOME/.dotbackup"
@@ -47,6 +46,14 @@ linkfiles() {
         command git config --global include.path "$dotdir/.gitconfig"
         command git config --global commit.template "$dotdir/.gitmessage"
 
+        if [[ -z "$(ls -A $HOME/.dotbackup)" ]]; then
+            command rmdir $HOME/.dotbackup
+        else
+            command echo "Current dotfiles are evacuated to $HOME/.dotbackup"
+        fi
+
+        command echo -e "\e[1;36mInstall completed.\e[m"
+
     else
         command echo "dotfiles are already installed."
     fi
@@ -68,5 +75,4 @@ while [ $# -gt 0 ];do
 done
 
 linkfiles
-command echo -e "\e[1;36m Install completed. \e[m"
 
