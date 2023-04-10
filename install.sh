@@ -30,6 +30,7 @@ link_to_homedir() {
         done
 
         git config --global include.path "$dotdir/.gitconfig"
+        git config --global commit.template "$dotdir/.gitmessage"
 
     else
         command echo "same install src dest"
