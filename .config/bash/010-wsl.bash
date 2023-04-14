@@ -11,8 +11,8 @@ fi
 function open() {
     if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ] && [ -z $SSH_TTY ]; then
 
-        current_path=$(pwd)
-        full_path=$(wslpath -w "$current_path/$1")
+        local current_path=$(pwd)
+        local full_path=$(wslpath -w "$current_path/$1")
 
         if [ -f "$full_path" ]; then
             cmd.exe /c start $full_path 2> /dev/null
