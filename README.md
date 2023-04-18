@@ -17,13 +17,13 @@ $ ./dotfiles/install.sh
 
 | Command | Alias | Repository |
 |:------- |:------|:-----------|
-| ls      |exa    |<https://github.com/ogham/exa>|
-| cat     |bat    |<https://github.com/sharkdp/bat>|
+| ls      | exa   |<https://github.com/ogham/exa>|
+| cat     | bat   |<https://github.com/sharkdp/bat>|
 
 
 ## Configured commands
 
 | Command | Repository |
 |:--------|:-----------|
-|fish     |<https://github.com/fish-shell/fish-shell>|
-|vim      |<https://github.com/vim/vim>|
+| fish    |<https://github.com/fish-shell/fish-shell>|
+| vim     |<https://github.com/vim/vim>|
