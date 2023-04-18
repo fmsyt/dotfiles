@@ -4,7 +4,8 @@ function clip
     if test -f /proc/sys/fs/binfmt_misc/WSLInterop
         and test -z $SSH_TTY
 
-        powershell.exe -NoProfile -NonInteractive -NoLogo -c "echo \"$input\" | Set-Clipboard"
+        set i (string replace -r -a '"' '\"\"' $input)
+        powershell.exe -NoProfile -NonInteractive -NoLogo -c "echo \"$i\" | Set-Clipboard"
 
     else
         set b64 (echo $input | base64)
