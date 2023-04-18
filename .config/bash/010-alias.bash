@@ -76,3 +76,8 @@ if [ -x /usr/bin/docker ]; then
 fi
 
 alias ip='ip -color'
+
+
+if type bat >/dev/null 2>&1; then
+    alias cat='bat -p'
+fi
