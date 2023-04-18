@@ -4,10 +4,10 @@ function clip
     if test -f /proc/sys/fs/binfmt_misc/WSLInterop
         and test -z $SSH_TTY
 
-        # set input (echo $input | sed -E 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g')
+        set input (echo $input | sed -E 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g')
 
         # 文字列を置換する
-        set input (echo -n $input | sed -E 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g' | sed 's/"/""/g' | sed "s/'/''/g" | sed 's/`/``/g' | awk 'BEGIN { ORS = "`n" } { print }')
+        set input (echo -n $input | sed 's/"/""/g' | sed "s/'/''/g" | sed 's/`/``/g' | awk 'BEGIN { ORS = "`n" } { print }')
 
         powershell.exe -NoProfile -NonInteractive -NoLogo -c "Write-Output \"$input\" | Set-Clipboard"
 
