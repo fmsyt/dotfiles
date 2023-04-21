@@ -2,8 +2,22 @@
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
 .markdown-preview.markdown-preview {
-    // modify your style here
-    // eg: background-color: blue;
+
+    @media print {
+    }
+
+    // custom prince pdf export style
+    &.prince {
+    }
+
+    // custom presentation style
+    .reveal .slides {
+      // modify all slides
+    }
+
+    .slides > section:nth-child(1) {
+      // this will modify `the first slide`
+    }
 
     h1 {
         padding: 0.25em 0.5em;
@@ -16,6 +30,8 @@
     h2 {
         color: #494949;
         background: linear-gradient(transparent 70%, #a7d6ff 70%);
+
+        page-break-before: always;
     }
 
     h3 {
@@ -198,8 +214,8 @@
         margin-bottom: 0;
     }
     dl dd {
-        margin: 0 0 15px;
-        padding: 0 15px;
+        margin-left: 1em;
+        margin-bottom: 0;
     }
     dl dd > :first-child {
         margin-top: 0;
@@ -375,4 +391,9 @@
         background-color: transparent;
         border: none;
     }
+}
+
+
+.md-sidebar-toc.md-sidebar-toc {
+    // sidebar TOC style
 }
