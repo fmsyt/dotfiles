@@ -1,6 +1,5 @@
-if test -e $HOME/.pyenv
+if test -d $HOME/.pyenv
     set -Ux PYENV_ROOT $HOME/.pyenv
-    set PATH $PYENV_ROOT/shims $PATH
-    alias brew="env PATH=(string replace (pyenv root)/shims '' \"\$PATH\") brew"
+    set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
 end
 
