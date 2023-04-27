@@ -2,7 +2,7 @@
   {
     "src": ".config/powershell/profile.ps1",
     "dst": {
-      "win": "$HOME/Documents/PowerShell/profile.ps1"
+      "win": "$PROFILE"
     }
   },
   {
