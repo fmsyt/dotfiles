@@ -4,5 +4,19 @@
     "dst": {
       "win": "$HOME/Documents/PowerShell/profile.ps1"
     }
+  },
+  {
+    "src": ".vim",
+    "dst": {
+      "win": "$HOME/vimfiles",
+      "linux": "$HOME/.vim"
+    }
+  },
+  {
+    "src": ".vim/init.vim",
+    "dst": {
+      "win": "$HOME/_vimrc",
+      "linux": "$HOME/.vimrc"
+    }
   }
 ]
