@@ -7,10 +7,11 @@
   },
   {
     "src": ".vim",
-    "dst": {
-      "win": "$HOME/vimfiles",
-      "linux": "$HOME/.vim"
-    }
+    "dst": "$HOME/.vim"
+  },
+  {
+    "src": ".vim",
+    "dst": "$HOME/.config/nvim"
   },
   {
     "src": ".vim/init.vim",
