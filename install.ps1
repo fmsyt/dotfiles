@@ -1,18 +1,10 @@
 if ([System.Environment]::OSVersion.Platform -eq 'Unix') {
-    # Write-Host "This script is written for Windows.`nrun ./install.sh instead."
-    # exit
+    Write-Host "This script is written for Windows.`nrun ./install.sh instead."
+    exit
 }
 
 $jsonSchema = Get-Content -Raw -Path "$PSScriptRoot\map.schema.json" | ConvertFrom-Json
 $jsonObject = Get-Content -Raw -Path "$PSScriptRoot\map.json" | ConvertFrom-Json
-
-# $result = Test-Json -InputObject $jsonObject -Schema $jsonSchema
-# if (!$result.Valid) {
-#     Write-Host "JSONオブジェクトはスキーマに準拠していません。エラーは以下の通りです。"
-#     $result.Errors | ForEach-Object { Write-Host $_.Message }
-
-#     exit 1
-# }
 
 
 foreach ($item in $jsonObject) {
@@ -32,4 +24,6 @@ foreach ($item in $jsonObject) {
     }
 
     Write-Host "dst: $dst"
+
+    New-Item -ItemType SymbolicLink -Path $src -Target $dst
 }
