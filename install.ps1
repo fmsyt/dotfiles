@@ -17,7 +17,7 @@ foreach ($item in $jsonObject) {
     }
 
     if ([string]::IsNullOrEmpty($dst)) {
-        $dst = $src
+        continue
     }
 
     Write-Host "New-Item -ItemType SymbolicLink -Path $dst -Target $src"
