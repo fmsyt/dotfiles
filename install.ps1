@@ -3,6 +3,11 @@ if ([System.Environment]::OSVersion.Platform -eq 'Unix') {
     exit
 }
 
+if ( !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators") ) {
+    Start-Process -FilePath powershell.exe -ArgumentList "-executionpolicy bypass -File `"$($PSCommandPath)`"" -Verb RunAs
+    exit
+}
+
 $jsonObject = Get-Content -Raw -Path "$PSScriptRoot\map.json" | ConvertFrom-Json
 
 
