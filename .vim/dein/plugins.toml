@@ -103,13 +103,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-if = '''executable('deno') && v:version < 802'''
+if = '''executable('deno') && v:version >= 802'''
 on_event = 'CursorHold'
 hook_add = """
     let g:denops_server_addr = '127.0.0.1:32123'
-    call jobstart(
-        \ 'deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts',
-        \ {'detach': v:true}
+    call job_start(
+        \ 'deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts'
         \ )
 """
 
@@ -118,7 +117,7 @@ repo = 'Shougo/ddc.vim'
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
-depends = ['ddc']
+depends = ['Shougo/ddc.vim']
 hook_add = '''
     if filereadable(expand('~/.vim/dein/init/ddc.vim'))
         source ~/.vim/dein/init/ddc.vim
@@ -130,25 +129,25 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
-depends = ['ddc']
+depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-converter_remove_overlap'
-depends = ['ddc']
+depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
-repo = 'LumaKernel/ddc-file'
-depends = ['ddc']
+repo = 'LumaKernel/ddc-source-file'
+depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-matcher_head'
-depends = ['ddc']
+depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-omni'
-depends = ['ddc']
+depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
-depends = ['ddc']
+depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
