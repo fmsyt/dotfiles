@@ -46,7 +46,7 @@ linkfiles() {
         done
 
         git config --global include.path "$dotdir/.gitconfig"
-        git config --global commit.template "$dotdir/.gitmessage"
+        git config --global commit.template "$dotdir/.git-template/message"
 
         if [ -z "$(ls -A $HOME/.dotbackup)" ]; then
             rmdir $HOME/.dotbackup

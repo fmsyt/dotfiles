@@ -8,8 +8,11 @@
 !**/.gitignore
 !**/.gitkeep
 
+!/.git-template/**
+
 !/.github/
 !/.github/**
+
 
 !/.config/
 !/.config/*/
