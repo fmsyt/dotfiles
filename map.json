@@ -10,10 +10,6 @@
     "dst": "$HOME/.vim"
   },
   {
-    "src": ".vim",
-    "dst": "$HOME/.config/nvim"
-  },
-  {
     "src": ".vim/init.vim",
     "dst": {
       "win": "$HOME/_vimrc",
