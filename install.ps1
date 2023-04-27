@@ -25,5 +25,5 @@ foreach ($item in $jsonObject) {
 
     Write-Host "dst: $dst"
 
-    New-Item -ItemType SymbolicLink -Path $src -Target $dst
+    New-Item -ItemType SymbolicLink -Path $dst -Target $src
 }
