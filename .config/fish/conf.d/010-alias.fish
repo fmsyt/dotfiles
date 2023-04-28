@@ -38,16 +38,20 @@ else
     alias svim='EDITOR=vim sudoedit'
 end
 
-if [ -x /usr/bin/docker ]
-    alias d='docker'
-    alias de='docker exec -it'
+alias d='docker'
+alias de='docker exec -it'
 
-    if docker compose >/dev/null 2>&1
-        alias dc='docker compose'
-        alias dce='docker compose exec'
-        alias dcu='docker compose up -d'
-        alias dcub='docker compose up --build -d'
-    end
+if docker compose >/dev/null 2>&1
+    alias dc='docker compose'
+    alias dce='docker compose exec'
+    alias dcu='docker compose up -d'
+    alias dcub='docker compose up --build -d'
+
+else
+    alias dc='docker-compose'
+    alias dce='docker-compose exec'
+    alias dcu='docker-compose up -d'
+    alias dcub='docker-compose up --build -d'
 end
 
 alias ip='ip -color'
