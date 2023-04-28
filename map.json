@@ -2,7 +2,7 @@
   {
     "src": ".config/powershell/profile.ps1",
     "dst": {
-      "win": "$PROFILE"
+      "win": "$PROFILE.CurrentUserAllHosts"
     }
   },
   {
