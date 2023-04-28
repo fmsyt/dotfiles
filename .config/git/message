@@ -17,9 +17,3 @@
 # 💪  :muscle:  Refactor codes.
 # 💥  :boom:    Breaking changes.
 # 💩  :poop:    Bad codes needs to be improved.
-#
-# How to use:
-#   git config commit.template .gitmessage
-#
-# Reference:
-#   https://github.com/lambdalisue/emojiprefix
