@@ -55,3 +55,8 @@ else
 end
 
 alias ip='ip -color'
+
+
+if type bat >/dev/null 2>&1
+    alias cat='bat -p'
+end
