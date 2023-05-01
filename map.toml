@@ -1,0 +1,16 @@
+[config_powershell_profile]
+src = ".config/powershell/profile.ps1"
+
+[config_powershell_profile.dst]
+win = "$PROFILE.CurrentUserAllHosts"
+
+[vim]
+src = ".vim"
+dst = "$HOME/.vim"
+
+[vim_init_vim]
+src = ".vim"
+
+[vim_init_vim.dst]
+win = "$HOME/_vimrc"
+linux = "$HOME/.vimrc"

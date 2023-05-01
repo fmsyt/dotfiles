@@ -8,10 +8,14 @@ if ( !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]
     exit
 }
 
-$jsonObject = Get-Content -Raw -Path "$PSScriptRoot\map.json" | ConvertFrom-Json
+if(!(Get-Module -ListAvailable | Where-Object { $_.Name -eq toml })) {
+    Install-Module toml
+}
+
+$settings = Get-TomlData -Path "$PSScriptRoot\map.json"
 
 
-foreach ($item in $jsonObject) {
+foreach ($item in $settings) {
 
     $src = Invoke-Expression "echo ""$PSScriptRoot/$($item.src)"""
 
