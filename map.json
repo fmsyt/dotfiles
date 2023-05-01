@@ -1,0 +1,19 @@
+[
+  {
+    "src": ".config/powershell/profile.ps1",
+    "dst": {
+      "win": "$PROFILE.CurrentUserAllHosts"
+    }
+  },
+  {
+    "src": ".vim",
+    "dst": "$HOME/.vim"
+  },
+  {
+    "src": ".vim/init.vim",
+    "dst": {
+      "win": "$HOME/_vimrc",
+      "linux": "$HOME/.vimrc"
+    }
+  }
+]
