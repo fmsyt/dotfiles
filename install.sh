@@ -37,7 +37,7 @@ linkfiles() {
 
             # backup exists
             if [ -e "$HOME/.dotbackup/$dotname" ]; then
-                mv -n "$HOME/.dotbackup/$dotname" "$HOME/$dotname"
+                mv -n "$HOME/.dotbackup/$dotname/*" "$HOME/$dotname/"
             fi
 
             if [ -d "$HOME/.dotbackup/$dotname" ] && [ -z "$(ls -A $HOME/.dotbackup/$dotname)" ]; then

@@ -30,28 +30,29 @@ else
     alias l='ls -CF'
 end
 
-if type nvim >/dev/null 2>&1
-    export EDITOR=nvim
-    alias svim='EDITOR=nvim sudoedit'
-else
-    export EDITOR=vim
-    alias svim='EDITOR=vim sudoedit'
+
+if type docekr >/dev/null 2>&1
+    alias d='docker'
+    alias de='docker exec -it'
+
+    if docker compose >/dev/null 2>&1
+        alias dc='docker compose'
+        alias dce='docker compose exec'
+        alias dcu='docker compose up -d'
+        alias dcub='docker compose up --build -d'
+
+    else
+        alias dc='docker-compose'
+        alias dce='docker-compose exec'
+        alias dcu='docker-compose up -d'
+        alias dcub='docker-compose up --build -d'
+    end
 end
 
-alias d='docker'
-alias de='docker exec -it'
-
-if docker compose >/dev/null 2>&1
-    alias dc='docker compose'
-    alias dce='docker compose exec'
-    alias dcu='docker compose up -d'
-    alias dcub='docker compose up --build -d'
-
-else
-    alias dc='docker-compose'
-    alias dce='docker-compose exec'
-    alias dcu='docker-compose up -d'
-    alias dcub='docker-compose up --build -d'
-end
 
 alias ip='ip -color'
+
+
+if type bat >/dev/null 2>&1
+    alias cat='bat -p'
+end
