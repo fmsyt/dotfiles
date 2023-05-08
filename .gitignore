@@ -21,6 +21,7 @@
 /.config/fish/fish_variables
 !/.config/fish/functions
 !/.config/fish/functions/**
+/.config/fish/functions/_*.fish
 /.config/fish/functions/fish_prompt.fish
 !/.config/git/**
 !/.config/mc/**
