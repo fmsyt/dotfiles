@@ -18,7 +18,6 @@
 !/.config/*/
 !/.config/bash/**
 !/.config/fish/*
-!/.config/fish/conf.d/**
 /.config/fish/fish_variables
 !/.config/fish/functions
 !/.config/fish/functions/**
