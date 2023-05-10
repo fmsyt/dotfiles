@@ -3,7 +3,7 @@ function open
         and test -z $SSH_TTY
 
         set -l current_path (pwd)
-        set -l full_path $(wslpath -w "$current_path/$argv[1]")
+        set -l full_path (wslpath -w "$current_path/$argv[1]")
 
         if [ -f "$full_path" ]
             cmd.exe /c start $full_path 2> /dev/null
