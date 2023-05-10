@@ -4,9 +4,5 @@ function exa --wraps exa
     set -l ig (string join '|' $ls_ignores)
     set -l opts "-I \"$ig\""
 
-    if exa --icons >/dev/null 2>&1
-        set opts "$opts --icons"
-    end
-
-    command exa $opts $argv
+    command exa --icons $opts $argv
 end
