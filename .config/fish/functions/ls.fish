@@ -6,8 +6,4 @@ function ls --wraps ls
     set -l igr (string replace -a \* \\\* $ig)
 
     command ls --human-readable --group-directories-first --color=auto --ignore={$ig} $argv
-
-    alias ll='ls -lF'
-    alias la='ls -AlF'
-    alias l='ls -CF'
 end
