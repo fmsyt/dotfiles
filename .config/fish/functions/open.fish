@@ -2,7 +2,7 @@ function open
     if test -f /proc/sys/fs/binfmt_misc/WSLInterop
         and test -z $SSH_TTY
 
-        set -l current_path $(pwd)
+        set -l current_path (pwd)
         set -l full_path $(wslpath -w "$current_path/$argv[1]")
 
         if [ -f "$full_path" ]
