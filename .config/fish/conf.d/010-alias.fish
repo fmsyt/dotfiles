@@ -31,7 +31,7 @@ else
 end
 
 
-if type docekr >/dev/null 2>&1
+if type docker >/dev/null 2>&1
     alias d='docker'
     alias de='docker exec -it'
 
