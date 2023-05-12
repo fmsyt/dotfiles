@@ -1,4 +1,23 @@
 function open
+
+    # `Mac OS`の`open`コマンドについて: https://oversleptabit.com/archives/4863
+    # 引数の解析: argparse:  https://qiita.com/ryotako/items/e36114ec1f86dbdd274a
+
+    argparse -n sugoi 'h/help' -- $argv
+    or return 1
+
+    if set -lq _flag_help
+        echo "Usage: open [options] [file] [--args [...args]]"
+        echo ""
+        echo "Options:"
+        echo "    -h or --help     Print this help message"
+        echo "    -a <name>        Application name to open file or directory"
+
+        return
+    end
+
+
+
     if test -f /proc/sys/fs/binfmt_misc/WSLInterop
         and test -z $SSH_TTY
 
