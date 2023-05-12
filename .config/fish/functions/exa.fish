@@ -5,10 +5,10 @@ function exa --wraps exa
     set -l opts "-I \"$ig\""
 
     eval (which exa) --icons > /dev/null 2>&1
-    if $status -eq 3
-        command exa $opts $argv
-    else
+    if [ $status -eq 0 ]
         command exa --icons $opts $argv
+    else
+        command exa $opts $argv
     end
 
 end
