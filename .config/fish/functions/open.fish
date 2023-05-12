@@ -9,9 +9,11 @@ function open
         echo "Usage: open [options] [file] [...args]"
         echo ""
         echo "Options:"
-        echo "    -h or --help     Print this help message"
+        echo "    -h | --help      Print this help message"
         echo "    -a <name>        Application name to open file or directory"
+        echo ""
         echo "    --args           Args to append on call"
+        echo ""
 
         return
     end
