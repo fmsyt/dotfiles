@@ -28,3 +28,5 @@ foreach ($item in $jsonObject) {
     Write-Host "New-Item -ItemType SymbolicLink -Path $dst -Target $src"
     New-Item -Force -ItemType SymbolicLink -Path $dst -Target $src | Out-Null
 }
+
+git config --global include.path "$PSScriptRoot/.gitconfig"
