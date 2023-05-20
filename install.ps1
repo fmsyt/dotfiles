@@ -29,4 +29,4 @@ foreach ($item in $jsonObject) {
     New-Item -Force -ItemType SymbolicLink -Path $dst -Target $src | Out-Null
 }
 
-git config --global include.path "$PSScriptRoot/.gitconfig"
+git config --global include.path "$PSScriptRoot\\.gitconfig"
