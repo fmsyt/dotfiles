@@ -43,5 +43,6 @@
 	cmd = code --wait $MERGED
 [init]
 	defaultBranch = master
+	templatedir = ~/.config/git/templates
 [commit]
 	template = ~/.config/git/message
