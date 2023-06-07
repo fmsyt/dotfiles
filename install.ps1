@@ -25,6 +25,17 @@ foreach ($item in $jsonObject) {
         continue
     }
 
+    # exists and is symlink
+    if (!(Test-Path -Path $dst) -And ((Get-Item $dst).Attributes -band [System.IO.FileAttributes]::ReparsePoint)) {
+        # nothing to do
+    }
+    elseif (Test-Path -Path $dst -PathType Leaf) {
+        Copy-Item -Path "$dst" -Destination """$dst.bak"""
+    }
+    elseif (Test-Path -Path $dst -PathType Container) {
+        Copy-Item -Path "$dst" -Destination """$dst.bak""" -Recurse
+    }
+
     Invoke-Expression "Write-Host ""New-Item -ItemType SymbolicLink -Path $dst -Target $src"""
     Invoke-Expression "New-Item -Force -ItemType SymbolicLink -Path $dst -Target $src" | Out-Null
 }
