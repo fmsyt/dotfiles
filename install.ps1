@@ -13,20 +13,20 @@ $jsonObject = Get-Content -Raw -Path "$PSScriptRoot\map.json" | ConvertFrom-Json
 
 foreach ($item in $jsonObject) {
 
-    $src = Invoke-Expression "echo ""$PSScriptRoot/$($item.src)"""
+    $src = "$PSScriptRoot/$($item.src)"
 
     if ($item.dst -is [string]) {
-        $dst = Invoke-Expression "echo ""$($item.dst)"""
+        $dst = $item.dst
     } else {
-        $dst = Invoke-Expression "echo ""$($item.dst.win)"""
+        $dst = $item.dst.win
     }
 
     if ([string]::IsNullOrEmpty($dst)) {
         continue
     }
 
-    Write-Host "New-Item -ItemType SymbolicLink -Path $dst -Target $src"
-    New-Item -Force -ItemType SymbolicLink -Path $dst -Target $src | Out-Null
+    Invoke-Expression "Write-Host ""New-Item -ItemType SymbolicLink -Path $dst -Target $src"""
+    Invoke-Expression "New-Item -Force -ItemType SymbolicLink -Path $dst -Target $src" | Out-Null
 }
 
 git config --global include.path "$PSScriptRoot\\.gitconfig"
