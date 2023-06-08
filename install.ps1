@@ -13,7 +13,7 @@ function Expand-String {
         [string]$String
     )
 
-    $ = Invoke-Command -ScriptBlock { $ExecutionContext.InvokeCommand.ExpandString($Using:String) }
+    $expandedString = Invoke-Command -ScriptBlock { $ExecutionContext.InvokeCommand.ExpandString($Using:String) }
     return $expandedString
 }
 
