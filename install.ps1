@@ -13,7 +13,9 @@ function Expand-String {
         [string]$String
     )
 
-    $expandedString = Invoke-Command -ScriptBlock { $ExecutionContext.InvokeCommand.ExpandString($Using:String) }
+    $expandedString = Invoke-Command -ScriptBlock {
+        $ExecutionContext.InvokeCommand.ExpandString($String)
+    }
     return $expandedString
 }
 
@@ -26,9 +28,9 @@ foreach ($item in $jsonObject) {
     $src = Expand-String -String "$PSScriptRoot/$($item.src)"
 
     if ($item.dst -is [string]) {
-        $dst = $item.dst
+        $dst = Expand-String -String $item.dst
     } else {
-        $dst = $item.dst.win
+        $dst = Expand-String -String $item.dst.win
     }
 
     if ([string]::IsNullOrEmpty($dst)) {
@@ -36,14 +38,30 @@ foreach ($item in $jsonObject) {
     }
 
     # exists and is symlink
-    if (!(Test-Path -Path $dst) -And ((Get-Item $dst).Attributes -band [System.IO.FileAttributes]::ReparsePoint)) {
+    if ((Test-Path -Path $dst) -And ((Get-Item $dst).Attributes -band [System.IO.FileAttributes]::ReparsePoint)) {
         # nothing to do
     }
     elseif (Test-Path -Path $dst -PathType Leaf) {
-        Copy-Item -Path "$dst" -Destination """$dst.bak"""
+        Write-Host "Create backup: $dst.bak"
+
+        if (Test-Path -Path "$dst.bak") {
+            Remove-Item -Path "$dst.bak" -Force -Recurse
+            Write-Host "Old backup is deleted."
+        }
+
+        Copy-Item -Path "$dst" -Destination "$dst.bak"
+        Remove-Item -Path "$dst" -Force
     }
     elseif (Test-Path -Path $dst -PathType Container) {
-        Copy-Item -Path "$dst" -Destination """$dst.bak""" -Recurse
+        Write-Host "Create backup: $dst.bak"
+
+        if (Test-Path -Path "$dst.bak") {
+            Remove-Item -Path "$dst.bak" -Force -Recurse
+            Write-Host "Old backup is deleted."
+        }
+
+        Copy-Item -Path "$dst" -Destination "$dst.bak" -Recurse
+        Remove-Item -Path "$dst" -Force -Recurse
     }
 
     Invoke-Expression "Write-Host ""New-Item -ItemType SymbolicLink -Path $dst -Target $src"""
