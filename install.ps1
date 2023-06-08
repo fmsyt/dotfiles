@@ -8,12 +8,22 @@ if ( !([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]
     exit
 }
 
+function Expand-String {
+    param (
+        [string]$String
+    )
+
+    $ = Invoke-Command -ScriptBlock { $ExecutionContext.InvokeCommand.ExpandString($Using:String) }
+    return $expandedString
+}
+
+
 $jsonObject = Get-Content -Raw -Path "$PSScriptRoot\map.json" | ConvertFrom-Json
 
 
 foreach ($item in $jsonObject) {
 
-    $src = "$PSScriptRoot/$($item.src)"
+    $src = Expand-String -String "$PSScriptRoot/$($item.src)"
 
     if ($item.dst -is [string]) {
         $dst = $item.dst
