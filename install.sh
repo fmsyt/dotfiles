@@ -36,13 +36,10 @@ linkfiles() {
             ln -snf "$f" "$HOME"
 
             # backup exists
-            if [ -e "$HOME/.dotbackup/$dotname" ]; then
-                mv -n "$HOME/.dotbackup/$dotname/*" "$HOME/$dotname/"
+            if [ -d "$HOME/.dotbackup/$dotname" ]; then
+                cp -n "$HOME/.dotbackup/$dotname/*" "$HOME/$dotname/"
             fi
 
-            if [ -d "$HOME/.dotbackup/$dotname" ] && [ -z "$(ls -A $HOME/.dotbackup/$dotname)" ]; then
-                rmdir "$HOME/.dotbackup/$dotname"
-            fi
         done
 
         git config --global include.path "$dotdir/.gitconfig"
