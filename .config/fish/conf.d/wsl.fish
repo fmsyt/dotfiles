@@ -14,13 +14,20 @@ function get_registory
         exit 1;
     end
 
-    echo (powershell.exe -c "(New-Object -ComObject WScript.Shell).RegRead('$argv[1]')")
+    echo (powershell.exe -c "(New-Object -ComObject WScript.Shell).RegRead('$argv[1]')" | sed s/\r//g)
 end
 
-if [ -L "~/Downloads" ]
-    unlink ~/Downloads
+if [ -e "~/Desktop" ]
+    set p (get_registory "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Desktop")
+    ln -s (wslpath $p) ~/
 end
-if [ ! -e "~/Downloads" ]
+
+if [ -e "~/Documents" ]
+    set p (get_registory "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\{F42EE2D3-909F-4907-8871-4C22FC0BF756}")
+    ln -s (wslpath $p) ~/
+end
+
+if [ -e "~/Downloads" ]
     set p (get_registory "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\{7D83EE9B-2244-4E70-B1F5-5393042AF1E4}")
-    # ln -s (wslpath $p) ~/
+    ln -s (wslpath $p) ~/
 end
