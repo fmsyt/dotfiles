@@ -3,8 +3,8 @@ if [ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
 fi
 
 if [ -z $SSH_TTY ]; then
-    alias cmd.exe='/mnt/c/Windows/System32/cmd.exe'
-    alias powershell.exe='/mnt/c/Program\ Files/PowerShell/7/pwsh.exe'
+    alias cmd.exe=$(wslpath "C:\Windows\System32\cmd.exe")
+    alias powershell.exe=$(wslpath $(cmd.exe /c "where powershell"))
 fi
 
 

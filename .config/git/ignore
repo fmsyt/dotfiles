@@ -1,2 +1,4 @@
 # VSCode Pluggin - formulahendry.code-runner
 tempCodeRunnerFile.*
+gitignore.*
+*.gitignore.*
