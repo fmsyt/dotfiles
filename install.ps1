@@ -13,9 +13,8 @@ function Expand-String {
         [string]$String
     )
 
-    $expandedString = Invoke-Command -ScriptBlock {
-        $ExecutionContext.InvokeCommand.ExpandString($String)
-    }
+    $expandedString = Invoke-Expression "Write-Output $String";
+
     return $expandedString
 }
 
