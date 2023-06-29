@@ -1,5 +1,5 @@
 if [ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ]
-    return;
+    exit;
 end
 
 if [ -z $SSH_TTY ]
