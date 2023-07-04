@@ -62,9 +62,3 @@ if type docker >/dev/null 2>&1
         alias dcub='docker-compose up --build -d'
     end
 end
-
-
-if [ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ] && [ -z $SSH_TTY ]
-    alias cmd.exe='/mnt/c/Windows/System32/cmd.exe'
-    alias powershell.exe='/mnt/c/Program\ Files/PowerShell/7/pwsh.exe'
-end
