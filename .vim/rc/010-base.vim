@@ -5,7 +5,8 @@ set fileencodings=utf-8,cp932,sjis,iso-2022-jp,euc-jp,us-ascii
 set fileformats=unix,dos,mac
 set ambiwidth=double
 
-let g:python3_host_prog = system('echo -n $(which python3)')
+" Python pathを設定
+"let g:python3_host_prog = system('echo -n $(which python3)')
 
 if &modifiable
     set fileencoding=utf-8
