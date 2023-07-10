@@ -119,11 +119,11 @@ repo = 'Shougo/ddc.vim'
 repo = 'Shougo/pum.vim'
 depends = ['Shougo/ddc.vim']
 hook_add = '''
-    if filereadable(expand('~/.vim/dein/init/ddc.vim'))
-        source ~/.vim/dein/init/ddc.vim
+    if filereadable(expand('~/.vim/rc/cli/dein/init/ddc.vim'))
+        source ~/.vim/rc/cli/dein/init/ddc.vim
     endif
-    if filereadable(expand('~/.vim/dein/init/pum.vim'))
-        source ~/.vim/dein/init/pum.vim
+    if filereadable(expand('~/.vim/rc/cli/dein/init/pum.vim'))
+        source ~/.vim/rc/cli/dein/init/pum.vim
     endif
 '''
 
