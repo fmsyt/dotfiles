@@ -58,11 +58,11 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-    let g:lsp_log_verbose = 0
-'''
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# hook_add = '''
+#     let g:lsp_log_verbose = 0
+# '''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
