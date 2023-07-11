@@ -58,11 +58,11 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
-# [[plugins]]
-# repo = 'prabirshrestha/vim-lsp'
-# hook_add = '''
-#     let g:lsp_log_verbose = 0
-# '''
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+    let g:lsp_log_verbose = 0
+'''
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
@@ -76,14 +76,14 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/vimproc'
 
-# [[plugins]]
-# repo = 'Shougo/neocomplcache'
-# hook_add = '''
-#     if !exists('g:neocomplcache_keyword_patterns')
-#         let g:neocomplcache_keyword_patterns = {}
-#     endif
-#     let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-# '''
+[[plugins]]
+repo = 'Shougo/neocomplcache'
+hook_add = '''
+    if !exists('g:neocomplcache_keyword_patterns')
+        let g:neocomplcache_keyword_patterns = {}
+    endif
+    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+'''
 
 
 [[plugins]]
