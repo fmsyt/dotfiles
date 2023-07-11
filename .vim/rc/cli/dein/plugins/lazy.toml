@@ -31,3 +31,11 @@ hook_add = '''
 repo = 'mattn/emmet-vim'
 on_ft = ['html']
 
+
+[[plugins]]
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = ['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx']
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['js', 'javascript', 'ts', 'typescript', 'jsx', 'tsx']

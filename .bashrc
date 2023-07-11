@@ -71,5 +71,4 @@ for filename in $HOME/.config/bash/*.bash; do
 done
 
 if [ -e $HOME/.cargo/env ]; then
-  . "$HOME/.cargo/env"
-fi
+  fi
