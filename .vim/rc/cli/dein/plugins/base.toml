@@ -118,7 +118,7 @@ repo = 'Shougo/ddc.vim'
 [[plugins]]
 repo = 'Shougo/pum.vim'
 depends = ['Shougo/ddc.vim']
-hook_add = '''
+hook_post_update = '''
     if filereadable(expand('~/.vim/rc/cli/dein/init/ddc.vim'))
         source ~/.vim/rc/cli/dein/init/ddc.vim
     endif
