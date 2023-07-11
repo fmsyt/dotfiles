@@ -5,7 +5,7 @@
 [core]
 	autocrlf = input
 	quotepath = false
-	editor = vim
+	editor = VIM_MODE=slim vim
 	excludes = ~/.config/git/ignore
 [pull]
 	ff = only
@@ -28,14 +28,12 @@
 
 [credential]
 	helper = cache --timeout=86400
-[diff]
-	tool = vim
 [difftool]
 	prompt = false
 [difftool "code"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "vim"]
-	cmd = vim -d $LOCAL $REMOTE
+	cmd = VIM_MODE=slim vim -d $LOCAL $REMOTE
 [merge]
 	conflictstyle = diff3
 	ff = false
