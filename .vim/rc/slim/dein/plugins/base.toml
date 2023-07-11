@@ -1,0 +1,47 @@
+# hook の便利な使い方 https://qiita.com/delphinus/items/cd221a450fd23506e81a
+
+# https://github.com/tpope/vim-surround
+# https://qiita.com/takuyanin/items/5eb009e737a235e51ab2
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    let NERDTreeShowHidden = 1
+    nmap <C-b> :NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+hook_add = '''
+    nmap <C-_> gcc
+    vmap <C-_> gcc
+'''
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+    let g:ctrlp_show_hidden = 1
+'''
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_color_term = 239
+    let g:indentLine_color_gui = '#708090'
+    let g:indentLine_char = '¦'
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+'''

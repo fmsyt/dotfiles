@@ -6,4 +6,6 @@ endfor
 
 if $VIM_MODE == "" || $VIM_MODE == "cli"
     source ~/.vim/rc/cli/init.vim
+elseif $VIM_MODE == "slim"
+    source ~/.vim/rc/slim/init.vim
 endif
