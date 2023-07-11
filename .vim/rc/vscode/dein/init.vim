@@ -4,7 +4,7 @@ if !executable('git')
 endif
 
 " インストールディレクトリの指定
-let s:dein_dir = expand('~/.cache/dein')
+let s:dein_dir = expand('~/.cache/dein/code')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:toml = expand('~/.vim/rc/vscode/dein/plugins') . '/base.toml'
 let s:toml_lazy = expand('~/.vim/rc/vscode/dein/plugins') . '/lazy.toml'
