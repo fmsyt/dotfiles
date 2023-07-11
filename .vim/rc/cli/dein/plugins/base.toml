@@ -14,6 +14,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
+hook_add = '''
+    nmap <C-_> gcc
+    vmap <C-_> gcc
+'''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
