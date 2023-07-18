@@ -28,12 +28,15 @@
 
 [credential]
 	helper = cache --timeout=86400
+[diff]
+	tool = vim
+	guitool = code
 [difftool]
 	prompt = false
-[difftool "code"]
-	cmd = code --wait --diff $LOCAL $REMOTE
 [difftool "vim"]
 	cmd = VIM_MODE=slim vim -d $LOCAL $REMOTE
+[difftool "code"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
 	conflictstyle = diff3
 	ff = false
