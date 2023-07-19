@@ -1,10 +1,13 @@
 # hook の便利な使い方 https://qiita.com/delphinus/items/cd221a450fd23506e81a
 
+
+# 特定の文字で後から囲む
 # https://github.com/tpope/vim-surround
 # https://qiita.com/takuyanin/items/5eb009e737a235e51ab2
 [[plugins]]
 repo = 'tpope/vim-surround'
 
+# ディレクトリツリー表示
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
@@ -12,6 +15,7 @@ hook_add = '''
     nmap <C-b> :NERDTreeToggle<CR>
 '''
 
+# コメントアウト
 [[plugins]]
 repo = 'tpope/vim-commentary'
 hook_add = '''
@@ -44,6 +48,7 @@ hook_add = '''
     let g:ctrlp_show_hidden = 1
 '''
 
+# syntax highlight
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
@@ -59,6 +64,7 @@ hook_add = '''
 [[plugins]]
 repo = 'tomasr/molokai'
 
+# 閉じ括弧を補完
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
