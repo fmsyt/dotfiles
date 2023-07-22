@@ -70,5 +70,3 @@ for filename in $HOME/.config/bash/*.bash; do
   source $filename
 done
 
-if [ -e $HOME/.cargo/env ]; then
-  fi
