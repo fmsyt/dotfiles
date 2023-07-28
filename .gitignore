@@ -17,6 +17,8 @@
 !/.config/
 !/.config/*/
 !/.config/bash/**
+!/.config/fcitx/
+!/.config/fcitx/config
 !/.config/fish/*
 /.config/fish/fish_variables
 !/.config/fish/conf.d
