@@ -34,6 +34,8 @@
 /.config/mume/config.json
 !/.config/nvim
 !/.config/powershell/**
+!/.config/PulseEffects/output/
+!/.config/PulseEffects/output/**
 /.config/powershell/Microsoft.PowerShell_profile.ps1
 !/.dircolors
 !/.inputrc
