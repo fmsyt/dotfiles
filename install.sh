@@ -37,7 +37,7 @@ linkfiles() {
 
             # backup exists
             if [ -e "$HOME/.dotbackup/$dotname" ] && [ -d "$HOME/.dotbackup/$dotname" ]; then
-                cp -n "$HOME/.dotbackup/$dotname/*" "$HOME/$dotname/"
+                cp -nr "$HOME/.dotbackup/$dotname/*" "$HOME/$dotname/"
             fi
 
         done
