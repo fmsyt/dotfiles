@@ -41,7 +41,7 @@ else
 end
 
 if type bat >/dev/null 2>&1
-    alias cat='bat -p'
+    alias cat='bat -p --paging=never'
 end
 
 
