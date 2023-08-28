@@ -1,6 +1,7 @@
 function git --wrap git
 
-    set -l current_fs (df -P "$(pwd)" | awk 'NR==2 {print $1}')
+    set -l pwd (pwd)
+    set -l current_fs (df -P "$pwd" | awk 'NR==2 {print $1}')
 
     if test -f /proc/sys/fs/binfmt_misc/WSLInterop
         and test $current_fs = drvfs
