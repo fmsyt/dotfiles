@@ -26,8 +26,7 @@ function open
 
         set -lq _flag_a
 
-        set -l current_path (pwd)
-        set -l full_path "$current_path/$argv[1]"
+        set -l full_path (realpath $argv[1])
         set -l win_path (wslpath -w $full_path)
 
         if [ -n $_flag_a ] | [ -f "$current_path/$argv[1]" ]
