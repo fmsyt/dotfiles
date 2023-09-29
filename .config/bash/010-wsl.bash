@@ -10,24 +10,50 @@ fi
 
 
 function open() {
-    if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ] && [ -z $SSH_TTY ]; then
 
-        local path=$(realpath $1)
-        local full_path=$(wslpath -w "$path")
+    help_message="Usage: open [options] [file] [...args]
+Options:
+    -h | --help      Print this help message
+    -a <name>        Application name to open file or directory
+    --args           Args to append on call"
 
-        if [ -f "$full_path" ]; then
-            cmd.exe /c start $full_path 2> /dev/null
+    # オプションの処理
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -h|--help)
+                echo "$help_message"
+                return 0
+                ;;
+            -a)
+                app_name="$2"
+                shift 2
+                ;;
+            --args)
+                args="${@:2}"
+                break
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+        full_path="$(realpath "${1:-.}")"
+        win_path="$(wslpath -w "$full_path")"
+
+        if [[ -n "$app_name" || -f "$full_path" ]]; then
+            powershell.exe -Command "start '$app_name' '$win_path' $args" 2> /dev/null
         else
-            cmd.exe /c explorer $full_path 2> /dev/null
+            powershell.exe -Command "explorer '$win_path'" 2> /dev/null
         fi
 
-        if [ $? -eq 1 ]; then
+        if [[ $? -eq 1 ]]; then
             return 0
         fi
 
         return $?
-
     else
-        command open $@
+        command open "$@"
     fi
 }
