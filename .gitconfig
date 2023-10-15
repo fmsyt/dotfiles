@@ -5,7 +5,7 @@
 [color]
 	ui = true
 [core]
-	autocrlf = input
+	autocrlf = false
 	quotepath = false
 	editor = VIM_MODE=slim vim
 	excludes = ~/.config/git/ignore
