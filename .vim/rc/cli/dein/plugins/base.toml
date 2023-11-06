@@ -11,16 +11,16 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-    let NERDTreeShowHidden = 1
-    nmap <C-b> :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1
+nmap <C-b> :NERDTreeToggle<CR>
 '''
 
 # コメントアウト
 [[plugins]]
 repo = 'tpope/vim-commentary'
 hook_add = '''
-    nmap <C-_> gcc
-    vmap <C-_> gcc
+nmap <C-_> gcc
+vmap <C-_> gcc
 '''
 
 [[plugins]]
@@ -30,13 +30,13 @@ repo = 'vim-airline/vim-airline'
 repo = 'vim-airline/vim-airline-themes'
 depends = ['vim-airline']
 hook_add = '''
-    let g:airline_theme = 'minimalist'
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline_powerline_fonts = 1
+let g:airline_theme = 'minimalist'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 '''
 
 [[plugins]]
@@ -45,8 +45,14 @@ repo = 'ryanoasis/vim-devicons'
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
-    let g:ctrlp_show_hidden = 1
-    let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|venv\|tmp\|temp\|log\|logs'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 '''
 
 # syntax highlight
@@ -56,10 +62,10 @@ repo = 'sheerun/vim-polyglot'
 [[plugins]]
 repo = 'Erichain/vim-monokai-pro'
 hook_add = '''
-    autocmd! VimEnter * nested colorscheme monokai_pro
-    let g:lightline = {
-        \'colorscheme': 'monokai_pro',
-        \}
+autocmd! VimEnter * nested colorscheme monokai_pro
+let g:lightline = {
+    \'colorscheme': 'monokai_pro',
+    \}
 '''
 
 [[plugins]]
@@ -72,7 +78,7 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
 hook_add = '''
-    let g:lsp_log_verbose = 0
+let g:lsp_log_verbose = 0
 '''
 
 [[plugins]]
@@ -90,10 +96,10 @@ repo = 'Shougo/vimproc'
 [[plugins]]
 repo = 'Shougo/neocomplcache'
 hook_add = '''
-    if !exists('g:neocomplcache_keyword_patterns')
-        let g:neocomplcache_keyword_patterns = {}
-    endif
-    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 '''
 
 
@@ -106,10 +112,10 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = '''
-    let g:indentLine_color_term = 239
-    let g:indentLine_color_gui = '#708090'
-    let g:indentLine_char = '¦'
-    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#708090'
+let g:indentLine_char = '¦'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 '''
 
 [[plugins]]
@@ -117,10 +123,8 @@ repo = 'vim-denops/denops.vim'
 if = '''executable('deno') && v:version >= 901'''
 on_event = 'CursorHold'
 hook_add = """
-    let g:denops_server_addr = '127.0.0.1:32123'
-    call job_start(
-        \ 'deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts'
-        \ )
+let g:denops_server_addr = '127.0.0.1:32123'
+call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
 """
 
 [[plugins]]
@@ -130,12 +134,12 @@ repo = 'Shougo/ddc.vim'
 repo = 'Shougo/pum.vim'
 depends = ['Shougo/ddc.vim']
 hook_post_update = '''
-    if filereadable(expand('~/.vim/rc/cli/dein/init/ddc.vim'))
-        source ~/.vim/rc/cli/dein/init/ddc.vim
-    endif
-    if filereadable(expand('~/.vim/rc/cli/dein/init/pum.vim'))
-        source ~/.vim/rc/cli/dein/init/pum.vim
-    endif
+if filereadable(expand('~/.vim/rc/cli/dein/init/ddc.vim'))
+    source ~/.vim/rc/cli/dein/init/ddc.vim
+endif
+if filereadable(expand('~/.vim/rc/cli/dein/init/pum.vim'))
+    source ~/.vim/rc/cli/dein/init/pum.vim
+endif
 '''
 
 [[plugins]]
