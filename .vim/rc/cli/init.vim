@@ -39,3 +39,4 @@ endif
 "call dein#recache_runtimepath()
 
 colorscheme monokai_pro
+let g:lightline = { 'colorscheme': 'monokai_pro' }
