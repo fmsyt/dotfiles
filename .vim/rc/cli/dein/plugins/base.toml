@@ -60,15 +60,6 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
-repo = 'Erichain/vim-monokai-pro'
-hook_add = '''
-autocmd! VimEnter * nested colorscheme monokai_pro
-let g:lightline = {
-    \'colorscheme': 'monokai_pro',
-    \}
-'''
-
-[[plugins]]
 repo = 'tomasr/molokai'
 
 # 閉じ括弧を補完

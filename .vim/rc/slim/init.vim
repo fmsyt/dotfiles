@@ -37,3 +37,5 @@ endif
 " プラグイン再読み込み
 "call map(dein#check_clean(), "delete(v:val, 'rf')")
 "call dein#recache_runtimepath()
+
+colorscheme monokai_pro

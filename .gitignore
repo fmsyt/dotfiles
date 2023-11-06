@@ -41,6 +41,8 @@
 !/.vim/
 !/.vimrc
 !/.vim/backup/
+!/.vim/colors/
+!/.vim/colors/**
 !/.vim/dein/
 !/.vim/dein/**
 !/.vim/rc/
