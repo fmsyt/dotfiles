@@ -25,6 +25,7 @@
 	mt = mergetool
 	tree = log --graph --date=short --pretty=format:'%x09%C(auto) %h %Cgreen %ad %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 	set-user = "!f(){ git config --local user.name \"$1\"; git config --local user.email \"$2\"; };f"
+	set-default-user = "!f(){ git set-user motsuni motsuni@yotta-rc.dev; };f"
 	reset-user = "!f(){ git config --local --unset user.name; git config --local --unset user.email; };f"
 	root = "!f() { git rev-parse --show-superproject-working-tree --show-toplevel | head -1; }; f"
 
