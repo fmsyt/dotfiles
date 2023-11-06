@@ -29,8 +29,7 @@
 !/.config/git/**
 !/.config/mc/**
 !/.config/mume/
-!/.config/mume/**
-/.config/mume/config.json
+!/.config/mume/style.less
 !/.config/nvim
 !/.config/powershell/**
 !/.config/PulseEffects/output/
