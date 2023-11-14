@@ -96,6 +96,9 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+set signcolumn=yes
+'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
