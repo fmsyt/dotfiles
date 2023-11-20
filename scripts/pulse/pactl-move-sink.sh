@@ -16,5 +16,7 @@ fi
 readarray -d "\n" ids < <(pactl list short sink-inputs | awk '{print $1}')
 
 for i in ${ids[@]}; do
-    pactl set-default-sink $1 && pactl move-sink-input $i $1
+     pactl move-sink-input $i $1
 done
+
+pactl set-default-sink $1
