@@ -13,6 +13,12 @@
 !/.github/
 !/.github/**
 
+!/.gitsecret/
+!/.gitsecret/**
+.gitsecret/keys/random_seed
+!*.secret
+
+
 
 !/.config/
 !/.config/*/
@@ -56,3 +62,4 @@
 !/scripts/
 !/scripts/**
 /scripts/distrod/install.sh
+
