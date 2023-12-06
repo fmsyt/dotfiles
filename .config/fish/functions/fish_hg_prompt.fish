@@ -23,7 +23,7 @@ set -g fish_prompt_hg_status_order added modified copied deleted untracked unmer
 function fish_hg_prompt --description 'Write out the hg prompt'
     # If hg isn't installed, there's nothing we can do
     # Return 1 so the calling prompt can deal with it
-    if not type hg
+    if not type -q hg
         return 1
     end
 

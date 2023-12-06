@@ -194,7 +194,7 @@ end
 function fish_git_prompt --description "Prompt function for Git"
     # If git isn't installed, there's nothing we can do
     # Return 1 so the calling prompt can deal with it
-    if not type git
+    if not type -q git
         return 1
     end
     # Fail if __fish_git_prompt_ready is defined and fails.
