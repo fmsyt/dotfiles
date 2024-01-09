@@ -42,15 +42,7 @@ Options:
         full_path="$(realpath "${1:-.}")"
         win_path="$(wslpath -w "$full_path")"
 
-        if [[ -n "$app_name" || -f "$full_path" ]]; then
-            powershell.exe -Command "start '$app_name' '$win_path' $args" 2> /dev/null
-        else
-            powershell.exe -Command "explorer '$win_path'" 2> /dev/null
-        fi
-
-        if [[ $? -eq 1 ]]; then
-            return 0
-        fi
+        powershell.exe -Command "Invoke-Item $win_path $args" 2> /dev/null
 
         return $?
     else

@@ -29,15 +29,7 @@ function open
         set -l full_path (realpath $argv[1])
         set -l win_path (wslpath -w $full_path)
 
-        if [ -n $_flag_a ] | [ -f "$current_path/$argv[1]" ]
-            powershell.exe -Command start $_flag_a $win_path $argv[2..-1] $_flag_args 2> /dev/null
-        else
-            powershell.exe -Command explorer (wslpath -w $full_path) 2> /dev/null
-        end
-
-        if [ $status -eq 1 ]
-            return 0
-        end
+        powershell.exe -Command Invoke-Item $win_path $argv[2..-1] $_flag_args 2> /dev/null
 
         return $status
 
