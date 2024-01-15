@@ -33,6 +33,8 @@ function open
 
         return $status
 
+    else if type -q xdg-open
+        command xdg-open $argv
     else
         command open $argv $_flag_args
     end
