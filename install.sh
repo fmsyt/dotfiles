@@ -53,7 +53,7 @@ linkfiles() {
 
         # is directory
         elif [ -d "$HOME/$dotname" ]; then
-            copyfiles "$HOME/$dotname" "$dotdir"
+            copyfiles "$HOME/$dotname" "$f"
             rm -rf "$HOME/$dotname"
 
         # is file
