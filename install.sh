@@ -6,55 +6,75 @@ helpmsg() {
     echo ""
 }
 
+BACKUP_DIR="$HOME/.dotbackup"
+
+copyfiles() {
+
+    src=$1
+    dst=$2
+
+    for file in $(find $src -type f -printf '%P\n'); do
+
+        if [ -f $dst/$file ]; then
+            mkdir -p $BACKUP_DIR/$(dirname $file)
+            cp $dst/$file $BACKUP_DIR/$file
+        fi
+
+        mkdir -p $dst/$(dirname $file)
+        cp $src/$file $dst/$file
+
+    done
+}
+
 linkfiles() {
 
-    if [ ! -d "$HOME/.dotbackup" ]; then
-        mkdir "$HOME/.dotbackup"
+    if [ ! -d "$BACKUP_DIR" ]; then
+        mkdir "$BACKUP_DIR"
     fi
 
     dotdir="$(cd "$(dirname "${0}")" && pwd -P)"
 
-    if [ "$HOME" != "$dotdir" ]; then
-        for f in $dotdir/.??*; do
+    if [ "$HOME" = "$dotdir" ]; then
+        echo "dotfiles are already installed."
+        exit 1
+    fi
 
-            dotname=$(basename "$f")
+    for f in $dotdir/.??*; do
 
-            case "$dotname" in
-                .git*) continue ;;
-            esac
+        dotname=$(basename "$f")
 
-            # is symbolic link
-            if [ -L "$HOME/$dotname" ]; then
-                unlink "$HOME/$dotname"
-            fi
+        case "$dotname" in
+            .git*) continue ;;
+        esac
 
-            # file exists
-            if [ -e "$HOME/$dotname" ]; then
-                mv "$HOME/$dotname" "$HOME/.dotbackup"
-            fi
+        # is symbolic link
+        if [ -L "$HOME/$dotname" ]; then
+            unlink "$HOME/$dotname"
 
-            ln -snf "$f" "$HOME"
+        # is directory
+        elif [ -d "$HOME/$dotname" ]; then
+            copyfiles "$HOME/$dotname" "$dotdir"
+            rm -rf "$HOME/$dotname"
 
-            # backup exists
-            if [ -d "$HOME/.dotbackup/$dotname" ] && [ -d "$HOME/.dotbackup/$dotname" ]; then
-                cp -nr "$HOME/.dotbackup/$dotname/*" "$HOME/$dotname/"
-            fi
-
-        done
-
-        git config --global include.path "$dotdir/.gitconfig"
-
-        if [ -z "$(ls -A $HOME/.dotbackup)" ]; then
-            rmdir $HOME/.dotbackup
-        else
-            echo "Current dotfiles are evacuated to $HOME/.dotbackup"
+        # is file
+        elif [ -f "$HOME/$dotname" ]; then
+            mkdir -p "$BACKUP_DIR"
+            mv "$HOME/$dotname" "$BACKUP_DIR"
         fi
 
-        echo -e "\e[1;36mInstall completed.\e[m"
+        ln -snf "$f" "$HOME"
 
+    done
+
+    git config --global include.path "$dotdir/.gitconfig"
+
+    if [ -z "$(ls -A $BACKUP_DIR)" ]; then
+        rmdir $BACKUP_DIR
     else
-        echo "dotfiles are already installed."
+        echo "Current dotfiles are evacuated to $BACKUP_DIR"
     fi
+
+    echo -e "\e[1;36mInstall completed.\e[m"
 }
 
 while [ $# -gt 0 ]; do
