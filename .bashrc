@@ -69,5 +69,3 @@ fi
 for filename in $HOME/.config/bash/*.bash; do
   source $filename
 done
-
-. "$HOME/.cargo/env"
