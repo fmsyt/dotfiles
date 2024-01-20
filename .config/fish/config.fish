@@ -5,9 +5,14 @@ end
 
 # env
 
-set -x PATH $HOME/.cargo/bin $PATH
-set -gx DENO_INSTALL $HOME/.deno
-set -x PATH $DENO_INSTALL/bin $PATH
+if test -d $HOME/.cargo
+    set -x PATH $HOME/.cargo/bin $PATH
+end
+
+if test -d $HOME/.deno
+    set -gx DENO_INSTALL $HOME/.deno
+    set -x PATH $DENO_INSTALL/bin $PATH
+end
 
 if type vim >/dev/null 2>&1
     set -gx EDITOR vim
