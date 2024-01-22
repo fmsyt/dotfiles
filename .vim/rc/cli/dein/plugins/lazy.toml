@@ -44,3 +44,8 @@ on_ft = ['javascriptreact', 'typescriptreact', 'jsx', 'tsx']
 [[plugins]]
 repo = 'pangloss/vim-javascript'
 on_ft = ['js', 'javascript', 'ts', 'typescript', 'javascriptreact', 'typescriptreact', 'jsx', 'tsx']
+
+[[plugins]]
+repo = 'Galooshi/import-js'
+on_ft = ['js', 'javascript', 'ts', 'typescript', 'javascriptreact', 'typescriptreact', 'jsx', 'tsx']
+
