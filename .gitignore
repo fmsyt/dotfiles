@@ -16,11 +16,10 @@
 !/.gitsecret/
 !/.gitsecret/**
 .gitsecret/keys/random_seed
-!**/*.secret
+!/**/*.secret
 
 !/.ssh/
-/.ssh/**
-!/.ssh/**/*.secret
+!/.ssh/conf.d/
 
 !/.config/
 !/.config/*/
