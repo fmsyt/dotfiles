@@ -40,6 +40,8 @@
 !/.config/powershell/**
 !/.config/PulseEffects/output/
 !/.config/PulseEffects/output/**
+!/.config/user-dirs.dirs
+!/.config/user-dirs.locale
 /.config/powershell/Microsoft.PowerShell_profile.ps1
 !/.dircolors
 !/.inputrc
