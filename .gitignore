@@ -18,7 +18,9 @@
 .gitsecret/keys/random_seed
 !**/*.secret
 
-
+!/.ssh/
+/.ssh/**
+!/.ssh/**/*.secret
 
 !/.config/
 !/.config/*/
