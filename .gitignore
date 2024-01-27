@@ -16,7 +16,7 @@
 !/.gitsecret/
 !/.gitsecret/**
 .gitsecret/keys/random_seed
-!*.secret
+!**/*.secret
 
 
 
