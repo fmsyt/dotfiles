@@ -24,6 +24,7 @@
 !/.config/
 !/.config/*/
 !/.config/bash/**
+/.config/bash/env.sh
 !/.config/fcitx/
 !/.config/fcitx/config
 !/.config/fish/*

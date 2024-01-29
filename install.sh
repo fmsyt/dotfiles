@@ -11,18 +11,20 @@ BACKUP_DIR="$HOME/.dotbackup"
 
 copyfiles() {
 
-    src=$1
-    dst=$2
+    src="$1"
+    dst="$2"
 
     for file in $(find $src -type f -printf '%P\n'); do
 
-        if [ -f $dst/$file ]; then
-            mkdir -p $BACKUP_DIR/$(dirname $file)
-            cp $dst/$file $BACKUP_DIR/$file
+        src_dir=$(dirname $file)
+
+        if [ -f "$dst/$file" ]; then
+            mkdir -p "$BACKUP_DIR/$src_dir"
+            cp "$dst/$file" "$BACKUP_DIR/$file"
         fi
 
-        mkdir -p $dst/$(dirname $file)
-        cp $src/$file $dst/$file
+        mkdir -p "$dst/$src_dir"
+        cp "$src/$file" "$dst/$file"
 
     done
 }
@@ -52,7 +54,8 @@ linkfiles() {
 
         # is directory
         elif [ -d "$HOME/$dotname" ]; then
-            copyfiles "$f" "$HOME/$dotname"
+echo copyfiles "$HOME/$dotname" "$f"
+            copyfiles "$HOME/$dotname" "$f"
 
         # is file
         elif [ -f "$HOME/$dotname" ]; then
@@ -60,7 +63,7 @@ linkfiles() {
             mv "$HOME/$dotname" "$BACKUP_DIR"
         fi
 
-        ln -snf "$f" "$HOME"
+        ln -snf "$f" "$HOME/$dotname"
 
     done
 
@@ -90,11 +93,11 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-cat <<EOF > $HOME/.config/bash/env.sh
+cat <<EOF > $DOTFILES_DIR/.config/bash/env.sh
 export DOTFILES_DIR="$DOTFILES_DIR"
 EOF
 
-cat <<EOF > $HOME/.config/fish/conf.d/env.fish
+cat <<EOF > $DOTFILES_DIR/.config/fish/conf.d/env.fish
 set -x DOTFILES_DIR "$DOTFILES_DIR"
 EOF
 
