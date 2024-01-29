@@ -66,6 +66,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+if [ -f $HOME/.config/bash/env.sh ]; then
+    source $HOME/.config/bash/env.sh
+fi
+
 for filename in $HOME/.config/bash/*.bash; do
   source $filename
 done

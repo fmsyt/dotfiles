@@ -6,6 +6,7 @@ helpmsg() {
     echo ""
 }
 
+DOTFILES_DIR="$(cd "$(dirname "${0}")" && pwd -P)"
 BACKUP_DIR="$HOME/.dotbackup"
 
 copyfiles() {
@@ -32,14 +33,12 @@ linkfiles() {
         mkdir "$BACKUP_DIR"
     fi
 
-    dotdir="$(cd "$(dirname "${0}")" && pwd -P)"
-
-    if [ "$HOME" = "$dotdir" ]; then
+    if [ "$HOME" = "$DOTFILES_DIR" ]; then
         echo "dotfiles are already installed."
         exit 1
     fi
 
-    for f in $dotdir/.??*; do
+    for f in $DOTFILES_DIR/.??*; do
 
         dotname=$(basename "$f")
 
@@ -66,7 +65,7 @@ linkfiles() {
 
     done
 
-    git config --global include.path "$dotdir/.gitconfig"
+    git config --global include.path "$DOTFILES_DIR/.gitconfig"
 
     if [ -z "$(ls -A $BACKUP_DIR)" ]; then
         rmdir $BACKUP_DIR
@@ -91,5 +90,13 @@ while [ $# -gt 0 ]; do
     esac
     shift
 done
+
+cat <<EOF > $HOME/.config/bash/env.sh
+export DOTFILES_DIR="$DOTFILES_DIR"
+EOF
+
+cat <<EOF > $HOME/.config/fish/conf.d/env.fish
+set -x DOTFILES_DIR "$DOTFILES_DIR"
+EOF
 
 linkfiles
