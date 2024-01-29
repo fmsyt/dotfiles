@@ -15,7 +15,6 @@ copyfiles() {
     dst="$2"
 
     src_basename=$(basename "$src")
-    dst_dir=$(dirname "$dst")
 
     find "$src" -type f -printf '%P\n' | while IFS= read -r file; do
 
@@ -27,7 +26,7 @@ copyfiles() {
         fi
 
         mkdir -p "$dst/$file_dir"
-        cp "$src/$file" "$dst_dir/"
+        cp "$src/$file" "$dst/$file"
 
     done
 }
