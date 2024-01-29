@@ -33,6 +33,8 @@ copyfiles() {
         cp "$src/$file" "$dst_dir/"
 
     done
+
+    IFS="$LAST_IFS"
 }
 
 linkfiles() {
