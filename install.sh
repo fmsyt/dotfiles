@@ -17,7 +17,7 @@ copyfiles() {
     src_basename=$(basename "$src")
     dst_dir=$(dirname "$dst")
 
-    for file in $(find "$src" -type f -printf '%P\n') | while IFS= read -r file; do
+    find "$src" -type f -printf '%P\n' | while IFS= read -r file; do
 
         file_dir=$(dirname "$file")
 
