@@ -14,17 +14,21 @@ copyfiles() {
     src="$1"
     dst="$2"
 
+    src_basename=$(basename $src)
+    dst_dir=$(dirname $dst)
+
     for file in $(find $src -type f -printf '%P\n'); do
 
-        src_dir=$(dirname $file)
+        file_dir=$(dirname $file)
+        echo $file_dir
 
         if [ -f "$dst/$file" ]; then
-            mkdir -p "$BACKUP_DIR/$src_dir"
-            cp "$dst/$file" "$BACKUP_DIR/$file"
+            mkdir -p "$BACKUP_DIR/$src_basename/$file_dir"
+            cp "$dst/$file" "$BACKUP_DIR/$src_basename/$file"
         fi
 
-        mkdir -p "$dst/$src_dir"
-        cp "$src/$file" "$dst/$file"
+        mkdir -p "$dst/$file_dir"
+        cp "$src/$file" "$dst_dir/"
 
     done
 }
@@ -54,8 +58,8 @@ linkfiles() {
 
         # is directory
         elif [ -d "$HOME/$dotname" ]; then
-echo copyfiles "$HOME/$dotname" "$f"
             copyfiles "$HOME/$dotname" "$f"
+            rm -rf "$HOME/$dotname"
 
         # is file
         elif [ -f "$HOME/$dotname" ]; then
@@ -75,7 +79,7 @@ echo copyfiles "$HOME/$dotname" "$f"
         echo "Current dotfiles are evacuated to $BACKUP_DIR"
     fi
 
-    echo -e "\e[1;36mInstall completed.\e[m"
+    echo "\e[1;36mInstall completed.\e[m"
 }
 
 while [ $# -gt 0 ]; do
