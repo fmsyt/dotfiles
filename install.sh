@@ -14,13 +14,12 @@ copyfiles() {
     src="$1"
     dst="$2"
 
-    src_basename=$(basename $src)
-    dst_dir=$(dirname $dst)
+    src_basename=$(basename "$src")
+    dst_dir=$(dirname "$dst")
 
-    for file in $(find $src -type f -printf '%P\n'); do
+    for file in $(find "$src" -type f -printf '%P\n'); do
 
-        file_dir=$(dirname $file)
-        echo $file_dir
+        file_dir=$(dirname "$file")
 
         if [ -f "$dst/$file" ]; then
             mkdir -p "$BACKUP_DIR/$src_basename/$file_dir"
