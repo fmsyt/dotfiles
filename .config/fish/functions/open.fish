@@ -21,15 +21,21 @@ function open
 
     set -lq _flag_args
 
-    if test -f /proc/sys/fs/binfmt_misc/WSLInterop
+    if test -n "$WSL_DISTRO_NAME"
         and test -z $SSH_TTY
 
         set -lq _flag_a
 
-        set -l full_path (realpath $argv[1])
-        set -l win_path (wslpath -w $full_path)
+        if test -n "$_flag_a"
+            set -l app_name $_flag_a
+            powershell.exe -Command Invoke-Expression $app_name $argv[2..-1] $_flag_args 2> /dev/null
 
-        powershell.exe -Command Invoke-Item $win_path $argv[2..-1] $_flag_args 2> /dev/null
+        else
+            set -l full_path (realpath $argv[1])
+            set -l win_path (wslpath -w $full_path)
+
+            powershell.exe -Command Invoke-Item $win_path $argv[2..-1] $_flag_args 2> /dev/null
+        end
 
         return $status
 
