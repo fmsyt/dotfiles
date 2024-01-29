@@ -22,6 +22,8 @@ copyfiles() {
     IFS=$'\n'
     for file in $(find "$src" -type f -printf '%P\n'); do
 
+        IFS="$LAST_IFS"
+
         file_dir=$(dirname "$file")
 
         if [ -f "$dst/$file" ]; then
@@ -33,8 +35,6 @@ copyfiles() {
         cp "$src/$file" "$dst_dir/"
 
     done
-
-    IFS="$LAST_IFS"
 }
 
 linkfiles() {
