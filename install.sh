@@ -17,6 +17,9 @@ copyfiles() {
     src_basename=$(basename "$src")
     dst_dir=$(dirname "$dst")
 
+    LAST_IFS="$IFS"
+
+    IFS=$'\n'
     for file in $(find "$src" -type f -printf '%P\n'); do
 
         file_dir=$(dirname "$file")
