@@ -1,7 +1,5 @@
 function open
 
-    echo $DOTFILES_DIR
-
     if ! test -f $DOTFILES_DIR"/scripts/open.sh"
         echo "open.sh not found"
         return 1
