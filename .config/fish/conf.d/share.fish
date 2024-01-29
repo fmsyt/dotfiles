@@ -1,8 +1,3 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
-
 # env
 
 if test -d $HOME/.cargo
