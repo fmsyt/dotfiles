@@ -1,6 +1,4 @@
 [user]
-	name = motsuni
-	email = motsuni@yotta-rc.dev
 	useConfigOnly = true
 [color]
 	ui = true
