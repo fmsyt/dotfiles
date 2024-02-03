@@ -31,6 +31,33 @@ copyfiles() {
     done
 }
 
+syncfiles() {
+
+    dotdir="$1"
+    dotname=$(basename "$dotdir")
+
+    case "$dotname" in
+        .git*) continue ;;
+    esac
+
+    # is symbolic link
+    if [ -L "$HOME/$dotname" ]; then
+        unlink "$HOME/$dotname"
+
+    # is directory
+    elif [ -d "$HOME/$dotname" ]; then
+        copyfiles "$HOME/$dotname" "$dotdir"
+        rm -rf "$HOME/$dotname"
+
+    # is file
+    elif [ -f "$HOME/$dotname" ]; then
+        mkdir -p "$BACKUP_DIR"
+        mv "$HOME/$dotname" "$BACKUP_DIR"
+    fi
+
+    ln -snf "$dotdir" "$HOME/$dotname"
+}
+
 linkfiles() {
 
     if [ ! -d "$BACKUP_DIR" ]; then
@@ -42,32 +69,13 @@ linkfiles() {
         exit 1
     fi
 
-    for f in $DOTFILES_DIR/.??*; do
-
-        dotname=$(basename "$f")
-
-        case "$dotname" in
-            .git*) continue ;;
-        esac
-
-        # is symbolic link
-        if [ -L "$HOME/$dotname" ]; then
-            unlink "$HOME/$dotname"
-
-        # is directory
-        elif [ -d "$HOME/$dotname" ]; then
-            copyfiles "$HOME/$dotname" "$f"
-            rm -rf "$HOME/$dotname"
-
-        # is file
-        elif [ -f "$HOME/$dotname" ]; then
-            mkdir -p "$BACKUP_DIR"
-            mv "$HOME/$dotname" "$BACKUP_DIR"
-        fi
-
-        ln -snf "$f" "$HOME/$dotname"
-
+    for dotdir in $DOTFILES_DIR/.??*; do
+        syncfiles "$dotdir"
     done
+
+    # for dotdir in $DOTFILES_DIR/secrets/.??*; do
+    #     syncfiles "$dotdir"
+    # done
 
     git config --global include.path "$DOTFILES_DIR/.gitconfig"
 
