@@ -79,9 +79,15 @@ linkfiles() {
         syncfiles "$dotdir"
     done
 
-    # for dotdir in $DOTFILES_DIR/secrets/.??*; do
-    #     syncfiles "$dotdir"
-    # done
+    for dotdir in $DOTFILES_DIR/secrets/.??*; do
+
+        dotname=$(basename "$dotdir")
+        case "$dotname" in
+            .git*) continue ;;
+        esac
+
+        syncfiles "$dotdir"
+    done
 
     git config --global include.path "$DOTFILES_DIR/.gitconfig"
 
