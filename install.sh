@@ -70,6 +70,12 @@ linkfiles() {
     fi
 
     for dotdir in $DOTFILES_DIR/.??*; do
+
+        dotname=$(basename "$dotdir")
+        case "$dotname" in
+            .git*) continue ;;
+        esac
+
         syncfiles "$dotdir"
     done
 
