@@ -1,4 +1,4 @@
 [submodule "secrets"]
 	path = secrets
-	url = git@github.com:fmsyt/dotfiles-secret.git
+	url = https://github.com/fmsyt/dotfiles-secret.git
 	brach = master
