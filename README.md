@@ -8,7 +8,7 @@
 This repository has files encrypted by `git-secret`.
 Install below if you needed and trusted.
 
-- gngpu
+- gnupg
 - git-secret
 
 ## Installation
