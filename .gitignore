@@ -19,7 +19,9 @@
 !/**/*.secret
 
 !/.ssh/
-!/.ssh/conf.d/
+!/.ssh/shared/
+/.ssh/shared/*
+!/.ssh/shared/*.secret
 
 !/.config/
 !/.config/*/
@@ -68,3 +70,4 @@
 !/scripts/**
 /scripts/distrod/install.sh
 
+!*.secret
