@@ -1,9 +1,6 @@
 # keycodes: https://github.com/emberian/evdev/blob/1d020f11b283b0648427a2844b6b980f1a268221/src/scancodes.rs#L26-L572
 keymap:
   - name: ime
-    exact: true
+    exact_match: true
     remap:
-      Shift-CapsLock:
-        held: KEY_F14
-        alone: KEY_F14
-        alone_timeout_millis: 1000
+      Shift-CapsLock: KEY_F14
