@@ -1,4 +1,0 @@
-[submodule "secrets"]
-	path = secrets
-	url = ../dotfiles-secret.git
-	branch = master
