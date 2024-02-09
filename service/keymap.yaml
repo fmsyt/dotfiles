@@ -3,4 +3,4 @@ keymap:
   - name: ime
     exact_match: true
     remap:
-      Shift-CapsLock: KEY_F14
+      Shift-CapsLock: C-M-SHIFT-KEY_F1

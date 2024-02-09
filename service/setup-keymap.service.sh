@@ -2,6 +2,35 @@
 
 set -e
 
+function help() {
+  echo "Usage: $0"
+  echo "  -h, --help : Show help"
+  echo "  --reinstall: Reinstall xremap"
+  exit 1
+}
+
+REINSTALL=false
+
+# parse arguments
+for OPT in "$@"
+do
+  case "$OPT" in
+    '-h'|'--help' )
+      help
+      exit 1
+      ;;
+    '--reinstall' )
+      REINSTALL=true
+      shift 1
+      ;;
+    *)
+      help
+      exit 1
+      ;;
+  esac
+done
+
+
 # check sudo
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root"
@@ -19,6 +48,9 @@ function install_xremap() {
 
   # select in x11, wayland, gnome, kde, sway, wlroots, hyprland
 
+  # echo "Current environment: $(env | grep XDG_SESSION_TYPE)"
+  echo "Current Desktop: $(env | grep XDG_CURRENT_DESKTOP)"
+  echo
   echo "Select your environment"
   echo "1) x11"
   echo "2) Gnome Wayland"
@@ -26,7 +58,7 @@ function install_xremap() {
   echo "4) Sway"
   echo "5) wlroots"
   echo "6) hyprland"
-
+  echo
   read -p "Select number: " ENV
 
   case $ENV in
@@ -76,6 +108,12 @@ function install_xremap() {
 
 # install xremap if not installed
 if ! command -v xremap &> /dev/null; then
+  install_xremap
+  REINSTALL=false
+fi
+
+
+if [ "$REINSTALL" = true ]; then
   install_xremap
 fi
 

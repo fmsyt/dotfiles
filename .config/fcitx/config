@@ -1,6 +1,6 @@
 [Hotkey]
 # 入力メソッドのオンオフ
-TriggerKey=F14 HIRAGANAKATAKANA
+TriggerKey=CTRL_ALT_SHIFT_F1
 # アクティブでない時だけその他のトリガーキーを使用する
 # Available Value:
 # True False
@@ -27,7 +27,7 @@ UseExtraTriggerKeyOnlyWhenUseItToInactivate=False
 # Super+Right Ctrl
 # Disabled
 # Custom
-SwitchKey=Custom
+SwitchKey=Disabled
 # カスタム切り替えキー
 #CustomSwitchKey=
 # 入力メソッドをオンに
