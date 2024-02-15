@@ -55,8 +55,14 @@ fi
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
 
-    full_path=$(realpath "$path")
-    win_path=$(wslpath -w "$full_path")
+    win_path=$path
+
+    has_protocol=$(echo "$path" | grep -E "^[a-zA-Z]+://")
+    if [ -z "$has_protocol" ]; then
+        full_path=$(realpath "$path")
+        win_path=$(wslpath -w "$full_path")
+    fi
+
 
     if [ -z "$app_name" ]; then
         app_name=start
