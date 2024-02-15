@@ -3,6 +3,8 @@
 path="."
 verbose=0
 
+option_only=0
+
 while [ "$#" -gt 0 ]; do
     case "$1" in
         -h|--help)
@@ -20,6 +22,7 @@ while [ "$#" -gt 0 ]; do
         -a)
             shift
             app_name="$1"
+            option_only=1
             shift
             ;;
         -v|--verbose)
@@ -32,7 +35,14 @@ while [ "$#" -gt 0 ]; do
             break
             ;;
         *)
+            if [ "$option_only" -eq 1 ]; then
+                echo "Error: Invalid option '$1'"
+                exit 1
+            fi
+
             path="$1"
+            option_only=0
+
             shift
             ;;
     esac
