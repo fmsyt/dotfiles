@@ -15,11 +15,11 @@ latest_url=$(echo $latest_url | sed 's/tag/download/')
 
 file_name=monaspace-$tag.zip
 
-rm /tmp/$file_name
+tmp_dir=$(mktemp -d)
 
-command wget -P /tmp/ $latest_url/$file_name
+command wget -P $tmp_dir/ $latest_url/$file_name
 
 mkdir -p $HOME/.fonts
-command unzip /tmp/$file_name -d $HOME/.fonts/monaspace/
+command unzip $tmp_dir/$file_name -d $HOME/.fonts/monaspace/
 
-rm /tmp/$file_name
+rm -rf $tmp_dir
