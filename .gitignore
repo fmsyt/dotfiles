@@ -70,5 +70,6 @@
 !/scripts/
 !/scripts/**
 /scripts/distrod/install.sh
-
+/scripts/linux/x11/sddm/Xsetup.conf.d/*.sh
+!/scripts/linux/x11/sddm/Xsetup.conf.d/.gitkeep
 !*.secret
