@@ -5,6 +5,8 @@ if [ $(uname) = "Darwin" ]; then
     exit 0
 fi
 
+args=$@
+
 verbose=0
 
 path_list=()
@@ -77,6 +79,6 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
 
     exit 0
 
-elif command -v xdg-open >/dev/null; then
-    xdg-open $@
+elif command -v xdg-open > /dev/null; then
+    command xdg-open "$args" 2> /dev/null
 fi
