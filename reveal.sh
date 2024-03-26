@@ -19,7 +19,7 @@ function post_reveal() {
     SSH_CONFIG_FILE="$HOME/.ssh/config"
 
     if [ -f $SSH_CONFIG_FILE ]; then
-        if grep -q "$SSH_INCLUDE_DIRECTIVE" $SSH_CONFIG_FILE; then
+        if grep -F -q "$SSH_INCLUDE_DIRECTIVE" $SSH_CONFIG_FILE; then
             echo "SSH config already includes shared config. Skipping..."
         else
             echo "Adding shared SSH config include directive..."
