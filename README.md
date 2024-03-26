@@ -19,8 +19,10 @@ $ git clone https://github.com/fmsyt/dotfiles
 $ ./dotfiles/install.sh
 ```
 
+Reveal encrypted files if you have `git-secret` and `gpg`.
+
 ```bash
-$ git secret reveal
+$ ./reveal.sh
 ```
 
 ## Alias
