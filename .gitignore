@@ -59,6 +59,8 @@
 !/.vim/colors/**
 !/.vim/dein/
 !/.vim/dein/**
+!/.vim/ftdetect/
+!/.vim/ftdetect/**
 !/.vim/rc/
 !/.vim/rc/**
 !/.vim/session/
