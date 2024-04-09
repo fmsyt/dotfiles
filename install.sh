@@ -115,5 +115,4 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-syncfiles "$DOTFILES_DIR/bin"
 linkfiles
