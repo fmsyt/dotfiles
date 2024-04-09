@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
-set -e
+script_name=$(basename $0)
 
 color_red="\033[0;31m"
 color_purple="\033[0;35m"
 color_reset="\033[0m"
+
+if [ -z "$(which git)" ]; then
+    echo -e "${error_color}git is not installed${color_reset}"
+    exit 1
+fi
+
+major_version=$(git --version | awk '{print $3}' | cut -d'.' -f1)
+if [ $major_version -lt 2 ]; then
+    echo -e "${error_color}git version 2.0.0 or later is required${color_reset}"
+    exit 1
+fi
 
 error_color=$color_red
 verbose_color=$color_purple
@@ -15,7 +26,7 @@ force=0
 
 export_dir=$(pwd)
 
-git_root=$(git rev-parse --show-toplevel)
+git_root=$(git rev-parse --show-toplevel 2> /dev/null)
 if [ -z "$git_root" ]; then
     echo -e "${error_color}Not in a git repository${color_reset}"
     exit 1
@@ -25,13 +36,14 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 target_branch="origin/master"
 
 function usage {
-    echo "Usage: $0 [options]"
+    echo "Usage: $script_name [options]"
     echo "Options:"
     echo "  -b|--branch     Target branch (default: origin/master)"
     echo "  -f|--force      Force overwrite of existing files"
     echo "  -o|--output     Output directory (default: current directory)"
     echo "  -v|--verbose    Verbose output"
     echo "  -h|--help       Display this help message"
+    echo
     echo "  --dry-run       Dry run"
     exit 1
 }
