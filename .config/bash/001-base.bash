@@ -1,3 +1,5 @@
+export PATH="$HOME/.local/bin:$PATH"
+
 function _update_ps1_powerline() {
     PS1="$(~/.local/bin/powerline-shell $?)"
 }

@@ -115,12 +115,5 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-cat <<EOF > $DOTFILES_DIR/.config/bash/env.sh
-export DOTFILES_DIR="$DOTFILES_DIR"
-EOF
-
-cat <<EOF > $DOTFILES_DIR/.config/fish/conf.d/env.fish
-set -x DOTFILES_DIR "$DOTFILES_DIR"
-EOF
-
+syncfiles "$DOTFILES_DIR/bin"
 linkfiles
