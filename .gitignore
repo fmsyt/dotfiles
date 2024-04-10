@@ -39,7 +39,8 @@
 !/.config/fish/functions/**
 /.config/fish/functions/_*.fish
 !/.config/git/**
-!/.config/mc/**
+!/.config/mc
+!/.config/mc/ini
 !/.config/mume/
 !/.config/mume/style.less
 !/.config/nvim
