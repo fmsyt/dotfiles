@@ -66,7 +66,11 @@ cpdir() {
 
         mkdir -p "$dst/$file_dir"
         if [ -L "$tmp_dir/$src_basename/$file" ]; then
-            cp -P "$tmp_dir/$src_basename/$file" "$dst/$file"
+            # 参照先の絶対パスを取得
+            orig_path=$(readlink "$tmp_dir/$src_basename/$file")
+
+            # シンボリックリンクを作成
+            ln -snf "$orig_path" "$dst/$file"
         else
             cp "$tmp_dir/$src_basename/$file" "$dst/$file"
         fi
