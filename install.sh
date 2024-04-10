@@ -32,9 +32,15 @@ cpdir() {
     tmp_dir=$(mktemp -d)
 
     # 1. dst を tmp に移動
+    if [ $verbose -eq 1 ]; then
+        echo "$verbose_prefix Existed files are moved to $tmp_dir"
+    fi
     mv "$dst" "$tmp_dir"
 
     # 2. src を dst にコピー
+    if [ $verbose -eq 1 ]; then
+        echo "$verbose_prefix Copying $src to $dst"
+    fi
     cp -r "$src" "$dst"
 
     # 3. tmp の中身を、1つずつ dst に移動
@@ -44,11 +50,19 @@ cpdir() {
 
         # 3-1 dst に同名ファイルが存在する場合、バックアップ
         if [ -f "$dst/$file" ]; then
+
+            if [ $verbose -eq 1 ]; then
+                echo "$verbose_prefix Backup $dst/$file"
+            fi
+
             mkdir -p "$BACKUP_DIR/$src_basename/$file_dir"
             cp "$dst/$file" "$BACKUP_DIR/$src_basename/$file"
         fi
 
         # 3-2 ディレクトリを作成してファイルをコピー
+        if [ $verbose -eq 1 ]; then
+            echo "$verbose_prefix Copy $tmp_dir/$src_basename/$file to $dst/$file"
+        fi
         mkdir -p "$dst/$file_dir"
         cp "$tmp_dir/$src_basename/$file" "$dst/$file"
 
@@ -139,6 +153,7 @@ while [ $# -gt 0 ]; do
     case ${1} in
         --debug|-d)
             set -uex
+            shift
             ;;
         --help|-h)
             helpmsg
@@ -146,11 +161,12 @@ while [ $# -gt 0 ]; do
             ;;
         --verbose|-v)
             verbose=1
+            shift
             ;;
         *)
+            shift
             ;;
     esac
-    shift
 done
 
 linkfiles
