@@ -44,7 +44,7 @@ cpdir() {
     cp -r "$src" "$dst"
 
     # 3. tmp の中身を、1つずつ dst に移動
-    find "$tmp_dir/$src_basename" -type f -printf '%P\n' | while IFS= read -r file; do
+    find "$tmp_dir/$src_basename" -type f,l -printf '%P\n' | while IFS= read -r file; do
 
         file_dir=$(dirname "$file")
 
@@ -63,8 +63,13 @@ cpdir() {
         if [ $verbose -eq 1 ]; then
             echo "$verbose_prefix Copy $tmp_dir/$src_basename/$file to $dst/$file"
         fi
+
         mkdir -p "$dst/$file_dir"
-        cp "$tmp_dir/$src_basename/$file" "$dst/$file"
+        if [ -L "$tmp_dir/$src_basename/$file" ]; then
+            cp -P "$tmp_dir/$src_basename/$file" "$dst/$file"
+        else
+            cp "$tmp_dir/$src_basename/$file" "$dst/$file"
+        fi
 
     done
 
