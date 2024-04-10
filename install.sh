@@ -6,8 +6,6 @@ helpmsg() {
     echo ""
 }
 
-shopt -s dotglob
-
 DOTFILES_DIR="$(cd "$(dirname "${0}")" && pwd -P)"
 BACKUP_DIR="$HOME/.dotbackup"
 
