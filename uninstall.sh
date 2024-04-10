@@ -45,6 +45,9 @@ main() {
     done
 
     git config --global --unset include.path
+
+    # 管理対象外のファイルを削除
+    git ls-files --other --ignored --exclude-standard | xargs rm -rf
     echo "\e[1;36mUninstall completed.\e[m"
 }
 
