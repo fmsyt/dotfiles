@@ -60,18 +60,21 @@ cpdir() {
         fi
 
         # 3-2 ディレクトリを作成してファイルをコピー
-        if [ $verbose -eq 1 ]; then
-            echo "$verbose_prefix Copy $tmp_dir/$src_basename/$file to $dst/$file"
-        fi
-
         mkdir -p "$dst/$file_dir"
         if [ -L "$tmp_dir/$src_basename/$file" ]; then
             # 参照先の絶対パスを取得
             orig_path=$(readlink "$tmp_dir/$src_basename/$file")
 
             # シンボリックリンクを作成
+
+            if [ $verbose -eq 1 ]; then
+                echo "$verbose_prefix Create symbolic link: $orig_path"
+            fi
             ln -snf "$orig_path" "$dst/$file"
         else
+            if [ $verbose -eq 1 ]; then
+                echo "$verbose_prefix Copy $tmp_dir/$src_basename/$file"
+            fi
             cp "$tmp_dir/$src_basename/$file" "$dst/$file"
         fi
 
