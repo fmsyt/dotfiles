@@ -6,29 +6,48 @@ helpmsg() {
     echo ""
 }
 
+shopt -s dotglob
+
 DOTFILES_DIR="$(cd "$(dirname "${0}")" && pwd -P)"
 BACKUP_DIR="$HOME/.dotbackup"
 
-copyfiles() {
+cpdir() {
 
+    # e.g.) $HOME/.local
     src="$1"
+    # e.g.) $HOME/dotfiles/.local
     dst="$2"
 
+    # e.g.) .local
     src_basename=$(basename "$src")
 
-    find "$src" -type f -printf '%P\n' | while IFS= read -r file; do
+    tmp_dir=$(mktemp -d)
+
+    # 1. dst を tmp に移動
+    mv "$dst" "$tmp_dir"
+
+    # 2. src を dst にコピー
+    cp -r "$src" "$dst"
+
+    # 3. tmp の中身を、1つずつ dst に移動
+    find "$tmp_dir/$src_basename" -type f -printf '%P\n' | while IFS= read -r file; do
 
         file_dir=$(dirname "$file")
 
+        # 3-1 dst に同名ファイルが存在する場合、バックアップ
         if [ -f "$dst/$file" ]; then
             mkdir -p "$BACKUP_DIR/$src_basename/$file_dir"
             cp "$dst/$file" "$BACKUP_DIR/$src_basename/$file"
         fi
 
+        # 3-2 ディレクトリを作成してファイルをコピー
         mkdir -p "$dst/$file_dir"
-        cp "$src/$file" "$dst/$file"
+        cp "$tmp_dir/$src_basename/$file" "$dst/$file"
 
     done
+
+    # 4. tmp を削除
+    rm -rf "$tmp_dir"
 }
 
 syncfiles() {
@@ -46,7 +65,7 @@ syncfiles() {
 
     # is directory
     elif [ -d "$HOME/$dotname" ]; then
-        copyfiles "$HOME/$dotname" "$dotdir"
+        cpdir "$HOME/$dotname" "$dotdir"
         rm -rf "$HOME/$dotname"
 
     # is file
