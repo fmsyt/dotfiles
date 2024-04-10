@@ -81,7 +81,7 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=modarcon16
+skin=yadt256-defbg
 
 safe_overwrite=false
 shadows=true
@@ -98,7 +98,7 @@ horizontal_split=false
 vertical_equal=false
 left_panel_size=60
 horizontal_equal=false
-top_panel_size=1
+top_panel_size=5
 
 [Misc]
 timeformat_recent=%b %e %H:%M
@@ -137,6 +137,8 @@ permission_mode=false
 torben_fj_mode=false
 quick_search_mode=2
 select_flags=6
+
+simple_swap=false
 
 [Panelize]
 Modified git files=git ls-files --modified
