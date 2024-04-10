@@ -1,9 +1,19 @@
 #!/bin/sh
 set -ue
 
+verbose=0
+
+orange="\033[0;33m"
+reset="\033[0m"
+
+verbose_prefix="$orange[VERBOSE]$reset"
+
 helpmsg() {
-    echo "Usage: $0 [--help | -h]" >&2
-    echo ""
+    echo "Usage: $0"
+    echo "Options:"
+    echo "  -d, --debug     Print debug information"
+    echo "  -h, --help      Print this message"
+    echo "  -v, --verbose   Print verbose information"
 }
 
 DOTFILES_DIR="$(cd "$(dirname "${0}")" && pwd -P)"
@@ -93,6 +103,10 @@ linkfiles() {
             .git*) continue ;;
         esac
 
+        if [ $verbose -eq 1 ]; then
+            echo "$verbose_prefix dotdir: $dotdir"
+        fi
+
         syncfiles "$dotdir"
     done
 
@@ -102,6 +116,10 @@ linkfiles() {
         case "$dotname" in
             .git*) continue ;;
         esac
+
+        if [ $verbose -eq 1 ]; then
+            echo "$verbose_prefix dotdir: $dotdir"
+        fi
 
         syncfiles "$dotdir"
     done
@@ -125,6 +143,9 @@ while [ $# -gt 0 ]; do
         --help|-h)
             helpmsg
             exit 1
+            ;;
+        --verbose|-v)
+            verbose=1
             ;;
         *)
             ;;
