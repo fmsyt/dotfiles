@@ -5,6 +5,11 @@ if [ $(uname) = "Darwin" ]; then
     exit 0
 fi
 
+if [ -n "$SSH_CONNECTION" ]; then
+    command open $@
+    exit 0
+fi
+
 args=$@
 
 verbose=0
@@ -50,13 +55,6 @@ while [ "$#" -gt 0 ]; do
             ;;
     esac
 done
-
-
-if [ -n "$SSH_CONNECTION" ]; then
-    echo "Error: Cannot open file or directory from SSH connection"
-    exit 1
-fi
-
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
 
