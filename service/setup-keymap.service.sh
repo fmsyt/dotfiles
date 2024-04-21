@@ -44,7 +44,7 @@ function install_xremap() {
     mkdir -p /usr/local/bin
   fi
 
-  # install releases from https://github.com/k0kubun/xremap
+  # install releases from https://github.com/xremap/xremap
 
   # select in x11, wayland, gnome, kde, sway, wlroots, hyprland
 
@@ -88,7 +88,7 @@ function install_xremap() {
 
   asset_name="xremap-linux-$(uname -m)-${feature}.zip"
 
-  latest_url=$(curl -s https://api.github.com/repos/k0kubun/xremap/releases/latest | jq -r ".assets[] | select(.name == \"${asset_name}\") | .browser_download_url")
+  latest_url=$(curl -s https://api.github.com/repos/xremap/xremap/releases/latest | jq -r ".assets[] | select(.name == \"${asset_name}\") | .browser_download_url")
 
   if [ -z $latest_url ]; then
     echo "Failed to get latest release"
