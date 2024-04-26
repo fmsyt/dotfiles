@@ -56,6 +56,7 @@
 !/.config/user-dirs.locale
 !/.config/zsh/
 !/.config/zsh/**
+/.config/zsh/antigen.sh
 /.config/powershell/Microsoft.PowerShell_profile.ps1
 !/.dircolors
 !/.inputrc
