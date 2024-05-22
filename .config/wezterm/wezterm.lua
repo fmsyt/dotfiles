@@ -3,6 +3,8 @@ local config = wezterm.config_builder()
 
 config.color_scheme = 'Monokai Soda (Gogh)'
 config.font = wezterm.font_with_fallback {'Moralerspace Krypton HWNF', 'CaskaydiaCove Nerd Font', 'Cascadia Code'}
+config.initial_cols = 120
+config.initial_rows = 32
 
 
 local launch_menu = {}
