@@ -54,6 +54,7 @@
 !/.config/sh/scripts/*.sh
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
+!/.config/wezterm/**
 !/.config/zsh/
 !/.config/zsh/**
 /.config/zsh/antigen.sh
