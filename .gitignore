@@ -68,6 +68,8 @@
 !/.local/bin/git-diff-archive
 
 !/.vim/
+/.vim/tokens.vim
+!/.vim/tokens.vim.secret
 !/.vimrc
 !/.vim/backup/
 !/.vim/colors/
