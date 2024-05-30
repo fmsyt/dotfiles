@@ -82,7 +82,7 @@ set smartindent
 set autoindent
 
 " マウス設定
-"set mouse=nv
+set mouse-=a
 "set ttymouse=xterm2
 
 " 検索系
