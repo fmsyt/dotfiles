@@ -7,7 +7,7 @@ config.initial_rows = 32
 config.use_ime = true
 
 config.font = wezterm.font_with_fallback {
-    'Moralerspace Krypton HWNF',
+    -- 'Moralerspace Krypton HWNF',
     'CaskaydiaCove Nerd Font',
     'Cascadia Code',
 }
