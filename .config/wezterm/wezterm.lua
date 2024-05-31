@@ -2,9 +2,26 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Monokai Soda (Gogh)'
-config.font = wezterm.font_with_fallback {'Moralerspace Krypton HWNF', 'CaskaydiaCove Nerd Font', 'Cascadia Code'}
 config.initial_cols = 120
 config.initial_rows = 32
+config.use_ime = true
+
+config.font = wezterm.font_with_fallback {
+    'Moralerspace Krypton HWNF',
+    'CaskaydiaCove Nerd Font',
+    'Cascadia Code',
+}
+
+config.keys = {
+    {
+        key = "\\",
+        mods = "CTRL",
+        action = wezterm.action.SplitPane {
+            direction = "Right",
+            size = { Percent = 50 },
+        }
+    }
+}
 
 
 local launch_menu = {}
@@ -18,8 +35,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     })
 
     table.insert(launch_menu, {
-        label = 'PowerShell',
-        args = {'powershell.exe', '-NoLogo'}
+        label = 'wsl',
+        args = {'wsl.exe'}
     })
 
     -- Find installed visual studio version(s) and add their compilation
