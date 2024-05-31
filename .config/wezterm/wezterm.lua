@@ -11,27 +11,27 @@ config.font = wezterm.font_with_fallback {
     'Cascadia Code',
 }
 
-config.keys = {{
-    key = "\\",
-    mods = "CTRL",
-    action = wezterm.action_callback(function(window, pane)
+-- config.keys = {{
+--     key = "\\",
+--     mods = "CTRL",
+--     action = wezterm.action_callback(function(window, pane)
 
-        local info = pane:get_foreground_process_info()
-        if info then
-            -- wezterm.log_info(tostring(info.pid) .. ' ' .. info.executable)
-        end
+--         local info = pane:get_foreground_process_info()
+--         if info then
+--             -- wezterm.log_info(tostring(info.pid) .. ' ' .. info.executable)
+--         end
 
 
-        window:perform_action(
-            wezterm.action.SplitPane {
-                direction = "Right",
-                size = { Percent = 50 }
-            },
-            pane
-        )
+--         window:perform_action(
+--             wezterm.action.SplitPane {
+--                 direction = "Right",
+--                 size = { Percent = 50 }
+--             },
+--             pane
+--         )
 
-    end)
-}}
+--     end)
+-- }}
 
 local launch_menu = {}
 
