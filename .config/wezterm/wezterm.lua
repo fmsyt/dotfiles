@@ -7,22 +7,31 @@ config.initial_rows = 32
 config.use_ime = true
 
 config.font = wezterm.font_with_fallback {
-    -- 'Moralerspace Krypton HWNF',
     'CaskaydiaCove Nerd Font',
     'Cascadia Code',
 }
 
-config.keys = {
-    {
-        key = "\\",
-        mods = "CTRL",
-        action = wezterm.action.SplitPane {
-            direction = "Right",
-            size = { Percent = 50 },
-        }
-    }
-}
+config.keys = {{
+    key = "\\",
+    mods = "CTRL",
+    action = wezterm.action_callback(function(window, pane)
 
+        local info = pane:get_foreground_process_info()
+        if info then
+            -- wezterm.log_info(tostring(info.pid) .. ' ' .. info.executable)
+        end
+
+
+        window:perform_action(
+            wezterm.action.SplitPane {
+                direction = "Right",
+                size = { Percent = 50 }
+            },
+            pane
+        )
+
+    end)
+}}
 
 local launch_menu = {}
 
