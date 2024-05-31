@@ -43,7 +43,7 @@ function post_reveal() {
 
 
 echo "Revealing secrets..."
-git secret reveal
+git secret reveal -P
 
 if [ $? -gt 0 ]; then
     echo "Failed to reveal secrets."

@@ -7,6 +7,7 @@
 	quotepath = false
 	editor = VIM_MODE=slim vim
 	excludes = ~/.config/git/ignore
+	filemode = true
 [pull]
 	ff = only
 [fetch]
