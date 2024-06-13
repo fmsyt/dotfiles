@@ -33,6 +33,14 @@ config.font = wezterm.font_with_fallback {
 --     end)
 -- }}
 
+config.mouse_bindings = {
+    {
+        event = { Down = { streak = 1, button = 'Right' } },
+        mods = 'NONE',
+        action = wezterm.action.PasteFrom 'Clipboard'
+    }
+}
+
 local launch_menu = {}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
