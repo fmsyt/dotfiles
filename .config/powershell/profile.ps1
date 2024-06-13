@@ -1,5 +1,11 @@
-# oh-myp-posh.exe exists
-if (where.exe oh-my-posh) {
+$promptLoaded = $false
+
+if (where.exe starship) {
+    $promptLoaded = $true
+    Invoke-Expression (& starship init powershell)
+}
+
+if (!$promptLoaded -and (where.exe oh-my-posh)) {
 
     $currentFileObject = Get-Item -Path $MyInvocation.MyCommand.path
     if ($currentFileObject.Target) {
@@ -15,6 +21,8 @@ if (where.exe oh-my-posh) {
     }
 
     oh-my-posh init pwsh --config "$jsonPath" | Invoke-Expression
+
+    $promptLoaded = $true
 }
 
 function ll() {
