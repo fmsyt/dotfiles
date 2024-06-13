@@ -90,3 +90,15 @@ style_root = "black bold"
 format = "[$user🌱]($style) "
 disabled = false
 show_always = true
+
+[os]
+disabled = true
+
+[os.symbols]
+Windows = " "
+Macos = " "
+Linux = " "
+Debian = " "
+Alpine = " "
+Arch = " "
+Ubuntu = " "
