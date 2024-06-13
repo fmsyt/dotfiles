@@ -92,8 +92,9 @@ disabled = false
 show_always = true
 
 [os]
-disabled = true
+disabled = false
 
+# find from https://www.nerdfonts.com/cheat-sheet
 [os.symbols]
 Windows = " "
 Macos = " "
@@ -101,4 +102,4 @@ Linux = " "
 Debian = " "
 Alpine = " "
 Arch = " "
-Ubuntu = " "
+Ubuntu = " "
