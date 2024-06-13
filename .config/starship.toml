@@ -75,6 +75,14 @@ format = '([$all_status$ahead_behind]($style) )'
 modified = '[ ~$count](red) '
 staged = '[ ~$count](green) '
 stashed = ' ~$count '
+untracked = '[ ~$count](yellow) '
+conflicted = '[ ~$count](bold red) '
+deleted = '[ ~$count](red) '
+renamed = '[ ~$count](magenta) '
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
 
 [username]
 style_user = "white bold"
