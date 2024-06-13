@@ -57,11 +57,24 @@ truncation_length = 100
 truncate_to_repo = false
 truncation_symbol = "…/"
 
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
 [docker_context]
 format = "via [🐋 $context](blue bold)"
 
 [git_branch]
-symbol = " "
+symbol = " "
+format = '[ $symbol$branch ]($style)'
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+modified = '[ ~$count](red) '
+staged = '[ ~$count](green) '
+stashed = ' ~$count '
 
 [username]
 style_user = "white bold"
