@@ -63,8 +63,8 @@ repo = 'sheerun/vim-polyglot'
 repo = 'tomasr/molokai'
 
 # 閉じ括弧を補完
-[[plugins]]
-repo = 'cohama/lexima.vim'
+# [[plugins]]
+# repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
