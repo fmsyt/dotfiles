@@ -34,7 +34,7 @@ if dein#check_install()
     call dein#install()
 endif
 
-call dein#check_update(v:true)
+" call dein#check_update(v:true)
 
 " プラグイン再読み込み
 "call map(dein#check_clean(), "delete(v:val, 'rf')")

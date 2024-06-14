@@ -152,3 +152,6 @@ depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 repo = 'Shougo/ddc-sorter_rank'
 depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
+[[plugins]]
+repo = 'Shougo/ddc-source-copilot'
+depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
