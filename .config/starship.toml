@@ -99,10 +99,28 @@ disabled = false
 
 # find from https://www.nerdfonts.com/cheat-sheet
 [os.symbols]
-Windows = " " # 󰖳󰨡
-Macos = " "
-Linux = " "
-Debian = " "
 Alpine = " "
 Arch = " "
+Debian = " "
+Linux = " "
+Macos = " "
+Raspbian = " "
 Ubuntu = " "
+Windows = " "  # 󰖳󰨡
+
+
+[lua]
+symbol = " " # 󰢱
+
+[php]
+symbol = " " # 󰌟
+
+[python]
+symbol = " " # 󰢱
+
+[rust]
+symbol = '󱘗 ' # 󱘗
+
+[package]
+symbol = "󰏗 "   # 󰏗
+disabled = true
