@@ -66,8 +66,8 @@ repo = 'sheerun/vim-polyglot'
 repo = 'tomasr/molokai'
 
 # 閉じ括弧を補完
-# [[plugins]]
-# repo = 'cohama/lexima.vim'
+[[plugins]]
+repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
@@ -118,18 +118,11 @@ call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denop
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
+depends = ['vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
 depends = ['Shougo/ddc.vim']
-hook_post_update = '''
-if filereadable(expand('~/.vim/rc/cli/dein/init/ddc.vim'))
-    source ~/.vim/rc/cli/dein/init/ddc.vim
-endif
-if filereadable(expand('~/.vim/rc/cli/dein/init/pum.vim'))
-    source ~/.vim/rc/cli/dein/init/pum.vim
-endif
-'''
 
 [[plugins]]
 repo = 'Shougo/ddc-around'

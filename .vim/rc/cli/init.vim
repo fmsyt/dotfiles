@@ -42,3 +42,6 @@ endif
 
 colorscheme monokai_pro
 let g:lightline = { 'colorscheme': 'monokai_pro' }
+
+source ~/.vim/rc/cli/ddc.vim
+source ~/.vim/rc/cli/pum.vim
