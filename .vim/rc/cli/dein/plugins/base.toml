@@ -1,5 +1,8 @@
 # hook の便利な使い方 https://qiita.com/delphinus/items/cd221a450fd23506e81a
 
+[[plugins]]
+repo = 'github/copilot.vim'
+
 # bufferからファイルを開く
 [[plugins]]
 repo = 'Shougo/unite.vim'
@@ -107,47 +110,49 @@ set signcolumn=yes
 repo = 'tpope/vim-fugitive'
 
 
+# deno を利用してvim/neovimのプラグインを作成するためのプラグイン
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 if = '''executable('deno') && v:version >= 901'''
-on_event = 'CursorHold'
+# on_event = 'CursorHold'
 hook_add = """
 let g:denops_server_addr = '127.0.0.1:32123'
 call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
 """
 
+# 自動補完
 [[plugins]]
 repo = 'Shougo/ddc.vim'
 depends = ['vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
-depends = ['Shougo/ddc.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
-depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-converter_remove_overlap'
-depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'LumaKernel/ddc-source-file'
-depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-matcher_head'
-depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-source-omni'
-# depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'
-depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-source-copilot'
-depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
+
+[[plugins]]
+repo = 'kuuote/lspoints'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-lsp'
+depends = ['prabirshrestha/vim-lsp', 'kuuote/lspoints']
+

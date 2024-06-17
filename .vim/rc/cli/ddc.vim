@@ -2,6 +2,7 @@
 call ddc#custom#patch_global('sources', [
     \   'around',
     \   'omni',
+    \   'lsp',
     \ ])
 
 " Use matcher_head and sorter_rank.
@@ -15,9 +16,19 @@ call ddc#custom#patch_global('sourceOptions', #{
     \   around: #{
     \       mark: 'Around',
     \   },
-    \   vim-lsp: #{
-    \       mark: 'LSP',
-    \       forceCompletionPattern: '\.|:|->|"\w+/*'
+    \   lsp: #{
+    \     mark: 'lsp',
+    \     forceCompletionPattern: '\.\w*|:\w*|->\w*',
+    \   },
+    \ })
+
+call ddc#custom#patch_global('sourceParams', #{
+    \   lsp: #{
+    \     snippetEngine: denops#callback#register({
+    \           body -> vsnip#anonymous(body)
+    \     }),
+    \     enableResolveItem: v:true,
+    \     enableAdditionalTextEdit: v:true,
     \   }
     \ })
 
