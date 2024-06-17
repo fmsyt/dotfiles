@@ -141,8 +141,8 @@ repo = 'Shougo/ddc-matcher_head'
 depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
-repo = 'Shougo/ddc-omni'
-depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
+repo = 'Shougo/ddc-source-omni'
+# depends = ['Shougo/ddc.vim', 'vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/ddc-sorter_rank'

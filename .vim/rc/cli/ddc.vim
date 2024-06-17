@@ -5,27 +5,26 @@ call ddc#custom#patch_global('sources', [
     \ ])
 
 " Use matcher_head and sorter_rank.
-call ddc#custom#patch_global('sourceOptions', {
-    \   '_': {
-    \       'matchers': ['matcher_head'],
-    \       'omni': {'mark': 'O'},
-    \       'sorters': ['sorter_rank'],
-    \       'converters': ['converter_remove_overlap']
+call ddc#custom#patch_global('sourceOptions', #{
+    \   _: #{
+    \       matchers: ['matcher_head'],
+    \       sorters: ['sorter_rank'],
+    \       converters: ['converter_remove_overlap']
     \   },
-    \   'around': {
-    \       'mark': 'Around',
-    \       'maxSize': 500
+    \   omni: #{ mark: 'O' },
+    \   around: #{
+    \       mark: 'Around',
     \   },
-    \   'vim-lsp': {
-    \       'mark': 'LSP',
-    \       'forceCompletionPattern': '\.|:|->|"\w+/*'
+    \   vim-lsp: #{
+    \       mark: 'LSP',
+    \       forceCompletionPattern: '\.|:|->|"\w+/*'
     \   }
     \ })
 
 
-call ddc#custom#patch_filetype(['php'], 'sourceParams', {
-    \   'omni': {
-    \     'omnifunc': 'phpactor#Complete'
+call ddc#custom#patch_filetype(['php'], 'sourceParams', #{
+    \   omni: #{
+    \     omnifunc: 'phpactor#Complete'
     \   }
     \ })
 
