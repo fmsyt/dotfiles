@@ -6,8 +6,8 @@ endif
 " インストールディレクトリの指定
 let s:dein_dir = expand('~/.cache/dein/slim')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-let s:toml = expand('~/.vim/rc/slim/dein/plugins') . '/base.toml'
-let s:toml_lazy = expand('~/.vim/rc/slim/dein/plugins') . '/lazy.toml'
+let s:toml = expand('~/.vim/rc/slim') . '/plugins.toml'
+let s:toml_lazy = expand('~/.vim/rc/slim') . '/plugins_lazy.toml'
 
 " dein.vim ディレクトリがruntimepathに入っていない場合、追加
 if match( &runtimepath, '/dein.vim' ) == -1
