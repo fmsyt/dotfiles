@@ -81,7 +81,6 @@ let g:lsp_log_verbose = 0
 
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
-depends = ['prabirshrestha/vim-lsp']
 
 [[plugins]]
 repo = 'shun/ddc-source-vim-lsp'
@@ -93,8 +92,8 @@ repo = 'shun/ddc-source-vim-lsp'
 # repo = 'Shougo/neosnippet-snippets'
 
 # 非同期処理ができるようにする
-[[plugins]]
-repo = 'Shougo/vimproc'
+# [[plugins]]
+# repo = 'Shougo/vimproc'
 
 [[plugins]]
 repo = 'Shougo/neocomplcache'
@@ -113,8 +112,8 @@ set signcolumn=yes
 '''
 
 # git の操作をvimから行う
-[[plugins]]
-repo = 'tpope/vim-fugitive'
+# [[plugins]]
+# repo = 'tpope/vim-fugitive'
 
 
 # deno を利用してvim/neovimのプラグインを作成するためのプラグイン
@@ -130,7 +129,7 @@ call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denop
 # 自動補完
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-depends = ['vim-denops/denops.vim']
+# depends = ['vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
