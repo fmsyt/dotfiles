@@ -125,6 +125,10 @@ call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denop
 repo = 'Shougo/ddc.vim'
 depends = ['vim-denops/denops.vim']
 
+# 補完を表示
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+
 [[plugins]]
 repo = 'Shougo/pum.vim'
 
@@ -155,4 +159,3 @@ repo = 'kuuote/lspoints'
 [[plugins]]
 repo = 'Shougo/ddc-source-lsp'
 depends = ['prabirshrestha/vim-lsp', 'kuuote/lspoints']
-
