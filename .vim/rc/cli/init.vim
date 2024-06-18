@@ -22,8 +22,8 @@ endif
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
-    call dein#load_toml(s:toml     , { 'lazy': 0 })
     call dein#load_toml(s:toml_lazy, { 'lazy': 1 })
+    call dein#load_toml(s:toml     , { 'lazy': 0 })
 
     call dein#end()
     call dein#save_state()
@@ -40,8 +40,7 @@ endif
 "call map(dein#check_clean(), "delete(v:val, 'rf')")
 "call dein#recache_runtimepath()
 
-colorscheme herald
-let g:lightline = { 'colorscheme': 'herald' }
+colorscheme monokai_pro
+let g:lightline = { 'colorscheme': 'monokai_pro' }
 
 source ~/.vim/rc/cli/ddc.vim
-source ~/.vim/rc/cli/pum.vim

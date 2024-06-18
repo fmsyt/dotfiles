@@ -1,35 +1,41 @@
-" Use around source.
+let g:copilot_no_maps = v:true
+
+" ui で何を使用するか指定
+call ddc#custom#patch_global('ui', 'native')
+
 call ddc#custom#patch_global('sources', [
-    \   'around',
     \   'omni',
-    \   'lsp',
+    \   'vim-lsp',
+    \   'copilot',
+    \   'file',
+    \   'around',
     \ ])
 
-" Use matcher_head and sorter_rank.
-call ddc#custom#patch_global('sourceOptions', #{
-    \   _: #{
-    \       matchers: ['matcher_head'],
-    \       sorters: ['sorter_rank'],
-    \       converters: ['converter_remove_overlap']
+call ddc#custom#patch_global('sourceOptions', {
+    \   '_': {
+    \     'matchers': ['matcher_head'],
+    \     'sorters': ['sorter_rank']
     \   },
-    \   omni: #{ mark: 'O' },
-    \   around: #{
-    \       mark: 'Around',
+    \   'around': {
+    \     'mark': 'around',
     \   },
-    \   lsp: #{
-    \     mark: 'lsp',
-    \     forceCompletionPattern: '\.\w*|:\w*|->\w*',
+    \   'file': {
+    \     'mark': 'file',
+    \     'isVolatile': v:true,
+    \     'forceCompletionPattern': '\S/\S*',
     \   },
-    \ })
-
-call ddc#custom#patch_global('sourceParams', #{
-    \   lsp: #{
-    \     snippetEngine: denops#callback#register({
-    \           body -> vsnip#anonymous(body)
-    \     }),
-    \     enableResolveItem: v:true,
-    \     enableAdditionalTextEdit: v:true,
-    \   }
+    \   'vim-lsp': {
+    \     'mark': 'lsp',
+    \     'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+    \   },
+    \   'copilot': {
+    \     'mark': 'Copilot',
+    \     'matchers': [],
+    \     'minAutoCompleteLength': 0,
+    \   },
+    \   'omni': {
+    \     'mark': 'O',
+    \   },
     \ })
 
 
@@ -40,6 +46,23 @@ call ddc#custom#patch_filetype(['php'], 'sourceParams', #{
     \ })
 
 
-" Use ddc.
+
 call ddc#enable()
 
+" <TAB>: completion.
+inoremap <expr> <TAB>
+    \ pumvisible() ? '<C-n>' :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ '<TAB>' : ddc#map#manual_complete()
+
+" <S-TAB>: completion back.
+inoremap <expr> <S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+
+" <C-j>: completion.
+inoremap <expr> <C-j>
+    \ pumvisible() ? '<space>' :
+    \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+    \ '<TAB>' : ddc#map#manual_complete()
+" <C-k>: completion back.
+inoremap <expr> <C-k>  pumvisible() ? '<C-p>' : ''

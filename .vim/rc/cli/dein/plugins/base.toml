@@ -1,17 +1,63 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+if = '''executable('deno') && v:version >= 901'''
+# on_event = 'CursorHold'
+hook_add = """
+let g:denops_server_addr = '127.0.0.1:32123'
+call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
+"""
+
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-around'
+
+[[plugins]]
+repo = 'Shougo/ddc-filter-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-filter-sorter_rank'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-source-file'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+# hook_add = '''
+# execute 'source ' . g:plugin_config_dir . '/hook/vim-lsp-settings.vim'
+# '''
+
+[[plugins]]
+repo = 'shun/ddc-source-vim-lsp'
+
+
+
 # hook の便利な使い方 https://qiita.com/delphinus/items/cd221a450fd23506e81a
 
 [[plugins]]
 repo = 'github/copilot.vim'
 
+[[plugins]]
+repo = 'Shougo/ddc-source-copilot'
+
+
 # bufferからファイルを開く
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
-# 特定の文字で後から囲む
-# https://github.com/tpope/vim-surround
-# https://qiita.com/takuyanin/items/5eb009e737a235e51ab2
-[[plugins]]
-repo = 'tpope/vim-surround'
+# # 特定の文字で後から囲む
+# # https://github.com/tpope/vim-surround
+# # https://qiita.com/takuyanin/items/5eb009e737a235e51ab2
+# [[plugins]]
+# repo = 'tpope/vim-surround'
 
 # ディレクトリツリー表示
 [[plugins]]
@@ -72,32 +118,32 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-hook_add = '''
-let g:lsp_log_verbose = 0
-'''
+# [[plugins]]
+# repo = 'prabirshrestha/vim-lsp'
+# hook_add = '''
+# let g:lsp_log_verbose = 0
+# '''
 
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
+# [[plugins]]
+# repo = 'mattn/vim-lsp-settings'
 
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
+# [[plugins]]
+# repo = 'Shougo/neosnippet.vim'
 
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+# [[plugins]]
+# repo = 'Shougo/neosnippet-snippets'
 
-[[plugins]]
-repo = 'Shougo/vimproc'
+# [[plugins]]
+# repo = 'Shougo/vimproc'
 
-[[plugins]]
-repo = 'Shougo/neocomplcache'
-hook_add = '''
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-'''
+# [[plugins]]
+# repo = 'Shougo/neocomplcache'
+# hook_add = '''
+# if !exists('g:neocomplcache_keyword_patterns')
+#     let g:neocomplcache_keyword_patterns = {}
+# endif
+# let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+# '''
 
 
 [[plugins]]
@@ -110,52 +156,50 @@ set signcolumn=yes
 repo = 'tpope/vim-fugitive'
 
 
-# deno を利用してvim/neovimのプラグインを作成するためのプラグイン
-[[plugins]]
-repo = 'vim-denops/denops.vim'
-if = '''executable('deno') && v:version >= 901'''
-# on_event = 'CursorHold'
-hook_add = """
-let g:denops_server_addr = '127.0.0.1:32123'
-call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
-"""
+# # deno を利用してvim/neovimのプラグインを作成するためのプラグイン
+# [[plugins]]
+# repo = 'vim-denops/denops.vim'
+# if = '''executable('deno') && v:version >= 901'''
+# # on_event = 'CursorHold'
+# hook_add = """
+# let g:denops_server_addr = '127.0.0.1:32123'
+# call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
+# """
 
-# 自動補完
-[[plugins]]
-repo = 'Shougo/ddc.vim'
-depends = ['vim-denops/denops.vim']
+# # 自動補完
+# [[plugins]]
+# repo = 'Shougo/ddc.vim'
+# depends = ['vim-denops/denops.vim']
 
-# 補完を表示
-[[plugins]]
-repo = 'Shougo/ddc-ui-native'
+# # 補完を表示
+# [[plugins]]
+# repo = 'Shougo/ddc-ui-native'
 
-[[plugins]]
-repo = 'Shougo/pum.vim'
+# [[plugins]]
+# repo = 'Shougo/pum.vim'
 
-[[plugins]]
-repo = 'Shougo/ddc-around'
+# [[plugins]]
+# repo = 'Shougo/ddc-around'
 
-[[plugins]]
-repo = 'Shougo/ddc-converter_remove_overlap'
+# [[plugins]]
+# repo = 'Shougo/ddc-converter_remove_overlap'
 
-[[plugins]]
-repo = 'LumaKernel/ddc-source-file'
+# [[plugins]]
+# repo = 'LumaKernel/ddc-source-file'
 
-[[plugins]]
-repo = 'Shougo/ddc-matcher_head'
+# [[plugins]]
+# repo = 'Shougo/ddc-matcher_head'
 
 [[plugins]]
 repo = 'Shougo/ddc-source-omni'
 
-[[plugins]]
-repo = 'Shougo/ddc-sorter_rank'
+# [[plugins]]
+# repo = 'Shougo/ddc-sorter_rank'
 
-[[plugins]]
-repo = 'Shougo/ddc-source-copilot'
 
-[[plugins]]
-repo = 'kuuote/lspoints'
+# [[plugins]]
+# repo = 'kuuote/lspoints'
 
-[[plugins]]
-repo = 'Shougo/ddc-source-lsp'
-depends = ['prabirshrestha/vim-lsp', 'kuuote/lspoints']
+# [[plugins]]
+# repo = 'Shougo/ddc-source-lsp'
+# depends = ['prabirshrestha/vim-lsp', 'kuuote/lspoints']
