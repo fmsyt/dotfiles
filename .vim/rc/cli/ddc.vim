@@ -1,3 +1,5 @@
+echom "ddc.vim configuration"
+
 " Use around source.
 call ddc#custom#patch_global('sources', [
     \   'around',
