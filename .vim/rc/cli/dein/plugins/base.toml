@@ -65,7 +65,6 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
-# カラースキーム
 [[plugins]]
 repo = 'tomasr/molokai'
 
@@ -83,17 +82,13 @@ let g:lsp_log_verbose = 0
 repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
-repo = 'shun/ddc-source-vim-lsp'
+repo = 'Shougo/neosnippet.vim'
 
-# [[plugins]]
-# repo = 'Shougo/neosnippet.vim'
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
-# [[plugins]]
-# repo = 'Shougo/neosnippet-snippets'
-
-# 非同期処理ができるようにする
-# [[plugins]]
-# repo = 'Shougo/vimproc'
+[[plugins]]
+repo = 'Shougo/vimproc'
 
 [[plugins]]
 repo = 'Shougo/neocomplcache'
@@ -111,9 +106,8 @@ hook_add = '''
 set signcolumn=yes
 '''
 
-# git の操作をvimから行う
-# [[plugins]]
-# repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 
 # deno を利用してvim/neovimのプラグインを作成するためのプラグイン
@@ -129,7 +123,7 @@ call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denop
 # 自動補完
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-# depends = ['vim-denops/denops.vim']
+depends = ['vim-denops/denops.vim']
 
 [[plugins]]
 repo = 'Shougo/pum.vim'
@@ -161,3 +155,4 @@ repo = 'kuuote/lspoints'
 [[plugins]]
 repo = 'Shougo/ddc-source-lsp'
 depends = ['prabirshrestha/vim-lsp', 'kuuote/lspoints']
+
