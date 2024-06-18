@@ -40,8 +40,8 @@ endif
 "call map(dein#check_clean(), "delete(v:val, 'rf')")
 "call dein#recache_runtimepath()
 
-colorscheme monokai_pro
-let g:lightline = { 'colorscheme': 'monokai_pro' }
+colorscheme herald
+let g:lightline = { 'colorscheme': 'herald' }
 
 source ~/.vim/rc/cli/ddc.vim
 source ~/.vim/rc/cli/pum.vim
