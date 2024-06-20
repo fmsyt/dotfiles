@@ -28,6 +28,8 @@
 	set-default-user = "!f(){ git set-user motsuni motsuni@yotta-rc.dev; };f"
 	reset-user = "!f(){ git config --local --unset user.name; git config --local --unset user.email; };f"
 	root = "!f() { git rev-parse --show-superproject-working-tree --show-toplevel | head -1; }; f"
+	unstage = "!f() { git restore --staged $1; }; f"
+	dda = "!f() { git unstage $1; }; f"
 
 [credential]
 	helper = cache --timeout=86400
