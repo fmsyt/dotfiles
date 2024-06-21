@@ -60,12 +60,16 @@ format = '[$ssh_symbol$hostname]($style):'
 truncation_length = 100
 truncate_to_repo = false
 truncation_symbol = "…/"
+use_os_path_sep = false
 
 [directory.substitutions]
 "Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
+
+[cmd_duration]
+format = "󱦟 [$duration]($style) "
 
 [docker_context]
 format = "via [🐋 $context](blue bold)"
