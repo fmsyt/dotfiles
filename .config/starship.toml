@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
+add_newline = true
 
 # https://starship.rs/ja-JP/config/#デフォルトのプロンプトフォーマット
 format = """
@@ -108,19 +108,48 @@ Raspbian = " "
 Ubuntu = " "
 Windows = " "  # 󰖳󰨡
 
+[package]
+symbol = "󰏗 "   # 󰏗
+# format = "[$symbol]($style)"
+disabled = true
 
 [lua]
 symbol = " " # 󰢱
+# format = "[$symbol]($style)"
+
+[nodejs]
+symbol = " " # 󰎙
+# format = "[$symbol]($style)"
 
 [php]
 symbol = " " # 󰌟
+# format = "[$symbol]($style)"
 
 [python]
 symbol = " " # 󰢱
+# format = "[$symbol]($style)"
 
 [rust]
 symbol = '󱘗 ' # 󱘗
+# format = "[$symbol]($style)"
 
-[package]
-symbol = "󰏗 "   # 󰏗
-disabled = true
+[c]
+symbol = " "
+# format = "[$symbol]($style)"
+
+[cmake]
+# format = "[$symbol]($style)"
+
+[deno]
+# format = "[$symbol]($style)"
+
+[dotnet]
+# format = "[$symbol]($style)"
+
+[java]
+symbol = "󰬷 " # 󰬷
+# format = "[$symbol]($style)"
+
+[gradle]
+# format = "[$symbol]($style)"
+
