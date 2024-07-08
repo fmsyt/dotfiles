@@ -35,9 +35,6 @@ repo = 'cohama/lexima.vim'
 repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = '''
     let g:indentLine_color_term = 239
