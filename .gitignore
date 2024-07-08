@@ -22,6 +22,8 @@
 !/.ssh/shared/
 /.ssh/shared/*
 !/.ssh/shared/*.secret
+!/.ssh/sockets/
+!/.ssh/sockets/.gitkeep
 
 !/.config/
 !/.config/*/
