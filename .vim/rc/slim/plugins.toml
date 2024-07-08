@@ -20,6 +20,22 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = ['vim-airline']
+hook_add = '''
+let g:airline_theme = 'minimalist'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+'''
+
+[[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
     let g:ctrlp_show_hidden = 1
