@@ -160,6 +160,10 @@ post_ssh_install() {
         echo "Creating SSH config file..."
         echo $SSH_INCLUDE_DIRECTIVE > $SSH_CONFIG_FILE
     fi
+
+    chmod 600 $SSH_CONFIG_FILE
+    chmod 600 $SSH_CONFIG_DIR/*.conf
+    chmod 600 $SSH_CONFIG_DIR/*.pem
 }
 
 post_install() {
