@@ -5,7 +5,7 @@
   },
   {
     "src": ".vim",
-    "dst": "$HOME/vimfiles" 
+    "dst": "$HOME/vimfiles"
   },
   {
     "src": ".config",
