@@ -1,132 +1,39 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
   "type": "array",
+  "default": [],
+  "title": "Root Schema",
   "items": {
-      "$ref": "#/definitions/MapElement"
-  },
-  "definitions": {
-      "MapElement": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-              "src": {
-                  "type": "string"
-              },
-              "dst": {
-                  "$ref": "#/definitions/DstUnion"
-              },
-              "command": {
-                  "$ref": "#/definitions/CommandUnion"
-              },
-              "test": {
-                  "$ref": "#/definitions/Test"
-              }
-          },
-          "required": [
-              "src"
-          ],
-          "title": "MapElement"
+    "type": "object",
+    "title": "A Schema",
+    "required": [
+      "src",
+      "dst"
+    ],
+    "properties": {
+      "src": {
+        "type": "string",
+        "title": "The src Schema",
+        "examples": [
+          ".config/powershell/profile.ps1",
+          ".vim",
+          ".config",
+          ".vim/init.vim",
+          ".ssh/shared"
+        ]
       },
-      "CommandClass": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-              "win": {
-                  "$ref": "#/definitions/Win"
-              },
-              "linux": {
-                  "$ref": "#/definitions/Linux"
-              }
-          },
-          "required": [],
-          "title": "CommandClass"
-      },
-      "DstClass": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-              "win": {
-                  "type": "string"
-              },
-              "linux": {
-                  "type": "string"
-              }
-          },
-          "required": [],
-          "title": "DstClass"
-      },
-      "CommandUnion": {
-          "anyOf": [
-              {
-                  "type": "array",
-                  "items": {
-                      "type": "string"
-                  }
-              },
-              {
-                  "$ref": "#/definitions/CommandClass"
-              },
-              {
-                  "type": "string"
-              }
-          ],
-          "title": "CommandUnion"
-      },
-      "Linux": {
-          "anyOf": [
-              {
-                  "type": "array",
-                  "items": {
-                      "type": "string"
-                  }
-              },
-              {
-                  "type": "string"
-              }
-          ],
-          "title": "Linux"
-      },
-      "Win": {
-          "anyOf": [
-              {
-                  "type": "array",
-                  "items": {
-                      "type": "string"
-                  }
-              },
-              {
-                  "type": "string"
-              }
-          ],
-          "title": "Win"
-      },
-      "DstUnion": {
-          "anyOf": [
-              {
-                  "$ref": "#/definitions/DstClass"
-              },
-              {
-                  "type": "string"
-              }
-          ],
-          "title": "DstUnion"
-      },
-      "Test": {
-          "anyOf": [
-              {
-                  "type": "array",
-                  "items": {
-                      "type": "string"
-                  }
-              },
-              {
-                  "$ref": "#/definitions/CommandClass"
-              },
-              {
-                  "type": "string"
-              }
-          ],
-          "title": "Test"
+      "dst": {
+        "type": "string",
+        "title": "The dst Schema",
+        "examples": [
+          "$PROFILE.CurrentUserAllHosts",
+          "$HOME/vimfiles",
+          "$HOME/.config",
+          "$HOME/_vimrc",
+          "$HOME/.ssh/shared"
+        ]
       }
+    }
   }
 }
