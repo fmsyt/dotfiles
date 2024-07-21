@@ -7,9 +7,9 @@ latest_url=$(echo $latest_url | sed 's/tag/download/')
 
 tmp_dir=$(mktemp -d)
 
-command wget -P $tmp_dir/ $latest_url/CascadiaCode.tar.xz
+command wget -P $tmp_dir/ $latest_url/CaskaydiaCove.tar.xz
 
-mkdir -p $HOME/.fonts/CascadiaCode
-command tar Jxfv $tmp_dir/CascadiaCode.tar.xz -C $HOME/.fonts/CascadiaCode/
+mkdir -p $HOME/.fonts/CaskaydiaCove
+command tar Jxfv $tmp_dir/CaskaydiaCove.tar.xz -C $HOME/.fonts/CaskaydiaCove/
 
 rm -rf $tmp_dir
