@@ -22,4 +22,6 @@ command wget -P $tmp_dir/ $latest_url/$file_name
 mkdir -p $HOME/.fonts
 command unzip $tmp_dir/$file_name -d $HOME/.fonts/monaspace/
 
+command fc-cache -f -v
+
 rm -rf $tmp_dir

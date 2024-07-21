@@ -12,4 +12,6 @@ command wget -P $tmp_dir/ $latest_url/CaskaydiaCove.tar.xz
 mkdir -p $HOME/.fonts/CaskaydiaCove
 command tar Jxfv $tmp_dir/CaskaydiaCove.tar.xz -C $HOME/.fonts/CaskaydiaCove/
 
+command fc-cache -f -v
+
 rm -rf $tmp_dir

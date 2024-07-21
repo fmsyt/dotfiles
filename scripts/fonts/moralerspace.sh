@@ -42,4 +42,6 @@ mkdir -p $HOME/.fonts/moralerspace
 echo -e "Unzipping to: \033[0;32m$HOME/.fonts/moralerspace/\033[0;39m"
 unzip $tmp_dir/$file_name -d $HOME/.fonts/moralerspace/
 
+command fc-cache -f -v
+
 rm -rf $tmp_dir
