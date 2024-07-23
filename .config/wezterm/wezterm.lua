@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
+local act = wezterm.action
+
 config.initial_cols = 120
 config.initial_rows = 32
 config.use_ime = true
@@ -50,27 +52,6 @@ config.colors = {
 
 config.font = wezterm.font_with_fallback {'CaskaydiaCove Nerd Font', 'Cascadia Code'}
 
--- config.keys = {{
---     key = "\\",
---     mods = "CTRL",
---     action = wezterm.action_callback(function(window, pane)
-
---         local info = pane:get_foreground_process_info()
---         if info then
---             -- wezterm.log_info(tostring(info.pid) .. ' ' .. info.executable)
---         end
-
---         window:perform_action(
---             wezterm.action.SplitPane {
---                 direction = "Right",
---                 size = { Percent = 50 }
---             },
---             pane
---         )
-
---     end)
--- }}
-
 config.mouse_bindings = {{
     event = {
         Down = {
@@ -79,7 +60,15 @@ config.mouse_bindings = {{
         }
     },
     mods = 'NONE',
-    action = wezterm.action.PasteFrom 'Clipboard'
+    action = wezterm.action_callback(function(window, pane)
+        local has_selection = window:get_selection_text_for_pane(pane) ~= ''
+        if has_selection then
+            window:perform_action(act.CopyTo 'ClipboardAndPrimarySelection', pane)
+            window:perform_action(act.ClearSelection, pane)
+        else
+            window:perform_action(act.PasteFrom 'Clipboard', pane)
+        end
+    end)
 }}
 
 local launch_menu = {}
