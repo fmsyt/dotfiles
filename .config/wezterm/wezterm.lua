@@ -5,6 +5,7 @@ local act = wezterm.action
 
 config.initial_cols = 120
 config.initial_rows = 32
+config.default_cursor_style = 'BlinkingUnderline'
 config.use_ime = true
 config.color_scheme = 'Monokai Soda (Gogh)'
 
@@ -17,6 +18,7 @@ local bg_inactive = '#333333'
 local bg_hover = '#222222'
 
 config.colors = {
+    cursor_border = '#FFA500',
     tab_bar = {
         background = bg_active,
         active_tab = {
