@@ -49,6 +49,9 @@ call ddc#custom#patch_filetype(['php'], 'sourceParams', #{
 
 call ddc#enable()
 
+
+" https://qiita.com/maachan_9692/items/9b507fd043424013abde
+
 " <TAB>: completion.
 inoremap <expr> <TAB>
     \ pumvisible() ? '<C-n>' :
