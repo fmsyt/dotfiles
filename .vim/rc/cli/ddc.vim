@@ -4,9 +4,9 @@ let g:copilot_no_maps = v:true
 call ddc#custom#patch_global('ui', 'native')
 
 call ddc#custom#patch_global('sources', [
+    \   'copilot',
     \   'omni',
     \   'vim-lsp',
-    \   'copilot',
     \   'file',
     \   'around',
     \ ])
@@ -23,6 +23,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \     'mark': 'file',
     \     'isVolatile': v:true,
     \     'forceCompletionPattern': '\S/\S*',
+    \     'maxItems': 5,
     \   },
     \   'vim-lsp': {
     \     'mark': 'lsp',
@@ -35,6 +36,7 @@ call ddc#custom#patch_global('sourceOptions', {
     \   },
     \   'omni': {
     \     'mark': 'O',
+    \     'maxItems': 5,
     \   },
     \ })
 
