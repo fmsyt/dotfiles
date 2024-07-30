@@ -53,11 +53,11 @@ repo = 'Shougo/ddc-source-copilot'
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
-# # 特定の文字で後から囲む
-# # https://github.com/tpope/vim-surround
-# # https://qiita.com/takuyanin/items/5eb009e737a235e51ab2
-# [[plugins]]
-# repo = 'tpope/vim-surround'
+# 特定の文字で後から囲む
+# https://github.com/tpope/vim-surround
+# https://qiita.com/takuyanin/items/5eb009e737a235e51ab2
+[[plugins]]
+repo = 'tpope/vim-surround'
 
 # ディレクトリツリー表示
 [[plugins]]
