@@ -1,5 +1,5 @@
 # if gh command is not found, exit
-if not type gh 2&>1 > /dev/null
+if not command -v gh > /dev/null 2>&1
     exit
 end
 
