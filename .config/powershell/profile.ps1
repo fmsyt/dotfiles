@@ -1,5 +1,9 @@
 $promptLoaded = $false
 
+$currentFileObject = Get-Item -Path $MyInvocation.MyCommand.path
+if ($currentFileObject.Target) {
+    $currentFileObject = Get-Item -Path $currentFileObject.Target
+}
 $realDir = Split-Path -Path $currentFileObject.FullName -Parent
 
 if (where.exe starship) {
@@ -8,11 +12,6 @@ if (where.exe starship) {
 }
 
 if (!$promptLoaded -and (where.exe oh-my-posh)) {
-
-    $currentFileObject = Get-Item -Path $MyInvocation.MyCommand.path
-    if ($currentFileObject.Target) {
-        $currentFileObject = Get-Item -Path $currentFileObject.Target
-    }
 
     $jsonPath = "$realDir\slimfat.hook.omp.json"
 

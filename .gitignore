@@ -55,6 +55,7 @@
 !/.config/mume/style.less
 !/.config/nvim
 !/.config/powershell/**
+/.config/powershell/local.ps1
 !/.config/PulseEffects/output/
 !/.config/sh
 /.config/sh/*
