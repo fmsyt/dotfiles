@@ -1,5 +1,7 @@
 $promptLoaded = $false
 
+$realDir = Split-Path -Path $currentFileObject.FullName -Parent
+
 if (where.exe starship) {
     $promptLoaded = $true
     Invoke-Expression (& starship init powershell)
@@ -12,7 +14,6 @@ if (!$promptLoaded -and (where.exe oh-my-posh)) {
         $currentFileObject = Get-Item -Path $currentFileObject.Target
     }
 
-    $realDir = Split-Path -Path $currentFileObject.FullName -Parent
     $jsonPath = "$realDir\slimfat.hook.omp.json"
 
     $fileObject = Get-Item -Path $jsonPath
@@ -23,6 +24,12 @@ if (!$promptLoaded -and (where.exe oh-my-posh)) {
     oh-my-posh init pwsh --config "$jsonPath" | Invoke-Expression
 
     $promptLoaded = $true
+}
+
+# ./local.ps1 is exists, source it
+$localPath = "$realDir\local.ps1"
+if (Test-Path -Path $localPath) {
+    . $localPath
 }
 
 function ll() {
