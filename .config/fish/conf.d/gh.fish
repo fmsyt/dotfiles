@@ -1,6 +1,6 @@
 # if gh command is not found, exit
 if not type gh > /dev/null
-    return
+    exit
 end
 
 eval (gh completion -s fish)
