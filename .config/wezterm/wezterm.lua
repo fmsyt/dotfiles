@@ -8,6 +8,7 @@ config.initial_rows = 32
 config.default_cursor_style = 'BlinkingUnderline'
 config.use_ime = true
 config.color_scheme = 'Monokai Soda (Gogh)'
+-- config.window_background_opacity = 0.8
 
 config.window_frame = {
     font_size = 10.0
@@ -52,26 +53,33 @@ config.colors = {
     }
 }
 
-config.font = wezterm.font_with_fallback {'CaskaydiaCove Nerd Font', 'Cascadia Code'}
+config.font = wezterm.font_with_fallback {'CaskaydiaCove Nerd Font', 'Cascadia Code', 'HackGen'}
 
-config.mouse_bindings = {{
-    event = {
-        Down = {
-            streak = 1,
-            button = 'Right'
-        }
+config.mouse_bindings = {
+    {
+        event = { Up = { streak = 1, button = 'Left' } },
+        mods = 'NONE',
+        action = act.Nop,
     },
-    mods = 'NONE',
-    action = wezterm.action_callback(function(window, pane)
-        local has_selection = window:get_selection_text_for_pane(pane) ~= ''
-        if has_selection then
-            window:perform_action(act.CopyTo 'ClipboardAndPrimarySelection', pane)
-            window:perform_action(act.ClearSelection, pane)
-        else
-            window:perform_action(act.PasteFrom 'Clipboard', pane)
-        end
-    end)
-}}
+    {
+        event = { Up = { streak = 1, button = 'Left' } },
+        mods = 'CTRL',
+        action = act.OpenLinkAtMouseCursor,
+    },
+    {
+        event = { Down = { streak = 1, button = 'Right' } },
+        mods = 'NONE',
+        action = wezterm.action_callback(function(window, pane)
+            local has_selection = window:get_selection_text_for_pane(pane) ~= ''
+            if has_selection then
+                window:perform_action(act.CopyTo 'ClipboardAndPrimarySelection', pane)
+                window:perform_action(act.ClearSelection, pane)
+            else
+                window:perform_action(act.PasteFrom 'Clipboard', pane)
+            end
+        end)
+    },
+}
 
 local launch_menu = {}
 
