@@ -1,22 +1,25 @@
-[
-  {
-    "src": ".config/powershell/profile.ps1",
-    "dst": "$PROFILE.CurrentUserAllHosts"
-  },
-  {
-    "src": ".vim",
-    "dst": "$HOME/vimfiles"
-  },
-  {
-    "src": ".config",
-    "dst": "$HOME/.config"
-  },
-  {
-    "src": ".vim/init.vim",
-    "dst": "$HOME/_vimrc"
-  },
-  {
-    "src": ".ssh/shared",
-    "dst": "$HOME/.ssh/shared"
-  }
-]
+{
+  "$schema": "./map.schema.json",
+  "list": [
+    {
+      "src": ".config/powershell/profile.ps1",
+      "dst": "$PROFILE.CurrentUserAllHosts"
+    },
+    {
+      "src": ".vim",
+      "dst": "$HOME/vimfiles"
+    },
+    {
+      "src": ".config",
+      "dst": "$HOME/.config"
+    },
+    {
+      "src": ".vim/init.vim",
+      "dst": "$HOME/_vimrc"
+    },
+    {
+      "src": ".ssh/shared",
+      "dst": "$HOME/.ssh/shared"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ function Expand-String {
 $jsonObject = Get-Content -Raw -Path "$PSScriptRoot\map.json" | ConvertFrom-Json
 
 
-foreach ($item in $jsonObject) {
+foreach ($item in $jsonObject.list) {
 
     $src = Expand-String -String "$PSScriptRoot\$($item.src)"
     Write-Host "Source: $src"

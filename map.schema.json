@@ -1,38 +1,71 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "http://example.com/example.json",
-  "type": "array",
-  "default": [],
+  "type": "object",
+  "default": {},
   "title": "Root Schema",
-  "items": {
-    "type": "object",
-    "title": "A Schema",
-    "required": [
-      "src",
-      "dst"
-    ],
-    "properties": {
-      "src": {
-        "type": "string",
-        "title": "The src Schema",
-        "examples": [
-          ".config/powershell/profile.ps1",
-          ".vim",
-          ".config",
-          ".vim/init.vim",
-          ".ssh/shared"
-        ]
-      },
-      "dst": {
-        "type": "string",
-        "title": "The dst Schema",
-        "examples": [
-          "$PROFILE.CurrentUserAllHosts",
-          "$HOME/vimfiles",
-          "$HOME/.config",
-          "$HOME/_vimrc",
-          "$HOME/.ssh/shared"
-        ]
+  "required": [
+    "list"
+  ],
+  "properties": {
+    "list": {
+      "title": "Installation mappping",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "reuired": [
+          "src",
+          "dst"
+        ],
+        "properties": {
+          "src": {
+            "type": "string",
+            "default": ""
+          },
+          "dst": {
+            "type": [
+              "string",
+              "object"
+            ],
+            "default": "",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "default": {},
+                "anyOf": [
+                  {
+                    "required": [
+                      "win"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "linux"
+                    ]
+                  }
+                ],
+                "properties": {
+                  "win": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "linux": {
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            ],
+            "examples": [
+              "$HOME/.config"
+            ]
+          }
+        }
       }
     }
   }
