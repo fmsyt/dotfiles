@@ -61,6 +61,7 @@ truncation_length = 100
 truncate_to_repo = false
 truncation_symbol = "…/"
 use_os_path_sep = false
+read_only = "🔒"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -72,7 +73,7 @@ use_os_path_sep = false
 format = "󱦟 [$duration]($style) "
 
 [docker_context]
-format = "via [🐋 $context](blue bold)"
+format = "via [󰡨 $context](blue bold)"
 
 [git_branch]
 symbol = " "
