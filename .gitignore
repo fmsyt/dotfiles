@@ -54,6 +54,8 @@
 !/.config/mume/
 !/.config/mume/style.less
 !/.config/nvim
+!/.config/pipewire/
+!/.config/pipewire/**
 !/.config/powershell/**
 /.config/powershell/local.ps1
 !/.config/PulseEffects/output/
@@ -67,6 +69,8 @@
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
 !/.config/wezterm/**
+!/.config/wireplumber/
+!/.config/wireplumber/**
 !/.config/zsh/
 !/.config/zsh/**
 /.config/zsh/antigen.sh
