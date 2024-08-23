@@ -141,6 +141,8 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " jjでエスケープ
 inoremap <silent> jj <ESC>
 
+nnoremap J 5j
+nnoremap K 5k
 
 " ======== alias ========
 
