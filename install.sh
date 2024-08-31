@@ -162,8 +162,6 @@ post_ssh_install() {
     fi
 
     chmod 600 $SSH_CONFIG_FILE
-    chmod 600 $SSH_CONFIG_DIR/*.conf
-    chmod 600 $SSH_CONFIG_DIR/*.pem
 }
 
 post_install() {
