@@ -1,4 +1,4 @@
-if [ ! command -v gh &> /dev/null ]; then
+if ! command -v gh &> /dev/null; then
     return
 fi
 
