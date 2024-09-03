@@ -33,15 +33,6 @@ end
 alias sudo='sudo -E '
 alias ip='ip -color'
 
-if which exa >/dev/null 2>&1
-    alias ls='exa'
-    alias ll='exa -gl'
-    alias la='exa -agl'
-else
-    alias ll='ls -lF'
-    alias la='ls -AlF'
-end
-
 if type bat >/dev/null 2>&1
     alias cat='bat -p --paging=never'
 end
