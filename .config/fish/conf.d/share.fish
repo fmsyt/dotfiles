@@ -30,7 +30,7 @@ end
 
 # aliases
 
-alias sudo='sudo -E '
+abbr sudo 'sudo -E'
 alias ip='ip -color'
 
 if command -v bat >/dev/null 2>&1
@@ -39,21 +39,26 @@ else if command -v batcat >/dev/null 2>&1
     alias cat='batcat -p --paging=never'
 end
 
+abbr g 'git'
+abbr gs 'git status'
+abbr gst 'git status'
+abbr ga 'git add'
+abbr ga. 'git add .'
+abbr gc 'git commit'
+abbr gp 'git push'
+abbr gco 'git checkout'
 
-if command -v docker >/dev/null 2>&1
-    alias d='docker'
-    alias de='docker exec -it'
+abbr d 'docker'
+abbr de 'docker exec -it'
 
-    if docker compose >/dev/null 2>&1
-        alias dc='docker compose'
-        alias dce='docker compose exec'
-        alias dcu='docker compose up -d'
-        alias dcub='docker compose up --build -d'
-
-    else
-        alias dc='docker-compose'
-        alias dce='docker-compose exec'
-        alias dcu='docker-compose up -d'
-        alias dcub='docker-compose up --build -d'
-    end
+if docker compose >/dev/null 2>&1
+    abbr dc 'docker compose'
+    abbr dce 'docker compose exec'
+    abbr dcu 'docker compose up -d'
+    abbr dcub 'docker compose up --build -d'
+else
+    abbr dc 'docker-compose'
+    abbr dce 'docker-compose exec'
+    abbr dcu 'docker-compose up -d'
+    abbr dcub 'docker-compose up --build -d'
 end
