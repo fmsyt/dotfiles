@@ -30,7 +30,7 @@ end
 
 # aliases
 
-abbr sudo 'sudo -E'
+alias sudo='sudo -E'
 alias ip='ip -color'
 
 if command -v bat >/dev/null 2>&1
