@@ -8,13 +8,11 @@ ls_ignores=(
     'desktop.ini'
 )
 
-if type exa >/dev/null 2>&1; then
-
-    alias ls='exa'
+if command -v exa >/dev/null 2>&1; then
 
     IFS="|"; declare opts="-I \"${ls_ignores[*]}\""
 
-    if exa --icons >/dev/null 2>&1; then
+    if test $HOME/.config/sh/scripts/exa-supported-icons.sh; then
         opts="$opts --icons"
     fi
 
@@ -24,7 +22,7 @@ if type exa >/dev/null 2>&1; then
     alias la='exa -agl'
     alias l='exa'
 
-elif type ls >/dev/null 2>&1; then
+else
     ls_options=('--human-readable' '--group-directories-first' '--color=auto')
     ls_options_confirm=()
 
@@ -80,4 +78,6 @@ alias ip='ip -color'
 
 if type bat >/dev/null 2>&1; then
     alias cat='bat -p'
+elif command -v batcat >/dev/null 2>&1; then
+    alias cat='batcat -p'
 fi
