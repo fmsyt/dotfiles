@@ -1,7 +1,7 @@
 function ll
     # check if install exa
     if ! command -v exa 
-        ls -AlF
+        ls -lF
         return
     end
 
