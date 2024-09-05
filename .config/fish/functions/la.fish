@@ -1,6 +1,6 @@
 function la
     # check if install exa
-    if ! command -v exa 
+    if ! command -v exa > /dev/null 2>&1
         ls -AlF
         return
     end
