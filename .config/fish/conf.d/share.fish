@@ -11,7 +11,7 @@ if test -d $HOME/.deno
     set -x PATH $DENO_INSTALL/bin $PATH
 end
 
-if type vim >/dev/null 2>&1
+if command -v vim >/dev/null 2>&1
     set -gx EDITOR vim
 end
 
@@ -33,12 +33,14 @@ end
 alias sudo='sudo -E '
 alias ip='ip -color'
 
-if type bat >/dev/null 2>&1
+if command -v bat >/dev/null 2>&1
     alias cat='bat -p --paging=never'
+else if command -v batcat >/dev/null 2>&1
+    alias cat='batcat -p --paging=never'
 end
 
 
-if type docker >/dev/null 2>&1
+if command -v docker >/dev/null 2>&1
     alias d='docker'
     alias de='docker exec -it'
 
