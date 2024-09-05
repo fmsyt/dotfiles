@@ -51,14 +51,9 @@ abbr gco 'git checkout'
 abbr d 'docker'
 abbr de 'docker exec -it'
 
-if docker compose >/dev/null 2>&1
+if command -v docker > /dev/null 2>&1
     abbr dc 'docker compose'
     abbr dce 'docker compose exec'
     abbr dcu 'docker compose up -d'
     abbr dcub 'docker compose up --build -d'
-else
-    abbr dc 'docker-compose'
-    abbr dce 'docker-compose exec'
-    abbr dcu 'docker-compose up -d'
-    abbr dcub 'docker-compose up --build -d'
 end
