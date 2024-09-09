@@ -1,4 +1,10 @@
 function ls --wraps ls
+
+    if  [ (uname) = "Darwin" ]
+        command ls $argv
+        return
+    end
+
     set -l ls_ignores 'ntuser.*' 'NTUSER.*' 'Thumbs.db' 'thumbs.db' 'desktop.ini'
 
     # set IFS ","; alias ls "ls --human-readable --group-directories-first --color=auto --ignore={${ls_ignores[*]}}"
