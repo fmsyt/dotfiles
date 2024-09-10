@@ -4,10 +4,12 @@ if !executable('git')
 endif
 
 " インストールディレクトリの指定
-let s:dein_dir = expand('~/.cache/dein/slim')
+let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-let s:toml = expand('~/.vim/rc/slim') . '/plugins.toml'
-let s:toml_lazy = expand('~/.vim/rc/slim') . '/plugins_lazy.toml'
+
+let s:toml_base = expand('~/.vim') . '/plugins.toml'
+let s:toml_cli = expand('~/.vim') . '/plugins_cli.toml'
+let s:toml_cli_lazy = expand('~/.vim') . '/plugins_cli_lazy.toml'
 
 " dein.vim ディレクトリがruntimepathに入っていない場合、追加
 if match( &runtimepath, '/dein.vim' ) == -1
@@ -22,8 +24,14 @@ endif
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
-    call dein#load_toml(s:toml     , { 'lazy': 0 })
-    call dein#load_toml(s:toml_lazy, { 'lazy': 1 })
+    call dein#load_toml(s:toml_base, { 'lazy': 0 })
+
+    if $VIM_MODE == "cli"
+        call dein#load_toml(s:toml_cli, { 'lazy': 0 })
+        call dein#load_toml(s:toml_cli_lazy, { 'lazy': 1 })
+
+        source ~/.vim/ddc.vim
+    endif
 
     call dein#end()
     call dein#save_state()
@@ -34,8 +42,11 @@ if dein#check_install()
     call dein#install()
 endif
 
+" call dein#check_update(v:true)
+
 " プラグイン再読み込み
 "call map(dein#check_clean(), "delete(v:val, 'rf')")
 "call dein#recache_runtimepath()
 
 colorscheme monokai_pro
+let g:lightline = { 'colorscheme': 'monokai_pro' }

@@ -157,4 +157,4 @@ if filereadable(expand('~/.vim/tokens.vim'))
     source ~/.vim/tokens.vim
 endif
 
-source ~/.vim/rc/cli/init.vim
+source ~/.vim/dein.vim

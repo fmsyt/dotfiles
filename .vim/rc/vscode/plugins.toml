@@ -1,8 +1,0 @@
-# 自動で閉じるやつ
-[[plugins]]
-repo = 'cohama/lexima.vim'
-
-# https://github.com/cohama/lexima.vim
-# https://cohama.hateblo.jp/about
-[[plugins]]
-repo = 'tpope/vim-fugitive'

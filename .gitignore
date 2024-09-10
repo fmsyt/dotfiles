@@ -86,10 +86,13 @@
 !/.local/bin/open
 !/.local/bin/git-diff-archive
 
+!/.vimrc
+
 !/.vim/
+!/.vim/*.vim
+!/.vim/*.toml
 /.vim/tokens.vim
 !/.vim/tokens.vim.secret
-!/.vimrc
 !/.vim/backup/
 !/.vim/colors/
 !/.vim/colors/**
@@ -97,8 +100,6 @@
 !/.vim/dein/**
 !/.vim/ftdetect/
 !/.vim/ftdetect/**
-!/.vim/rc/
-!/.vim/rc/**
 !/.vim/session/
 !/.vim/swap/
 !/.vim/undo/
