@@ -7,6 +7,8 @@ let g:denops_server_addr = '127.0.0.1:32123'
 call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
 """
 
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
