@@ -38,14 +38,25 @@ endif
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
-    let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 '''
 
 # [[plugins]]
 # repo = 'sheerun/vim-polyglot'
 
+# 閉じ括弧を補完
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+set signcolumn=yes
+'''

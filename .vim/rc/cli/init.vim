@@ -7,6 +7,7 @@ endif
 let s:dein_dir = expand('~/.cache/dein/cli')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:toml = expand('~/.vim/rc/cli') . '/plugins.toml'
+let s:toml_base = expand('~/.vim/rc/slim') . '/plugins.toml'
 let s:toml_lazy = expand('~/.vim/rc/cli') . '/plugins_lazy.toml'
 
 " dein.vim ディレクトリがruntimepathに入っていない場合、追加
@@ -22,8 +23,12 @@ endif
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
+    call dein#load_toml(s:toml_base, { 'lazy': 0 })
     call dein#load_toml(s:toml_lazy, { 'lazy': 1 })
-    call dein#load_toml(s:toml     , { 'lazy': 0 })
+
+    if $VIM_MODE == "cli"
+        call dein#load_toml(s:toml, { 'lazy': 0 })
+    endif
 
     call dein#end()
     call dein#save_state()

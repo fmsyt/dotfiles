@@ -157,9 +157,4 @@ if filereadable(expand('~/.vim/tokens.vim'))
     source ~/.vim/tokens.vim
 endif
 
-
-if $VIM_MODE == "" || $VIM_MODE == "slim"
-    source ~/.vim/rc/slim/init.vim
-elseif $VIM_MODE == "cli"
-    source ~/.vim/rc/cli/init.vim
-endif
+source ~/.vim/rc/cli/init.vim
