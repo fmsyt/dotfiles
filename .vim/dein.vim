@@ -46,10 +46,12 @@ endif
 "call map(dein#check_clean(), "delete(v:val, 'rf')")
 "call dein#recache_runtimepath()
 
-colorscheme monokai_pro
-let g:lightline = { 'colorscheme': 'monokai_pro' }
-
-if $VIM_MODE == "cli"
+if dein#is_sourced("ddc.vim")
     source ~/.vim/ddc.vim
 endif
 
+colorscheme monokai_pro
+
+if dein#is_sourced("vim-airline")
+    let g:lightline = { 'colorscheme': 'monokai_pro' }
+endif
