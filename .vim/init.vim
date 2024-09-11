@@ -144,6 +144,8 @@ inoremap <silent> jj <ESC>
 nnoremap J 5j
 nnoremap K 5k
 
+nnoremap <silent> U :redo<CR>
+
 " ======== alias ========
 
 command Q qa
