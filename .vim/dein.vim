@@ -29,8 +29,6 @@ if dein#load_state(s:dein_dir)
     if $VIM_MODE == "cli"
         call dein#load_toml(s:toml_cli, { 'lazy': 0 })
         call dein#load_toml(s:toml_cli_lazy, { 'lazy': 1 })
-
-        source ~/.vim/ddc.vim
     endif
 
     call dein#end()
@@ -50,3 +48,8 @@ endif
 
 colorscheme monokai_pro
 let g:lightline = { 'colorscheme': 'monokai_pro' }
+
+if $VIM_MODE == "cli"
+    source ~/.vim/ddc.vim
+endif
+
