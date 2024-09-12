@@ -28,12 +28,10 @@ call ddc#custom#patch_global('sourceOptions', {
             \   'file': {
             \     'mark': 'file',
             \     'isVolatile': v:true,
-            \     'forceCompletionPattern': '\S/\S*',
             \     'maxItems': 5,
             \   },
             \   'vim-lsp': {
             \     'mark': 'lsp',
-            \     'forceCompletionPattern': '\.\w*|:\w*|->\w*',
             \   },
             \   'copilot': {
             \     'mark': 'Copilot',
