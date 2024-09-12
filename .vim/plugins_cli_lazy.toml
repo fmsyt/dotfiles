@@ -12,10 +12,10 @@ hook_add = '''
     let g:vim_markdown_conceal_code_blocks = 0
 '''
 
-[[plugins]]
-repo  = 'phpactor/phpactor'
-on_ft = ['php']
-build = 'composer install --no-dev -o'
+# [[plugins]]
+# repo  = 'phpactor/phpactor'
+# on_ft = ['php']
+# build = 'composer install --no-dev -o'
 
 [[plugins]]
 repo = 'cespare/vim-toml'

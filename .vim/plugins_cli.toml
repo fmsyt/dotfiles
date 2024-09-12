@@ -1,11 +1,15 @@
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-if = '''executable('deno') && v:version >= 901'''
+if = '''executable('deno') && (v:version >= 901 || has('nvim') && v:version >= 800)'''
 # on_event = 'CursorHold'
-hook_add = """
-let g:denops_server_addr = '127.0.0.1:32123'
-call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
-"""
+# hook_add = """
+# let g:denops_server_addr = '127.0.0.1:32123'
+# call job_start('deno run -A --no-check ' . dein#get('denops.vim').path . '/denops/@denops-private/cli.ts')
+# """
+
+[[plugins]]
+repo = 'vim-denops/denops-shared-server.vim'
+depends = ['vim-denops.vim']
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
@@ -39,7 +43,6 @@ repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'shun/ddc-source-vim-lsp'
-
 
 
 # hook の便利な使い方 https://qiita.com/delphinus/items/cd221a450fd23506e81a
