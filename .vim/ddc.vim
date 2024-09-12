@@ -44,12 +44,13 @@ call ddc#custom#patch_global('sourceOptions', {
             \   },
             \ })
 
-
-call ddc#custom#patch_filetype(['php'], 'sourceParams', #{
-            \   omni: #{
-            \     omnifunc: 'phpactor#Complete'
-            \   }
-            \ })
+if dein#is_available('phpactor')
+    call ddc#custom#patch_filetype(['php'], 'sourceParams', #{
+                \   omni: #{
+                \     omnifunc: 'phpactor#Complete'
+                \   }
+                \ })
+endif
 
 
 
