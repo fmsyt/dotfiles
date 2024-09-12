@@ -11,8 +11,8 @@ if = '''executable('deno') && (v:version >= 901 || has('nvim') && v:version >= 8
 repo = 'vim-denops/denops-shared-server.vim'
 depends = ['vim-denops.vim']
 
-[[plugins]]
-repo = 'vim-jp/vimdoc-ja'
+# [[plugins]]
+# repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'Shougo/ddc.vim'
