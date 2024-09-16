@@ -109,5 +109,7 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 config.launch_menu = launch_menu
+config.keys = require('keybinds').keys
+config.key_tables = require('keybinds').key_tables
 
 return config
