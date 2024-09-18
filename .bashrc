@@ -1,8 +1,3 @@
-# ローカルの設定を読み取り
-if [ -f $HOME/.local/.bashrc ]; then
-    source $HOME/.local/.bashrc
-fi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -69,3 +64,8 @@ fi
 for filename in $HOME/.config/bash/*.bash; do
   source $filename
 done
+
+# ローカルの設定を読み取り
+if [ -f $HOME/.local/.bashrc ]; then
+    source $HOME/.local/.bashrc
+fi
