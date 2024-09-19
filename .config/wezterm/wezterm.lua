@@ -53,7 +53,12 @@ config.colors = {
     }
 }
 
-config.font = wezterm.font_with_fallback {'CaskaydiaCove Nerd Font', 'Cascadia Code', 'HackGen'}
+config.font = wezterm.font_with_fallback {
+    { family = 'CaskaydiaCove Nerd Font' },
+    { family = 'Cascadia Code' },
+    { family = 'HackGen' },
+    { family = 'Segoe UI Emoji', assume_emoji_presentation = true },
+}
 
 config.mouse_bindings = {
     {
