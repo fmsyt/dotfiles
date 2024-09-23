@@ -47,3 +47,25 @@ function open() {
     )
     cmd.exe /u /q /c $app $args
 }
+
+if (Get-Module -ListAvailable -Name Abbr) {
+    Import-Module Abbr
+
+    ealias g 'git'
+    ealias gs 'git status'
+    ealias gst 'git status'
+    ealias ga 'git add'
+    ealias ga. 'git add .'
+    # ealias gc 'git commit'
+    # ealias gp 'git push'
+    ealias gco 'git checkout'
+
+    ealias d 'docker'
+    ealias de 'docker exec -it'
+
+    ealias dc 'docker compose'
+    ealias dce 'docker compose exec'
+    ealias dcu 'docker compose up -d'
+    ealias dcub 'docker compose up --build -d'
+}
+
