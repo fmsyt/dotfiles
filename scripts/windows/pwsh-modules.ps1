@@ -1,3 +1,3 @@
-if (Get-Module -ListAvailable -Name 'Abbr') {
-    Import-Module -Name 'Abbr'
+if (!( Get-Module -ListAvailable -Name 'Abbr' )) {
+    Install-Module -Name 'Abbr'
 }
