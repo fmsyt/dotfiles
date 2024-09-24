@@ -50,8 +50,8 @@ if dein#is_sourced("ddc.vim")
     source ~/.vim/ddc.vim
 endif
 
-colorscheme monokai_pro
+" colorscheme monokai_pro
 
-if dein#is_sourced("vim-airline")
-    let g:lightline = { 'colorscheme': 'monokai_pro' }
-endif
+" if dein#is_sourced("vim-airline")
+"     let g:lightline = { 'colorscheme': 'monokai_pro' }
+" endif

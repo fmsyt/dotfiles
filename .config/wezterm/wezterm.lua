@@ -7,7 +7,24 @@ config.initial_cols = 120
 config.initial_rows = 32
 config.default_cursor_style = 'BlinkingUnderline'
 config.use_ime = true
-config.color_scheme = 'Monokai Soda (Gogh)'
+-- config.color_scheme = 'Monokai Soda (Gogh)'
+-- config.color_scheme = 'Ef-Tritanopia-Dark'
+-- config.color_scheme = 'duckbones'
+-- config.color_scheme = 'Monokai (terminal.sexy)'
+-- config.color_scheme = 'Nighty (Gogh)'
+config.color_scheme = 'Purple People Eater (Gogh)'
+-- config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
+
+-- config.color_scheme = 'Red Planet'
+-- config.color_scheme = 'Monokai Pro (Gogh)'
+-- config.color_scheme = 'Monokai (dark) (terminal.sexy)'
+-- config.color_scheme = 'Monokai Pro (Gogh)'
+-- config.color_scheme = 'Monokai Pro Ristretto (Gogh)'
+
+-- config.color_scheme = 'Kanagawa (Gogh)'
+-- config.color_scheme = 'Kanagawa Dragon (Gogh)'
+-- config.color_scheme = 'kanagawabones'
+
 -- config.window_background_opacity = 0.8
 
 config.window_frame = {
