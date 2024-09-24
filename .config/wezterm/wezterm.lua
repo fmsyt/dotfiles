@@ -25,7 +25,7 @@ config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
 -- config.color_scheme = 'Kanagawa Dragon (Gogh)'
 -- config.color_scheme = 'kanagawabones'
 
--- config.window_background_opacity = 0.8
+config.window_background_opacity = 0.85
 
 config.window_frame = {
     font_size = 10.0
