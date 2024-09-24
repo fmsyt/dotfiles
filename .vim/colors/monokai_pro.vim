@@ -8,7 +8,11 @@ endif
 set t_Co=256
 let g:colors_name = "monokai_pro"
 
-hi Normal ctermfg=231 ctermbg=235 cterm=NONE guibg=#262626 guifg=#ffffff guisp=NONE gui=NONE
+hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE guibg=NONE guifg=NONE guisp=NONE gui=NONE
+if has('win32')
+  hi Normal ctermfg=231 ctermbg=235 cterm=NONE guibg=#262626 guifg=#ffffff guisp=NONE gui=NONE
+endif
+
 hi Cursor ctermfg=231 ctermbg=231 cterm=NONE guibg=#ffffff guifg=#ffffff guisp=NONE gui=NONE
 hi Visual ctermfg=NONE ctermbg=239 cterm=NONE guibg=#4e4e4e guifg=NONE guisp=NONE gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=237 cterm=NONE guibg=#3a3a3a guifg=NONE guisp=NONE gui=NONE

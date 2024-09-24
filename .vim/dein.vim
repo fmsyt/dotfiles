@@ -55,7 +55,3 @@ colorscheme monokai_pro
 if dein#is_sourced("vim-airline")
     let g:lightline = { 'colorscheme': 'monokai_pro' }
 endif
-
-if !has('win32')
-    hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE guibg=NONE guifg=NONE guisp=NONE gui=NONE
-endif
