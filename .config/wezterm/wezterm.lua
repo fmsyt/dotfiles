@@ -12,8 +12,8 @@ config.use_ime = true
 -- config.color_scheme = 'duckbones'
 -- config.color_scheme = 'Monokai (terminal.sexy)'
 -- config.color_scheme = 'Nighty (Gogh)'
-config.color_scheme = 'Purple People Eater (Gogh)'
--- config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
+-- config.color_scheme = 'Purple People Eater (Gogh)'
+config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
 
 -- config.color_scheme = 'Red Planet'
 -- config.color_scheme = 'Monokai Pro (Gogh)'
