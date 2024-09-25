@@ -9,8 +9,10 @@ set t_Co=256
 let g:colors_name = "monokai_pro"
 
 hi Normal ctermfg=NONE ctermbg=NONE cterm=NONE guibg=NONE guifg=NONE guisp=NONE gui=NONE
+hi NonText ctermfg=NONE ctermbg=NONE cterm=NONE guibg=NONE guifg=NONE guisp=NONE gui=NONE
 if has('win32')
   hi Normal ctermfg=231 ctermbg=235 cterm=NONE guibg=#262626 guifg=#ffffff guisp=NONE gui=NONE
+  hi NonText ctermfg=59 ctermbg=235 cterm=NONE guibg=#262626 guifg=#5f5f5f guisp=NONE gui=NONE
 endif
 
 hi Cursor ctermfg=231 ctermbg=231 cterm=NONE guibg=#ffffff guifg=#ffffff guisp=NONE gui=NONE
@@ -47,7 +49,6 @@ hi Function ctermfg=81 ctermbg=NONE cterm=NONE guibg=NONE guifg=#7cdce7 guisp=NO
 hi Identifier ctermfg=81 ctermbg=NONE cterm=NONE guibg=NONE guifg=#7cdce7 guisp=NONE gui=NONE
 hi Keyword ctermfg=204 ctermbg=NONE cterm=NONE guibg=NONE guifg=#fd6389 guisp=NONE gui=NONE
 hi Label ctermfg=204 ctermbg=NONE cterm=NONE guibg=NONE guifg=#fd6389 guisp=NONE gui=NONE
-hi NonText ctermfg=59 ctermbg=235 cterm=NONE guibg=#262626 guifg=#5f5f5f guisp=NONE gui=NONE
 hi Number ctermfg=141 ctermbg=NONE cterm=NONE guibg=NONE guifg=#ab9ff0 guisp=NONE gui=NONE
 hi Operator ctermfg=204 ctermbg=NONE cterm=NONE guibg=NONE guifg=#fd6389 guisp=NONE gui=NONE
 hi PreProc ctermfg=155 ctermbg=NONE cterm=NONE guibg=NONE guifg=#aadb7b guisp=NONE gui=NONE
