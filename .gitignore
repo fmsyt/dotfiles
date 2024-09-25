@@ -95,16 +95,12 @@
 !/.vim/*.toml
 /.vim/tokens.vim
 !/.vim/tokens.vim.secret
-!/.vim/backup/
 !/.vim/colors/
 !/.vim/colors/**
 !/.vim/dein/
 !/.vim/dein/**
 !/.vim/ftdetect/
 !/.vim/ftdetect/**
-!/.vim/session/
-!/.vim/swap/
-!/.vim/undo/
 
 !/bin/
 !/bin/**

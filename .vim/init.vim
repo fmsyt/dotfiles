@@ -14,16 +14,33 @@ if &modifiable
     set fileencoding=utf-8
 endif
 
-" swpファイル出力先
-set directory=$HOME/.vim/swap
+if has('nvim')
+    let s:runs_on = 'nvim'
+else
+    let s:runs_on = 'vim'
+endif
 
-" バックアップファイル出力先
-set backupdir=$HOME/.vim/backup
+let s:backup_dir = expand('~/.cache/' . s:runs_on . '/backup')
+let s:swap_dir = expand('~/.cache/' . s:runs_on . '/swap')
+let s:undo_dir = expand('~/.cache/' . s:runs_on . '/undo')
 
-" undoファイル出力先
+execute 'set directory=' . s:swap_dir
+execute 'set backupdir=' . s:backup_dir
 if has('persistent_undo')
-    set undodir=$HOME/.vim/undo
+    execute 'set undodir=' . s:undo_dir
     set undofile
+endif
+
+if !isdirectory(s:backup_dir)
+    call mkdir(s:backup_dir, 'p')
+endif
+
+if !isdirectory(s:swap_dir)
+    call mkdir(s:swap_dir, 'p')
+endif
+
+if !isdirectory(s:undo_dir)
+    call mkdir(s:undo_dir, 'p')
 endif
 
 
