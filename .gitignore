@@ -93,6 +93,7 @@
 !/.vim/
 !/.vim/*.vim
 !/.vim/*.toml
+/.vim/local.vim
 /.vim/tokens.vim
 !/.vim/tokens.vim.secret
 !/.vim/colors/

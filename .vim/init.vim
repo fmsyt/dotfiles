@@ -177,3 +177,7 @@ if filereadable(expand('~/.vim/tokens.vim'))
 endif
 
 source ~/.vim/dein.vim
+
+if filereadable(expand('~/.vim/local.vim'))
+    source ~/.vim/local.vim
+endif
