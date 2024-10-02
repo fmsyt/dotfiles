@@ -146,11 +146,8 @@ nnoremap Y y$
 cnoremap w!! w !sudo tee > /dev/null %<CR>
 
 " 折り返し時に表示行単位での移動できるようにする
-nnoremap j gj
-nnoremap k gk
-
-" 左右分割
-noremap <C-\> :vsplit<CR>
+" nnoremap j gj
+" nnoremap k gk
 
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
@@ -161,7 +158,14 @@ inoremap <silent> jj <ESC>
 nnoremap J 5j
 nnoremap K 5k
 
+" uによるundoの対として、Uにredoを割り当てる
 nnoremap <silent> U :redo<CR>
+
+" カーソル位置の単語を選択
+nnoremap <C-d> viw
+
+" VISUALモードでの<C-d>を無効化
+vnoremap <C-d> <Nop>
 
 " ======== alias ========
 
