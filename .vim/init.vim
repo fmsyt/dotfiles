@@ -105,25 +105,25 @@ set mouse=a
 " set ttymouse=xterm2
 
 augroup Mouse
-  autocmd!
-  autocmd FocusGained * call s:OnFocusGained()
-  autocmd FocusLost * call s:OnFocusLost()
+    autocmd!
+    autocmd FocusGained * call s:OnFocusGained()
+    autocmd FocusLost * call s:OnFocusLost()
 augroup END
 
 function! s:OnFocusGained() abort
-  autocmd CursorMoved,CursorMovedI,ModeChanged,WinScrolled * ++once call s:EnebleLeftMouse()
-  noremap  <LeftMouse> <Cmd>call <SID>EnebleLeftMouse()<CR>
-  inoremap <LeftMouse> <Cmd>call <SID>EnebleLeftMouse()<CR>
+    autocmd CursorMoved,CursorMovedI,ModeChanged,WinScrolled * ++once call s:EnebleLeftMouse()
+    noremap  <LeftMouse> <Cmd>call <SID>EnebleLeftMouse()<CR>
+    inoremap <LeftMouse> <Cmd>call <SID>EnebleLeftMouse()<CR>
 endfunction
 
 function! s:EnebleLeftMouse() abort
-  noremap  <LeftMouse> <LeftMouse>
-  inoremap <LeftMouse> <LeftMouse>
+    noremap  <LeftMouse> <LeftMouse>
+    inoremap <LeftMouse> <LeftMouse>
 endfunction
 
 function! s:OnFocusLost() abort
-  noremap  <LeftMouse> <nop>
-  inoremap <LeftMouse> <nop>
+    noremap  <LeftMouse> <nop>
+    inoremap <LeftMouse> <nop>
 endfunction
 
 
@@ -186,13 +186,21 @@ nnoremap J 5j
 nnoremap K 5k
 
 " uによるundoの対として、Uにredoを割り当てる
-nnoremap <silent> U :redo<CR>
+nnoremap U :redo<CR>
 
 " カーソル位置の単語を選択
 nnoremap <C-d> viw
 
 " VISUALモードでの<C-d>を無効化
 vnoremap <C-d> <Nop>
+
+" VISUALモードでインデントをしたとき、選択範囲を選択したままにする
+vnoremap < <gv
+vnoremap > >gv
+
+" カーソル位置の単語を検索するとき、カーソル位置の単語をデフォルトで検索する
+nnoremap * *N
+
 
 " ======== alias ========
 
@@ -207,7 +215,9 @@ if filereadable(expand('~/.vim/tokens.vim'))
     source ~/.vim/tokens.vim
 endif
 
-source ~/.vim/dein.vim
+if filereadable(expand('~/.vim/dein.vim'))
+    source ~/.vim/dein.vim
+endif
 
 if filereadable(expand('~/.vim/local.vim'))
     source ~/.vim/local.vim
