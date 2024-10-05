@@ -101,8 +101,35 @@ set smartindent
 set autoindent
 
 " マウス設定
-set mouse-=a
-"set ttymouse=xterm2
+set mouse=a
+" set ttymouse=xterm2
+
+augroup Mouse
+  autocmd!
+  autocmd FocusGained * call s:OnFocusGained()
+  autocmd FocusLost * call s:OnFocusLost()
+augroup END
+
+function! s:OnFocusGained() abort
+  autocmd CursorMoved,CursorMovedI,ModeChanged,WinScrolled * ++once call s:EnebleLeftMouse()
+  noremap  <LeftMouse> <Cmd>call <SID>EnebleLeftMouse()<CR>
+  inoremap <LeftMouse> <Cmd>call <SID>EnebleLeftMouse()<CR>
+endfunction
+
+function! s:EnebleLeftMouse() abort
+  noremap  <LeftMouse> <LeftMouse>
+  inoremap <LeftMouse> <LeftMouse>
+endfunction
+
+function! s:OnFocusLost() abort
+  noremap  <LeftMouse> <nop>
+  inoremap <LeftMouse> <nop>
+endfunction
+
+
+
+
+
 " set guifont=CaskaydiaCove_Nerd_Font:h10
 set guifont=HackGenNerd:h10
 
