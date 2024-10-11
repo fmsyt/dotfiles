@@ -25,7 +25,16 @@ config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
 -- config.color_scheme = 'Kanagawa Dragon (Gogh)'
 -- config.color_scheme = 'kanagawabones'
 
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.95
+-- config.macos_window_background_blur = 20
+
+-- https://wezfurlong.org/wezterm/config/lua/config/win32_system_backdrop.html
+-- config.window_background_opacity = 0
+-- config.win32_system_backdrop = 'Auto'
+-- config.win32_system_backdrop = 'Disable'
+-- config.win32_system_backdrop = 'Acrylic'
+-- config.win32_system_backdrop = 'Mica'
+-- config.win32_system_backdrop = 'Tabbed'
 
 config.window_frame = {
     font_size = 10.0
