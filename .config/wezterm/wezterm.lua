@@ -26,15 +26,20 @@ config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
 -- config.color_scheme = 'kanagawabones'
 
 config.window_background_opacity = 0.95
--- config.macos_window_background_blur = 20
+config.tab_bar_at_bottom = true
+config.tab_max_width = 24
 
--- https://wezfurlong.org/wezterm/config/lua/config/win32_system_backdrop.html
--- config.window_background_opacity = 0
--- config.win32_system_backdrop = 'Auto'
--- config.win32_system_backdrop = 'Disable'
--- config.win32_system_backdrop = 'Acrylic'
--- config.win32_system_backdrop = 'Mica'
--- config.win32_system_backdrop = 'Tabbed'
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+    -- https://wezfurlong.org/wezterm/config/lua/config/win32_system_backdrop.html
+    config.window_background_opacity = 0.5
+    -- config.window_background_opacity = 0
+    config.win32_system_backdrop = 'Acrylic'
+    config.use_fancy_tab_bar = true
+end
+
+if wezterm.target_triple == 'x86_64-apple-darwin' then
+    config.macos_window_background_blur = 20
+end
 
 config.window_frame = {
     font_size = 10.0
@@ -79,6 +84,8 @@ config.colors = {
     }
 }
 
+
+
 config.font = wezterm.font_with_fallback {
     { family = 'CaskaydiaCove Nerd Font' },
     { family = 'Cascadia Code' },
@@ -111,6 +118,11 @@ config.mouse_bindings = {
         end)
     },
 }
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+    local title = "  " .. wezterm.truncate_right(tab.active_pane.title, max_width - 2)
+    return { { Text = title } }
+end)
 
 local launch_menu = {}
 
