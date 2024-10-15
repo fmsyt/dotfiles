@@ -74,7 +74,7 @@ config.colors = {
             italic = true
         },
         new_tab = {
-            bg_color = bg_inactive,
+            bg_color = bg_active,
             fg_color = '#808080'
         },
         new_tab_hover = {
@@ -143,21 +143,21 @@ end
 
 -- https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local edge_background = '#0b0022'
-    local background = '#1b1032'
-    local foreground = '#808080'
+    local edge_background = config.colors.tab_bar.background
+    local background = config.colors.tab_bar.inactive_tab.bg_color
+    local foreground = config.colors.tab_bar.inactive_tab.fg_color
 
     if tab.is_active then
-        background = '#2b2042'
-        foreground = '#c0c0c0'
+        background = config.colors.tab_bar.active_tab.bg_color
+        foreground = config.colors.tab_bar.active_tab.fg_color
     elseif hover then
-        background = '#3b3052'
-        foreground = '#909090'
+        background = config.colors.tab_bar.inactive_tab_hover.bg_color
+        foreground = config.colors.tab_bar.inactive_tab_hover.fg_color
     end
 
     local edge_foreground = background
 
-    local title = tab_title(tab)
+    local title = tab.tab_index + 1 .. ": " .. tab_title(tab)
     title = wezterm.truncate_right(title, max_width - 2)
 
     return {
@@ -207,7 +207,5 @@ config.key_tables = require('keybinds').key_tables
 if package.searchpath('local', package.path) then
     require('local').apply(config)
 end
-
--- pcall(require('local').apply, config)
 
 return config
