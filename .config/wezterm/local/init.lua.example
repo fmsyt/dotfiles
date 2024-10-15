@@ -1,0 +1,15 @@
+local wezterm = require 'wezterm'
+
+local function apply(config)
+  config.font = wezterm.font_with_fallback {
+    -- 'Moralerspace Krypton HWNF',
+    { family = 'CaskaydiaCove Nerd Font', weight = 'Book' },
+    { family = 'Cascadia Code' },
+    { family = 'HackGen' },
+    { family = 'Segoe UI Emoji', assume_emoji_presentation = true },
+  }
+end
+
+return {
+  apply = apply
+}

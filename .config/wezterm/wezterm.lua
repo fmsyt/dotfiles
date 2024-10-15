@@ -1,3 +1,4 @@
+local os = require 'os'
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
@@ -202,5 +203,11 @@ end
 config.launch_menu = launch_menu
 config.keys = require('keybinds').keys
 config.key_tables = require('keybinds').key_tables
+
+if package.searchpath('local', package.path) then
+    require('local').apply(config)
+end
+
+-- pcall(require('local').apply, config)
 
 return config

@@ -72,7 +72,8 @@
 !/.config/starship.toml
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
-!/.config/wezterm/**
+!/.config/wezterm/*
+!/.config/wezterm/local/init.lua.example
 !/.config/wireplumber/
 !/.config/wireplumber/**
 !/.config/zsh/
