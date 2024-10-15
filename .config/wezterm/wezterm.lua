@@ -119,17 +119,25 @@ config.mouse_bindings = {
     },
 }
 
+function string:endswith(ending)
+    return ending == "" or self:sub(-#ending) == ending
+end
 
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
 local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
-function tab_title(tab_info)
+local function tab_title(tab_info)
     local title = tab_info.tab_title
     if title and #title > 0 then
         return title
     end
 
-    return tab_info.active_pane.title
+    title = tab_info.active_pane.title
+    if title:endswith('pwsh.exe') then
+        return 'PowerShell'
+    end
+
+    return title
 end
 
 -- https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
