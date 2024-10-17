@@ -181,6 +181,9 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 " jjでエスケープ
 inoremap <silent> jj <ESC>
+inoremap <silent> kk <ESC>
+inoremap <silent> jk <ESC>
+inoremap <silent> kj <ESC>
 
 nnoremap J 5j
 nnoremap K 5k
