@@ -48,6 +48,14 @@ function open() {
     cmd.exe /u /q /c $app $args
 }
 
+function hist {
+    $find = $args
+
+    Get-Content (Get-PSReadlineOption).HistorySavePath
+        | ForEach-Object { "$($_.ReadCount)  $_" }
+        | Where-Object { $_ -like "*$find*" }
+}
+
 if (Get-Module -ListAvailable -Name Abbr) {
     Import-Module Abbr
 
