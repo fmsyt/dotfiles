@@ -8,6 +8,18 @@ local function apply(config)
     { family = 'HackGen' },
     { family = 'Segoe UI Emoji', assume_emoji_presentation = true },
   }
+
+  -- https://wezfurlong.org/wezterm/config/lua/SshDomain.html
+  config.ssh_domains = {
+    {
+      name = "my.server",
+      remote_address = "192.168.1.1",
+      username = "myuser",
+      ssh_option = {
+        identityfile = "/path/to/your/private/key",
+      }
+    }
+  }
 end
 
 return {
