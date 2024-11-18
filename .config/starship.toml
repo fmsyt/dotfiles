@@ -55,6 +55,7 @@ success_symbol = "[❯](bold green)"
 ssh_symbol = "[](yellow) "
 style = "bold green"
 format = '[$ssh_symbol$hostname]($style):'
+ssh_only = false
 
 [directory]
 truncation_length = 100
