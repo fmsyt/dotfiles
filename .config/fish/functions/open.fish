@@ -1,6 +1,6 @@
 function open
 
-    set -l dotfiles_dir (dirname "$HOME/.config")
+    set -l dotfiles_dir (dirname (readlink "$HOME/.config"))
     set -l script_path "$dotfiles_dir/scripts/linux/utils/open.sh"
 
     if ! test -f "$script_path"
@@ -8,5 +8,5 @@ function open
         return 1
     end
 
-    command bash $HOME/.config/sh/scripts/open.sh $argv
+    command bash $script_path $argv
 end
