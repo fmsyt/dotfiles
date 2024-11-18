@@ -3,6 +3,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 local act = wezterm.action
+local nf = wezterm.nerdfonts
 
 config.initial_cols = 120
 config.initial_rows = 32
@@ -33,9 +34,7 @@ config.tab_max_width = 24
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     -- https://wezfurlong.org/wezterm/config/lua/config/win32_system_backdrop.html
     config.window_background_opacity = 0.5
-    -- config.window_background_opacity = 0
     config.win32_system_backdrop = 'Acrylic'
-    config.use_fancy_tab_bar = false
 end
 
 if wezterm.target_triple == 'x86_64-apple-darwin' then
@@ -72,10 +71,6 @@ config.colors = {
             bg_color = bg_hover,
             fg_color = '#909090',
             italic = true
-        },
-        new_tab = {
-            bg_color = bg_active,
-            fg_color = '#808080'
         },
         new_tab_hover = {
             bg_color = bg_hover,
@@ -124,78 +119,51 @@ function string:endswith(ending)
     return ending == "" or self:sub(-#ending) == ending
 end
 
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-
-local function tab_title(tab_info)
-    local title = tab_info.tab_title
-    if title and #title > 0 then
-        return title
-    end
-
-    title = tab_info.active_pane.title
-    if title:endswith('pwsh.exe') then
-        return 'PowerShell'
-    end
-
-    return title
-end
 
 -- https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-    local edge_background = config.colors.tab_bar.background
-    local background = config.colors.tab_bar.inactive_tab.bg_color
-    local foreground = config.colors.tab_bar.inactive_tab.fg_color
+    local title = tab.active_pane.title
 
-    if tab.is_active then
-        background = config.colors.tab_bar.active_tab.bg_color
-        foreground = config.colors.tab_bar.active_tab.fg_color
-    elseif hover then
-        background = config.colors.tab_bar.inactive_tab_hover.bg_color
-        foreground = config.colors.tab_bar.inactive_tab_hover.fg_color
+    if title:endswith('pwsh.exe') then
+        title = 'PowerShell'
     end
 
-    local edge_foreground = background
+    if title:endswith('cmd.exe') then
+        title = 'cmd.exe'
+    end
 
-    local title = tab.tab_index + 1 .. ": " .. tab_title(tab)
-    title = wezterm.truncate_right(title, max_width - 2)
-
+    title = tab.tab_index + 1 .. ': ' .. title
     return {
-        { Background = { Color = edge_background } },
-        { Foreground = { Color = edge_foreground } },
-        { Text = SOLID_LEFT_ARROW },
-        { Background = { Color = background } },
-        { Foreground = { Color = foreground } },
         { Text = title },
-        { Background = { Color = edge_background } },
-        { Foreground = { Color = edge_foreground } },
-        { Text = SOLID_RIGHT_ARROW }
     }
 end)
 
 local launch_menu = {}
 
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
-    config.default_prog = {'pwsh.exe'}
+    config.default_prog = {'pwsh.exe', '-NoLogo'}
 
     table.insert(launch_menu, {
-        label = 'pwsh',
+        label = nf.cod_terminal_powershell .. ' PowerShell7',
         args = {'pwsh.exe', '-NoLogo'}
     })
 
     table.insert(launch_menu, {
-        label = 'wsl',
+        label = nf.cod_terminal_linux .. ' WSL',
         args = {'wsl.exe'}
     })
 
     -- Find installed visual studio version(s) and add their compilation
     -- environment command prompts to the menu
-    for _, vsvers in ipairs(wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files (x86)')) do
+    for _, vsvers in ipairs(wezterm.glob('Microsoft Visual Studio/20*', 'C:/Program Files')) do
         local year = vsvers:gsub('Microsoft Visual Studio/', '')
         table.insert(launch_menu, {
-            label = 'x64 Native Tools VS ' .. year,
+            label = nf.cod_terminal_cmd .. ' Developper Command Prompt x64 Native Tools VS ' .. year,
             args = {'cmd.exe', '/k',
-                    'C:/Program Files (x86)/' .. vsvers .. '/BuildTools/VC/Auxiliary/Build/vcvars64.bat'}
+                    'C:/Program Files/' .. vsvers .. '/Community/Common7/Tools/VsDevCmd.bat',
+                    '-startdir=none',
+                    '-arch=x64',
+                    '-host_arch=x64'}
         })
     end
 end
