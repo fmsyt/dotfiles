@@ -55,7 +55,10 @@ success_symbol = "[❯](bold green)"
 ssh_symbol = "[](yellow) "
 style = "bold green"
 format = '[$ssh_symbol$hostname]($style):'
-ssh_only = false
+ssh_only = true
+detect_env_vars = [
+    "WEZTERM_PANE"
+]
 
 [directory]
 truncation_length = 100
