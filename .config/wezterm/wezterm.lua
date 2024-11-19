@@ -132,7 +132,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
         title = 'cmd.exe'
     end
 
-    title = tab.tab_index + 1 .. ': ' .. title
+    title = tab.tab_index + 1 .. ': ' .. title .. string.rep(' ', max_width)
+    title = title:sub(1, max_width)
     return {
         { Text = title },
     }
