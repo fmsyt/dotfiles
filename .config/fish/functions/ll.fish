@@ -10,9 +10,7 @@ function ll
     set -l ig (string join '|' $ls_ignores)
     set -l opts "-I \"$ig\""
 
-    # check if pass $HOME/.config/sh/scripts/exa-supported-icons.sh
-
-    if test $HOME/.config/sh/scripts/exa-supported-icons.sh
+    if test "$DOTFILES_DIR/scripts/linux/utils/exa-supported-icons.sh"
         command exa --icons -gl $opts $argv
     else
         command exa -gl $opts $argv
