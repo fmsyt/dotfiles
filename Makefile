@@ -10,20 +10,27 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  full      Install all dotfiles"
-	@echo "  min       Install minimal dotfiles"
-	@echo "  install   Install dotfiles"
-	@echo "  post_install"
-	@echo "            Post install tasks"
+	@echo "  full              Install all dotfiles"
+	@echo "  minimal           Install minimal dotfiles"
+	@echo "  min               Alias for minimal"
+	@echo "  post_install      Post install tasks"
+	@echo "  help              Show this help message"
 
 full:
 	@$(MAKE) install FILES="$(FILES_ALL)"
 	@$(MAKE) post_install
 
 min:
+	@$(MAKE) minimal
+
+minimal:
 	@$(MAKE) install FILES="$(FILES_MIN)"
 
 install:
+	@if [ -z "$(FILES)" ]; then \
+		echo "No files to install"; \
+		exit 1; \
+	fi
 	@echo "Installing dotfiles..."
 	@mkdir -p $(HOME_DIR)/.dotbackup
 	@for file in $(FILES); do \
