@@ -34,15 +34,22 @@ minimal:
 	@$(MAKE) install FILES="$(FILES_MIN)" DIST_DIR="$(HOME_DIR)"
 
 install:
+	@if [ ! command -v rsync > /dev/null ]; then \
+		echo "rsync is not installed"; \
+		exit 1; \
+	fi
 	@if [ -z "$(FILES)" ]; then \
 		echo "No files to install"; \
 		exit 1; \
 	fi
-	@echo "Installing dotfiles..."
+	@echo "\e[1;33mInstalling dotfiles...\e[0m"
 	@mkdir -p $(DIST_DIR)/.dotbackup
+	@# Install dotfiles
+	@# 既にディレクトリが存在する場合は、dotfiles に既存のファイルの内容で上書きする
 	@for file in $(FILES); do \
-		echo "Linking $$file"; \
-		[ -d $(DIST_DIR)/$$file ] && mv $(DIST_DIR)/$$file $(DIST_DIR)/.dotbackup/; \
+		echo "\e[1;32mLinking: $$file\e[0m"; \
+		[ -d $(DIST_DIR)/$$file ] && rsync -a --delete $(DIST_DIR)/$$file $(DOTFILES_DIR)/$$file; \
+		[ -e $(DIST_DIR)/$$file ] && mv $(DIST_DIR)/$$file $(DIST_DIR)/.dotbackup/; \
 		ln -s $(DOTFILES_DIR)/$$file $(DIST_DIR)/ --backup=numbered; \
 	done
 
@@ -63,24 +70,55 @@ post_ssh_install:
 	@chmod 600 $(SSH_SHARED_CONFIG_DIR)/*.conf
 
 test:
-	@rm -rf $(TEST_DIR)
+	@[ -d $(TEST_DIR) ] && rm -rf $(TEST_DIR)
+	@[ -d $(TEST_DIR).bak ] && rm -rf $(TEST_DIR).bak
 	@mkdir -p $(TEST_DIR)
 	@echo "tmp: $(TEST_DIR)"
-	@mkdir -p $(TEST_DIR)/test_dir_a
-	@mkdir -p $(TEST_DIR)/test_dir_b
-	@mkdir -p $(TEST_DIR)/dotfiles/test_dir_a
-	@mkdir -p $(TEST_DIR)/dotfiles/test_dir_c
-	@echo "local" > $(TEST_DIR)/test_dir_a/testfile_1
-	@echo "local" > $(TEST_DIR)/test_dir_a/testfile_2
-	@echo "local" > $(TEST_DIR)/test_dir_b/testfile_1
-	@echo "local" > $(TEST_DIR)/test_dir_b/testfile_2
-	@echo "dotfiles" > $(TEST_DIR)/dotfiles/testfile
-	@echo "dotfiles" > $(TEST_DIR)/dotfiles/test_dir_a/testfile_1
-	@echo "dotfiles" > $(TEST_DIR)/dotfiles/test_dir_a/testfile_3
-	@echo "dotfiles" > $(TEST_DIR)/dotfiles/test_dir_c/testfile_1
-	@echo "dotfiles" > $(TEST_DIR)/dotfiles/test_dir_c/testfile_3
+	@# Create test files as local files
+	@mkdir -p $(TEST_DIR)/test_dir_a/sub_dir_a
+	@mkdir -p $(TEST_DIR)/test_dir_a/sub_dir_b
+	@mkdir -p $(TEST_DIR)/test_dir_b/sub_dir_a
+	@mkdir -p $(TEST_DIR)/test_dir_b/sub_dir_b
+	@# Create test files as dotfiles
+	@mkdir -p $(TEST_DIR)/dotfiles/test_dir_a/sub_dir_a
+	@mkdir -p $(TEST_DIR)/dotfiles/test_dir_a/sub_dir_c
+	@mkdir -p $(TEST_DIR)/dotfiles/test_dir_c/sub_dir_a
+	@mkdir -p $(TEST_DIR)/dotfiles/test_dir_c/sub_dir_c
+	@# Create test files in local
+	@echo "local keep" > $(TEST_DIR)/file_1
+	@echo "local keep" > $(TEST_DIR)/file_2
+	@echo "local keep" > $(TEST_DIR)/test_dir_a/file_1
+	@echo "local keep" > $(TEST_DIR)/test_dir_a/file_2
+	@echo "local keep" > $(TEST_DIR)/test_dir_a/sub_dir_a/file_1
+	@echo "local keep" > $(TEST_DIR)/test_dir_a/sub_dir_a/file_2
+	@echo "local keep" > $(TEST_DIR)/test_dir_a/sub_dir_b/file_1
+	@echo "local keep" > $(TEST_DIR)/test_dir_a/sub_dir_b/file_2
+	@echo "local keep" > $(TEST_DIR)/test_dir_b/file_1
+	@echo "local keep" > $(TEST_DIR)/test_dir_b/file_2
+	@echo "local keep" > $(TEST_DIR)/test_dir_b/sub_dir_a/file_1
+	@echo "local keep" > $(TEST_DIR)/test_dir_b/sub_dir_a/file_2
+	@echo "local keep" > $(TEST_DIR)/test_dir_b/sub_dir_b/file_1
+	@echo "local keep" > $(TEST_DIR)/test_dir_b/sub_dir_b/file_2
+	@# Create test files in dotfiles
+	@echo "dotfiles backup" > $(TEST_DIR)/dotfiles/file_1
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/file_3
+	@echo "dotfiles backup" > $(TEST_DIR)/dotfiles/test_dir_a/file_1
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_a/file_3
+	@echo "dotfiles backup" > $(TEST_DIR)/dotfiles/test_dir_a/sub_dir_a/file_1
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_a/sub_dir_a/file_3
+	@echo "dotfiles backup" > $(TEST_DIR)/dotfiles/test_dir_a/sub_dir_c/file_1
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_a/sub_dir_c/file_3
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_c/file_1
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_c/file_3
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_c/sub_dir_a/file_1
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_c/sub_dir_a/file_3
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_c/sub_dir_c/file_1
+	@echo "dotfiles keep"   > $(TEST_DIR)/dotfiles/test_dir_c/sub_dir_c/file_3
 	@tree -a $(TEST_DIR)
-	@$(MAKE) install FILES="$(shell find $(TEST_DIR)/dotfiles -mindepth 1 -maxdepth 1 -printf '%f\n')" DIST_DIR="$(TEST_DIR)" DOTFILES_DIR="$(TEST_DIR)/dotfiles"
+	@cp -r $(TEST_DIR) $(TEST_DIR).bak
+	@$(MAKE) install \
+		FILES="$(shell find $(TEST_DIR)/dotfiles -mindepth 1 -maxdepth 1 -printf '%f\n')" \
+		DIST_DIR="$(TEST_DIR)" DOTFILES_DIR="$(TEST_DIR)/dotfiles"
 	@tree -a $(TEST_DIR)
 
 .PHONY: all help full minimal min install post_install post_ssh_install test
