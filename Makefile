@@ -5,7 +5,7 @@ FILES_ALL := $(shell find $(DOTFILES_DIR) -mindepth 1 -maxdepth 1 -name '.[!git]
 FILES_MIN := '.config' '.local'
 
 SSH_SHARED_CONFIG_DIR := $(HOME_DIR)/.ssh/shared
-SSH_INCLUDE_DIRECTIVE := "Include $(SSH_SHARED_CONFIG_DIR)/*.conf"
+SSH_INCLUDE_DIRECTIVE := Include $(SSH_SHARED_CONFIG_DIR)/*.conf
 SSH_CONFIG_FILE := $(HOME_DIR)/.ssh/config
 
 TEST_DIR := $(DOTFILES_DIR)/test
