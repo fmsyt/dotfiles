@@ -48,7 +48,6 @@ install:
 	@echo "\e[1;33mInstalling dotfiles...\e[0m"
 	@mkdir -p $(DIST_DIR)/.dotbackup
 	@# Install dotfiles
-	@# 既にディレクトリが存在する場合は、dotfiles に既存のファイルの内容で上書きする
 	@for file in $(FILES); do \
 		echo "\e[1;32mLinking: $$file\e[0m"; \
 		[ -d $(DIST_DIR)/$$file ] && rsync -alr --ignore-existing --remove-source-files $(DIST_DIR)/$$file/* $(DOTFILES_DIR)/$$file; \
@@ -70,7 +69,9 @@ post_ssh_install:
 		echo "Adding SSH include directive"; \
 		sed -i "1s;^;$(SSH_INCLUDE_DIRECTIVE)\n;" $(SSH_CONFIG_FILE); \
 	fi
-	@chmod 600 $(SSH_SHARED_CONFIG_DIR)/*.conf
+	@if [ $(shell find $(SSH_SHARED_CONFIG_DIR) -type f -name '*.conf' | wc -l) -lg 0 ]; then \
+		chmod 600 $(SSH_SHARED_CONFIG_DIR)/*.conf; \
+	fi
 
 test:
 	@if [ -d $(TEST_DIR) ]; then \
