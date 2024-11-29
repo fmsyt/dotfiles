@@ -53,7 +53,7 @@ install:
 		echo "\e[1;32mLinking: $$file\e[0m"; \
 		[ -d $(DIST_DIR)/$$file ] && rsync -alr --ignore-existing --remove-source-files $(DIST_DIR)/$$file/* $(DOTFILES_DIR)/$$file; \
 		[ -e $(DIST_DIR)/$$file ] && mv $(DIST_DIR)/$$file $(DIST_DIR)/.dotbackup/; \
-		ln -s $(DOTFILES_DIR)/$$file $(DIST_DIR)/ --backup=numbered; \
+		ln -s $(DOTFILES_DIR)/$$file $(DIST_DIR)/; \
 	done
 
 post_install:
