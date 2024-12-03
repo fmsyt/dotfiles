@@ -104,6 +104,7 @@ set autoindent
 set mouse=a
 " set ttymouse=xterm2
 
+" vimを起動しているターミナルのフォーカスが外れた時にマウスの左クリックを無効にする
 augroup Mouse
     autocmd!
     autocmd FocusGained * call s:OnFocusGained()
@@ -173,17 +174,17 @@ nnoremap Y y$
 cnoremap w!! w !sudo tee > /dev/null %<CR>
 
 " 折り返し時に表示行単位での移動できるようにする
-" nnoremap j gj
-" nnoremap k gk
+nnoremap j gj
+nnoremap k gk
 
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 " jjでエスケープ
 inoremap <silent> jj <ESC>
-inoremap <silent> kk <ESC>
+" inoremap <silent> kk <ESC>
 inoremap <silent> jk <ESC>
-inoremap <silent> kj <ESC>
+" inoremap <silent> kj <ESC>
 
 nnoremap J 5j
 nnoremap K 5k
