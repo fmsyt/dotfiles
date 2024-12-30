@@ -8,7 +8,17 @@ ls_ignores=(
     'desktop.ini'
 )
 
-if command -v exa >/dev/null 2>&1; then
+if command -v eza >/dev/null 2>&1; then
+
+    IFS="|"; declare opts="-I \"${ls_ignores[*]}\""
+
+    alias eza="eza --icons $opts"
+
+    alias ll='eza -gl'
+    alias la='eza -agl'
+    alias l='eza'
+
+elif command -v exa >/dev/null 2>&1; then
 
     IFS="|"; declare opts="-I \"${ls_ignores[*]}\""
 
