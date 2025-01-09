@@ -199,8 +199,8 @@ nnoremap <C-d> viw
 vnoremap <C-d> <Nop>
 
 " VISUALモードでインデントをしたとき、選択範囲を選択したままにする
-vnoremap < <gv
-vnoremap > >gv
+" vnoremap < <gv
+" vnoremap > >gv
 
 " カーソル位置の単語を検索するとき、カーソル位置の単語をデフォルトで検索する
 nnoremap * *N
