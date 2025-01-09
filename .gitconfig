@@ -39,7 +39,7 @@
 [difftool]
 	prompt = false
 [difftool "vim"]
-	cmd = VIM_MODE=slim vim -d $LOCAL $REMOTE
+	cmd = vim -d $LOCAL $REMOTE
 [difftool "code"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
