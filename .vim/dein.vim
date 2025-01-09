@@ -20,24 +20,37 @@ if match( &runtimepath, '/dein.vim' ) == -1
     execute 'set runtimepath+=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
+let s:cache_state_file = expand('~/.cache/vim_mode_state')
+let s:current_mode = getenv('VIM_MODE')
+
+if (filereadable(s:cache_state_file))
+    let s:previous_mode = readfile(s:cache_state_file)[0]
+else
+    let s:previous_mode = ''
+endif
+
+if s:current_mode != 'cli'
+    autocmd VimEnter * echomsg 'Start `VIM_MODE=cli vim` to load all plugins.' 
+endif
+
 " dein の設定
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     call dein#load_toml(s:toml_base, { 'lazy': 0 })
 
-    if $VIM_MODE == "cli"
+    if s:current_mode == 'cli'
         call dein#load_toml(s:toml_cli, { 'lazy': 0 })
         call dein#load_toml(s:toml_cli_lazy, { 'lazy': 1 })
-    else
-        augroup MinimalPlugins
-            autocmd!
-            autocmd VimEnter * echomsg "Plugins loaded minimal. Run vim with `VIM_MODE=cli` to load all plugins."
-        augroup END
     endif
 
     call dein#end()
     call dein#save_state()
+endif
+
+if (s:current_mode != s:previous_mode)
+    call dein#clear_state()
+    call writefile([s:current_mode], s:cache_state_file)
 endif
 
 " 各プラグインのインストールチェック（なかったら自動的に追加される）
