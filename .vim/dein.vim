@@ -29,6 +29,8 @@ if dein#load_state(s:dein_dir)
     if $VIM_MODE == "cli"
         call dein#load_toml(s:toml_cli, { 'lazy': 0 })
         call dein#load_toml(s:toml_cli_lazy, { 'lazy': 1 })
+    else
+        autocmd VimEnter * echo "Plugins loaded minimal.\nVIM_MODE=cli to load all plugins."
     endif
 
     call dein#end()
