@@ -30,7 +30,7 @@ if dein#load_state(s:dein_dir)
         call dein#load_toml(s:toml_cli, { 'lazy': 0 })
         call dein#load_toml(s:toml_cli_lazy, { 'lazy': 1 })
     else
-        autocmd VimEnter * silent! echomsg "Plugins loaded minimal.\nVIM_MODE=cli to load all plugins."
+        autocmd VimEnter * echomsg "Plugins loaded minimal.\nVIM_MODE=cli to load all plugins."
     endif
 
     call dein#end()
