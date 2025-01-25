@@ -21,3 +21,5 @@ abbr dc 'docker compose'
 abbr dce 'docker compose exec'
 abbr dcu 'docker compose up -d'
 abbr dcub 'docker compose up --build -d'
+
+abbr vd 'cd'
