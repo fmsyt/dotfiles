@@ -31,9 +31,9 @@ SwitchKey=Disabled
 # カスタム切り替えキー
 #CustomSwitchKey=
 # 入力メソッドをオンに
-#ActivateKey=
+ActivateKey=HANGUL
 # 入力メソッドをオフに
-#InactivateKey=
+InactivateKey=HANGULHANJA
 # 入力メソッドの切換をホットキーで
 # Available Value:
 # True False
