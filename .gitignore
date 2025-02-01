@@ -74,6 +74,7 @@
 !/.config/starship.toml
 !/.config/user-dirs.dirs
 !/.config/user-dirs.locale
+!/.config/waveterm/settings.json
 !/.config/wezterm/*
 !/.config/wezterm/local/init.lua.example
 !/.config/wireplumber/

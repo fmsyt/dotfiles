@@ -1,0 +1,6 @@
+{
+  "autoupdate:channel": "latest",
+  "term:fontSize": 18,
+  "term:fontfamily": "CaskaydiaCove Nerd Font",
+  "window:blur": true
+}
