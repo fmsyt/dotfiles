@@ -54,6 +54,7 @@ on_ft = ['js', 'javascript', 'ts', 'typescript', 'javascriptreact', 'typescriptr
 # on_ft = ['astro']
 
 
-[[plugins]]
-repo = 'vim-scripts/dbext.vim'
-on_ft = ['sql']
+# NOTE: VSCode上で動作がおかしくなるのでコメントアウト
+# [[plugins]]
+# repo = 'vim-scripts/dbext.vim'
+# on_ft = ['sql']
