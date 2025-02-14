@@ -55,5 +55,5 @@ on_ft = ['js', 'javascript', 'ts', 'typescript', 'javascriptreact', 'typescriptr
 
 
 [[plugins]]
-repo = 'vim-script/dbext.vim'
+repo = 'vim-scripts/dbext.vim'
 on_ft = ['sql']
