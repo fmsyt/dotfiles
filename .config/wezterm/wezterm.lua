@@ -31,6 +31,9 @@ config.window_background_opacity = 0.95
 config.tab_bar_at_bottom = true
 config.tab_max_width = 24
 
+config.command_palette_font_size = 12.0
+config.line_height = 1.0
+
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
     -- https://wezfurlong.org/wezterm/config/lua/config/win32_system_backdrop.html
     config.window_background_opacity = 0.5
