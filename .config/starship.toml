@@ -112,7 +112,7 @@ Linux = " "
 Macos = " "
 Mint = "󰣭 "
 Raspbian = " "
-Ubuntu = "󰕈 "
+Ubuntu = " "
 Windows = " "  # 󰖳󰨡
 
 [package]
