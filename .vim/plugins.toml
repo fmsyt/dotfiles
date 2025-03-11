@@ -57,3 +57,6 @@ repo = 'airblade/vim-gitgutter'
 hook_add = '''
 set signcolumn=yes
 '''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
