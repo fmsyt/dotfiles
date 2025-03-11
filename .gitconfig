@@ -13,16 +13,18 @@
 [fetch]
 	prune = true
 [alias]
-	st = status
+	br = branch
+	cm = commit
+	co = checkout
 	df = diff
 	dt = difftool
-	cm = commit
-	br = branch
-	ps = push
-	pl = pull
-	co = checkout
+	f = fetch
+	m = merge
 	mt = mergetool
+	psuh = push
+	pl = pull
 	sc = secret
+	st = status
 	sw = switch
 	tree = log --graph --date=short --pretty=format:'%x09%C(auto) %h %Cgreen %ad %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 	set-user = "!f(){ git config --local user.name \"$1\"; git config --local user.email \"$2\"; };f"
