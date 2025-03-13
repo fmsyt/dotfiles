@@ -115,3 +115,8 @@
 /scripts/linux/x11/sddm/Xsetup.conf.d/*.sh
 !/scripts/linux/x11/sddm/Xsetup.conf.d/.gitkeep
 !*.secret
+
+!/.zshrc
+!/.config/sheldon
+!/.config/sheldon/*
+
