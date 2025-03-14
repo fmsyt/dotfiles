@@ -1,6 +1,8 @@
 local wezterm = require 'wezterm'
 
 local function apply(config)
+  config.color_scheme = 'Purple People Eater (Gogh)'
+
   config.font = wezterm.font_with_fallback {
     -- 'Moralerspace Krypton HWNF',
     { family = 'CaskaydiaCove Nerd Font', weight = 'Book' },
