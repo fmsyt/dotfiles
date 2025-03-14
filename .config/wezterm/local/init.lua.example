@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm'
 
 local function apply(config)
-  config.color_scheme = 'Purple People Eater (Gogh)'
+  config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
 
   config.font = wezterm.font_with_fallback {
     -- 'Moralerspace Krypton HWNF',
