@@ -1,4 +1,3 @@
-local os = require 'os'
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
@@ -86,6 +85,7 @@ config.colors = {
 
 
 config.font = wezterm.font_with_fallback {
+    -- { family = 'Moralerspace Krypton HWNF', weight = 'Medium' },
     { family = 'CaskaydiaCove Nerd Font' },
     { family = 'Cascadia Code' },
     { family = 'HackGen' },
