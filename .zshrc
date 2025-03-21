@@ -9,6 +9,13 @@ fi
 
 eval "$(sheldon source)"
 
+dotfiles_dir=$(dirname $(readlink "$HOME/.config"))
+script_path="$dotfiles_dir/scripts/linux/install-zabrze.sh"
+if [ -f "$script_path" ]; then
+    zsh "$script_path" > /dev/null
+    eval "$(zabrze init --bind-keys)"
+fi
+
 # abbr g 'git'
 # abbr gs 'git status'
 # abbr gst 'git status'

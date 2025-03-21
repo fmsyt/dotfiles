@@ -1,0 +1,4 @@
+abbrevs:
+  - name: git
+    abbr: g
+    snippet: git

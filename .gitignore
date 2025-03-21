@@ -79,6 +79,8 @@
 !/.config/wezterm/local/init.lua.example
 !/.config/wireplumber/
 !/.config/wireplumber/**
+!/.config/zabrze/
+!/.config/zabrze/**
 !/.config/zsh/
 !/.config/zsh/**
 /.config/zsh/antigen.sh
