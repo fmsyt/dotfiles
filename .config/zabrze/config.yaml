@@ -2,3 +2,39 @@ abbrevs:
   - name: git
     abbr: g
     snippet: git
+
+  - name: git add
+    abbr: ga
+    snippet: git add
+
+  - name: git status
+    abbr: gs
+    snippet: git status
+
+  - name: git checkout
+    abbr: gco
+    snippet: git checkout
+
+  - name: docker
+    abbr: d
+    snippet: docker
+
+  - name: docker exec -it
+    abbr: de
+    snippet: docker exec -it
+
+  - name: docker-compose
+    abbr: dc
+    snippet: docker-compose
+
+  - name: docker-compose up -d
+    abbr: dcu
+    snippet: docker-compose up -d
+
+  - name: docker-compose up --build -d
+    abbr: dcub
+    snippet: docker-compose up --build -d
+
+  - name: awk '{print $1}'
+    abbr: '.1'
+    snippet: awk '{print $1}'

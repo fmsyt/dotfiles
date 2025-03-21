@@ -16,20 +16,5 @@ if [ -f "$script_path" ]; then
     eval "$(zabrze init --bind-keys)"
 fi
 
-# abbr g 'git'
-# abbr gs 'git status'
-# abbr gst 'git status'
-# abbr ga 'git add'
-# abbr ga. 'git add .'
-# abbr gc 'git commit'
-# abbr gp 'git push'
-# abbr gco 'git checkout'
-# 
-# abbr d 'docker'
-# abbr de 'docker exec -it'
-# 
-# abbr dc 'docker compose'
-# abbr dce 'docker compose exec'
-# abbr dcu 'docker compose up -d'
-# abbr dcub 'docker compose up --build -d'
-# 
+alias la='ls -AlF'
+alias ll='ls -lF'
