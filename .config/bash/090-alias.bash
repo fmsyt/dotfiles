@@ -8,6 +8,7 @@ ls_ignores=(
     'desktop.ini'
 )
 
+LAST_IFS=$IFS
 if command -v eza >/dev/null 2>&1; then
 
     IFS="|"; declare opts="-I \"${ls_ignores[*]}\""
@@ -52,6 +53,8 @@ else
     alias la='ls -AlF'
     alias l='ls -CF'
 fi
+
+IFS=$LAST_IFS
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

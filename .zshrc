@@ -16,5 +16,10 @@ if [ -f "$script_path" ]; then
     eval "$(zabrze init --bind-keys)"
 fi
 
-alias la='ls -AlF'
-alias ll='ls -lF'
+for filename in $HOME/.config/zsh/*.zsh; do
+    source $filename
+done
+
+if [ -f $HOME/.local/.zshrc ]; then
+    source $HOME/.local/.zshrc
+fi
