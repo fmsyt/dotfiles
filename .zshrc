@@ -7,6 +7,10 @@ if [ ! -e ~/.local/bin/sheldon ]; then
     command sheldon init --shell zsh
 fi
 
+for filename in $HOME/.config/zsh/*.zsh; do
+    source $filename
+done
+
 autoload -Uz vcs_info
     setopt prompt_subst
     zstyle ':vcs_info:*' enable git
@@ -36,9 +40,6 @@ fi
 
 
 
-for filename in $HOME/.config/zsh/*.zsh; do
-    source $filename
-done
 
 if [ -f $HOME/.local/.zshrc ]; then
     source $HOME/.local/.zshrc
