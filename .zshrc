@@ -7,15 +7,6 @@ if [ ! -e ~/.local/bin/sheldon ]; then
     command sheldon init --shell zsh
 fi
 
-eval "$(sheldon source)"
-
-dotfiles_dir=$(dirname $(readlink "$HOME/.config"))
-script_path="$dotfiles_dir/scripts/linux/install-zabrze.sh"
-if [ -f "$script_path" ]; then
-    zsh "$script_path" > /dev/null
-    eval "$(zabrze init --bind-keys)"
-fi
-
 autoload -Uz vcs_info
     setopt prompt_subst
     zstyle ':vcs_info:*' enable git
@@ -31,6 +22,19 @@ autoload -Uz vcs_info
 PROMPT='
 [%B%F{red}%n@%m%f%b:%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f
 %F{yellow}$%f '
+
+autoload -Uz compinit
+
+eval "$(sheldon source)"
+
+dotfiles_dir=$(dirname $(readlink "$HOME/.config"))
+script_path="$dotfiles_dir/scripts/linux/install-zabrze.sh"
+if [ -f "$script_path" ]; then
+    zsh "$script_path" > /dev/null
+    eval "$(zabrze init --bind-keys)"
+fi
+
+
 
 for filename in $HOME/.config/zsh/*.zsh; do
     source $filename

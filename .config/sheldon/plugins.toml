@@ -25,3 +25,9 @@ github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+
+[plugins.fzf]
+github = "junegunn/fzf"
+
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
