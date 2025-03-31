@@ -30,6 +30,10 @@ PROMPT='
 autoload -U compinit
 compinit
 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' menu select
+
 eval "$(sheldon source)"
 
 dotfiles_dir=$(dirname $(readlink "$HOME/.config"))
