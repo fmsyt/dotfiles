@@ -1,7 +1,10 @@
 import argparse
 import os
+import platform
 import subprocess
 import sys
+
+import hashlib
 
 from email.parser import BytesParser
 from email.policy import default
@@ -62,7 +65,7 @@ if not os.path.isfile(script_path):
 
 args = parser.parse_args()
 
-sysname = os.uname().sysname
+sysname = platform.uname().system
 
 received_files: list[str] = []
 
@@ -77,7 +80,8 @@ def file_open(file_path: str):
     """ファイルを開く関数"""
 
     try:
-        subprocess.Popen(['bash', script_path, file_path])
+        # subprocess.Popen(['bash', script_path, file_path])
+        subprocess.Popen(['open', file_path])
 
     except Exception as e:
         print_verbose(f"Failed to open file {file_path}: {e}")
@@ -113,19 +117,26 @@ class FileRequestHandler(BaseHTTPRequestHandler):
 
         for part in msg.iter_parts():
             filename = part.get_filename()
+            print(f"Received file: {filename}")
             if filename:
                 file_path = os.path.join(args.output, filename)
-                with open(file_path, 'wb') as f:
-                    f.write(part.get_payload(decode=True))
-                print_verbose(f"File saved to {file_path}")
+                full_path = os.path.abspath(file_path)
+                with open(full_path, 'wb') as f:
+                    payload = part.get_payload(decode=True)
 
-                received_files.append(file_path)
-                file_open(file_path)
+                    md5 = hashlib.md5(payload).hexdigest()
+                    print(f"MD5: {md5}")
+
+                    f.write(payload)
+
+                print_verbose(f"File saved to {full_path}")
+
+                received_files.append(full_path)
+                file_open(full_path)
 
         self.send_response(200)
         self.end_headers()
         self.wfile.write(b"File received")
-        print_verbose(f"File received and saved to {file_path}")
 
 
 def main():
@@ -136,6 +147,8 @@ def main():
     # 出力ディレクトリの作成
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
+
+    print_verbose(f"Output directory: {output_dir}")
 
     if args.detach:
         # デタッチモードで実行する場合
