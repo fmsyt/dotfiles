@@ -1,1 +1,8 @@
 export VIM_MODE="cli"
+
+# keychain
+if command -v keychain &> /dev/null; then
+    eval $(keychain --eval --quiet)
+fi
+
+# vim: set ft=bash ts=4 sw=4 et:
