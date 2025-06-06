@@ -53,9 +53,11 @@ success_symbol = "[❯](bold green)"
 
 [shell]
 disabled = false
-# bash_indicator = "bsh"
-# fish_indicator = "fsh"
-# zsh_indicator = "zsh"
+bash_indicator = ""  #  
+fish_indicator = "󰈺"
+cmd_indicator = ""
+pwsh_indicator = "󰨊"
+zsh_indicator = "zsh"
 
 [hostname]
 ssh_symbol = "[](yellow) "
