@@ -51,6 +51,12 @@ $character"""
 error_symbol = "[❯](bold red)"
 success_symbol = "[❯](bold green)"
 
+[shell]
+disabled = false
+# bash_indicator = "bsh"
+# fish_indicator = "fsh"
+# zsh_indicator = "zsh"
+
 [hostname]
 ssh_symbol = "[](yellow) "
 style = "bold green"
