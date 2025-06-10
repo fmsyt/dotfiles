@@ -58,12 +58,22 @@ call ddc#enable()
 
 " https://qiita.com/maachan_9692/items/9b507fd043424013abde
 
-" " <TAB>: completion.
-" inoremap <expr> <TAB>
-"             \ pumvisible()
-"             \ ? '<C-n>' 
-"             \ : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s')
-"             \ ? '<TAB>' : ddc#map#manual_complete()
+" <TAB>: completion.
+inoremap <expr> <TAB>
+            \ pumvisible()
+            \ ? '<C-n>' 
+            \ : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s')
+            \ ? '<TAB>' : ddc#map#manual_complete()
+
+" <C-j>: completion.
+inoremap <expr> <C-j>
+            \ pumvisible()
+            \ ? '<C-n>' 
+            \ : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s')
+            \ ? '<C-j>' : ddc#map#manual_complete()
 
 " <S-TAB>: completion back.
 inoremap <expr> <S-TAB>  pumvisible() ? '<C-p>' : ''
+
+" <C-k>: completion back.
+inoremap <expr> <C-k> pumvisible() ? '<C-p>' : ''
