@@ -157,7 +157,6 @@ augroup fileTypeIndent
     autocmd BufRead,BufNewFile *.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
     autocmd BufRead,BufNewFile *.jsx setlocal tabstop=2 shiftwidth=2 softtabstop=2
     autocmd BufRead,BufNewFile *.tsx setlocal tabstop=2 shiftwidth=2 softtabstop=2
-    autocmd BufRead,BufNewFile *.json setlocal tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 
@@ -167,42 +166,33 @@ augroup END
 
 let mapleader = "\<Space>"
 
+nnoremap <leader>q :q<CR>
+nnoremap <leader>w :w<CR>
 nnoremap Y y$
-" １行が長すぎる時の表示
 
 " 保存時にsudo権限で無理やり保存
 cnoremap w!! w !sudo tee > /dev/null %<CR>
 
-" 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
 
-" ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-" jjでエスケープ
 inoremap <silent> jj <ESC>
-" inoremap <silent> kk <ESC>
 inoremap <silent> jk <ESC>
-" inoremap <silent> kj <ESC>
 
 nnoremap J 5j
 nnoremap K 5k
 
-" uによるundoの対として、Uにredoを割り当てる
 nnoremap U :redo<CR>
 
-" カーソル位置の単語を選択
 nnoremap <C-d> viw
-
-" VISUALモードでの<C-d>を無効化
 vnoremap <C-d> <Nop>
 
 " VISUALモードでインデントをしたとき、選択範囲を選択したままにする
-" vnoremap < <gv
-" vnoremap > >gv
+xnoremap < <gv`>
+xnoremap > >gv`>
 
-" カーソル位置の単語を検索するとき、カーソル位置の単語をデフォルトで検索する
 nnoremap * *N
 
 
