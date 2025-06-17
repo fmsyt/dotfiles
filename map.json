@@ -10,6 +10,10 @@
       "dst": "$HOME/vimfiles"
     },
     {
+      "src": ".vim",
+      "dst": "$HOME/.vim"
+    },
+    {
       "src": ".config",
       "dst": "$HOME/.config"
     },
