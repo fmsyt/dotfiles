@@ -43,6 +43,12 @@ if !isdirectory(s:undo_dir)
     call mkdir(s:undo_dir, 'p')
 endif
 
+let s:colorscheme = getenv('VIM_COLORSCHEME')
+if empty(s:colorscheme)
+    let s:colorscheme = 'monokai_pro'
+endif
+
+execute 'colorscheme' s:colorscheme
 
 " ヘルプを日本語にする
 set helplang=ja,en

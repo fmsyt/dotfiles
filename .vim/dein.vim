@@ -68,13 +68,8 @@ if dein#is_sourced("ddc.vim")
     source ~/.vim/ddc.vim
 endif
 
-let s:colorscheme = getenv('VIM_COLORSCHEME')
-if empty(s:colorscheme)
-    let s:colorscheme = 'monokai_pro'
-endif
-
-execute 'colorscheme' s:colorscheme
 
 if dein#is_sourced("vim-airline")
+    let s:colorscheme = get(g:, 'colorscheme', 'default')
     let g:lightline = { 'colorscheme': s:colorscheme }
 endif
