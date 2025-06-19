@@ -1,1 +1,2 @@
 $env:VIM_MODE = "cli"
+$env:VIM_COLORSCHEME = "monokai_pro"
