@@ -68,8 +68,14 @@ if dein#is_sourced("ddc.vim")
     source ~/.vim/ddc.vim
 endif
 
-colorscheme monokai_pro
+let s:colorscheme = getenv('VIM_COLORSCHEME')
+if s:colorscheme == ''
+    let s:colorscheme = 'monokai_pro'
+endif
+
+autocmd VimEnter * if !exists('g:colors_name') | execute 'colorscheme' s:colorscheme | endif
 
 if dein#is_sourced("vim-airline")
-    let g:lightline = { 'colorscheme': 'monokai_pro' }
+    let g:lightline = { 'colorscheme': "monokai_pro" }
+    " let g:lightline = { 'colorscheme': s:colorscheme }
 endif
