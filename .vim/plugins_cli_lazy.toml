@@ -7,9 +7,9 @@ on_ft = ['json']
 repo  = 'preservim/vim-markdown'
 on_ft = ['markdown']
 hook_add = '''
-    let g:vim_markdown_folding_disabled = 1
-    let g:vim_markdown_conceal = 0
-    let g:vim_markdown_conceal_code_blocks = 0
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 '''
 
 # [[plugins]]
@@ -25,12 +25,15 @@ on_ft = ['toml']
 repo = 'chase/vim-ansible-yaml'
 on_ft = ['yml', 'yaml', 'docker-compose']
 hook_add = '''
-    let g:ansible_options = {'ignore_blank_lines': 0}
+let g:ansible_options = {'ignore_blank_lines': 0}
 '''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['html', 'javascriptreact', 'typescriptreact']
+on_ft = ['html', 'xml', 'javascriptreact', 'typescriptreact', 'apache']
+hook_add = '''
+let g:user_emmet_leader_key = ','
+'''
 
 [[plugins]]
 repo = 'othree/html5.vim'
@@ -48,11 +51,6 @@ on_ft = ['js', 'javascript', 'ts', 'typescript', 'javascriptreact', 'typescriptr
 [[plugins]]
 repo = 'Galooshi/import-js'
 on_ft = ['js', 'javascript', 'ts', 'typescript', 'javascriptreact', 'typescriptreact', 'jsx', 'tsx']
-
-# [[plugins]]
-# repo = 'wuelnerdotexe/vim-astro'
-# on_ft = ['astro']
-
 
 # NOTE: VSCode上で動作がおかしくなるのでコメントアウト
 # [[plugins]]
