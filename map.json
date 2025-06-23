@@ -18,6 +18,10 @@
       "dst": "$HOME/.config"
     },
     {
+      "src": ".config/nvim",
+      "dst": "$env:LOCALAPPDATA/nvim"
+    },
+    {
       "src": ".vim/init.vim",
       "dst": "$HOME/_vimrc"
     },
