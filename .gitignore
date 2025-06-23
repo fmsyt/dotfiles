@@ -59,6 +59,7 @@
 !/.config/mume/
 !/.config/mume/style.less
 !/.config/nvim
+!/.config/nvim/**
 !/.config/pipewire/
 !/.config/pipewire/**
 !/.config/powershell/**
