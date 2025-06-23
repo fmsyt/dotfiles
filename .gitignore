@@ -34,6 +34,7 @@
 !/.config/fcitx/
 !/.config/fcitx/config
 !/.config/fish/*
+/.config/fish/fish_plugins
 /.config/fish/fish_variables
 !/.config/fish/conf.d
 !/.config/fish/conf.d/alias.fish
