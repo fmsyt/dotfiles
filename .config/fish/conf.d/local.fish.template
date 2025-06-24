@@ -1,8 +1,9 @@
 set -x VIM_MODE cli
+#alias vim nvim
 
 # keychain
 if status --is-interactive
-    if command -v keychain &> /dev/null
+    if command -v keychain &>/dev/null
         set -x SSH_AUTH_SOCK $SSH_AUTH_SOCK
     end
 end
