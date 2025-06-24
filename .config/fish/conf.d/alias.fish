@@ -2,8 +2,8 @@ alias sudo='sudo -E'
 alias ip='ip -color'
 
 # don't work command -v
-type bat >/dev/null 2>&1 && alias cat='bat -p --paging=never'
-type batcat >/dev/null 2>&1 && alias cat='batcat -p --paging=never'
+type bat >/dev/null 2>&1 && alias cat='bat -pp'
+type batcat >/dev/null 2>&1 && alias cat='batcat -pp'
 
 abbr g git
 abbr gs 'git status'
