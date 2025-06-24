@@ -5,16 +5,17 @@ alias ip='ip -color'
 type bat >/dev/null 2>&1 && alias cat='bat -p --paging=never'
 type batcat >/dev/null 2>&1 && alias cat='batcat -p --paging=never'
 
-abbr g 'git'
+abbr g git
 abbr gs 'git status'
 abbr gst 'git status'
 abbr ga 'git add'
 abbr ga. 'git add .'
+abbr --set-cursor=! gcm 'git commit -m "!"'
 abbr gc 'git commit'
 abbr gp 'git push'
 abbr gco 'git checkout'
 
-abbr d 'docker'
+abbr d docker
 abbr de 'docker exec -it'
 
 abbr dc 'docker compose'
@@ -22,4 +23,9 @@ abbr dce 'docker compose exec'
 abbr dcu 'docker compose up -d'
 abbr dcub 'docker compose up --build -d'
 
-abbr vd 'cd'
+abbr finf 'find . -type f'
+abbr findf 'find . -type f'
+
+for x in (seq 5)
+    abbr .$x "awk {print \$$x}"
+end
