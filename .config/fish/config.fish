@@ -1,7 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
-    if ! type -q fisher > /dev/null
+    if ! type -q fisher >/dev/null
         set_color green
         echo -e "Fisher is not installed. Please install it to use extensions if you want."
         set_color normal
@@ -10,12 +10,14 @@ if status is-interactive
 
     else
         set -l fish_config_root $HOME/.config/fish
-        if [ ! -f $fish_config_root/fish_plugins ]
-            touch $fish_config_root/fish_plugins
+        if test ! -f $fish_config_root/fish_plugins
+            or test (wc -c $fish_config_root/fish_plugins | awk '{print $1}') -eq 0
+            command cp $fish_config_root/fish_plugins_shared $fish_config_root/fish_plugins
+        else
+            command awk 'NR==FNR{a[$0]; next} !($0 in a)' \
+                $fish_config_root/fish_plugins $fish_config_root/fish_plugins_shared >>$fish_config_root/fish_plugins
         end
-
-        diff --new-line-format="%L" --old-line-format="" --unchanged-line-format="" \
-            $fish_config_root/fish_plugins $fish_config_root/fish_plugins_shared >> $fish_config_root/fish_plugins
     end
 end
 
+# vim: set ts=4 sw=4 sts=4 et:

@@ -69,7 +69,7 @@ post_ssh_install:
 		echo "Adding SSH include directive"; \
 		sed -i "1s;^;$(SSH_INCLUDE_DIRECTIVE)\n;" $(SSH_CONFIG_FILE); \
 	fi
-	@if [ $(shell find $(SSH_SHARED_CONFIG_DIR) -type f -name '*.conf' | wc -l) -gt 0 ]; then \
+	@if [ $(shell find $(SSH_SHARED_CONFIG_DIR) -type f | grep -E *.conf | wc -l) -gt 0 ]; then \
 		chmod 600 $(SSH_SHARED_CONFIG_DIR)/*.conf; \
 	fi
 
