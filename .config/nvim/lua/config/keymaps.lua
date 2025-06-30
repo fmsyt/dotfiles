@@ -4,5 +4,5 @@
 
 vim.api.nvim_set_keymap("n", "J", "5j", { noremap = true })
 vim.api.nvim_set_keymap("n", "K", "5k", { noremap = true })
-
 vim.api.nvim_set_keymap("n", "U", ":redo<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "*", "*N", { noremap = true, silent = true })
