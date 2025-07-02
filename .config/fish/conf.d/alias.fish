@@ -27,5 +27,5 @@ abbr finf 'find . -type f'
 abbr findf 'find . -type f'
 
 for x in (seq 5)
-    abbr .$x "awk {print \$$x}"
+    abbr .$x "awk '{print \$$x}'"
 end
