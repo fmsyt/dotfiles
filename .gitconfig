@@ -38,6 +38,7 @@
 [diff]
 	tool = vim
 	guitool = code
+	compactionHeuristic = true
 [difftool]
 	prompt = false
 [difftool "vim"]
@@ -56,3 +57,12 @@
 	templatedir = ~/.config/git/templates
 [commit]
 	template = ~/.config/git/message
+[color "diff"]
+	meta = 242 238
+	frag = 239 236
+	old = 167 normal
+	new = 030 normal
+	context = 240
+	commit = 246 024
+
+# vim: set ts=4 sw=4 sts=4 noet ai:
