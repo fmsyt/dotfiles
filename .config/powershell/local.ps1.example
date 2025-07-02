@@ -1,2 +1,8 @@
 $env:VIM_MODE = "cli"
 $env:VIM_COLORSCHEME = "monokai_pro"
+
+if (Get-Command -Name "nvim" -ErrorAction SilentlyContinue) {
+    # Set-Alias vim nvim
+}
+
+# vim: set ft=ps1 ts=4 sw=4 et:
