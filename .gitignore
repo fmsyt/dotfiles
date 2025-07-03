@@ -25,20 +25,23 @@
 !/.ssh/shared/
 /.ssh/shared/*
 !/.ssh/shared/*.secret
-!/.ssh/sockets/
+!/.ssh/sockets
+/.ssh/sockets/*
 !/.ssh/sockets/.gitkeep
 
 !/.config/
-!/.config/*/
+/.config/*
 !/.config/bash/*.bash
 !/.config/bash/local.bash.template
 /.config/bash/env.sh
 !/.config/fcitx/
+/.config/fcitx/*
 !/.config/fcitx/config
 !/.config/fish/*
 /.config/fish/fish_plugins
 /.config/fish/fish_variables
 !/.config/fish/conf.d
+/.config/fish/conf.d/*
 !/.config/fish/conf.d/alias.fish
 !/.config/fish/conf.d/gh.fish
 !/.config/fish/conf.d/local.fish.template
@@ -46,6 +49,7 @@
 !/.config/fish/conf.d/starship.fish
 !/.config/fish/conf.d/wsl.fish
 !/.config/fish/functions
+/.config/fish/functions/*
 !/.config/fish/functions/clip.fish
 !/.config/fish/functions/exa.fish
 !/.config/fish/functions/explorer.fish
@@ -57,8 +61,10 @@
 /.config/fish/functions/_*.fish
 !/.config/git/**
 !/.config/mc
+/.config/mc/*
 !/.config/mc/ini
-!/.config/mume/
+!/.config/mume
+/.config/mume/*
 !/.config/mume/style.less
 !/.config/nvim
 !/.config/nvim/**
@@ -102,6 +108,12 @@
 !/.vim/colors/**
 !/.vim/dein/
 !/.vim/dein/**
+!/.vim/session
+/.vim/session/*
+!/.vim/swap
+/.vim/swap/*
+!/.vim/undo
+/.vim/undo/*
 !/.vim/ftdetect/
 !/.vim/ftdetect/**
 
