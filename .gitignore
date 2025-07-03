@@ -1,6 +1,7 @@
 # ignore all files
 
 /.**
+/.local
 /**/*.bak
 /test
 
@@ -29,7 +30,8 @@
 
 !/.config/
 !/.config/*/
-!/.config/bash/**
+!/.config/bash/*.bash
+!/.config/bash/local.bash.template
 /.config/bash/env.sh
 !/.config/fcitx/
 !/.config/fcitx/config
@@ -87,12 +89,6 @@
 /.config/powershell/Microsoft.PowerShell_profile.ps1
 !/.dircolors
 !/.inputrc
-
-!/.local/
-!/.local/.bashrc.template
-!/.local/bin/
-!/.local/bin/open
-!/.local/bin/git-diff-archive
 
 !/.vimrc
 

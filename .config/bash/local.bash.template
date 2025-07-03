@@ -2,7 +2,7 @@ export VIM_MODE="cli"
 export VIM_SCHEME="monokai_pro"
 
 # keychain
-if command -v keychain &> /dev/null; then
+if command -v keychain &>/dev/null; then
     eval $(keychain --eval --quiet)
 fi
 
