@@ -1,29 +1,32 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 local function apply(config)
-  config.color_scheme = 'Railscasts (dark) (terminal.sexy)'
+	config.color_scheme = "Railscasts (dark) (terminal.sexy)"
 
-  config.font = wezterm.font_with_fallback {
-    -- 'Moralerspace Krypton HWNF',
-    { family = 'CaskaydiaCove Nerd Font', weight = 'Book' },
-    { family = 'Cascadia Code' },
-    { family = 'HackGen' },
-    { family = 'Segoe UI Emoji', assume_emoji_presentation = true },
-  }
+	config.initial_cols = 30 * 4
+	config.initial_rows = 8 * 4
 
-  -- https://wezfurlong.org/wezterm/config/lua/SshDomain.html
-  config.ssh_domains = {
-    {
-      name = "my.server",
-      remote_address = "192.168.1.1",
-      username = "myuser",
-      ssh_option = {
-        identityfile = "/path/to/your/private/key",
-      }
-    }
-  }
+	config.font = wezterm.font_with_fallback({
+		-- 'Moralerspace Krypton HWNF',
+		{ family = "CaskaydiaCove Nerd Font", weight = "Book" },
+		{ family = "Cascadia Code" },
+		{ family = "HackGen" },
+		{ family = "Segoe UI Emoji", assume_emoji_presentation = true },
+	})
+
+	-- https://wezfurlong.org/wezterm/config/lua/SshDomain.html
+	config.ssh_domains = {
+		{
+			name = "my.server",
+			remote_address = "192.168.1.1",
+			username = "myuser",
+			ssh_option = {
+				identityfile = "/path/to/your/private/key",
+			},
+		},
+	}
 end
 
 return {
-  apply = apply
+	apply = apply,
 }
