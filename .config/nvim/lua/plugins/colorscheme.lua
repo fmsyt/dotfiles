@@ -1,9 +1,10 @@
 return {
   { "savq/melange-nvim" },
+  { "craftzdog/solarized-osaka.nvim" },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "melange",
+      colorscheme = "solarized-osaka",
     },
   },
 }
