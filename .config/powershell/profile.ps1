@@ -75,5 +75,7 @@ if (Get-Module -ListAvailable -Name Abbr) {
     ealias dce 'docker compose exec'
     ealias dcu 'docker compose up -d'
     ealias dcub 'docker compose up --build -d'
+
+    ealias .. 'cd ..'
 }
 
