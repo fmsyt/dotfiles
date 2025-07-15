@@ -37,9 +37,14 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
+        denols = {
+          root_dir = function(...)
+            return require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")(...)
+          end,
+        },
         tsserver = {
           root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
+            return require("lspconfig.util").root_pattern("package.json")(...)
           end,
           single_file_support = false,
           settings = {
@@ -136,6 +141,23 @@ return {
                   indent_size = "2",
                   continuation_indent_size = "2",
                 },
+              },
+            },
+          },
+        },
+        phpactor = {
+          settings = {
+            phpactor = {
+              enable = true,
+              enable_code_action = true,
+              enable_completion = true,
+              enable_signature_help = true,
+              enable_diagnostics = true,
+              enable_formatting = false,
+              enable_rename = true,
+              enable_inlay_hints = false,
+              format = {
+                indent_size = 4,
               },
             },
           },
