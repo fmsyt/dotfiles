@@ -120,11 +120,11 @@ Linux = " "
 Macos = " "
 Mint = "󰣭 "
 Raspbian = " "
-Ubuntu = " "
+Ubuntu = "󰕈 "
 Windows = " "  # 󰖳󰨡
 
 [package]
-symbol = "󰏗 "   # 󰏗
+symbol = "󰏗 " # 󰏗
 # format = "[$symbol]($style)"
 disabled = true
 
@@ -167,4 +167,3 @@ symbol = "󰬷 " # 󰬷
 
 [gradle]
 # format = "[$symbol]($style)"
-
