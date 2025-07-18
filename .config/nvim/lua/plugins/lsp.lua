@@ -6,6 +6,7 @@ return {
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "K", false }
       keys[#keys + 1] = { "M", vim.lsp.buf.hover, desc = "Hover" }
+      keys[#keys + 1] = { "<F2>", vim.lsp.buf.rename, desc = "Rename" }
     end,
   },
   {
