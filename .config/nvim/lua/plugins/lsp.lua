@@ -30,6 +30,10 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false },
+      format = {
+        indent_size = 2,
+      },
+
       ---@type lspconfig.options
       servers = {
         cssls = {},
