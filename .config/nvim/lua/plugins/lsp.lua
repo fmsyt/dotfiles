@@ -183,4 +183,13 @@ return {
       })
     end,
   },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        -- disable linter on php
+        php = {},
+      },
+    },
+  },
 }
