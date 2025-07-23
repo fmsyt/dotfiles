@@ -1,3 +1,4 @@
+local format = require("lazyvim.util.format")
 return {
   {
     "neovim/nvim-lspconfig",
@@ -21,6 +22,7 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
+        "intelephense",
       })
     end,
   },
@@ -150,22 +152,15 @@ return {
             },
           },
         },
-        phpactor = {
-          settings = {
-            phpactor = {
-              enable = true,
-              enable_code_action = true,
-              enable_completion = true,
-              enable_signature_help = true,
-              enable_diagnostics = true,
-              enable_formatting = false,
-              enable_rename = true,
-              enable_inlay_hints = false,
-              format = {
-                indent_size = 4,
-              },
-            },
-          },
+      },
+      phpactor = {
+        format = {
+          indent_size = 4,
+        },
+      },
+      intelephense = {
+        format = {
+          indent_size = 4,
         },
       },
       setup = {},
