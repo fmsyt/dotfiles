@@ -11,12 +11,23 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
 
+local tab_size_map = {
+  php = 4,
+  go = 4,
+}
+
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  group = augroup("php"),
-  pattern = { "php" },
+  group = augroup("tabsize"),
+  pattern = { "*" },
   callback = function()
-    vim.opt.shiftwidth = 4
-    vim.opt.tabstop = 4
-    vim.opt.softtabstop = 4
+    local size = 2
+
+    if tab_size_map[vim.bo.filetype] then
+      size = tab_size_map[vim.bo.filetype]
+    end
+
+    vim.opt.shiftwidth = size
+    vim.opt.tabstop = size
+    vim.opt.softtabstop = size
   end,
 })
