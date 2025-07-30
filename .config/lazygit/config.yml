@@ -1,0 +1,6 @@
+gui:
+  # One of 'dashboard' (default) | 'allBranchesLog'
+  statusPanelView: allBranchesLog
+git:
+  allBranchesLogCmds:
+    - git log --graph --all --color=always --abbrev-commit --decorate --date=relative --pretty=medium
