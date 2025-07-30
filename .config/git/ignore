@@ -2,3 +2,5 @@
 tempCodeRunnerFile.*
 gitignore.*
 *.gitignore.*
+
+**/.claude/settings.local.json
