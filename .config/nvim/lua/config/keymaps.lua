@@ -12,7 +12,7 @@ vim.keymap.set("n", "K", "5k", ns)
 vim.keymap.set("n", "U", ":redo<CR>", n)
 vim.keymap.set("n", "*", "*N", ns)
 
-vim.keymap.set("n", "<leader>q", ":q<CR>", n)
+vim.keymap.set("n", "<leader>q", ":bdelete<CR>", n)
 
 -- window
 vim.keymap.set("n", "ss", ":split<CR>", n)
