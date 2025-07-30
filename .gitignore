@@ -60,6 +60,8 @@
 !/.config/fish/functions/open.fish
 /.config/fish/functions/_*.fish
 !/.config/git/**
+!/.config/lazygit
+!/.config/lazygit/config.yml
 !/.config/mc
 /.config/mc/*
 !/.config/mc/ini
