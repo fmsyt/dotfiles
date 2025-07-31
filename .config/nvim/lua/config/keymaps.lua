@@ -23,3 +23,6 @@ vim.keymap.set("n", "sh", "<C-w>h", ns)
 vim.keymap.set("n", "sj", "<C-w>j", ns)
 vim.keymap.set("n", "sk", "<C-w>k", ns)
 vim.keymap.set("n", "sl", "<C-w>l", ns)
+
+-- commands
+vim.keymap.set("c", "Q", "qa", n)
