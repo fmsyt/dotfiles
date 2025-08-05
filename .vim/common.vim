@@ -48,6 +48,7 @@ if empty(s:colorscheme)
     let s:colorscheme = 'monokai_pro'
 endif
 
+syntax on
 execute 'colorscheme' s:colorscheme
 
 " ヘルプを日本語にする
