@@ -23,8 +23,10 @@ abbr dce 'docker compose exec'
 abbr dcu 'docker compose up -d'
 abbr dcub 'docker compose up --build -d'
 
-abbr finf 'find . -type f'
-abbr findf 'find . -type f'
+abbr ff 'find . -type f'
+for x in (seq 5)
+    abbr ff$x "find . -maxdepth $x -type f"
+end
 
 for x in (seq 5)
     abbr .$x "awk '{print \$$x}'"
