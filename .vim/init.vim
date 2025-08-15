@@ -204,6 +204,13 @@ xnoremap > >gv`>
 
 nnoremap * *N
 
+nnoremap ss :split<CR>
+nnoremap sv :vsplit<CR>
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+
 
 " ======== alias ========
 
