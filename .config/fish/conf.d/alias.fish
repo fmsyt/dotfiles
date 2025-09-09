@@ -15,6 +15,8 @@ abbr gc 'git commit'
 abbr gp 'git push'
 abbr gco 'git checkout'
 
+abbr lg lazygit
+
 abbr d docker
 abbr de 'docker exec -it'
 
