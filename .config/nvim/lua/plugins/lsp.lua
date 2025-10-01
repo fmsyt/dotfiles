@@ -1,5 +1,5 @@
-local format = require("lazyvim.util.format")
-return {
+---@type LazyRootSpec[]
+local conf = {
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
@@ -37,7 +37,6 @@ return {
         indent_size = 2,
       },
 
-      ---@type lspconfig.options
       servers = {
         cssls = {},
         tailwindcss = {
@@ -155,11 +154,15 @@ return {
         },
       },
       phpactor = {
+        enabled = vim.lsp == "phpactor",
         format = {
           indent_size = 4,
         },
       },
+
+      -- NOTE: https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#initialisation-options
       intelephense = {
+        enabled = vim.lsp == "intelephense",
         format = {
           indent_size = 4,
         },
@@ -194,3 +197,5 @@ return {
     },
   },
 }
+
+return conf
