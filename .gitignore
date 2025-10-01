@@ -70,7 +70,6 @@
 !/.config/mume/style.less
 !/.config/nvim
 !/.config/nvim/**
-/.config/nvim/lazy-lock.json
 !/.config/pipewire/
 !/.config/pipewire/**
 !/.config/powershell/**
