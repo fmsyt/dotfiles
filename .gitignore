@@ -1,7 +1,6 @@
 # ignore all files
 
-/.**
-/.local
+/.*
 /**/*.bak
 /test
 
@@ -21,7 +20,8 @@
 .gitsecret/keys/random_seed
 !/**/*.secret
 
-!/.ssh/
+!/.ssh
+/.ssh/*
 !/.ssh/shared/
 /.ssh/shared/*
 !/.ssh/shared/*.secret
@@ -29,7 +29,7 @@
 /.ssh/sockets/*
 !/.ssh/sockets/.gitkeep
 
-!/.config/
+!/.config
 /.config/*
 !/.config/bash/*.bash
 !/.config/bash/local.bash.template
@@ -37,14 +37,15 @@
 !/.config/fcitx/
 /.config/fcitx/*
 !/.config/fcitx/config
-!/.config/fish/*
-/.config/fish/fish_plugins
-/.config/fish/fish_variables
+
+!/.config/fish
+/.config/fish/*
 !/.config/fish/conf.d
 /.config/fish/conf.d/*
 !/.config/fish/conf.d/alias.fish
 !/.config/fish/conf.d/gh.fish
 !/.config/fish/conf.d/local.fish.template
+!/.config/fish/conf.d/pnpm.fish
 !/.config/fish/conf.d/share.fish
 !/.config/fish/conf.d/starship.fish
 !/.config/fish/conf.d/wsl.fish
@@ -69,7 +70,7 @@
 /.config/mume/*
 !/.config/mume/style.less
 !/.config/nvim
-!/.config/nvim/**
+!/.config/nvim/*
 !/.config/pipewire/
 !/.config/pipewire/**
 !/.config/powershell/**
@@ -100,7 +101,8 @@
 
 !/.vimrc
 
-!/.vim/
+!/.vim
+/.vim/*
 !/.vim/*.vim
 !/.vim/*.toml
 /.vim/local.vim
@@ -119,15 +121,9 @@
 !/.vim/ftdetect/
 !/.vim/ftdetect/**
 
-!/bin/
-!/bin/**
-!/scripts/
-!/scripts/ssh-file-listener.py
-!/scripts/**
 /scripts/tmp
-/scripts/distrod/install.sh
 /scripts/linux/x11/sddm/Xsetup.conf.d/*.sh
-!/scripts/linux/x11/sddm/Xsetup.conf.d/.gitkeep
+
 !*.secret
 
 !/.zshrc
