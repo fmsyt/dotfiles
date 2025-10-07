@@ -9,6 +9,9 @@ local conf = {
       keys[#keys + 1] = { "<Leader>ch", vim.lsp.buf.hover, desc = "Hover" }
       keys[#keys + 1] = { "M", vim.lsp.buf.hover, desc = "Hover" }
       keys[#keys + 1] = { "<F2>", vim.lsp.buf.rename, desc = "Rename" }
+
+      keys[#keys + 1] = { "<Leader>b[", "<Cmd>bprevious<CR>", desc = "Previous Buffer" }
+      keys[#keys + 1] = { "<Leader>b]", "<Cmd>bnext<CR>", desc = "Next Buffer" }
     end,
   },
   {
