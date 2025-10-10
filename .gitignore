@@ -87,6 +87,7 @@
 !/.config/user-dirs.locale
 !/.config/waveterm/settings.json
 !/.config/wezterm/*
+/.config/wezterm/local/*
 !/.config/wezterm/local/init.lua.example
 !/.config/wireplumber/
 !/.config/wireplumber/**
