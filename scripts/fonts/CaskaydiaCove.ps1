@@ -1,12 +1,10 @@
-$response = Invoke-WebRequest -Uri "https://api.github.com/repos/microsoft/cascadia-code/releases/latest" -MaximumRedirection 5
+$response = Invoke-WebRequest -Uri "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest" -MaximumRedirection 5
 
 $jsonObject = $response.Content | ConvertFrom-Json
-Write-Host $jsonObject.tag_name
-
 $tag = $jsonObject.tag_name -replace '^v', ''
 
-$downloadUrl = "https://github.com/microsoft/cascadia-code/releases/download/v$tag/CascadiaCode-$tag.zip"
-$fileName = "CascadiaCode-$tag.zip"
+$downloadUrl = "https://github.com/ryanoasis/nerd-fonts/releases/download/v$tag/CascadiaCode.zip"
+$fileName = "CaskaydiaCove-$tag.zip"
 
 $shellapp = New-Object -ComObject Shell.Application
 $downloadDir = $shellapp.Namespace("shell:Downloads").Self.Path
@@ -17,10 +15,9 @@ if (Test-Path "$downloadDir\$fileName") {
     exit
 }
 
-Write-Host "Downloading Cascadia Code version $tag from $downloadUrl"
+Write-Host "Downloading CaskaydiaCove version $tag from $downloadUrl"
 Invoke-WebRequest -Uri "$downloadUrl" -OutFile "$downloadDir\$fileName"
 
-Write-Host "Downloads to $downloadDir\CascadiaCode-$tag\$fileName"
+Write-Host "Downloads to $downloadDir\$fileName"
 
 Invoke-Item "$downloadDir"
-
