@@ -25,6 +25,7 @@ local conf = {
         "shfmt",
         "tailwindcss-language-server",
         "typescript-language-server",
+        "biome",
         "css-lsp",
         "intelephense",
       })
