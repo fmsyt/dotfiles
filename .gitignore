@@ -15,11 +15,6 @@
 !/.github/
 !/.github/**
 
-!/.gitsecret/
-!/.gitsecret/**
-.gitsecret/keys/random_seed
-!/**/*.secret
-
 !/.config
 /.config/*
 !/.config/bash/*.bash
@@ -101,7 +96,6 @@
 !/.vim/*.toml
 /.vim/local.vim
 /.vim/tokens.vim
-!/.vim/tokens.vim.secret
 !/.vim/colors/
 !/.vim/colors/**
 !/.vim/dein/
@@ -117,8 +111,6 @@
 
 /scripts/tmp
 /scripts/linux/x11/sddm/Xsetup.conf.d/*.sh
-
-!*.secret
 
 !/.zshrc
 !/.config/sheldon
