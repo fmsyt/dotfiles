@@ -20,15 +20,6 @@
 .gitsecret/keys/random_seed
 !/**/*.secret
 
-!/.ssh
-/.ssh/*
-!/.ssh/shared/
-/.ssh/shared/*
-!/.ssh/shared/*.secret
-!/.ssh/sockets
-/.ssh/sockets/*
-!/.ssh/sockets/.gitkeep
-
 !/.config
 /.config/*
 !/.config/bash/*.bash
