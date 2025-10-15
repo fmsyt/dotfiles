@@ -30,6 +30,7 @@
 /.config/fish/conf.d/*
 !/.config/fish/conf.d/alias.fish
 !/.config/fish/conf.d/gh.fish
+!/.config/fish/conf.d/go.fish
 !/.config/fish/conf.d/local.fish.template
 !/.config/fish/conf.d/pnpm.fish
 !/.config/fish/conf.d/share.fish
@@ -41,6 +42,7 @@
 !/.config/fish/functions/exa.fish
 !/.config/fish/functions/explorer.fish
 !/.config/fish/functions/git.fish
+!/.config/fish/functions/lazygit.fish
 !/.config/fish/functions/ls.fish
 !/.config/fish/functions/la.fish
 !/.config/fish/functions/ll.fish

@@ -1,9 +1,11 @@
+$scheme: "https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json"
 gui:
   nerdFontsVersion: "3"
   showFileIcons: true
 
   # One of 'dashboard' (default) | 'allBranchesLog'
   statusPanelView: allBranchesLog
+
 git:
   # Command used when displaying the current branch git log in the main window
   branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
