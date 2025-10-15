@@ -23,6 +23,16 @@
 !/.config/fcitx/
 /.config/fcitx/*
 !/.config/fcitx/config
+!/.config/fcitx/conf
+/.config/fcitx/conf/*
+!/.config/fcitx/conf/xim.conf
+
+!/.config/fcitx5/
+/.config/fcitx5/*
+!/.config/fcitx5/config
+!/.config/fcitx5/conf
+/.config/fcitx5/conf/*
+!/.config/fcitx5/conf/xim.conf
 
 !/.config/fish
 /.config/fish/*
