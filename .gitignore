@@ -99,6 +99,7 @@
 /.config/powershell/Microsoft.PowerShell_profile.ps1
 !/.dircolors
 !/.inputrc
+!/.tmux.conf
 
 !/.vimrc
 
