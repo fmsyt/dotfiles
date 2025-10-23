@@ -48,6 +48,9 @@ config.window_frame = {
 	font_size = 10.0,
 }
 
+config.command_palette_font_size = 14.0
+config.command_palette_rows = 8
+
 local bg_active = "#1a1a1a"
 local bg_inactive = "#333333"
 local bg_hover = "#222222"
