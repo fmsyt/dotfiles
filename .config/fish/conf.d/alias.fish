@@ -1,9 +1,23 @@
 alias sudo='sudo -E'
 alias ip='ip -color'
 
-# don't work command -v
-type bat >/dev/null 2>&1 && alias cat='bat -pp'
-type batcat >/dev/null 2>&1 && alias cat='batcat -pp'
+set -l bat_version 0
+set -l batcat_version 0
+
+# 各桁を100倍して比較する
+if bat --version >/dev/null 2>&1 # bat 0.26.0
+    set bat_version (bat --version | awk '{print $2}' | awk -F. '{printf("%d%03d%03d\n", $1, $2, $3)}')
+end
+
+if batcat --version >/dev/null 2>&1 # bat 0.24.0
+    set batcat_version (batcat --version | awk '{print $2}' | awk -F. '{printf("%d%03d%03d\n", $1, $2, $3)}')
+end
+
+if test $bat_version -ge $batcat_version
+    alias cat='bat'
+else
+    alias cat='batcat'
+end
 
 abbr g git
 abbr gs 'git status'
