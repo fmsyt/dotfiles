@@ -15,6 +15,7 @@ local tab_size_map = {
   php = 4,
   go = 4,
   python = 4,
+  fish = 4,
 }
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
