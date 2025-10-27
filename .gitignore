@@ -40,11 +40,9 @@
 /.config/fish/conf.d/*
 !/.config/fish/conf.d/0-env.fish
 !/.config/fish/conf.d/alias.fish
+!/.config/fish/conf.d/bat.fish
 !/.config/fish/conf.d/gh.fish
-!/.config/fish/conf.d/go.fish
 !/.config/fish/conf.d/local.fish.template
-!/.config/fish/conf.d/pnpm.fish
-!/.config/fish/conf.d/share.fish
 !/.config/fish/conf.d/starship.fish
 !/.config/fish/conf.d/wsl.fish
 !/.config/fish/functions
