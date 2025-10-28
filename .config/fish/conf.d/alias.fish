@@ -6,12 +6,14 @@ set -l bat_version 0
 set -l batcat_version 0
 
 # 各桁を100倍して比較する
-if bat --version >/dev/null 2>&1 # bat 0.26.0
+if command -v bat >/dev/null 2>&1
+    and bat --version >/dev/null 2>&1 # bat 0.26.0
     set bat_version (bat --version | awk '{print $2}' | awk -F. '{printf("%d%03d%03d\n", $1, $2, $3)}')
     set use_bat 1
 end
 
-if batcat --version >/dev/null 2>&1 # bat 0.24.0
+if command -v batcat >/dev/null 2>&1
+    and batcat --version >/dev/null 2>&1 # bat 0.24.0
     set batcat_version (batcat --version | awk '{print $2}' | awk -F. '{printf("%d%03d%03d\n", $1, $2, $3)}')
     set use_bat 1
 end
