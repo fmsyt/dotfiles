@@ -2,17 +2,29 @@
 local conf = {
   {
     "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
-    opts = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "K", false }
-      keys[#keys + 1] = { "<Leader>ch", vim.lsp.buf.hover, desc = "Hover" }
-      keys[#keys + 1] = { "M", vim.lsp.buf.hover, desc = "Hover" }
-      keys[#keys + 1] = { "<F2>", vim.lsp.buf.rename, desc = "Rename" }
-
-      keys[#keys + 1] = { "<Leader>b[", "<Cmd>bprevious<CR>", desc = "Previous Buffer" }
-      keys[#keys + 1] = { "<Leader>b]", "<Cmd>bnext<CR>", desc = "Next Buffer" }
-    end,
+    opts = {
+      servers = {
+        ["*"] = {
+          keys = {
+            { "K", false },
+            { "<Leader>ch", vim.lsp.buf.hover, desc = "Hover" },
+            { "M", vim.lsp.buf.hover, desc = "Hover" },
+            { "<F2>", vim.lsp.buf.rename, desc = "Rename" },
+            { "<Leader>b[", "<Cmd>bprevious<CR>", desc = "Previous Buffer" },
+            { "<Leader>b]", "<Cmd>bnext<CR>", desc = "Next Buffer" },
+            {
+              "gd",
+              function()
+                -- DO NOT RESUSE WINDOW
+                require("telescope.builtin").lsp_definitions({ reuse_win = false })
+              end,
+              desc = "Goto Definition",
+              has = "definition",
+            },
+          },
+        },
+      },
+    },
   },
   {
     "mason-org/mason.nvim",
@@ -173,23 +185,6 @@ local conf = {
       },
       setup = {},
     },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      vim.list_extend(keys, {
-        {
-          "gd",
-          function()
-            -- DO NOT RESUSE WINDOW
-            require("telescope.builtin").lsp_definitions({ reuse_win = false })
-          end,
-          desc = "Goto Definition",
-          has = "definition",
-        },
-      })
-    end,
   },
   {
     "mfussenegger/nvim-lint",
