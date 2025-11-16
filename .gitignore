@@ -86,6 +86,8 @@
 /.config/systemd/*
 !/.config/systemd/user
 !/.config/systemd/user/*
+!/.config/xremap
+!/.config/xremap/*
 !/.config/waveterm/settings.json
 !/.config/wezterm/*
 /.config/wezterm/local/*
