@@ -71,3 +71,27 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'Shougo/ddc-source-omni'
 
+[[plugins]]
+repo = 'dense-analysis/ale'
+hook_add = '''
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '✗ '
+let g:ale_sign_warning = '⚠ '
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+
+let g:ale_linters = {
+\   'javascript': ['biome', 'eslint'],
+\   'typescript': ['biome', 'eslint'],
+\   'typescriptreact': ['biome', 'eslint'],
+\   'javascriptreact': ['biome', 'eslint'],
+\}
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\   'javascriptreact': ['eslint'],
+\}
+'''
