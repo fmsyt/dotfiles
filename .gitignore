@@ -82,6 +82,10 @@
 /.config/sh/scripts/*
 !/.config/sh/scripts/*.sh
 !/.config/starship.toml
+!/.config/systemd
+/.config/systemd/*
+!/.config/systemd/user
+!/.config/systemd/user/*
 !/.config/waveterm/settings.json
 !/.config/wezterm/*
 /.config/wezterm/local/*
