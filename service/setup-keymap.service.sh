@@ -12,24 +12,22 @@ function help() {
 REINSTALL=false
 
 # parse arguments
-for OPT in "$@"
-do
+for OPT in "$@"; do
   case "$OPT" in
-    '-h'|'--help' )
-      help
-      exit 1
-      ;;
-    '--reinstall' )
-      REINSTALL=true
-      shift 1
-      ;;
-    *)
-      help
-      exit 1
-      ;;
+  '-h' | '--help')
+    help
+    exit 1
+    ;;
+  '--reinstall')
+    REINSTALL=true
+    shift 1
+    ;;
+  *)
+    help
+    exit 1
+    ;;
   esac
 done
-
 
 # check sudo
 if [ "$EUID" -ne 0 ]; then
@@ -37,7 +35,7 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 function install_xremap() {
   if [ ! -d /usr/local/bin ]; then
@@ -62,44 +60,44 @@ function install_xremap() {
   read -p "Select number: " ENV
 
   case $ENV in
-    1)
-      feature="x11"
-      ;;
-    2)
-      feature="gnome"
-      ;;
-    3)
-      feature="kde"
-      ;;
-    4)
-      feature="sway"
-      ;;
-    5)
-      feature="wlroots"
-      ;;
-    6)
-      feature="hypr"
-      ;;
-    *)
-      echo "Invalid number"
-      exit 1
-      ;;
+  1)
+    feature="x11"
+    ;;
+  2)
+    feature="gnome"
+    ;;
+  3)
+    feature="kde"
+    ;;
+  4)
+    feature="sway"
+    ;;
+  5)
+    feature="wlroots"
+    ;;
+  6)
+    feature="hypr"
+    ;;
+  *)
+    echo "Invalid number"
+    exit 1
+    ;;
   esac
 
   asset_name="xremap-linux-$(uname -m)-${feature}.zip"
 
   latest_url=$(curl -s https://api.github.com/repos/xremap/xremap/releases/latest | jq -r ".assets[] | select(.name == \"${asset_name}\") | .browser_download_url")
 
-  if [ -z $latest_url ]; then
+  if [ -z "$latest_url" ]; then
     echo "Failed to get latest release"
     exit 1
   fi
 
-  curl -L -o /tmp/${asset_name} $latest_url
-  unzip /tmp/${asset_name} -d /tmp
+  curl -L -o "/tmp/${asset_name}" "$latest_url"
+  unzip "/tmp/${asset_name}" -d /tmp
   mv /tmp/xremap /usr/local/bin
   chmod +x /usr/local/bin/xremap
-  rm /tmp/${asset_name}
+  rm "/tmp/${asset_name}"
   rm -rf /tmp/xremap
 
   echo "Installed xremap"
@@ -107,37 +105,33 @@ function install_xremap() {
 }
 
 # install xremap if not installed
-if ! command -v xremap &> /dev/null; then
+if ! command -v xremap &>/dev/null; then
   install_xremap
   REINSTALL=false
 fi
-
 
 if [ "$REINSTALL" = true ]; then
   install_xremap
 fi
 
-
 # make service file
 # works background
-# reload keymap when keymap.yaml is updated
-cat <<EOF > /etc/systemd/system/keymap.service
+# reload xremap when xremap.yaml is updated
+cat <<EOF >/etc/systemd/system/xremap.service
 [Unit]
-Description=Setup keymap
+Description=Setup xremap
 After=systemd-user-sessions.service
 
 [Service]
-ExecStart=/usr/local/bin/xremap ${SCRIPT_DIR}/keymap.yaml
+ExecStart=/usr/local/bin/xremap %h/.config/xremap/keymap.yaml
 KillMode=process
 RemainAfterExit=yes
 Restart=on-failure
 RestartSec=5s
 Environment=DISPLAY=:0.0
 
-
 [Install]
 WantedBy=graphical.target
 EOF
 
-echo "Installed keymap.service"
-
+echo "Installed xremap.service"
