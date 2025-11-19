@@ -12,12 +12,9 @@ vim.keymap.set("n", "K", "5k", ns)
 vim.keymap.set("n", "U", ":redo<CR>", n)
 vim.keymap.set("n", "*", "*N", ns)
 
-vim.keymap.set("n", "<leader>q", ":bdelete<CR>", n)
-
 -- window
 vim.keymap.set("n", "ss", ":split<CR>", n)
 vim.keymap.set("n", "sv", ":vsplit<CR>", n)
-vim.keymap.set("n", "<C-\\>", ":vsplit<CR>", n)
 vim.keymap.set("n", "sc", ":close<CR>", n)
 vim.keymap.set("n", "sh", "<C-w>h", ns)
 vim.keymap.set("n", "sj", "<C-w>j", ns)
@@ -26,3 +23,10 @@ vim.keymap.set("n", "sl", "<C-w>l", ns)
 
 -- commands
 vim.keymap.set("c", "Q", "qa", n)
+
+vim.keymap.set("n", "<ScrollWheelUp>", "2<C-Y>", ns)
+vim.keymap.set("n", "<ScrollWheelDown>", "2<C-E>", ns)
+vim.keymap.set("i", "<ScrollWheelUp>", "<C-O>2<C-Y>", ns)
+vim.keymap.set("i", "<ScrollWheelDown>", "<C-O>2<C-E>", ns)
+vim.keymap.set("v", "<ScrollWheelUp>", "2<C-Y>", ns)
+vim.keymap.set("v", "<ScrollWheelDown>", "2<C-E>", ns)
