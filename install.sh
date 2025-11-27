@@ -12,6 +12,12 @@ if [ -z "$HOME" ]; then
 fi
 
 verbose_prefix="${orange}[VERBOSE]${reset}"
+vprintf() {
+  if [ $verbose -eq 0 ]; then
+    return
+  fi
+  echo "$verbose_prefix $1"
+}
 
 helpmsg() {
   echo "Usage: $0"
@@ -40,9 +46,7 @@ cpdir() {
   tmp_dir=$(mktemp -d)
 
   # 1. dst を tmp に移動
-  if [ $verbose -eq 1 ]; then
-    echo "$verbose_prefix Existed files are moved to $tmp_dir"
-  fi
+  vprintf "$verbose_prefix Existed files are moved to $tmp_dir"
   mv "$dst" "$tmp_dir"
 
   # 2. src を dst にコピー
@@ -58,19 +62,15 @@ cpdir() {
 
     # 3-1 dst に同名ファイルが存在する場合、バックアップ
     if [ -f "$dst/$file" ]; then
-
-      if [ $verbose -eq 1 ]; then
-        echo "$verbose_prefix Backup $dst/$file"
-      fi
+      vprintf "$verbose_prefix Backup $dst/$file"
 
       mkdir -p "$BACKUP_DIR/$src_basename/$file_dir"
       cp "$dst/$file" "$BACKUP_DIR/$src_basename/$file"
     fi
 
     # 3-2 ディレクトリを作成してファイルをコピー
-    if [ $verbose -eq 1 ]; then
-      echo "$verbose_prefix Copy $tmp_dir/$src_basename/$file to $dst/$file"
-    fi
+    vprintf "$verbose_prefix Copy $tmp_dir/$src_basename/$file to $dst/$file"
+
     mkdir -p "$dst/$file_dir"
     cp "$tmp_dir/$src_basename/$file" "$dst/$file"
 
