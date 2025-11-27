@@ -17,8 +17,6 @@ revert() {
 }
 
 main() {
-
-  # for dotdir in $DOTFILES_DIR/.??*; do
   find "$DOTFILES_DIR" -maxdepth 1 -mindepth 1 -name ".*" | while read -r dotdir; do
     dotname=$(basename "$dotdir")
     case "$dotname" in
