@@ -85,6 +85,7 @@
 !/.config/xremap
 !/.config/xremap/*
 !/.config/waveterm/settings.json
+!/.config/wezterm
 !/.config/wezterm/*
 /.config/wezterm/local/*
 !/.config/wezterm/local/init.lua.example
