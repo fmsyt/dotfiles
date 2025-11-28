@@ -21,6 +21,19 @@ local conf = {
               desc = "Goto Definition",
               has = "definition",
             },
+            {
+              "<Leader>y",
+              '"+y',
+              desc = "Yank to Clipboard",
+              disable = function()
+                -- in SSH
+                if vim.env.SSH_CLIENT then
+                  return true
+                end
+
+                return false
+              end,
+            },
           },
         },
       },
