@@ -24,6 +24,30 @@ local function apply(config)
 		{ key = "}", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(1) },
 
 		{ key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
+
+		{
+			key = "s",
+			mods = "LEADER",
+			action = act.ShowLauncherArgs({
+				-- flags = "FUZZY|WORKSPACES",
+				flags = "WORKSPACES",
+			}),
+		},
+
+		{
+			-- Rename workspace
+			mods = "LEADER|SHIFT",
+			key = "$",
+			action = act.PromptInputLine({
+				description = "(wezterm) Set workspace title:",
+				action = wezterm.action_callback(function(win, pane, line)
+					if line then
+						wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
+					end
+				end),
+			}),
+		},
+
 		--   { key = '!', mods = 'CTRL', action = act.ActivateTab(0) },
 		--   { key = '!', mods = 'SHIFT|CTRL', action = act.ActivateTab(0) },
 		--   { key = '\"', mods = 'ALT|CTRL', action = act.SplitVertical{ domain =  'CurrentPaneDomain' } },
