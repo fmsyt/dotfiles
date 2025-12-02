@@ -46,15 +46,12 @@ cpdir() {
 
   find "$dst_dir" -name "*$CP_BACKUP_SUFFIX" | while IFS= read -r backup_file; do
     original_file="${backup_file%"$CP_BACKUP_SUFFIX"}"
-    vprintf "$VERBOSE_PREFIX Backup $original_file to $BACKUP_DIR"
+    vprintf "Backup $original_file to $BACKUP_DIR"
 
     file_dir=$(dirname "${original_file#"$dst_dir"/}")
     src_basename=$(basename "$src_dir")
     mkdir -p "$BACKUP_DIR/$src_basename/$file_dir"
-    mv "$backup_file" "$BACKUP_DIR/$src_basename/$file_dir/"
-
-    # Restore original file
-    mv "$original_file$CP_BACKUP_SUFFIX" "$original_file"
+    mv "$backup_file" "$BACKUP_DIR/$src_basename/$file_dir/$src_basename"
   done
 }
 
