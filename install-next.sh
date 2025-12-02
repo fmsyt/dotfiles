@@ -41,8 +41,8 @@ cpdir() {
   src_dir="$1"
   dst_dir="$2"
 
-  cp -r --backup="$CP_BACKUP_SUFFIX" "$src_dir/"* "$dst_dir/"
-  cp -r --backup="$CP_BACKUP_SUFFIX" "$src_dir/".* "$dst_dir/" 2>/dev/null || true
+  cp -r --backup --suffix "$CP_BACKUP_SUFFIX" "$src_dir/"* "$dst_dir/"
+  cp -r --backup --suffix "$CP_BACKUP_SUFFIX" "$src_dir/".* "$dst_dir/" 2>/dev/null || true
 
   find "$dst_dir" -name "*$CP_BACKUP_SUFFIX" | while IFS= read -r backup_file; do
     original_file="${backup_file%"$CP_BACKUP_SUFFIX"}"
