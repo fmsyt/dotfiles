@@ -31,7 +31,6 @@ config.window_background_opacity = 0.95
 config.tab_bar_at_bottom = true
 config.tab_max_width = 24
 
-config.command_palette_font_size = 12.0
 config.line_height = 1.0
 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
@@ -177,8 +176,8 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 end
 
 config.launch_menu = launch_menu
-config.keys = require("keybinds").keys
-config.key_tables = require("keybinds").key_tables
+
+require("keybinds").apply(config)
 
 if package.searchpath("local", package.path) then
 	require("local").apply(config)

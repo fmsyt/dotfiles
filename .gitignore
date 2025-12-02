@@ -44,6 +44,7 @@
 !/.config/fish/conf.d/gh.fish
 !/.config/fish/conf.d/local.fish.template
 !/.config/fish/conf.d/starship.fish
+!/.config/fish/conf.d/wezterm.fish
 !/.config/fish/conf.d/wsl.fish
 !/.config/fish/functions
 /.config/fish/functions/*
@@ -85,6 +86,7 @@
 !/.config/xremap
 !/.config/xremap/*
 !/.config/waveterm/settings.json
+!/.config/wezterm
 !/.config/wezterm/*
 /.config/wezterm/local/*
 !/.config/wezterm/local/init.lua.example

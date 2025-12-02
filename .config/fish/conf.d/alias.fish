@@ -47,8 +47,10 @@ abbr dcu 'docker compose up -d'
 abbr dcub 'docker compose up --build -d'
 
 abbr ff 'find . -type f'
+abbr fd 'find . -type d'
 for x in (seq 5)
     abbr ff$x "find . -maxdepth $x -type f"
+    abbr fd$x "find . -maxdepth $x -type d"
 end
 
 for x in (seq 5)
