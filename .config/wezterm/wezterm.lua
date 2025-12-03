@@ -27,21 +27,11 @@ config.color_scheme = "Railscasts (dark) (terminal.sexy)"
 -- config.color_scheme = 'Kanagawa Dragon (Gogh)'
 -- config.color_scheme = 'kanagawabones'
 
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.75
 config.tab_bar_at_bottom = true
 config.tab_max_width = 24
 
 config.line_height = 1.0
-
-if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-	-- https://wezfurlong.org/wezterm/config/lua/config/win32_system_backdrop.html
-	config.window_background_opacity = 0.5
-	config.win32_system_backdrop = "Acrylic"
-end
-
-if wezterm.target_triple == "x86_64-apple-darwin" then
-	config.macos_window_background_blur = 20
-end
 
 config.window_frame = {
 	font_size = 10.0,
