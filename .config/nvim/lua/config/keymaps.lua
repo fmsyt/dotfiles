@@ -30,3 +30,7 @@ vim.keymap.set("i", "<ScrollWheelUp>", "<C-O>2<C-Y>", ns)
 vim.keymap.set("i", "<ScrollWheelDown>", "<C-O>2<C-E>", ns)
 vim.keymap.set("v", "<ScrollWheelUp>", "2<C-Y>", ns)
 vim.keymap.set("v", "<ScrollWheelDown>", "2<C-E>", ns)
+
+if vim.env.SSH_CLIENT then
+  vim.keymap.set("v", "<leader> y", '"+y', ns)
+end
