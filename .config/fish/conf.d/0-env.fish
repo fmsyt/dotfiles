@@ -13,6 +13,9 @@ end
 if command -v vim >/dev/null 2>&1
     set -gx EDITOR vim
 end
+if command -v nvim >/dev/null 2>&1
+    set -gx EDITOR nvim
+end
 
 if test -d $HOME/.pyenv
     set -Ux PYENV_ROOT $HOME/.pyenv
