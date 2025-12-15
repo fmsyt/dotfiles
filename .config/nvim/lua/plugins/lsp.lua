@@ -27,6 +27,10 @@ local conf = {
     },
   },
   {
+    "davidmh/mdx.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  {
     "mason-org/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
@@ -40,6 +44,7 @@ local conf = {
         "biome",
         "css-lsp",
         "intelephense",
+        -- "mdx-analyzer",
       })
     end,
   },
@@ -103,6 +108,13 @@ local conf = {
             },
           },
         },
+        -- marksman = {
+        --   supported_filetypes = { "markdown", "md" },
+        -- },
+        -- mdx_analyzer = {
+        --   single_file_support = true,
+        --   supported_filetypes = { "mdx" },
+        -- },
         lua_ls = {
           -- enabled = false,
           single_file_support = true,
