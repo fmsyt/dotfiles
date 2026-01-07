@@ -10,8 +10,6 @@ local conf = {
             { "<Leader>ch", vim.lsp.buf.hover, desc = "Hover" },
             { "M", vim.lsp.buf.hover, desc = "Hover" },
             { "<F2>", vim.lsp.buf.rename, desc = "Rename" },
-            { "<Leader>b[", "<Cmd>bprevious<CR>", desc = "Previous Buffer" },
-            { "<Leader>b]", "<Cmd>bnext<CR>", desc = "Next Buffer" },
             {
               "gd",
               function()
