@@ -6,4 +6,10 @@ return {
       require("scrollbar").setup()
     end,
   },
+  {
+    "snacks.nvim",
+    opts = function(_, opts)
+      opts.scroll.enabled = true
+    end,
+  },
 }
