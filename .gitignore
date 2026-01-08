@@ -70,6 +70,7 @@
 !/.config/nvim
 !/.config/nvim/*
 !/.config/nvim/.gitignore
+/.config/nvim/lua/config/local.lua
 /.config/nvim/lazy-lock.json
 !/.config/pipewire/
 !/.config/pipewire/**

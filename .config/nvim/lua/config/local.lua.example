@@ -1,0 +1,8 @@
+----------------------------
+--- This file is work as options.lua
+--- copy this file to `lua/config/local.lua` to override settings
+----------------------------
+
+vim.g.snacks_disable_scroll_hosts = {
+  -- "100.64.0.1",
+}
