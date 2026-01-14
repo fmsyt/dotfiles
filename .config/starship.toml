@@ -121,49 +121,42 @@ Macos = " "
 Mint = "󰣭 "
 Raspbian = " "
 Ubuntu = "󰕈 "
-Windows = " "  # 󰖳󰨡
+Windows = " "  #    󰖳 󰨡
 
 [package]
-symbol = "󰏗 " # 󰏗
-# format = "[$symbol]($style)"
+symbol = "󰏗 "   #  󰏗
 disabled = true
 
 [lua]
-symbol = " " # 󰢱
-# format = "[$symbol]($style)"
+symbol = " " #  󰢱
 
 [nodejs]
-symbol = " " # 󰎙
-# format = "[$symbol]($style)"
+symbol = "󰎙 " #  󰎙 
 
 [php]
-symbol = " " # 󰌟
-# format = "[$symbol]($style)"
+symbol = " " #    󰌟
 
 [python]
-symbol = " " # 󰢱
-# format = "[$symbol]($style)"
+symbol = " " # 
 
 [rust]
-symbol = '󱘗 ' # 󱘗
-# format = "[$symbol]($style)"
+symbol = '󱘗 ' #   󱘗
 
 [c]
 symbol = " "
-# format = "[$symbol]($style)"
+
+[cpp]
+symbol = " " #   󰙲
+
+[golang]
+symbol = "󰟓 " #   󰟓
 
 [cmake]
-# format = "[$symbol]($style)"
 
 [deno]
-# format = "[$symbol]($style)"
+symbol = " "
 
 [dotnet]
-# format = "[$symbol]($style)"
 
 [java]
-symbol = "󰬷 " # 󰬷
-# format = "[$symbol]($style)"
-
-[gradle]
-# format = "[$symbol]($style)"
+symbol = "󰬷 " #    󰬷
