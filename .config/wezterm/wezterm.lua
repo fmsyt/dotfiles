@@ -10,17 +10,16 @@ config.initial_rows = 8 * 4
 config.default_cursor_style = "BlinkingUnderline"
 config.use_ime = true
 -- config.color_scheme = 'Monokai Soda (Gogh)'
--- config.color_scheme = 'Ef-Tritanopia-Dark'
+-- config.color_scheme = 'Ef-Tritanopia-Dark' -- favorite
 -- config.color_scheme = 'duckbones'
 -- config.color_scheme = 'Monokai (terminal.sexy)'
 -- config.color_scheme = 'Nighty (Gogh)'
 -- config.color_scheme = 'Purple People Eater (Gogh)'
-config.color_scheme = "Railscasts (dark) (terminal.sexy)"
+config.color_scheme = "Railscasts (dark) (terminal.sexy)" -- favirite
 
 -- config.color_scheme = 'Red Planet'
 -- config.color_scheme = 'Monokai Pro (Gogh)'
--- config.color_scheme = 'Monokai (dark) (terminal.sexy)'
--- config.color_scheme = 'Monokai Pro (Gogh)'
+-- config.color_scheme = 'Monokai (dark) (terminal.sexy)' -- favorite
 -- config.color_scheme = 'Monokai Pro Ristretto (Gogh)'
 
 -- config.color_scheme = 'Kanagawa (Gogh)'
@@ -171,6 +170,7 @@ require("keybinds").apply(config)
 
 if package.searchpath("local", package.path) then
 	require("local").apply(config)
+	wezterm.add_to_config_reload_watch_list("local.lua")
 end
 
 return config
