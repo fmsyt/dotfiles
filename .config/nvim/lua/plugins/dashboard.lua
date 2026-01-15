@@ -33,9 +33,35 @@ return {
         end
       end
 
+      if require("utils").animation_disabled() then
+        logo = string.rep("\n", 8) .. logo .. "\n\n"
+        opts.config.header = vim.split(logo, "\n")
+        return opts
+      end
+
       if vim.fn.executable("tte") then
+        local favorite_effects = {
+          "beams",
+          "spray",
+
+          "colorshift",
+          "expand",
+          "middleout",
+          "pour",
+          "rain",
+          "randomsequence",
+          "scattered",
+          "slide",
+          "sweep",
+          "wipe",
+        }
+
+        -- ランダムにエフェクトを選択
+        math.randomseed(os.time())
+        local effect = favorite_effects[math.random(#favorite_effects)]
+
         opts.preview = {
-          command = 'command cat "' .. path .. '" | tte beams && sleep 30',
+          command = 'command cat "' .. path .. '" | tte ' .. effect .. " && sleep 30",
           file_path = "",
           file_width = file_width,
           file_height = 10,
