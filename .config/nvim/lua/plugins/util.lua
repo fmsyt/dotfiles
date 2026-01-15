@@ -10,11 +10,22 @@ return {
     end,
   },
   {
+    -- テキストを編集するようにファイルを操作できるプラグイン
     "stevearc/oil.nvim",
-    config = function()
-      require("oil").setup({
-        default_file_explorer = true,
-      })
+
+    ---@param opts oil.SetupOpts
+    opts = function(_, opts)
+      vim.keymap.set("n", "<Leader>o", function()
+        return require("oil").toggle_float(vim.fn.expand("%:p:h"))
+      end, { desc = "Open parent directory in Oil" })
+
+      opts.view_options = opts.view_options or {}
+      opts.view_options.show_hidden = true
+
+      opts.float = opts.float or {}
+      opts.float.border = "rounded"
+
+      return opts
     end,
   },
 }
