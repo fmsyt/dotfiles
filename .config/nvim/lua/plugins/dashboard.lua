@@ -33,13 +33,14 @@ return {
         end
       end
 
+      logo = string.rep("\n", 8) .. logo .. "\n\n"
+      opts.config.header = vim.split(logo, "\n")
+
       if require("utils").animation_disabled() then
-        logo = string.rep("\n", 8) .. logo .. "\n\n"
-        opts.config.header = vim.split(logo, "\n")
         return opts
       end
 
-      if vim.fn.executable("tte") then
+      if vim.fn.executable("tte") == 1 then
         local favorite_effects = {
           "beams",
           "spray",
@@ -66,7 +67,7 @@ return {
           file_width = file_width,
           file_height = 10,
         }
-      elseif vim.fn.executable("lolcat") then
+      elseif vim.fn.executable("lolcat") == 1 then
         opts.preview = {
           command = 'lolcat "' .. path .. '" && sleep 30',
           file_path = "",
