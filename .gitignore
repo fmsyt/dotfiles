@@ -52,10 +52,11 @@
 !/.config/fish/functions/exa.fish
 !/.config/fish/functions/explorer.fish
 !/.config/fish/functions/git.fish
-!/.config/fish/functions/lazygit.fish
-!/.config/fish/functions/ls.fish
+!/.config/fish/functions/ide.fish
 !/.config/fish/functions/la.fish
+!/.config/fish/functions/lazygit.fish
 !/.config/fish/functions/ll.fish
+!/.config/fish/functions/ls.fish
 !/.config/fish/functions/open.fish
 /.config/fish/functions/_*.fish
 !/.config/git/**
