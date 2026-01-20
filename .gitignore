@@ -20,6 +20,7 @@
 !/.config/bash/*.bash
 !/.config/bash/local.bash.template
 /.config/bash/env.sh
+!/.config/biome.json
 !/.config/fcitx/
 /.config/fcitx/*
 !/.config/fcitx/config
