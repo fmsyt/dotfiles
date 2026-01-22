@@ -2,12 +2,26 @@
 
 ## Requirements
 
+- git
 - unzip
+
+## Options
+
+- fish
+- starship
+- bat (batcat)
+- eza
+- git-delta
+- neovim
+  - fzf
+  - lazygit
+  - ripgrep
 
 ## Installation
 
 ```bash
-cd /path/to/anywhere
+cd # /path/to/anywhere
 git clone https://github.com/fmsyt/dotfiles
-make install full
+cd dotfiles
+./install.sh
 ```
