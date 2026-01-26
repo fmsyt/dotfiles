@@ -126,6 +126,10 @@
 !/.vim/ftdetect/
 !/.vim/ftdetect/**
 
+!.config/zellij
+/.config/zellij/*
+!.config/zellij/config.kdl
+
 /scripts/tmp
 /scripts/linux/x11/sddm/Xsetup.conf.d/*.sh
 
