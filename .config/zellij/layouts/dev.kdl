@@ -1,0 +1,15 @@
+layout {
+  pane size=1 {
+    plugin location="zellij:tab-bar"
+  }
+  pane split_direction="vertical" {
+    pane size="70%" focus=true
+    pane split_direction="horizontal" {
+      pane
+      pane
+    }
+  }
+  pane size=1 {
+    plugin location="zellij:status-bar"
+  }
+}

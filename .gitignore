@@ -129,6 +129,9 @@
 !.config/zellij
 /.config/zellij/*
 !.config/zellij/config.kdl
+!.config/zellij/layouts
+.config/zellij/layouts/*
+!.config/zellij/layouts/dev.kdl
 
 /scripts/tmp
 /scripts/linux/x11/sddm/Xsetup.conf.d/*.sh
