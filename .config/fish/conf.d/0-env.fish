@@ -15,6 +15,7 @@ if command -v vim >/dev/null 2>&1
 end
 if command -v nvim >/dev/null 2>&1
     set -gx EDITOR nvim
+    alias view='nvim -R'
 end
 
 if test -d $HOME/.pyenv
