@@ -126,6 +126,9 @@
 !/.vim/ftdetect/
 !/.vim/ftdetect/**
 
+!.config/zed
+/.config/zed/.tmp*
+
 !.config/zellij
 /.config/zellij/*
 !.config/zellij/config.kdl
