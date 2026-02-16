@@ -1,13 +1,14 @@
-set -x PATH $HOME/.local/bin $PATH
-set -Ux DOTFILES_DIR (dirname (readlink -f "$HOME/.config"))
+fish_add_path "$HOME/.local/bin"
+
+set -gx DOTFILES_DIR (dirname (readlink -f "$HOME/.config"))
 
 if test -d $HOME/.cargo
-    set -x PATH $HOME/.cargo/bin $PATH
+    fish_add_path $HOME/.cargo/bin
 end
 
 if test -d $HOME/.deno
     set -gx DENO_INSTALL $HOME/.deno
-    set -x PATH $DENO_INSTALL/bin $PATH
+    fish_add_path $DENO_INSTALL/bin
 end
 
 if command -v vim >/dev/null 2>&1
@@ -19,8 +20,8 @@ if command -v nvim >/dev/null 2>&1
 end
 
 if test -d $HOME/.pyenv
-    set -Ux PYENV_ROOT $HOME/.pyenv
-    set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+    set -gx PYENV_ROOT $HOME/.pyenv
+    fish_add_path $PYENV_ROOT/bin
 end
 
 
@@ -34,7 +35,8 @@ end
 if command -v go >/dev/null 2>&1
     set -gx GOPATH $HOME/go
     set -gx GOROOT (go env GOROOT)
-    set -gx PATH $GOPATH/bin $GOROOT/bin $PATH
+    fish_add_path $GOPATH/bin
+    fish_add_path $GOROOT/bin
 end
 
 if command -v pnpm >/dev/null 2>&1
@@ -45,6 +47,6 @@ if command -v pnpm >/dev/null 2>&1
 end
 
 set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
-if type delta >/dev/null 2>&1
+if command -v delta >/dev/null 2>&1
     set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/config.delta.yml"
 end
