@@ -44,7 +44,7 @@ if command -v pnpm >/dev/null 2>&1
     end
 end
 
-set -x LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
+set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 if type delta >/dev/null 2>&1
-    set -x LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/config.delta.yml"
+    set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/config.delta.yml"
 end
