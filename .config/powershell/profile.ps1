@@ -8,6 +8,10 @@ $realDir = Split-Path -Path $currentFileObject.FullName -Parent
 
 if (where.exe starship) {
     $promptLoaded = $true
+
+    $configPath = "$HOME\.config\starship-win.toml"
+    $env:STARSHIP_CONFIG = $configPath
+
     Invoke-Expression (& starship init powershell)
 }
 

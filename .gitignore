@@ -86,6 +86,7 @@
 /.config/sh/scripts/*
 !/.config/sh/scripts/*.sh
 !/.config/starship.toml
+!/.config/starship-win.toml
 !/.config/xremap
 !/.config/xremap/*
 !/.config/waveterm/settings.json
