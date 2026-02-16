@@ -6,9 +6,15 @@ gui:
   # One of 'dashboard' (default) | 'allBranchesLog'
   statusPanelView: allBranchesLog
 
+  language: ja
+  timeFormat: "2006-01-02 15:04"
+  shortTimeFormat: "15:04"
+
 git:
+  ignoreWhitespaceInDiffView: true
+
   # Command used when displaying the current branch git log in the main window
-  branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
+  branchLogCmd: git log --graph --date=short --date=format:'%Y-%m-%d %H:%M' --color=always --pretty=format:'%C(auto)%h %Cgreen %ad %Creset%x09by %C(cyan ul)%an%Creset%n%C(cyan dim)%s %d%n%n%b' {{branchName}} --
 
   # Commands used to display git log of all branches in the main window, they will
   # be cycled in order of appearance (array of strings)
