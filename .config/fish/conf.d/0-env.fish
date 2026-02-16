@@ -43,3 +43,8 @@ if command -v pnpm >/dev/null 2>&1
         set -gx PATH "$PNPM_HOME" $PATH
     end
 end
+
+set -x LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
+if type delta >/dev/null 2>&1
+    set -x LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/config.delta.yml"
+end
