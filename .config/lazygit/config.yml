@@ -20,3 +20,7 @@ git:
   # be cycled in order of appearance (array of strings)
   allBranchesLogCmds:
     - git log --graph --all --color=always --abbrev-commit --decorate --date=relative --pretty=medium
+
+keybinding:
+  universal:
+    executeShellCommand: "!"
