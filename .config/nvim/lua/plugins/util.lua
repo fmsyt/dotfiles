@@ -15,7 +15,7 @@ return {
 
     ---@param opts oil.SetupOpts
     opts = function(_, opts)
-      vim.keymap.set("n", "<Leader>o", function()
+      vim.keymap.set("n", "<Leader>r", function()
         return require("oil").toggle_float(vim.fn.expand("%:p:h"))
       end, { desc = "Open parent directory in Oil" })
 
