@@ -32,9 +32,10 @@ else if test -e /opt/homebrew/bin/brew
 end
 
 set -gx AQUA_GLOBAL_CONFIG "$HOME/.config/aquaproj-aqua/aqua.yaml"
+set -q AQUA_ROOT_DIR; or set -gx AQUA_ROOT_DIR (set -q XDG_DATA_HOME; and echo $XDG_DATA_HOME; or echo $HOME/.local/share)/aquaproj-aqua
+fish_add_path $AQUA_ROOT_DIR/bin
 if command -v aqua >/dev/null 2>&1
     aqua completion fish | source
-    fish_add_path (aqua root-dir)/bin
 end
 
 
