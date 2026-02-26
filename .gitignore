@@ -17,6 +17,9 @@
 
 !/.config
 /.config/*
+
+!/.config/aquaproj-aqua
+
 !/.config/bash/*.bash
 !/.config/bash/local.bash.template
 /.config/bash/env.sh

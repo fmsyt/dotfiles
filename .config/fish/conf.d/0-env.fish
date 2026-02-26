@@ -31,6 +31,12 @@ else if test -e /opt/homebrew/bin/brew
     eval ('/opt/homebrew/bin/brew' shellenv)
 end
 
+set -gx AQUA_GLOBAL_CONFIG "$HOME/.config/aquaproj-aqua/aqua.yaml"
+if command -v aqua >/dev/null 2>&1
+    aqua completion fish | source
+    fish_add_path (aqua root-dir)/bin
+end
+
 
 if command -v go >/dev/null 2>&1
     set -gx GOPATH $HOME/go
