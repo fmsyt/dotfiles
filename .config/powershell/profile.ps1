@@ -47,6 +47,10 @@ function la() {
     Get-ChildItem $args
 }
 
+function lg() {
+    Invoke-Expression "lazygit $args"
+}
+
 function open() {
     Param (
         [Parameter(Mandatory = $true)]
