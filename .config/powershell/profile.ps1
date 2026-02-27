@@ -29,6 +29,9 @@ if (!$promptLoaded -and (where.exe oh-my-posh)) {
     $promptLoaded = $true
 }
 
+
+$env:AQUA_GLOBAL_CONFIG = "$HOME\.config\aquaproj-aqua\aqua.yaml"
+
 # ./local.ps1 is exists, source it
 $localPath = "$realDir\local.ps1"
 if (Test-Path -Path $localPath) {

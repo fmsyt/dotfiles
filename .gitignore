@@ -79,6 +79,7 @@
 /.config/nvim/lazy-lock.json
 !/.config/pipewire/
 !/.config/pipewire/**
+!/.config/powershell
 !/.config/powershell/**
 /.config/powershell/local.ps1
 !/.config/PulseEffects/output/
