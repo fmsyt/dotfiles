@@ -47,10 +47,6 @@ function la() {
     Get-ChildItem $args
 }
 
-function lg() {
-    Invoke-Expression "lazygit $args"
-}
-
 function open() {
     Param (
         [Parameter(Mandatory = $true)]
@@ -89,5 +85,7 @@ if (Get-Module -ListAvailable -Name Abbr) {
     ealias dcub 'docker compose up --build -d'
 
     ealias .. 'cd ..'
+
+    ealias lg 'lazygit'
 }
 
