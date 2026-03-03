@@ -11,3 +11,10 @@ local has_local = pcall(require, "config.local")
 if has_local then
   require("config.local")
 end
+
+if vim.fn.has("win32") == 1 then
+  vim.opt.shell = "powershell.exe"
+  if vim.fn.executable("pwsh.exe") == 1 then
+    vim.opt.shell = "pwsh.exe"
+  end
+end
