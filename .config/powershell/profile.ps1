@@ -6,6 +6,9 @@ if ($currentFileObject.Target) {
 }
 $realDir = Split-Path -Path $currentFileObject.FullName -Parent
 
+# $env:AQUA_GLOBAL_CONFIG = "$HOME\.config\aquaproj-aqua\aqua.yaml"
+# Set-Item Env:Path "$Env:LOCALAPPDATA\aquaproj-aqua\bin;$Env:Path"
+
 if (where.exe starship) {
     $promptLoaded = $true
 
@@ -29,9 +32,6 @@ if (!$promptLoaded -and (where.exe oh-my-posh)) {
     $promptLoaded = $true
 }
 
-
-$env:AQUA_GLOBAL_CONFIG = "$HOME\.config\aquaproj-aqua\aqua.yaml"
-Set-Item Env:Path "$Env:LOCALAPPDATA\aquaproj-aqua\bin;$Env:Path"
 
 # ./local.ps1 is exists, source it
 $localPath = "$realDir\local.ps1"
@@ -58,10 +58,11 @@ function open() {
 
 function hist {
     $find = $args
+    Get-Content (Get-PSReadlineOption).HistorySavePath | ForEach-Object { "$($_.ReadCount)  $_" } | Where-Object { $_ -like "*$find*" }
+}
 
-    Get-Content (Get-PSReadlineOption).HistorySavePath
-        | ForEach-Object { "$($_.ReadCount)  $_" }
-        | Where-Object { $_ -like "*$find*" }
+function time {
+  Invoke-Expression "Measure-Command { $args }"
 }
 
 if (Get-Module -ListAvailable -Name Abbr) {
