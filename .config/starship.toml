@@ -115,6 +115,7 @@ disabled = false
 [os.symbols]
 Alpine = " "
 Arch = " "
+CachyOS = " "
 Debian = " "
 Linux = " "
 Macos = " "
