@@ -3,6 +3,7 @@ local config = wezterm.config_builder()
 
 local act = wezterm.action
 local nf = wezterm.nerdfonts
+local actions = require("actions")
 
 config.initial_cols = 30 * 4
 config.initial_rows = 8 * 4
@@ -83,6 +84,16 @@ config.font = wezterm.font_with_fallback({
 })
 
 config.mouse_bindings = {
+	{
+		event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+		mods = "ALT",
+		action = actions.increase_opacity,
+	},
+	{
+		event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+		mods = "ALT",
+		action = actions.decrease_opacity,
+	},
 	{
 		event = { Up = { streak = 1, button = "Left" } },
 		mods = "NONE",

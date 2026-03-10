@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local actions = require("actions")
 
 local function apply(config)
 	config.leader = { key = "f", mods = "CTRL", timeout_milliseconds = 2000 }
@@ -117,6 +118,9 @@ local function apply(config)
 		--   { key = 'P', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
 		{ key = "R", mods = "CTRL", action = act.ReloadConfiguration },
 		{ key = "R", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
+
+		{ key = "=", mods = "LEADER", action = actions.increase_opacity },
+		{ key = "-", mods = "LEADER", action = actions.decrease_opacity },
 		--   { key = 'T', mods = 'CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
 		--   { key = 'T', mods = 'SHIFT|CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
 		--   { key = 'U', mods = 'CTRL', action = act.CharSelect{ copy_on_select = true, copy_to =  'ClipboardAndPrimarySelection' } },
