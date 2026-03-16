@@ -16,6 +16,7 @@ if command -v vim >/dev/null 2>&1
 end
 if command -v nvim >/dev/null 2>&1
     set -gx EDITOR nvim
+    alias vim=nvim
     alias view='nvim -R'
 end
 
@@ -23,7 +24,6 @@ if test -d $HOME/.pyenv
     set -gx PYENV_ROOT $HOME/.pyenv
     fish_add_path $PYENV_ROOT/bin
 end
-
 
 if test -e '/home/linuxbrew/.linuxbrew/bin/brew'
     eval ('/home/linuxbrew/.linuxbrew/bin/brew' shellenv)
@@ -37,7 +37,6 @@ fish_add_path $AQUA_ROOT_DIR/bin
 if command -v aqua >/dev/null 2>&1
     aqua completion fish | source
 end
-
 
 if command -v go >/dev/null 2>&1
     set -gx GOPATH $HOME/go
