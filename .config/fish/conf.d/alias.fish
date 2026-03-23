@@ -62,3 +62,5 @@ end
 for x in (seq 5)
     abbr .$x "awk '{print \$$x}'"
 end
+
+abbr --set-cursor nr 'npm run (jq -r ".scripts | keys[]" package.json | fzf)'
