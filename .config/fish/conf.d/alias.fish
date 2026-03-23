@@ -46,11 +46,17 @@ abbr dce 'docker compose exec'
 abbr dcu 'docker compose up -d'
 abbr dcub 'docker compose up --build -d'
 
-abbr ff 'find . -type f'
-abbr fd 'find . -type d'
+abbr --set-cursor ff 'find % -type f'
+abbr ff. 'find . -type f'
+
+abbr --set-cursor fd 'find % -type d'
+abbr fd. 'find . -type d'
 for x in (seq 5)
-    abbr ff$x "find . -maxdepth $x -type f"
-    abbr fd$x "find . -maxdepth $x -type d"
+    abbr --set-cursor ff$x "find % -maxdepth $x -type f"
+    abbr ff$x. "find . -maxdepth $x -type f"
+
+    abbr --set-cursor fd$x "find % -maxdepth $x -type d"
+    abbr fd$x. "find . -maxdepth $x -type d"
 end
 
 for x in (seq 5)
