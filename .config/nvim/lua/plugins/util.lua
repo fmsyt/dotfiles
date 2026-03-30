@@ -28,4 +28,16 @@ return {
       return opts
     end,
   },
+  {
+    "stevearc/overseer.nvim",
+    opts = function(_, opts)
+      opts = opts or {}
+      opts.output = {
+        use_terminal = true,
+      }
+    end,
+  },
+  {
+    "barrettruth/live-server.nvim",
+  },
 }
