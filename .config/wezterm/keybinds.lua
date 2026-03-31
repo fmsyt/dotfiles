@@ -12,10 +12,65 @@ local function apply(config)
 		{ key = '"', mods = "LEADER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-		{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-		{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-		{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-		{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+		-- { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+		-- { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+		-- { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+		-- { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+		{
+			key = "h",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				local vars = pane:get_user_vars()
+
+				wezterm.log_info("Pane user vars: " .. wezterm.format(vars))
+
+				if vars.IN_ZELLIJ == "1" then
+					win:perform_action(act.SendString("\x07nh\r"), pane)
+				else
+					act.ActivatePaneDirection("Left")
+				end
+			end),
+		},
+		{
+			key = "j",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				local vars = pane:get_user_vars()
+				wezterm.log_info("Pane user vars: " .. wezterm.format(vars))
+
+				if vars.IN_ZELLIJ == "1" then
+					win:perform_action(act.SendString("\x07nj\r"), pane)
+				else
+					act.ActivatePaneDirection("Down")
+				end
+			end),
+		},
+		{
+			key = "k",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				local vars = pane:get_user_vars()
+
+				if vars.IN_ZELLIJ == "1" then
+					win:perform_action(act.SendString("\x07nk\r"), pane)
+				else
+					act.ActivatePaneDirection("Up")
+				end
+			end),
+		},
+		{
+			key = "l",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				local vars = pane:get_user_vars()
+
+				if vars.IN_ZELLIJ == "1" then
+					win:perform_action(act.SendString("\x07nl\r"), pane)
+				else
+					act.ActivatePaneDirection("Right")
+				end
+			end),
+		},
 		{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 		{ key = "w", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
 
