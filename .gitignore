@@ -63,6 +63,7 @@
 !/.config/fish/functions/ll.fish
 !/.config/fish/functions/ls.fish
 !/.config/fish/functions/open.fish
+!/.config/fish/functions/zellij.fish
 /.config/fish/functions/_*.fish
 !/.config/git/**
 !/.config/lazygit
