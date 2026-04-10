@@ -207,6 +207,16 @@ local function apply(config)
 		--   { key = 'm', mods = 'SUPER', action = act.Hide },
 		--   { key = 'n', mods = 'SHIFT|CTRL', action = act.SpawnWindow },
 		--   { key = 'n', mods = 'SUPER', action = act.SpawnWindow },
+		{
+			key = "n",
+			mods = "LEADER",
+			action = act.SwitchWorkspaceRelative(-1),
+		},
+		{
+			key = "p",
+			mods = "LEADER",
+			action = act.SwitchWorkspaceRelative(1),
+		},
 		--   { key = 'p', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
 		--   { key = 'r', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration },
 		--   { key = 'r', mods = 'SUPER', action = act.ReloadConfiguration },

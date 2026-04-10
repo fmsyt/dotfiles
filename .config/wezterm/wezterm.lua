@@ -177,6 +177,28 @@ end
 
 config.launch_menu = launch_menu
 
+wezterm.on("update-status", function(window, pane)
+	window:set_left_status("")
+
+	local names = wezterm.mux.get_workspace_names()
+	if #names > 1 then
+		local workspace = window:active_workspace()
+
+		local workspace_index = 0
+		for i, name in ipairs(names) do
+			if name == workspace then
+				workspace_index = i
+				break
+			end
+		end
+
+		window:set_left_status(" " .. workspace .. " (" .. workspace_index .. "/" .. #names .. ") ")
+	end
+
+	local date = wezterm.strftime("%Y/%m/%d %H:%M:%S")
+	window:set_right_status(" " .. date .. " ")
+end)
+
 require("keybinds").apply(config)
 
 if package.searchpath("local", package.path) then
