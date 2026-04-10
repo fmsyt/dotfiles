@@ -65,6 +65,7 @@
 !/.config/fish/functions/open.fish
 !/.config/fish/functions/zellij.fish
 /.config/fish/functions/_*.fish
+!/.config/git
 !/.config/git/**
 !/.config/lazygit
 !/.config/lazygit/config.yml

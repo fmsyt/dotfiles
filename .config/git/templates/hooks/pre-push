@@ -1,0 +1,12 @@
+#!/bin/sh
+
+last_my_commit_time=$(git log -1 --format=%ct --author="$(git config user.name)")
+current_time=$(date +%s)
+
+elapsed_time=$((current_time - last_my_commit_time))
+threadhold=60
+
+if [ $elapsed_time -lt $threadhold ]; then
+  echo "You have made a commit within the last $threadhold seconds. Please wait before pushing again."
+  exit 1
+fi
