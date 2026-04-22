@@ -5,7 +5,6 @@
 [core]
 	autocrlf = input
 	quotepath = false
-	editor = vim
 	excludes = ~/.config/git/ignore
 	filemode = true
 [pull]
@@ -43,6 +42,8 @@
 [difftool]
 	prompt = false
 [difftool "vim"]
+	cmd = vim -d $LOCAL $REMOTE
+[difftool "nvim"]
 	cmd = vim -d $LOCAL $REMOTE
 [difftool "code"]
 	cmd = code --wait --diff $LOCAL $REMOTE
