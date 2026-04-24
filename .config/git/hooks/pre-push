@@ -6,32 +6,3 @@ if [ -f "$GIT_ROOT/.push-lock" ]; then
   echo "git push is locked. Unlock it by running 'git push-unlock'."
   exit 1
 fi
-
-last_my_commit_time=$(git log -1 --format=%ct --author="$(git config user.name)")
-current_time=$(date +%s)
-
-elapsed_time=$((current_time - last_my_commit_time))
-threadhold=60
-
-if [ $elapsed_time -lt $threadhold ]; then
-
-  echo "You have made a commit within the last $threadhold seconds."
-
-  if test -t 0; then
-    echo "Do you want to push anyway? (y/N) "
-    read -r answer
-    case "$answer" in
-    [yY][eE][sS] | [yY])
-      echo "Proceeding with push..."
-      ;;
-    *)
-      echo "Push aborted."
-      exit 1
-      ;;
-    esac
-  else
-    echo "Please wait before pushing again."
-    exit 1
-  fi
-
-fi
