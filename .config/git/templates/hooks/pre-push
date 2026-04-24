@@ -1,5 +1,12 @@
 #!/bin/sh
 
+GIT_ROOT=$(git rev-parse --show-toplevel)
+
+if [ -f "$GIT_ROOT/.push-lock" ]; then
+  echo "git push is locked. Unlock it by running 'git push-unlock'."
+  exit 1
+fi
+
 last_my_commit_time=$(git log -1 --format=%ct --author="$(git config user.name)")
 current_time=$(date +%s)
 

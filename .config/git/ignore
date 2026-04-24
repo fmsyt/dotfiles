@@ -3,4 +3,6 @@ tempCodeRunnerFile.*
 gitignore.*
 *.gitignore.*
 
+/.push-lock
+
 **/.claude/settings.local.json

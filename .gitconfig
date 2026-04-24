@@ -25,13 +25,15 @@
 	sc = secret
 	st = status
 	sw = switch
+	push-lock = "!f() { git rev-parse --show-toplevel | xargs -I{} touch {}/.push-lock; }; f"
+	push-unlock = "!f() { git rev-parse --show-toplevel | xargs -I{} rm -f {}/.push-lock; }; f"
+	whoami = "!f() { echo \"$(git config --local user.name) <$(git config --local user.email)>\"; }; f"
 	tree = log --graph --date=short --pretty=format:'%x09%C(auto) %h %Cgreen %ad %Creset%x09by"%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
 	set-user = "!f(){ git config --local user.name \"$1\"; git config --local user.email \"$2\"; };f"
 	set-default-user = "!f(){ git set-user motsuni motsuni@yotta-rc.dev; };f"
 	reset-user = "!f(){ git config --local --unset user.name; git config --local --unset user.email; };f"
 	root = "!f() { git rev-parse --show-superproject-working-tree --show-toplevel | head -1; }; f"
 	unstage = "!f() { git restore --staged $1; }; f"
-	cs = "!f() { diff=$(git diff --staged); gh copilot suggest -t shell \"Based on the following diff, generate a concise commit message and suggest a shell command that pipes this message into 'git commit -e -F -'. The message should follow the conventional commit format.\\n\\n${diff}\"; }; f"
 
 [credential]
 	helper = cache --timeout=86400
