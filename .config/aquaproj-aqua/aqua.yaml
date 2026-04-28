@@ -9,24 +9,24 @@
 #   - all
 registries:
   - type: standard
-    ref: v4.489.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v4.499.0 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: BurntSushi/ripgrep@15.1.0
   - name: XAMPPRocky/tokei@14.0.0
   - name: YS-L/csvlens@v0.15.1
-  - name: biomejs/biome@@biomejs/biome@2.4.10
-  - name: cargo-bins/cargo-binstall@v1.17.9
-  - name: cli/cli@v2.89.0
+  - name: biomejs/biome@@biomejs/biome@2.4.13
+  - name: cargo-bins/cargo-binstall@v1.18.1
+  - name: cli/cli@v2.91.0
   - name: dandavison/delta@0.19.2
   - name: eza-community/eza@v0.23.4
-  - name: jesseduffield/lazygit@v0.60.0
-  - name: junegunn/fzf@v0.70.0
-  - name: neovim/neovim@v0.12.0
-  - name: rust-lang/rust-analyzer@2026-03-30
+  - name: jesseduffield/lazygit@v0.61.1
+  - name: junegunn/fzf@v0.72.0
+  - name: neovim/neovim@v0.12.2
+  - name: rust-lang/rust-analyzer@2026-04-27
   - name: rust-lang/rustup@1.29.0
   - name: sharkdp/bat@v0.26.1
-  - name: starship/starship@v1.24.2
-  - name: tree-sitter/tree-sitter@v0.26.7
-  - name: zellij-org/zellij@v0.44.0
-  - name: mmarkdown/mmark@v2.2.47
+  - name: starship/starship@v1.25.0
+  - name: tree-sitter/tree-sitter@v0.26.8
+  - name: zellij-org/zellij@v0.44.1
+  - name: mmarkdown/mmark@v2.2.48
   - name: marp-team/marp-cli@v4.3.1
