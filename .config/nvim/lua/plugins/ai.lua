@@ -1,14 +1,12 @@
----@type LazyRootSpec[]
+--- @type LazyRootSpec[]
 local conf = {
   {
     "zbirenbaum/copilot.lua",
-    enabled = true,
-    opts = function(_, opts) end,
+    enabled = vim.g.ai_agent == "copilot",
   },
-
   {
     "Exafunction/codeium.nvim",
-    enabled = false,
+    enabled = vim.g.ai_agent == "codeium",
   },
 }
 

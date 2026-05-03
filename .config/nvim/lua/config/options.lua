@@ -2,11 +2,17 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
--- vim.g.lazyvim_php_lsp = "phpactor"
+--- @type "phpactor" | "intelephense"
 vim.g.lazyvim_php_lsp = "intelephense"
 
--- ./local.lua があれば読み込み
+--- @type "codeium" | "copilot"
+vim.g.ai_agent = "codeium"
 
+--- `snacks.nvim` のスクロール機能を無効にするIPアドレス
+--- @type string[]
+vim.g.snacks_disable_scroll_hosts = {}
+
+-- ./local.lua があれば読み込み
 local has_local = pcall(require, "config.local")
 if has_local then
   require("config.local")
