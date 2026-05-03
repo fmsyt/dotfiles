@@ -31,4 +31,7 @@ vim.keymap.set("i", "<ScrollWheelDown>", "<C-O>2<C-E>", ns)
 vim.keymap.set("v", "<ScrollWheelUp>", "2<C-Y>", ns)
 vim.keymap.set("v", "<ScrollWheelDown>", "2<C-E>", ns)
 
-vim.keymap.set({ "n", "v" }, "<leader> y", '"+y', ns)
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', {
+  noremap = true,
+  desc = "Copy to system clipboard",
+})

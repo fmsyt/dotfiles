@@ -13,7 +13,7 @@ vim.g.ai_agent = "codeium"
 vim.g.snacks_disable_scroll_hosts = {}
 
 -- 1. クリップボード設定（お好みで unnamedplus を追加）
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = ""
 
 -- 2. Paste（貼り付け）時にタイムアウトしないためのダミー関数
 -- リモートに問い合わせず、自身のレジスタから返す
