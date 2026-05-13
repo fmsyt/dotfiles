@@ -1,6 +1,8 @@
 set -x VIM_MODE cli
 #alias vim nvim
 
+# set -gx XDEBUG_CONFIG "idekey=motsuni client_host=127.0.0.1 client_port=9003"
+
 # keychain
 if status --is-interactive
     if command -v keychain &>/dev/null
