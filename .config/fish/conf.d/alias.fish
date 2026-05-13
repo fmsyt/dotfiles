@@ -64,3 +64,5 @@ for x in (seq 5)
 end
 
 abbr --set-cursor nr 'npm run (jq -r ".scripts | keys[]" package.json | fzf)'
+
+alias fzf='fzf --preview "bat --color=always --style=numbers --line-range :500 {}"'
