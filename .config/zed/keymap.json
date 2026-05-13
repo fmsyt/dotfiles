@@ -9,7 +9,7 @@
   {
     "context": "Workspace",
     "bindings": {
-      "space e": "workspace::ToggleLeftDock",
+      "space e": "multi_workspace::ToggleWorkspaceSidebar",
     },
   },
   {
@@ -28,7 +28,13 @@
   {
     "context": "Editor && vim_mode == visual",
     "bindings": {
-      "space y": ["workspace::SendKeystrokes", "\"+y"],
+      "space y": ["workspace::SendKeystrokes", "\" + y"],
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "U": "vim::Redo"
     },
   },
 ]

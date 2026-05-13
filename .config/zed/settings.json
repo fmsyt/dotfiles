@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "which_key": {
+    "enabled": true
+  },
   "terminal": {
     "font_family": "Cascadia Code",
     "font_fallbacks": [
@@ -43,7 +46,7 @@
   "vim_mode": true,
   "vim": {
     "toggle_relative_line_numbers": true,
-    "use_system_clipboard": "on_yank"
+    "use_system_clipboard": "never"
   },
   "ui_font_size": 16,
   "buffer_font_size": 16,
