@@ -1,7 +1,7 @@
 set -x VIM_MODE cli
 #alias vim nvim
 
-# set -gx XDEBUG_CONFIG "idekey=motsuni client_host=127.0.0.1 client_port=9003"
+# set -gx XDEBUG_CONFIG "idekey=motsuni client_host=127.0.0.1 client_port=9001"
 
 # keychain
 if status --is-interactive
