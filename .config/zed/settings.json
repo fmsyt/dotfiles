@@ -7,6 +7,22 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "font_family": "Cascadia Code",
+    "font_fallbacks": [
+      "HackGen Console",
+      "Segoe UI Emoji"
+    ]
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "inlay_hints": {
     "enabled": true
   },
@@ -15,8 +31,9 @@
   },
   "format_on_save": "off",
   "icon_theme": "Material Icon Theme",
-  "buffer_font_family": "HackGen",
+  "buffer_font_family": "Cascadia Code",
   "agent": {
+    "dock": "right",
     "default_model": {
       "provider": "copilot_chat",
       "model": "gpt-5-mini"
