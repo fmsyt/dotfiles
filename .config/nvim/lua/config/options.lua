@@ -12,30 +12,34 @@ vim.g.ai_agent = "copilot"
 --- @type string[]
 vim.g.snacks_disable_scroll_hosts = {}
 
--- 1. クリップボード設定（お好みで unnamedplus を追加）
 vim.opt.clipboard = ""
 
--- 2. Paste（貼り付け）時にタイムアウトしないためのダミー関数
--- リモートに問い合わせず、自身のレジスタから返す
-local function paste()
-  return {
-    vim.fn.split(vim.fn.getreg(""), "\n"),
-    vim.fn.getregtype(""),
+--- @see [OSC 52 による Neovim とクリップボードの連携](https://zenn.dev/goropikari/articles/506e08e7ad52af)
+local function apply_osc52_settings()
+  -- Paste時にタイムアウトしないためのダミー関数
+  -- リモートに問い合わせず、自身のレジスタから返す
+  local function paste()
+    return {
+      vim.fn.split(vim.fn.getreg(""), "\n"),
+      vim.fn.getregtype(""),
+    }
+  end
+
+  -- OSC 52 の設定
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = paste,
+      ["*"] = paste,
+    },
   }
 end
 
--- 3. OSC 52 の設定
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = paste,
-    ["*"] = paste,
-  },
-}
+apply_osc52_settings()
 
 -- ./local.lua があれば読み込み
 local has_local = pcall(require, "config.local")
