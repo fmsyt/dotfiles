@@ -6,7 +6,7 @@
 vim.g.lazyvim_php_lsp = "intelephense"
 
 --- @type "codeium" | "copilot"
-vim.g.ai_agent = "codeium"
+vim.g.ai_agent = "copilot"
 
 --- `snacks.nvim` のスクロール機能を無効にするIPアドレス
 --- @type string[]
