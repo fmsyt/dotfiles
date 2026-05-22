@@ -29,17 +29,9 @@ for OPT in "$@"; do
   esac
 done
 
-# check sudo
-if [ "$EUID" -ne 0 ]; then
-  echo "Please run as root"
-  exit 1
-fi
-
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
 function install_xremap() {
   if [ ! -d /usr/local/bin ]; then
-    mkdir -p /usr/local/bin
+    sudo mkdir -p /usr/local/bin
   fi
 
   # install releases from https://github.com/xremap/xremap
@@ -95,13 +87,12 @@ function install_xremap() {
 
   curl -L -o "/tmp/${asset_name}" "$latest_url"
   unzip "/tmp/${asset_name}" -d /tmp
-  mv /tmp/xremap /usr/local/bin
-  chmod +x /usr/local/bin/xremap
+  sudo mv /tmp/xremap /usr/local/bin
+  sudo chmod +x /usr/local/bin/xremap
   rm "/tmp/${asset_name}"
   rm -rf /tmp/xremap
 
   echo "Installed xremap"
-
 }
 
 # install xremap if not installed
@@ -117,21 +108,23 @@ fi
 # make service file
 # works background
 # reload xremap when xremap.yaml is updated
-cat <<EOF >/etc/systemd/system/xremap.service
+cat <<EOF >"$HOME/.config/systemd/user/xremap.service"
 [Unit]
-Description=Setup xremap
-After=systemd-user-sessions.service
+Description=Xremap
+After=default.target
 
 [Service]
-ExecStart=/usr/local/bin/xremap %h/.config/xremap/keymap.yaml
-KillMode=process
-RemainAfterExit=yes
-Restart=on-failure
-RestartSec=5s
-Environment=DISPLAY=:0.0
+ExecStart=/usr/local/bin/xremap --watch=device %h/.config/xremap/keymap.yaml
+Restart=always
+StandardOutput=journal
+StandardError=journal
+
+MemoryHigh=8M
+MemoryMax=16M
+IPAddressDeny=any
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target
 EOF
 
 echo "Installed xremap.service"

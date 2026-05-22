@@ -4,3 +4,20 @@ keymap:
     exact_match: true
     remap:
       Shift-CapsLock: C-M-SHIFT-KEY_F1
+  - name: browser-terminal-like
+    application:
+      only:
+        - /google-chrome|Google Chrome/
+        - /chromium|Chromium/
+        - /firefox|Firefox/
+        - /zen|Zen/
+        - /brave|Brave Browser|brave-browser/
+        - /vivaldi|Vivaldi/
+        - /microsoft-edge|Microsoft Edge/
+        - /opera|Opera/
+        - /floorp|Floorp/
+        - /librewolf|LibreWolf/
+        - /qutebrowser/
+    exact_match: true
+    remap:
+      Ctrl-W: Ctrl-BackSpace
