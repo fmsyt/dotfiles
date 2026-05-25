@@ -177,6 +177,10 @@ end
 
 config.launch_menu = launch_menu
 
+wezterm.on("user-var-changed", function(window, pane, name, value)
+	wezterm.log_info("user-var-changed", name, value)
+end)
+
 wezterm.on("update-status", function(window, pane)
 	window:set_left_status("")
 

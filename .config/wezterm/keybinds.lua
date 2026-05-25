@@ -10,11 +10,10 @@ local function in_zellij(pane)
 		return false
 	end
 
-	if not vars.IN_ZELLIJ then
-		return false
-	end
+	local zellij_session = vars["IN_ZELLIJ"]
+	wezterm.log_info("Pane user vars: " .. wezterm.format(vars))
 
-	return vars.IN_ZELLIJ == "1"
+	return zellij_session == "1"
 end
 
 local function apply(config)
