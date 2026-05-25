@@ -2,7 +2,14 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local actions = require("actions")
 
+local tmux_prefix = "\x06" -- Ctrl-f
 local zellij_prefix = "\x1b" -- Alt
+
+--- @param key string
+--- @return wezterm.Action
+local function send_tmux_key(key)
+	return act.SendString(tmux_prefix .. key)
+end
 
 --- @param window wezterm.Window
 --- @param pane wezterm.Pane
@@ -35,8 +42,28 @@ local function apply(config)
 	config.keys = {
 		{ key = "Tab", mods = "CTRL", action = act.ActivateTabRelative(1) },
 		{ key = "Tab", mods = "SHIFT|CTRL", action = act.ActivateTabRelative(-1) },
-		{ key = "%", mods = "LEADER|SHIFT", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = '"', mods = "LEADER|SHIFT", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{
+			key = "%",
+			mods = "LEADER|SHIFT",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+					zellij = act.SendString(zellij_prefix .. "%"),
+					tmux = send_tmux_key("%"),
+				})
+			end),
+		},
+		{
+			key = '"',
+			mods = "LEADER|SHIFT",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+					zellij = act.SendString(zellij_prefix .. '"'),
+					tmux = send_tmux_key('"'),
+				})
+			end),
+		},
 		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
 		{
@@ -46,6 +73,7 @@ local function apply(config)
 				handle_action(win, pane, {
 					default = act.ActivatePaneDirection("Left"),
 					zellij = act.SendString(zellij_prefix .. "h"),
+					tmux = send_tmux_key("h"),
 				})
 			end),
 		},
@@ -56,6 +84,7 @@ local function apply(config)
 				handle_action(win, pane, {
 					default = act.ActivatePaneDirection("Down"),
 					zellij = act.SendString(zellij_prefix .. "j"),
+					tmux = send_tmux_key("j"),
 				})
 			end),
 		},
@@ -66,6 +95,7 @@ local function apply(config)
 				handle_action(win, pane, {
 					default = act.ActivatePaneDirection("Up"),
 					zellij = act.SendString(zellij_prefix .. "k"),
+					tmux = send_tmux_key("k"),
 				})
 			end),
 		},
@@ -76,6 +106,7 @@ local function apply(config)
 				handle_action(win, pane, {
 					default = act.ActivatePaneDirection("Right"),
 					zellij = act.SendString(zellij_prefix .. "l"),
+					tmux = send_tmux_key("l"),
 				})
 			end),
 		},
