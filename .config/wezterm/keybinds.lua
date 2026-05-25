@@ -4,16 +4,29 @@ local actions = require("actions")
 
 local zellij_prefix = "\x1b" -- Alt
 
-local function in_zellij(pane)
+--- @param window wezterm.Window
+--- @param pane wezterm.Pane
+--- @param map table<string, wezterm.Action>
+local function handle_action(window, pane, map)
 	local vars = pane:get_user_vars()
-	if not vars then
-		return false
+
+	local function fallback()
+		wezterm.log_info("No action defined for this keybinding in the current context")
 	end
 
-	local zellij_session = vars["IN_ZELLIJ"]
-	wezterm.log_info("Pane user vars: " .. wezterm.format(vars))
+	local action_callback = map["default"] or fallback
 
-	return zellij_session == "1"
+	if not vars then
+		return action_callback()
+	end
+
+	if vars["IN_TMUX"] == "1" and map["tmux"] then
+		action_callback = map["tmux"]
+	elseif vars["IN_ZELLIJ"] == "1" and map["zellij"] then
+		action_callback = map["zellij"]
+	end
+
+	window:perform_action(action_callback, pane)
 end
 
 local function apply(config)
@@ -30,46 +43,40 @@ local function apply(config)
 			key = "h",
 			mods = "LEADER",
 			action = wezterm.action_callback(function(win, pane)
-				if in_zellij(pane) then
-					win:perform_action(act.SendString(zellij_prefix .. "h"), pane)
-					return
-				end
-
-				win:perform_action(act.ActivatePaneDirection("Left"), pane)
+				handle_action(win, pane, {
+					default = act.ActivatePaneDirection("Left"),
+					zellij = act.SendString(zellij_prefix .. "h"),
+				})
 			end),
 		},
 		{
 			key = "j",
 			mods = "LEADER",
 			action = wezterm.action_callback(function(win, pane)
-				if in_zellij(pane) then
-					win:perform_action(act.SendString(zellij_prefix .. "j"), pane)
-					return
-				end
-
-				win:perform_action(act.ActivatePaneDirection("Down"), pane)
+				handle_action(win, pane, {
+					default = act.ActivatePaneDirection("Down"),
+					zellij = act.SendString(zellij_prefix .. "j"),
+				})
 			end),
 		},
 		{
 			key = "k",
 			mods = "LEADER",
 			action = wezterm.action_callback(function(win, pane)
-				if in_zellij(pane) then
-					win:perform_action(act.SendString(zellij_prefix .. "k"), pane)
-				end
-
-				win:perform_action(act.ActivatePaneDirection("Up"), pane)
+				handle_action(win, pane, {
+					default = act.ActivatePaneDirection("Up"),
+					zellij = act.SendString(zellij_prefix .. "k"),
+				})
 			end),
 		},
 		{
 			key = "l",
 			mods = "LEADER",
 			action = wezterm.action_callback(function(win, pane)
-				if in_zellij(pane) then
-					win:perform_action(act.SendString(zellij_prefix .. "l"), pane)
-				end
-
-				win:perform_action(act.ActivatePaneDirection("Right"), pane)
+				handle_action(win, pane, {
+					default = act.ActivatePaneDirection("Right"),
+					zellij = act.SendString(zellij_prefix .. "l"),
+				})
 			end),
 		},
 		{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
