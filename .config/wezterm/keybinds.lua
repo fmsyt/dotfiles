@@ -64,8 +64,28 @@ local function apply(config)
 				})
 			end),
 		},
-		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+		{
+			key = "z",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.TogglePaneZoomState,
+					zellij = act.SendString(zellij_prefix .. "z"),
+					tmux = send_tmux_key("z"),
+				})
+			end),
+		},
+		{
+			key = "x",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.CloseCurrentPane({ confirm = true }),
+					zellij = act.SendString(zellij_prefix .. "x"),
+					tmux = send_tmux_key("x"),
+				})
+			end),
+		},
 		{
 			key = "h",
 			mods = "LEADER",
