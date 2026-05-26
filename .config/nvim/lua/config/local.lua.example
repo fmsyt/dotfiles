@@ -3,6 +3,18 @@
 --- copy this file to `lua/config/local.lua` to override settings
 ----------------------------
 
+--- AI エージェントの選択
+--- @type "codeium" | "copilot"
+vim.g.ai_agent = "copilot"
+
+--- Snacks のスクロールホストを無効化する IP アドレスのリスト
+--- @type string[]
 vim.g.snacks_disable_scroll_hosts = {
   -- "100.64.0.1",
+}
+
+--- Auth Format を起動時に無効化するファイルパターン
+--- @type string[]
+vim.g.default_disable_auto_format_excludes = {
+  -- "*/project_name/**/*.php",
 }

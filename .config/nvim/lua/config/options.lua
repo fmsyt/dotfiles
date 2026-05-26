@@ -47,6 +47,19 @@ if has_local then
   require("config.local")
 end
 
+-- === POST-LOCAL SETTINGS ===
+
+local default_disable_auto_format_excludes = vim.g.default_disable_auto_format_excludes or {}
+for _, pattern in ipairs(default_disable_auto_format_excludes) do
+  vim.api.nvim_create_autocmd("BufRead", {
+    pattern = pattern,
+    callback = function()
+      vim.b.autoformat = false
+      vim.notify("Auto Format is disabled for this file", vim.log.levels.INFO, { title = "Auth Format" })
+    end,
+  })
+end
+
 if vim.fn.has("win32") == 1 then
   vim.opt.shell = "powershell.exe"
   if vim.fn.executable("pwsh.exe") == 1 then
