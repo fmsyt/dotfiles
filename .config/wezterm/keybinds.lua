@@ -135,8 +135,26 @@ local function apply(config)
 
 		{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 		{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
-		{ key = "{", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(-1) },
-		{ key = "}", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(1) },
+		{
+			key = "{",
+			mods = "LEADER|SHIFT",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.RotatePanes("CounterClockwise"),
+					tmux = send_tmux_key("{"),
+				})
+			end),
+		},
+		{
+			key = "}",
+			mods = "LEADER|SHIFT",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.RotatePanes("Clockwise"),
+					tmux = send_tmux_key("}"),
+				})
+			end),
+		},
 
 		{ key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
 
