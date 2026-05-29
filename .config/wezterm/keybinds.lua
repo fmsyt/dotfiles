@@ -11,6 +11,16 @@ local function send_tmux_key(key)
 	return act.SendString(tmux_prefix .. key)
 end
 
+--- @param key string
+--- @param mods string?
+--- @return wezterm.Action
+local function send_tmux_key_press(key, mods)
+	return act.Multiple({
+		act.SendString(tmux_prefix),
+		act.SendKey({ key = key, mods = mods }),
+	})
+end
+
 --- @param window wezterm.Window
 --- @param pane wezterm.Pane
 --- @param map table<string, wezterm.Action>
@@ -127,6 +137,46 @@ local function apply(config)
 					default = act.ActivatePaneDirection("Right"),
 					zellij = act.SendString(zellij_prefix .. "l"),
 					tmux = send_tmux_key("l"),
+				})
+			end),
+		},
+		{
+			key = "LeftArrow",
+			mods = "LEADER|CTRL",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.AdjustPaneSize({ "Left", 5 }),
+					tmux = send_tmux_key_press("LeftArrow", "CTRL"),
+				})
+			end),
+		},
+		{
+			key = "DownArrow",
+			mods = "LEADER|CTRL",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.AdjustPaneSize({ "Down", 5 }),
+					tmux = send_tmux_key_press("DownArrow", "CTRL"),
+				})
+			end),
+		},
+		{
+			key = "UpArrow",
+			mods = "LEADER|CTRL",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.AdjustPaneSize({ "Up", 5 }),
+					tmux = send_tmux_key_press("UpArrow", "CTRL"),
+				})
+			end),
+		},
+		{
+			key = "RightArrow",
+			mods = "LEADER|CTRL",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.AdjustPaneSize({ "Right", 5 }),
+					tmux = send_tmux_key_press("RightArrow", "CTRL"),
 				})
 			end),
 		},
