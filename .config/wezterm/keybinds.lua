@@ -180,6 +180,17 @@ local function apply(config)
 				})
 			end),
 		},
+		{
+			key = "d",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.Nop,
+					zellij = act.SendString(zellij_prefix .. "d"),
+					tmux = send_tmux_key("d"),
+				})
+			end),
+		},
 		{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 		{ key = "w", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
 
