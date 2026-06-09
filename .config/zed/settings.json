@@ -59,4 +59,9 @@
   "buffer_font_fallbacks": ["Cascadia Code", "HackGen", "Segoe UI Emoji"],
   "show_completion_documentation": true,
   "show_completions_on_input": true,
+  "languages": {
+    "PHP": {
+      "language_servers": ["intelephense", "!phpactor"],
+    }
+  }
 }
