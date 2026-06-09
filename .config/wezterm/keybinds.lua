@@ -191,11 +191,47 @@ local function apply(config)
 				})
 			end),
 		},
-		{ key = "t", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
-		{ key = "w", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+		{
+			key = "t",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.SpawnTab("CurrentPaneDomain"),
+					tmux = send_tmux_key("t"),
+				})
+			end),
+		},
+		{
+			key = "w",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.CloseCurrentTab({ confirm = true }),
+					tmux = send_tmux_key("w"),
+				})
+			end),
+		},
 
-		{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },
-		{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
+		{
+			key = "[",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.ActivateTabRelative(-1),
+					tmux = send_tmux_key("["),
+				})
+			end),
+		},
+		{
+			key = "]",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.ActivateTabRelative(1),
+					tmux = send_tmux_key("]"),
+				})
+			end),
+		},
 		{
 			key = "{",
 			mods = "LEADER|SHIFT",
@@ -222,24 +258,34 @@ local function apply(config)
 		{
 			key = "s",
 			mods = "LEADER",
-			action = act.ShowLauncherArgs({
-				-- flags = "FUZZY|WORKSPACES",
-				flags = "WORKSPACES",
-			}),
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.ShowLauncherArgs({
+						-- flags = "FUZZY|WORKSPACES",
+						flags = "WORKSPACES",
+					}),
+					tmux = send_tmux_key("s"),
+				})
+			end),
 		},
 
 		{
 			-- Rename workspace
 			mods = "LEADER|SHIFT",
 			key = "$",
-			action = act.PromptInputLine({
-				description = "(wezterm) Set workspace title:",
-				action = wezterm.action_callback(function(win, pane, line)
-					if line then
-						wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
-					end
-				end),
-			}),
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.PromptInputLine({
+						description = "(wezterm) Set workspace title:",
+						action = wezterm.action_callback(function(_, _, line)
+							if line then
+								wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
+							end
+						end),
+					}),
+					tmux = send_tmux_key("$"),
+				})
+			end),
 		},
 
 		--   { key = '!', mods = 'CTRL', action = act.ActivateTab(0) },
@@ -312,8 +358,26 @@ local function apply(config)
 		{ key = "R", mods = "CTRL", action = act.ReloadConfiguration },
 		{ key = "R", mods = "SHIFT|CTRL", action = act.ReloadConfiguration },
 
-		{ key = "=", mods = "LEADER", action = actions.increase_opacity },
-		{ key = "-", mods = "LEADER", action = actions.decrease_opacity },
+		{
+			key = "=",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = actions.increase_opacity,
+					tmux = send_tmux_key("="),
+				})
+			end),
+		},
+		{
+			key = "-",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = actions.decrease_opacity,
+					tmux = send_tmux_key("-"),
+				})
+			end),
+		},
 		--   { key = 'T', mods = 'CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
 		--   { key = 'T', mods = 'SHIFT|CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
 		--   { key = 'U', mods = 'CTRL', action = act.CharSelect{ copy_on_select = true, copy_to =  'ClipboardAndPrimarySelection' } },
@@ -346,12 +410,22 @@ local function apply(config)
 		{
 			key = "n",
 			mods = "LEADER",
-			action = act.SwitchWorkspaceRelative(-1),
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.SwitchWorkspaceRelative(-1),
+					tmux = send_tmux_key("n"),
+				})
+			end),
 		},
 		{
 			key = "p",
 			mods = "LEADER",
-			action = act.SwitchWorkspaceRelative(1),
+			action = wezterm.action_callback(function(win, pane)
+				handle_action(win, pane, {
+					default = act.SwitchWorkspaceRelative(1),
+					tmux = send_tmux_key("p"),
+				})
+			end),
 		},
 		--   { key = 'p', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
 		--   { key = 'r', mods = 'SHIFT|CTRL', action = act.ReloadConfiguration },
