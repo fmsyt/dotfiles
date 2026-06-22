@@ -64,6 +64,7 @@
 !/.config/fish/functions/ls.fish
 !/.config/fish/functions/open.fish
 !/.config/fish/functions/tmux.fish
+!/.config/fish/functions/tmux-attach.fish
 !/.config/fish/functions/zellij.fish
 /.config/fish/functions/_*.fish
 !/.config/fish/functions/__wezterm_set_user_var.fish

@@ -66,3 +66,7 @@ end
 abbr --set-cursor nr 'npm run (jq -r ".scripts | keys[]" package.json | fzf)'
 
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range :500 {}"'
+
+abbr t tmux
+abbr tn 'tmux new -s'
+abbr ta tmux-attach
