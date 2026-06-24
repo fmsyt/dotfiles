@@ -5,11 +5,11 @@ function la
     set -l ig (string join '|' $ls_ignores)
     set -l opts "-I \"$ig\""
 
-    if command -v eza > /dev/null 2>&1
-        command eza --icons -agl $opts $argv
+    if command -v eza >/dev/null 2>&1
+        command eza --icons -agl --time-style "+%Y/%m/%d %H:%M" $opts $argv
         return
 
-    else if command -v exa > /dev/null 2>&1
+    else if command -v exa >/dev/null 2>&1
         if test "$DOTFILES_DIR/scripts/linux/utils/exa-supported-icons.sh"
             command exa --icons -agl $opts $argv
         else
