@@ -1,9 +1,18 @@
 function lazygit --wrap lazygit
-    set -l LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
+    set -l config_files
 
-    if command -v delta >/dev/null
-        set LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/config.delta.yml"
+    if set -q LG_CONFIG_FILE; and test -n "$LG_CONFIG_FILE"
+        set config_files (string split , -- "$LG_CONFIG_FILE")
+    else
+        set config_files "$HOME/.config/lazygit/config.yml"
     end
 
-    command lazygit --use-config-file="$LG_CONFIG_FILE" $argv
+    if command -v delta >/dev/null
+        set -l delta_config "$HOME/.config/lazygit/config.delta.yml"
+        if not contains -- "$delta_config" $config_files
+            set -a config_files "$delta_config"
+        end
+    end
+
+    command lazygit --use-config-file=(string join , -- $config_files) $argv
 end
