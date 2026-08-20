@@ -27,7 +27,7 @@ return {
           local current_buffer_filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p")
 
           require("snacks.picker").git_diff({
-            base = "HEAD^",
+            base = "HEAD",
             exclude = { "pnpm-lock.yaml", "package-lock.json", "*.lock" },
 
             ---@param a snacks.picker.Item
