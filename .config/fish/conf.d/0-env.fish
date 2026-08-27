@@ -45,13 +45,6 @@ if command -v go >/dev/null 2>&1
     fish_add_path $GOROOT/bin
 end
 
-if command -v pnpm >/dev/null 2>&1
-    set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-    if not string match -q -- $PNPM_HOME $PATH
-        set -gx PATH "$PNPM_HOME" $PATH
-    end
-end
-
 set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml"
 if command -v delta >/dev/null 2>&1
     set -gx LG_CONFIG_FILE "$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/config.delta.yml"
