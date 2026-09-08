@@ -125,6 +125,21 @@ local markdown = {
       }):map("<leader>um")
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    opts = function(_, opts)
+      opts = opts or {}
+
+      local js_formatter = { { "biome", "prettierd", "prettier" } }
+      vim.list_extend(opts.formatters_by_ft, {
+        json = js_formatter,
+        javascript = js_formatter,
+        typescript = js_formatter,
+        javascriptreact = js_formatter,
+        typescriptreact = js_formatter,
+      })
+    end,
+  },
 }
 
 return vim.list_extend(utils, markdown)
