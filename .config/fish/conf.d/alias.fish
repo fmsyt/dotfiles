@@ -20,9 +20,9 @@ end
 
 if test $use_bat -eq 1
     if test $bat_version -ge $batcat_version
-        alias cat='bat'
+        alias cat='bat --style=plain --paging=never'
     else
-        alias cat='batcat'
+        alias cat='batcat --style=plain --paging=never'
     end
 end
 
