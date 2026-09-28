@@ -169,6 +169,8 @@ local conf = {
       })
 
       config.servers["*"].keys = global_keys
+
+      return config
     end,
   },
   {
