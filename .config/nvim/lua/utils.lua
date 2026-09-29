@@ -9,17 +9,7 @@ M.animation_disabled = function()
     return false
   end
 
-  local disable_hosts = vim.g.snacks_disable_scroll_hosts or {}
-  local ssh_host = vim.split(ssh_client, " ")[1]
-
-  for _, host in ipairs(disable_hosts) do
-    if ssh_host == host then
-      vim.notify("Animations disabled for host: " .. host, vim.log.levels.INFO)
-      return true
-    end
-  end
-
-  return false
+  return true
 end
 
 return M
