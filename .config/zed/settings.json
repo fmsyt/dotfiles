@@ -12,7 +12,7 @@
     "enabled": true
   },
   "terminal": {
-    "font_family": "Cascadia Code",
+    "font_family": "CaskaydiaCove Nerd Font",
     "font_fallbacks": [
       "HackGen Console",
       "Segoe UI Emoji"
