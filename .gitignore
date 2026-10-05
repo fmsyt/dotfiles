@@ -140,7 +140,9 @@
 !/.vim/ftdetect/**
 
 !.config/zed
-/.config/zed/.tmp*
+.config/zed/*
+!.config/zed/keymap.json
+!.config/zed/settings.json
 
 !.config/zellij
 /.config/zellij/*
