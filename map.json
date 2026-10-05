@@ -27,7 +27,7 @@
     },
     {
       "src": ".config/zed",
-      "dst": "$env:LOCALAPPDATA/Zed"
+      "dst": "$env:APPDATA/Zed"
     }
   ]
 }
