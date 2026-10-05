@@ -13,22 +13,42 @@
     },
   },
   {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "space y": ["workspace::SendKeystrokes", "\" + y"],
+      "space g": "editor::ToggleComments",
+    },
+  },
+  {
     "context": "Editor && vim_mode == normal && VimControl && !VimWaiting && !menu",
     "bindings": {
       "J": ["workspace::SendKeystrokes", "5 j"],
       "K": ["workspace::SendKeystrokes", "5 k"],
+      "M":  "editor::Hover",
+      "ctrl-/": "workspace::NewTerminal",
+      "U": "vim::Redo",
+      "space g g": "editor::ToggleComments",
+      "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem",
+      "s s": "pane::SplitHorizontal",
+      "s v": "pane::SplitVertical",
+      "ctrl-f h": ["workspace::SendKeystrokes",  "ctrl-w h"],
+      "ctrl-f l": ["workspace::SendKeystrokes",  "ctrl-w l"],
+      "ctrl-f j": ["workspace::SendKeystrokes",  "ctrl-w j"],
+      "ctrl-f k": ["workspace::SendKeystrokes",  "ctrl-w k"],
+      "space b d": "pane::CloseActiveItem",
     },
   },
   {
-    "context": "Editor && vim_mode == visual",
-    "bindings": {
-      "space y": ["workspace::SendKeystrokes", "\" + y"],
-    },
-  },
-  {
-    "context": "Editor && vim_mode == normal && VimControl && !VimWaiting && !menu",
-    "bindings": {
-      "U": "vim::Redo"
-    },
-  },
+    "context": "Editor",
+    "unbind": {
+      "ctrl-/": [
+        "editor::ToggleComments",
+        {
+          "advance_downwards": false,
+          "comment_empty_lines": true
+        }
+      ]
+    }
+  }
 ]
