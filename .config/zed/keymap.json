@@ -13,12 +13,6 @@
     },
   },
   {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore"
-    },
-  },
-  {
     "context": "Editor && vim_mode == normal && VimControl && !VimWaiting && !menu",
     "bindings": {
       "J": ["workspace::SendKeystrokes", "5 j"],
