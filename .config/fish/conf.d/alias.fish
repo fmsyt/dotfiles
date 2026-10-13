@@ -1,4 +1,3 @@
-alias sudo='sudo -E'
 alias ip='ip -color'
 
 set -l use_bat 0
