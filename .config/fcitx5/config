@@ -1,5 +1,5 @@
 [Hotkey]
-# トリガーキーを押すたびに切り替える
+# トグルキーの修飾キーを押し続けたときは列挙
 EnumerateWithTriggerKeys=True
 # 次の入力メソッドに切り替える
 EnumerateForwardKeys=
@@ -7,9 +7,19 @@ EnumerateForwardKeys=
 EnumerateBackwardKeys=
 # 切り替え時は第1入力メソッドをスキップする
 EnumerateSkipFirst=False
+# 修飾キーのショートカットをトリガーするための時間制限（ミリ秒）
+ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
 0=Control+Alt+Shift+F1
+
+[Hotkey/ActivateKeys]
+0=Hangul
+1=Henkan
+
+[Hotkey/DeactivateKeys]
+0=Hangul_Hanja
+1=Muhenkan
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
@@ -19,12 +29,6 @@ EnumerateSkipFirst=False
 
 [Hotkey/EnumerateGroupBackwardKeys]
 0=Shift+Super+space
-
-[Hotkey/ActivateKeys]
-0=Hangul
-
-[Hotkey/DeactivateKeys]
-0=Hangul_Hanja
 
 [Hotkey/PrevPage]
 0=Up
@@ -44,6 +48,8 @@ EnumerateSkipFirst=False
 [Behavior]
 # デフォルトで有効にする
 ActiveByDefault=False
+# フォーカス時に状態をリセット
+resetStateWhenFocusIn=No
 # 入力状態を共有する
 ShareInputState=No
 # アプリケーションにプリエディットを表示する
@@ -58,7 +64,7 @@ CompactInputMethodInformation=True
 ShowFirstInputMethodInformation=True
 # デフォルトのページサイズ
 DefaultPageSize=5
-# XKB オプションより優先する
+# XKB オプションの上書き
 OverrideXkbOption=False
 # カスタム XKB オプション
 CustomXkbOption=

@@ -85,6 +85,7 @@ skin=yadt256-defbg
 
 safe_overwrite=false
 shadows=true
+shell_directory_timeout=900
 
 [Layout]
 message_visible=false
