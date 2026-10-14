@@ -10,4 +10,13 @@ if status --is-interactive
     end
 end
 
+function handle_initalized --on-event fish_prompt
+    functions --erase handle_initalized # Don't remove this line
+
+    if status --is-interactive
+        # Commands to run in interactive sessions can go here
+        #echo "Welcome to Fish shell!"
+    end
+end
+
 # vim: set ft=fish ts=4 sw=4 sts=4 et:
