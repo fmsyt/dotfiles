@@ -149,7 +149,7 @@ local conf = {
 
           ---@see https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#initialisation-options
           intelephense = {
-            enabled = vim.lsp == "intelephense",
+            enabled = vim.g.lazyvim_php_lsp == "intelephense",
             settings = {
               intelephense = {
                 environment = {
@@ -159,7 +159,7 @@ local conf = {
             },
           },
           phpactor = {
-            enabled = vim.lsp == "phpactor",
+            enabled = vim.g.lazyvim_php_lsp == "phpactor",
           },
         },
         inlay_hints = { enabled = false },
