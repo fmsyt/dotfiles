@@ -21,6 +21,14 @@ local conf = {
         },
       }
 
+      local php_version = vim.env.INTELEPHENSE_PHP_VERSION or nil
+      if not php_version or php_version == "" then
+        local php_version_output = vim.fn.system({ "php", "--version" })
+        if vim.v.shell_error == 0 then
+          php_version = php_version_output:match("PHP%s+(%d+%.%d+%.%d+)")
+        end
+      end
+
       ---@type PluginLspOpts
       local config = vim.tbl_deep_extend("force", opts, {
         servers = {
@@ -153,7 +161,7 @@ local conf = {
             settings = {
               intelephense = {
                 environment = {
-                  phpVersion = "7.1.33",
+                  phpVersion = php_version,
                 },
               },
             },
