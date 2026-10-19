@@ -35,3 +35,15 @@ vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', {
   noremap = true,
   desc = "Copy to system clipboard",
 })
+
+vim.keymap.set("n", "<leader>by", function()
+  vim.fn.setreg("+", vim.fn.expand("%:."))
+end, {
+  desc = "Copy buffer relative path",
+})
+
+vim.keymap.set("n", "<leader>bY", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, {
+  desc = "Copy buffer absolute path",
+})
