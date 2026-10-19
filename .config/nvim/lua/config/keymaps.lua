@@ -39,11 +39,11 @@ vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', {
 vim.keymap.set("n", "<leader>by", function()
   vim.fn.setreg("+", vim.fn.expand("%:."))
 end, {
-  desc = "Copy buffer relative path",
+  desc = "Copy buffer path (Relative)",
 })
 
 vim.keymap.set("n", "<leader>bY", function()
   vim.fn.setreg("+", vim.fn.expand("%:p"))
 end, {
-  desc = "Copy buffer absolute path",
+  desc = "Copy buffer path (Absolute)",
 })
