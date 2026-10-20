@@ -1,5 +1,17 @@
 return {
   {
+    "folke/noice.nvim",
+    ---@module "noice"
+    ---@param opts NoiceConfig
+    opts = function(_, opts)
+      opts.lsp = opts.lsp or {}
+      opts.lsp.hover = opts.lsp.hover or {}
+
+      -- これによって `vim.lsp.buf.hover()` を迂回していたので無効化
+      opts.lsp.hover.enabled = false
+    end,
+  },
+  {
     -- ファイルの現在位置を可視化してくれるプラグイン
     "petertriho/nvim-scrollbar",
     opts = function()
