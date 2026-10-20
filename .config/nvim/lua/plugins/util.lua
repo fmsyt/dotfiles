@@ -1,5 +1,18 @@
 local utils = {
   {
+    -- 閉じたバッファを再度開くことができるプラグイン
+    "BibekBhusal0/bufstack.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "<leader>bt",
+        "<cmd>BufReopen<cr>",
+        desc = "Reopen last closed buffer",
+      },
+    },
+  },
+  {
     "nvim-telescope/telescope.nvim",
     config = function()
       require("telescope").setup({
