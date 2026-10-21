@@ -14,8 +14,13 @@ return {
   {
     -- ファイルの現在位置を可視化してくれるプラグイン
     "petertriho/nvim-scrollbar",
+    dependencies = {
+      "lewis6991/gitsigns.nvim",
+    },
     opts = function()
-      require("scrollbar").setup()
+      local config = require("scrollbar.config").get()
+      require("scrollbar").setup(config)
+      require("scrollbar.handlers.gitsigns").setup()
     end,
   },
   {
