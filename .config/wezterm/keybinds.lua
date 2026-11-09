@@ -34,10 +34,11 @@ local function handle_action(window, pane, map)
 	local action_callback = map["default"] or fallback
 
 	if not vars then
-		return action_callback()
+		window:perform_action(action_callback, pane)
+		return
 	end
 
-	if vars["IN_TMUX"] == "1" and map["tmux"] then
+	if vars["WEZTERM_IN_TMUX"] == "1" and map["tmux"] then
 		action_callback = map["tmux"]
 	elseif vars["IN_ZELLIJ"] == "1" and map["zellij"] then
 		action_callback = map["zellij"]
