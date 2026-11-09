@@ -1,3 +1,30 @@
+local function show_git_diff(base, group, current_buffer_filename)
+  current_buffer_filename = current_buffer_filename or vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p")
+
+  require("snacks.picker").git_diff({
+    base = base,
+    group = group,
+    exclude = { "pnpm-lock.yaml", "package-lock.json", "*.lock" },
+
+    ---@param a snacks.picker.Item
+    ---@param b snacks.picker.Item
+    ---@return boolean
+    sort = function(a, b)
+      -- 表示中のバッファが含まれる場合は、先頭に表示する
+      local f1 = vim.fn.fnamemodify(a.file, ":p")
+      local f2 = vim.fn.fnamemodify(b.file, ":p")
+
+      if f1 == current_buffer_filename then
+        return true
+      elseif f2 == current_buffer_filename then
+        return false
+      end
+
+      return a.idx < b.idx
+    end,
+  })
+end
+
 return {
   {
     "folke/noice.nvim",
@@ -41,32 +68,33 @@ return {
       {
         "<leader>gd",
         function()
+          show_git_diff("HEAD")
+        end,
+        desc = "Git Diff Modified",
+      },
+      {
+        "<leader>gD",
+        function()
           local current_buffer_filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p")
 
-          require("snacks.picker").git_diff({
-            base = "HEAD",
-            exclude = { "pnpm-lock.yaml", "package-lock.json", "*.lock" },
-
-            ---@param a snacks.picker.Item
-            ---@param b snacks.picker.Item
-            ---@return boolean
-            sort = function(a, b)
-              -- 表示中のバッファが含まれる場合は、先頭に表示する
-
-              local f1 = vim.fn.fnamemodify(a.file, ":p")
-              local f2 = vim.fn.fnamemodify(b.file, ":p")
-
-              if f1 == current_buffer_filename then
-                return true
-              elseif f2 == current_buffer_filename then
-                return false
+          require("snacks.picker").git_branches({
+            all = true,
+            filter = {
+              filter = function(item)
+                return not item.current
+              end,
+            },
+            confirm = function(picker, item)
+              picker:close()
+              if item and item.branch then
+                vim.schedule(function()
+                  show_git_diff(item.branch, true, current_buffer_filename)
+                end)
               end
-
-              return a.idx < b.idx
             end,
           })
         end,
-        desc = "Git Diff Modified",
+        desc = "Git Diff Against Branch",
       },
     },
   },
