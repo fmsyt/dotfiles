@@ -199,6 +199,7 @@ local conf = {
         "biome",
         "css-lsp",
         "intelephense",
+        "markdown-toc",
         -- "mdx-analyzer",
       })
     end,

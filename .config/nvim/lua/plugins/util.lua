@@ -143,13 +143,17 @@ local markdown = {
     opts = function(_, opts)
       opts = opts or {}
 
-      local js_formatter = { { "biome", "prettierd", "prettier" } }
-      vim.list_extend(opts.formatters_by_ft, {
+      local markdown_formatter = { "makrdown-cli2", "markdown-toc" }
+      local js_formatter = { "biome", "prettierd", "prettier" }
+
+      opts.formatters_by_ft = vim.tbl_extend("force", opts.formatters_by_ft or {}, {
         json = js_formatter,
         javascript = js_formatter,
         typescript = js_formatter,
         javascriptreact = js_formatter,
         typescriptreact = js_formatter,
+        markdown = markdown_formatter,
+        ["markdown.mdx"] = markdown_formatter,
       })
     end,
   },
