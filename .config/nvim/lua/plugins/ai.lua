@@ -17,12 +17,12 @@ local conf = {
       end
 
       if vim.g.local_llm_endpoint == nil then
+        vim.notify("Local LLMのエンドポイントが指定されていません", vim.log.levels.ERROR)
         return false
       end
 
       return true
     end,
-    dependencies = { "nvim-lua/plenary.nvim" },
 
     config = function()
       local provider = "openai_compatible"
