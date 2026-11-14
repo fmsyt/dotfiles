@@ -4,8 +4,14 @@
 ----------------------------
 
 --- AI エージェントの選択
---- @type "codeium" | "copilot"
+--- @type "codeium" | "copilot" | "strata"
 vim.g.ai_agent = "copilot"
+
+--- @type string | nil APIキー
+vim.g.local_llm_api_key = nil
+
+--- @type string | nil
+vim.g.local_llm_endpoint = nil
 
 --- Snacks のスクロールホストを無効化する IP アドレスのリスト
 --- @type string[]
