@@ -65,6 +65,110 @@ function time {
   Invoke-Expression "Measure-Command { $args }"
 }
 
+function clip {
+    <#
+    .SYNOPSIS
+        Copy a file or standard input via OSC 52
+    .DESCRIPTION
+        Copies FILE, or standard input when FILE is omitted or is -, to the
+        terminal clipboard using OSC 52. Input piped into the function
+        (COMMAND | clip) is used when FILE is omitted.
+    .EXAMPLE
+        clip README.md
+    .EXAMPLE
+        git diff | clip
+    #>
+    [CmdletBinding()]
+    param (
+        [Parameter(Position = 0)]
+        [string]$File,
+
+        [Parameter(ValueFromPipeline)]
+        [string]$Line,
+
+        [Parameter(ValueFromRemainingArguments)]
+        [string[]]$Rest,
+
+        [Alias('h')]
+        [switch]$Help
+    )
+
+    begin {
+        $lines = [System.Collections.Generic.List[string]]::new()
+    }
+
+    process {
+        # The process block also runs once when there is no pipeline input, so
+        # only count values that were actually bound from the pipeline.
+        if ($PSBoundParameters.ContainsKey('Line')) {
+            $lines.Add($Line)
+        }
+    }
+
+    end {
+        if ($Help -or ($Rest -contains '--help')) {
+            Write-Host 'Usage: clip [FILE]'
+            Write-Host '       COMMAND | clip'
+            Write-Host ''
+            Write-Host 'Copy FILE, or standard input when FILE is omitted or is -, to the'
+            Write-Host 'terminal clipboard using OSC 52.'
+            return
+        }
+
+        if ($Rest) {
+            Write-Error 'clip: expected at most one file'
+            return
+        }
+
+        if ($File -and $File -ne '-') {
+            if (-not (Test-Path -Path $File -PathType Leaf)) {
+                Write-Error "clip: cannot read file: $File"
+                return
+            }
+            try {
+                $bytes = [System.IO.File]::ReadAllBytes($File)
+            }
+            catch {
+                Write-Error "clip: cannot read file: $File"
+                return
+            }
+        }
+        elseif ($lines.Count) {
+            $bytes = [System.Text.Encoding]::UTF8.GetBytes($lines -join "`n")
+        }
+        elseif ([System.Console]::IsInputRedirected) {
+            try {
+                $stream = [System.IO.MemoryStream]::new()
+                [System.Console]::OpenStandardInput().CopyTo($stream)
+                $bytes = $stream.ToArray()
+            }
+            catch {
+                Write-Error 'clip: cannot read standard input'
+                return
+            }
+        }
+        else {
+            Write-Error 'clip: no input: give a file or pipe data into clip'
+            return
+        }
+
+        $encoded = [System.Convert]::ToBase64String($bytes)
+
+        # tmux requires escape sequences to be wrapped in a DCS passthrough.
+        $esc = [string][char]27
+        $bel = [string][char]7
+        if ($env:TMUX) {
+            $sequence = $esc + '`Ptmux;' + $esc + $esc + ']52;c;' + $encoded + $bel + $esc + '"'
+        }
+        else {
+            $sequence = $esc + ']52;c;' + $encoded + $bel
+        }
+
+        [System.Console]::Out.Write($sequence)
+        [System.Console]::Out.Flush()
+    }
+}
+
 if (Get-Module -ListAvailable -Name Abbr) {
     Import-Module Abbr
 
