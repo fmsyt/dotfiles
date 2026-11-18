@@ -1,18 +1,37 @@
-function clip
-    read -z input
+function clip --description 'Copy a file or standard input via OSC 52'
+    argparse 'h/help' -- $argv
+    or return
 
-    if test -f /proc/sys/fs/binfmt_misc/WSLInterop
-        and test -z $SSH_TTY
+    if set -q _flag_help
+        printf '%s\n' \
+            'Usage: clip [FILE]' \
+            '       COMMAND | clip' \
+            '' \
+            'Copy FILE, or standard input when FILE is omitted or is -, to the' \
+            'terminal clipboard using OSC 52.'
+        return 0
+    end
 
-        set input (echo $input | sed -E 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g')
+    if test (count $argv) -gt 1
+        echo 'clip: expected at most one file' >&2
+        return 2
+    end
 
-        # 文字列を置換する
-        set input (echo -n $input | sed 's/"/""/g' | sed "s/'/''/g" | sed 's/`/``/g' | awk 'BEGIN { ORS = "`n" } { print }')
-
-        powershell.exe -NoProfile -NonInteractive -NoLogo -c "Write-Output \"$input\" | Set-Clipboard"
-
+    set -l encoded
+    if test (count $argv) -eq 1; and test "$argv[1]" != '-'
+        if not test -f "$argv[1]"; or not test -r "$argv[1]"
+            printf 'clip: cannot read file: %s\n' "$argv[1]" >&2
+            return 1
+        end
+        command base64 <"$argv[1]" | command tr -d '\n' | read -z encoded
     else
-        set b64 (echo $input | base64)
-        echo -ne "\033]52;c;$b64\a"
+        command base64 | command tr -d '\n' | read -z encoded
+    end
+
+    # tmux requires escape sequences to be wrapped in a DCS passthrough.
+    if set -q TMUX
+        printf '\ePtmux;\e\e]52;c;%s\a\e\\' "$encoded"
+    else
+        printf '\e]52;c;%s\a' "$encoded"
     end
 end
